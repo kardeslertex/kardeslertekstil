@@ -124,7 +124,7 @@ function ContactBlock() {
           <div style={{ marginTop: 32, display:'flex', flexDirection:'column', gap: 14 }}>
             <div style={{ display:'flex', gap:14, alignItems:'center' }}><Icon name="phone" size={20}/><span style={{ fontFamily:'var(--font-display)', fontSize: 22 }}>0216 396 19 88</span></div>
             <div style={{ display:'flex', gap:14, alignItems:'center' }}><Icon name="mail" size={20}/><span>kardesler@kardeslertekstil.com.tr</span></div>
-            <div style={{ display:'flex', gap:14, alignItems:'flex-start' }}><Icon name="map-pin" size={20}/><span>Fevzi Çakmak, Ulukapı Sk. 11-12/A,<br/>34899 Pendik / İstanbul</span></div>
+            <div style={{ display:'flex', gap:14, alignItems:'flex-start' }}><Icon name="map-pin" size={20}/><a href="https://www.google.com/maps?q=Karde%C5%9Fler+Tekstil+Pendik+%C4%B0stanbul" target="_blank" rel="noopener" style={{ color:'inherit' }}>Fevzi Çakmak, Ulukapı Sk. 11-12/A,<br/>34899 Pendik / İstanbul</a></div>
           </div>
           <div style={{ marginTop: 32 }}>
             <Button variant="whatsapp" icon="message-circle">Whatsapp'tan Teklif Al</Button>

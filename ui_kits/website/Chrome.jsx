@@ -62,7 +62,7 @@ function Footer({ onNavigate }) {
         <div>
           <div style={{ fontFamily:'var(--font-display)', fontSize: 14, textTransform:'uppercase', letterSpacing:'.1em', marginBottom: 16 }}>İletişim</div>
           <div style={{ display:'flex', alignItems:'flex-start', gap:10, fontSize: 13, color: 'var(--cream-200)', marginBottom: 10, lineHeight: 1.5 }}>
-            <Icon name="map-pin" size={16}/><span>Fevzi Çakmak, Ulukapı Sk. 11-12/A, 34899 Pendik / İstanbul</span>
+            <Icon name="map-pin" size={16}/><a href="https://www.google.com/maps?q=Karde%C5%9Fler+Tekstil+Pendik+%C4%B0stanbul" target="_blank" rel="noopener" style={{ color:'inherit' }}>Fevzi Çakmak, Ulukapı Sk. 11-12/A, 34899 Pendik / İstanbul</a>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:10, fontSize: 13, color: 'var(--cream-200)', marginBottom: 8 }}>
             <Icon name="phone" size={16}/><span>0216 396 19 88</span>
