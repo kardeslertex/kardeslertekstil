@@ -2,10 +2,10 @@
 
 const PRODUCTS = [
   { t: 'Tişört',              s: 'Pamuklu · Baskı · Nakış', tone: '#1C3E5C' },
-  { t: 'Lakos (Polo) Tişört', s: 'Kurumsal üretim',          tone: '#0E2A44' },
+  { t: 'Tişört',              s: 'Kurumsal üretim',          tone: '#0E2A44' },
   { t: 'İş Tulumları',        s: 'Teknik kumaş · ağır iş',   tone: '#081D30' },
   { t: 'Polar & Sweatshirt',  s: 'Soğuk hava · logo baskı',  tone: '#2B3138' },
-  { t: 'Önlük',               s: 'Mutfak · üretim · atölye', tone: '#434A53' },
+  { t: 'Önlük',               s: 'Mutfak · üretim · ofis',   tone: '#434A53' },
   { t: 'Özel Tasarım',        s: 'Numune hazırlanır',        tone: '#9B4014' },
 ];
 
@@ -89,7 +89,7 @@ function ReferencesMarquee() {
   return (
     <section style={{ background:'var(--cream-50)', padding:'56px 0', borderBottom:'1px solid var(--steel-200)' }}>
       <div style={{ maxWidth: 1280, margin:'0 auto', padding:'0 32px' }}>
-        <div className="eyebrow" style={{ marginBottom: 24 }}>Referanslarımız · 200+ Kurumsal Müşteri</div>
+        <div className="eyebrow" style={{ marginBottom: 24 }}>Referanslarımız · 300+ Kurumsal Müşteri</div>
         <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 1, background:'var(--steel-200)', border:'1px solid var(--steel-200)' }}>
           {refs.map((r,i) => (
             <div key={i} style={{ background:'var(--cream-50)', padding:'28px 20px',
@@ -124,7 +124,7 @@ function ContactBlock() {
           <div style={{ marginTop: 32, display:'flex', flexDirection:'column', gap: 14 }}>
             <div style={{ display:'flex', gap:14, alignItems:'center' }}><Icon name="phone" size={20}/><span style={{ fontFamily:'var(--font-display)', fontSize: 22 }}>0216 396 19 88</span></div>
             <div style={{ display:'flex', gap:14, alignItems:'center' }}><Icon name="mail" size={20}/><span>kardesler@kardeslertekstil.com.tr</span></div>
-            <div style={{ display:'flex', gap:14, alignItems:'flex-start' }}><Icon name="map-pin" size={20}/><span>Fevzi Çakmak, Manolya Sk. 11-12/A,<br/>34899 Pendik / İstanbul</span></div>
+            <div style={{ display:'flex', gap:14, alignItems:'flex-start' }}><Icon name="map-pin" size={20}/><span>Fevzi Çakmak, Ulukapı Sk. 11-12/A,<br/>34899 Pendik / İstanbul</span></div>
           </div>
           <div style={{ marginTop: 32 }}>
             <Button variant="whatsapp" icon="message-circle">Whatsapp'tan Teklif Al</Button>
@@ -161,7 +161,7 @@ function ContactForm() {
             <Field label="Yetkili" placeholder="Ad Soyad"/>
             <Field label="Telefon" placeholder="0___ ___ __ __"/>
             <Field label="E-posta" placeholder="ornek@firma.com"/>
-            <Field label="Ürün" sel options={['Tişört','Polo Tişört','İş Tulumu','Polar / Sweatshirt','Önlük','Özel Tasarım']}/>
+            <Field label="Ürün" sel options={['Tişört','İş Tulumu','Polar / Sweatshirt','Önlük','Özel Tasarım']}/>
             <Field label="Adet" placeholder="Örn. 250"/>
           </div>
           <div style={{ marginTop: 14 }}>

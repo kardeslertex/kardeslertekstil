@@ -32,7 +32,7 @@ function ReferencesPage() {
   const refs = ['TEKNOLOJI A.Ş.','MAVİLİM İNŞAAT','ANADOLU KARGO','BORSA LOGİSTİK','PENDİK OTO','MANOLYA GIDA','FEVZİ ENDÜSTRİ','ATLAS KİMYA','KARDELEN TEKNİK','DENİZ LOJİSTİK','ŞAHİN MADENCİLİK','YILDIZ GIDA'];
   return (
     <div style={{ background:'var(--cream-100)' }}>
-      <PageHeader eyebrow="200+ Kurumsal Müşteri" title="Referanslarımız"
+      <PageHeader eyebrow="300+ Kurumsal Müşteri" title="Referanslarımız"
         lead="Endüstri, lojistik, gıda, madencilik ve kurumsal hizmet sektörlerinden kurumsal müşterilerimize iş kıyafeti üretiyoruz."/>
       <div style={{ maxWidth: 1280, margin:'0 auto', padding:'64px 32px' }}>
         <div style={{ display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 1, background:'var(--steel-200)', border:'1px solid var(--steel-200)' }}>
@@ -68,7 +68,7 @@ function AboutPage() {
         <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap: 32 }}>
           {[
             { t:'44 yıl',        s:'Kesintisiz üretim tecrübesi' },
-            { t:'Pendik / İstanbul', s:'Kendi atölyemizde üretim' },
+            { t:'Pendik / İstanbul', s:'Kendi üretim tesisimizde üretim' },
             { t:'Numune + Toplu', s:'Her iki ölçekte de çalışıyoruz' },
           ].map((x,i) => (
             <div key={i} style={{ borderTop:'2px solid var(--navy-700)', paddingTop: 16 }}>

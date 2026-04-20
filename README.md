@@ -36,7 +36,7 @@ The live site (`kardeslertekstil.com.tr`) is a minimal WordPress install with **
 - **Business:** Custom-designed, sampled, and bulk-produced corporate workwear and promotional textiles
 - **Customers:** Kurumsal firmalar (corporate clients) — B2B only
 - **Product categories:** T-shirts, polo (lakost) shirts, work coveralls (tulum), fleece & sweatshirts, aprons (önlük), custom-designed items
-- **Address:** Fevzi Çakmak, Manolya Sk. 11-12/A, 34899 Pendik / İstanbul
+- **Address:** Fevzi Çakmak, Ulukapı Sk. 11-12/A, 34899 Pendik / İstanbul
 - **Contact:** WhatsApp 0216 396 19 88 · kardesler@kardeslertekstil.com.tr
 - **Primary channel:** WhatsApp — the existing site funnels every CTA into `wa.me/902163963694`.
 

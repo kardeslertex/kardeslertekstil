@@ -22,7 +22,7 @@ function Hero({ onNavigate }) {
             Üretim.
           </h1>
           <p style={{ maxWidth: 540, marginTop: 28, fontSize: 18, lineHeight: 1.55, color:'var(--navy-100)' }}>
-            Tişört, lakost, tulum ve iş kıyafetlerinde firmalara özel tasarım, numune ve toplu üretim çözümleri.
+            Tişört, tulum ve iş kıyafetlerinde firmalara özel tasarım, numune ve toplu üretim çözümleri.
             <strong style={{ color:'var(--cream-50)' }}> 44 yıllık üretim tecrübesi.</strong>
           </p>
           <div style={{ display:'flex', gap: 12, marginTop: 36 }}>
@@ -41,7 +41,7 @@ function Hero({ onNavigate }) {
               <div style={{ fontSize: 12, letterSpacing:'.12em', textTransform:'uppercase' }}>Ürün Kategorisi</div>
             </div>
             <div>
-              <div style={{ fontFamily:'var(--font-display)', fontSize: 40, color:'var(--cream-50)' }}>200+</div>
+              <div style={{ fontFamily:'var(--font-display)', fontSize: 40, color:'var(--cream-50)' }}>300+</div>
               <div style={{ fontSize: 12, letterSpacing:'.12em', textTransform:'uppercase' }}>Kurumsal Referans</div>
             </div>
           </div>
@@ -57,7 +57,7 @@ function Hero({ onNavigate }) {
             <div style={{ textAlign:'center' }}>
               <Icon name="factory" size={48} color="rgba(243,238,228,.5)"/>
               <div style={{ marginTop: 14, fontFamily:'var(--font-body)', fontSize: 11, letterSpacing:'.2em', textTransform:'uppercase', color:'rgba(243,238,228,.5)' }}>
-                Atölye / Ürün Fotoğrafı<br/>Placeholder
+                Üretim Tesisi / Ürün Fotoğrafı<br/>Placeholder
               </div>
             </div>
           </div>

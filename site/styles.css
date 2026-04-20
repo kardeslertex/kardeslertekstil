@@ -107,13 +107,43 @@ button{font-family:inherit;cursor:pointer;}
   position:absolute;bottom:16px;left:16px;right:16px;
   background:var(--orange-500);color:#fff;padding:10px 14px;
   font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  z-index:2;
+  z-index:3;
 }
-.hero .photo-well .corner{
-  position:absolute;top:16px;left:16px;z-index:2;
-  background:#fff;border:2px solid var(--orange-500);padding:8px 12px;
-  font-family:var(--font-display);font-size:14px;color:var(--orange-500);
-  letter-spacing:.05em;text-transform:uppercase;
+
+/* ---------- Hero photo-well slideshow ---------- */
+.hero .photo-well[data-slideshow] .slides{position:absolute;inset:0;}
+.hero .photo-well[data-slideshow] .slide{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 600ms cubic-bezier(0.2,0,0,1);
+  pointer-events:none;
+}
+.hero .photo-well[data-slideshow] .slide.is-active{opacity:1;pointer-events:auto;}
+.hero .photo-well .slide-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:999px;border:0;
+  background:rgba(14,42,68,.72);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:3;opacity:0;transition:opacity 180ms ease,background 180ms ease;
+}
+.hero .photo-well .slide-nav svg{width:20px;height:20px;}
+.hero .photo-well:hover .slide-nav,
+.hero .photo-well:focus-within .slide-nav{opacity:1;}
+.hero .photo-well .slide-nav:hover{background:var(--navy-700);}
+.hero .photo-well .slide-nav.prev{left:12px;}
+.hero .photo-well .slide-nav.next{right:12px;}
+.hero .photo-well .slide-dots{
+  position:absolute;top:16px;left:16px;right:16px;z-index:3;
+  display:flex;gap:6px;
+}
+.hero .photo-well .slide-dots button{
+  flex:1;height:3px;border:0;padding:0;border-radius:2px;cursor:pointer;
+  background:rgba(255,255,255,.35);transition:background 200ms ease;
+}
+.hero .photo-well .slide-dots button.is-active{background:var(--orange-500);}
+.hero .photo-well .slide-dots button:hover{background:rgba(255,255,255,.6);}
+.hero .photo-well .slide-dots button.is-active:hover{background:var(--orange-500);}
+@media (max-width:640px){
+  .hero .photo-well .slide-nav{opacity:1;width:36px;height:36px;}
 }
 .eyebrow-accent{color:var(--orange-500);}
 

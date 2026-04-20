@@ -49,7 +49,7 @@ function Footer({ onNavigate }) {
         <div>
           <Logo variant="cream" size={44}/>
           <p style={{ marginTop: 20, fontSize: 14, color: 'var(--cream-200)', lineHeight: 1.6, maxWidth: 320 }}>
-            1982'den bu yana kurumsal firmalara özel iş kıyafeti üretiyoruz. Tişört, polo, tulum, önlük ve promosyon tekstili.
+            1982'den bu yana kurumsal firmalara özel iş kıyafeti üretiyoruz. Tişört, tulum, önlük ve promosyon tekstili.
           </p>
         </div>
         <div>
@@ -62,7 +62,7 @@ function Footer({ onNavigate }) {
         <div>
           <div style={{ fontFamily:'var(--font-display)', fontSize: 14, textTransform:'uppercase', letterSpacing:'.1em', marginBottom: 16 }}>İletişim</div>
           <div style={{ display:'flex', alignItems:'flex-start', gap:10, fontSize: 13, color: 'var(--cream-200)', marginBottom: 10, lineHeight: 1.5 }}>
-            <Icon name="map-pin" size={16}/><span>Fevzi Çakmak, Manolya Sk. 11-12/A, 34899 Pendik / İstanbul</span>
+            <Icon name="map-pin" size={16}/><span>Fevzi Çakmak, Ulukapı Sk. 11-12/A, 34899 Pendik / İstanbul</span>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:10, fontSize: 13, color: 'var(--cream-200)', marginBottom: 8 }}>
             <Icon name="phone" size={16}/><span>0216 396 19 88</span>
