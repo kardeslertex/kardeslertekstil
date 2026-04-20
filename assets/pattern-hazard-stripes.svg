@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" width="240" height="120" role="img" aria-label="Hazard stripes pattern">
+  <defs>
+    <pattern id="stripes" patternUnits="userSpaceOnUse" width="24" height="24" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#F3EEE4"></rect>
+      <rect width="12" height="24" fill="#E8E0CF"></rect>
+    </pattern>
+  </defs>
+  <rect width="240" height="120" fill="url(#stripes)"></rect>
+</svg>

@@ -1,0 +1,22 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Wordmark usage</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--cream-100);}
+  .card{padding:18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  .s{height:150px;border-radius:4px;display:grid;place-items:center;position:relative;overflow:hidden;}
+  .cream{background:var(--cream-100);border:1px solid var(--steel-200);}
+  .navy{background:var(--navy-700);}
+  .photo{background:linear-gradient(135deg,#2B3138,#434A53);}
+  .photo::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(0,0,0,.08) 10px 11px);}
+  .plate{position:relative;z-index:1;background:var(--navy-700);padding:14px 20px;}
+  img{width:170px;}
+  .lab{position:absolute;top:8px;left:10px;font-family:var(--font-body);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--fg3);}
+  .navy .lab{color:var(--cream-200);}
+  .photo .lab{color:var(--cream-100);}
+</style></head><body>
+<div class="card">
+  <div class="s cream"><span class="lab">Cream — default</span><img src="../assets/logo-wordmark.svg"></div>
+  <div class="s navy"><span class="lab">Navy — inverse</span><img src="../assets/logo-wordmark-cream.svg"></div>
+  <div class="s photo"><span class="lab">Over photo — plate, not gradient</span><div class="plate"><img src="../assets/logo-wordmark-cream.svg"></div></div>
+</div>
+</body></html>

@@ -1,0 +1,22 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--cream-100);}
+  .card{padding:18px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  label{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2);}
+  input,textarea,select{font-family:var(--font-body);font-size:14px;padding:10px 12px;background:#fff;border:1px solid var(--steel-200);border-radius:2px;color:var(--fg1);outline:none;}
+  input:focus{border-color:var(--navy-700);box-shadow:0 0 0 3px rgba(14,42,68,.15);}
+  .focus{border-color:var(--navy-700);box-shadow:0 0 0 3px rgba(14,42,68,.15);}
+  .err{border-color:var(--red-500);}
+  .hint{font-size:11px;color:var(--fg3);}
+  .errhint{font-size:11px;color:var(--red-600);}
+</style></head><body>
+<div class="card">
+  <div class="field"><label>Firma Adı</label><input placeholder="Örn. Teknoloji A.Ş."></div>
+  <div class="field"><label>Telefon (focused)</label><input class="focus" value="0216 396 19 88"></div>
+  <div class="field"><label>E-posta</label><input type="email" value="kardesler@kardeslertekstil.com.tr"><div class="hint">Yanıt 24 saat içinde gelir.</div></div>
+  <div class="field"><label>Adet</label><input class="err" value="0"><div class="errhint">Minimum sipariş 50 adettir.</div></div>
+  <div class="field" style="grid-column:1 / -1;"><label>Mesajınız</label><textarea rows="2" placeholder="Numune talebi, renk, logo, adet..."></textarea></div>
+</div>
+</body></html>

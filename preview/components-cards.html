@@ -1,0 +1,21 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--cream-100);}
+  .wrap{padding:18px 24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .c{background:#fff;border:1px solid var(--steel-200);border-radius:4px;overflow:hidden;}
+  .ph{aspect-ratio:4/3;background:linear-gradient(135deg,#D6D9DE,#8A929C);position:relative;}
+  .ph::after{content:"PRODUCT PHOTO";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-body);font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.9);}
+  .body{padding:10px 12px;}
+  .t{font-family:var(--font-display);text-transform:uppercase;font-size:15px;color:var(--navy-700);letter-spacing:-.01em;}
+  .m{font-size:11px;color:var(--fg3);margin-top:2px;}
+  .ref{padding:14px;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--steel-200);border-radius:4px;}
+  .mono{width:40px;height:40px;background:var(--navy-700);color:var(--cream-50);font-family:var(--font-display);display:grid;place-items:center;border-radius:2px;font-size:20px;}
+  .hover{box-shadow:0 4px 16px rgba(14,42,68,.12);border-color:var(--steel-300);}
+</style></head><body>
+<div class="wrap">
+  <div class="c"><div class="ph"></div><div class="body"><div class="t">Lakos Polo</div><div class="m">Tek renk · logo baskı</div></div></div>
+  <div class="c hover"><div class="ph" style="background:linear-gradient(135deg,#0E2A44,#1C3E5C);"></div><div class="body"><div class="t">İş Tulumu</div><div class="m">Hover durumu</div></div></div>
+  <div class="ref"><div class="mono">T</div><div><div class="t" style="font-size:14px;">Teknoloji A.Ş.</div><div class="m">Kurumsal T-Shirt · 2024</div></div></div>
+</div>
+</body></html>

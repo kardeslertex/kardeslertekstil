@@ -1,0 +1,27 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--cream-100);}
+  .card{padding:18px 24px;display:grid;grid-template-columns:repeat(4,auto);gap:12px 14px;align-items:center;justify-content:start;}
+  .btn{font-family:var(--font-body);font-weight:600;font-size:14px;padding:11px 18px;border-radius:2px;border:1px solid transparent;cursor:pointer;letter-spacing:.01em;display:inline-flex;align-items:center;gap:8px;transition:all 150ms var(--ease-out);}
+  .primary{background:var(--navy-700);color:var(--cream-50);}
+  .primary:hover{background:var(--navy-800);}
+  .secondary{background:transparent;color:var(--navy-700);border-color:var(--navy-700);}
+  .secondary:hover{background:var(--navy-700);color:var(--cream-50);}
+  .ghost{background:transparent;color:var(--navy-700);}
+  .ghost:hover{background:var(--steel-100);}
+  .wa{background:#25D366;color:#fff;}
+  .wa:hover{background:#1EBA58;}
+  .lab{font-family:var(--font-body);font-size:10px;letter-spacing:.1em;color:var(--fg3);text-transform:uppercase;}
+</style></head><body>
+<div class="card">
+  <div class="lab">Primary</div><button class="btn primary">Teklif Al →</button>
+  <div class="lab">Secondary</div><button class="btn secondary">Ürünler</button>
+  <div class="lab">Ghost</div><button class="btn ghost">İletişim</button>
+  <div class="lab">WhatsApp</div><button class="btn wa">● Whatsapp'tan Teklif Al</button>
+  <div class="lab">Primary (hover)</div><button class="btn primary" style="background:var(--navy-800);">Teklif Al →</button>
+  <div class="lab">Primary (press)</div><button class="btn primary" style="background:var(--navy-900);transform:translateY(1px);">Teklif Al →</button>
+  <div class="lab">Disabled</div><button class="btn primary" style="background:var(--steel-300);cursor:not-allowed;">Teklif Al →</button>
+  <div class="lab">Small</div><button class="btn primary" style="padding:7px 12px;font-size:12px;">Detay</button>
+</div>
+</body></html>

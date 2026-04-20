@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" role="img" aria-label="KİT Kardeşler Tekstil">
+  <g fill="#E6662A" font-family="&#39;Archivo Black&#39;, &#39;Impact&#39;, sans-serif" font-weight="900">
+    <text x="4" y="52" font-size="56" font-style="italic" letter-spacing="-1">K</text>
+    <text x="58" y="52" font-size="56" font-style="italic" letter-spacing="-1">I</text>
+    
+    <g transform="translate(64,6) rotate(-10)">
+      <rect x="0" y="0" width="8" height="12" rx="1" fill="#E6662A"></rect>
+      <circle cx="4" cy="2" r="3.2" fill="#E6662A"></circle>
+      <circle cx="4" cy="2" r="1.3" fill="#FAFAF5"></circle>
+    </g>
+    <text x="88" y="52" font-size="56" font-style="italic" letter-spacing="-1">T</text>
+  </g>
+  <g font-family="&#39;Archivo Black&#39;, &#39;Impact&#39;, sans-serif" font-weight="900" fill="#FAFAF5">
+    <text x="146" y="32" font-size="20" letter-spacing="1.5">KARDEŞLER</text>
+    <text x="146" y="54" font-size="20" letter-spacing="1.5">TEKSTİL</text>
+  </g>
+  
+  <rect x="134" y="12" width="2" height="40" fill="#E6662A"></rect>
+</svg>

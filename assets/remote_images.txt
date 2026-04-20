@@ -1,0 +1,13 @@
+# Live product / hero imagery from kardeslertekstil.com.tr
+# These could not be fetched into the sandbox (CORS) — download manually if needed.
+
+HERO / WORKSHOP
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-17-at-11.17.45.jpeg
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-17-at-11.17.45-1.jpeg
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-17-at-11.17.45-3.jpeg
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/Adsiz.png
+
+PRODUCT
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-19-at-16.23.56-300x300.jpeg
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-19-at-16.23.56-1-400x436.jpeg
+https://kardeslertekstil.com.tr/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-19-at-16.23.56-2-400x419.jpeg

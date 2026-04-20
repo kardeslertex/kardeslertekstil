@@ -1,0 +1,17 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Wordmark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--cream-100);}
+  .card{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .slot{padding:20px;display:grid;place-items:center;border-radius:4px;min-height:140px;}
+  .cream{background:var(--cream-100);border:1px solid var(--steel-200);}
+  .navy{background:var(--navy-700);}
+  .lab{font-family:var(--font-body);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg3);margin-top:6px;text-align:center;}
+  .stack{display:flex;flex-direction:column;gap:0;align-items:center;}
+  img{width:100%;max-width:340px;height:auto;}
+</style></head><body>
+<div class="card">
+  <div class="stack"><div class="slot cream"><img src="../assets/logo-wordmark.svg" alt=""></div><div class="lab">On cream — default</div></div>
+  <div class="stack"><div class="slot navy"><img src="../assets/logo-wordmark-cream.svg" alt=""></div><div class="lab">On navy — inverse</div></div>
+</div>
+</body></html>
