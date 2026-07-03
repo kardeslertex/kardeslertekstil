@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# OhMyOpenCode tooling
+.omo/
+
+# Cloudflare Wrangler local cache
+.wrangler/
+
+# Source asset drops (not part of the site)
+wetransfer_*/
