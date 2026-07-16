@@ -1668,3 +1668,199 @@ html{scroll-behavior:smooth;}
   }
 }
 
+
+/* ============================================================
+   Homepage V3.1 — Final visual polish
+   ============================================================ */
+
+/* Hero spacing and alignment */
+.home-v3 .hero .grid{
+  align-items:center;
+}
+.home-v3 .hero .eyebrow{
+  margin-bottom:22px;
+}
+.home-v3 .hero h1{
+  max-width:800px;
+  line-height:.93;
+}
+.home-v3 .hero .lead{
+  margin-top:30px;
+}
+.home-v3 .hero .cta-row{
+  margin-top:34px;
+}
+.home-v3 .hero .photo-well{
+  transform:translateY(4px);
+}
+.home-v3 .hero .stats{
+  margin-top:44px;
+}
+
+/* More premium featured product cards */
+.home-products-premium{
+  padding-top:104px!important;
+  padding-bottom:104px!important;
+}
+.home-products-premium .section-head{
+  margin-bottom:54px;
+}
+.home-products-premium .product-grid-4{
+  gap:24px;
+}
+.home-products-premium .product{
+  border-radius:var(--radius-xl);
+  background:#fff;
+  box-shadow:0 8px 24px rgba(14,42,68,.07);
+  transition:transform 260ms var(--ease-out),box-shadow 260ms var(--ease-out);
+}
+.home-products-premium .product:hover{
+  transform:translateY(-7px);
+  box-shadow:0 22px 46px rgba(14,42,68,.15);
+}
+.home-products-premium .product .ph{
+  aspect-ratio:4/5;
+  background:linear-gradient(145deg,#fff,var(--cream-50));
+}
+.home-products-premium .product .ph img{
+  padding:22px;
+  object-fit:contain;
+  transition:transform 380ms var(--ease-out);
+}
+.home-products-premium .product:hover .ph img{
+  transform:scale(1.035);
+}
+.home-products-premium .product .badge{
+  top:14px;
+  left:14px;
+  padding:7px 10px;
+  border-radius:var(--radius-full);
+  box-shadow:0 4px 12px rgba(230,102,42,.16);
+}
+.home-products-premium .product .body{
+  padding:22px 22px 24px;
+}
+.home-products-premium .product .t{
+  font-size:22px;
+  line-height:1.05;
+}
+.home-products-premium .product .m{
+  margin-top:8px;
+  font-size:13px;
+  line-height:1.5;
+}
+.home-products-premium .product .arrow{
+  transition:transform 180ms var(--ease-out),color 180ms var(--ease-out);
+}
+.home-products-premium .product:hover .arrow{
+  transform:translateX(4px);
+}
+
+/* Match product-page CTA visual language */
+.home-cta-section{
+  padding:88px 0;
+  background:var(--cream-100);
+}
+.home-cta{
+  position:relative;
+  overflow:hidden;
+  padding:54px;
+  grid-template-columns:minmax(0,1.6fr) minmax(280px,.7fr);
+  gap:44px;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(230,102,42,.28),transparent 30%),
+    linear-gradient(135deg,var(--navy-700),var(--navy-800));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-xl);
+  box-shadow:0 24px 54px rgba(14,42,68,.20);
+}
+.home-cta::after{
+  content:"";
+  position:absolute;
+  right:-64px;
+  bottom:-64px;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  border:34px solid rgba(255,255,255,.035);
+  pointer-events:none;
+}
+.home-cta > *{
+  position:relative;
+  z-index:1;
+}
+.home-cta h3{
+  max-width:720px;
+  font-size:42px;
+}
+.home-cta p{
+  max-width:720px;
+  font-size:17px;
+  line-height:1.65;
+}
+.home-cta-tags span{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+}
+.home-cta-actions .btn{
+  min-height:56px;
+  font-size:15px;
+  font-weight:700;
+  box-shadow:0 12px 30px rgba(37,211,102,.22);
+}
+.home-cta-actions .btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(37,211,102,.30);
+}
+.home-phone{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+}
+.home-phone:hover{
+  background:rgba(255,255,255,.09);
+}
+
+@media (max-width:1000px){
+  .home-v3 .hero .photo-well{
+    transform:none;
+  }
+  .home-products-premium .product-grid-4{
+    gap:18px;
+  }
+  .home-cta{
+    grid-template-columns:1fr;
+    padding:42px;
+  }
+}
+
+@media (max-width:640px){
+  .home-v3 .hero .eyebrow{
+    margin-bottom:16px;
+  }
+  .home-v3 .hero h1{
+    line-height:.96;
+  }
+  .home-v3 .hero .lead{
+    margin-top:24px;
+  }
+  .home-products-premium{
+    padding-top:76px!important;
+    padding-bottom:76px!important;
+  }
+  .home-products-premium .product-grid-4{
+    gap:16px;
+  }
+  .home-products-premium .product .ph img{
+    padding:16px;
+  }
+  .home-cta{
+    padding:30px 22px;
+  }
+  .home-cta h3{
+    font-size:30px;
+  }
+  .home-cta p{
+    font-size:15px;
+  }
+}
+
