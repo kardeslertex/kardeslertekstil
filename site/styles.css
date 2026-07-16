@@ -1647,3 +1647,24 @@ html{scroll-behavior:smooth;}
   }
 }
 
+
+/* Hero eyebrow spacing fix */
+.home-v3 .hero .eyebrow{
+  display:block;
+  margin-bottom:18px;
+  line-height:1.2;
+  position:relative;
+  z-index:2;
+}
+
+.home-v3 .hero h1{
+  margin-top:0;
+  line-height:.96;
+}
+
+@media (max-width:640px){
+  .home-v3 .hero .eyebrow{
+    margin-bottom:14px;
+  }
+}
+
