@@ -874,3 +874,100 @@ html{scroll-behavior:smooth;}
   .catalog-nav a,.gitem,.gitem img,.gitem-overlay,.gitem-meta{transition:none!important;}
 }
 
+
+/* ============================================================
+   Product Catalog V2.1 — Final polish
+   ============================================================ */
+
+/* Stronger product page heading */
+.products-page .page-head h1{
+  font-size:82px;
+  letter-spacing:-.025em;
+}
+.products-page .page-head p{
+  max-width:720px;
+  font-size:19px;
+}
+.products-page .page-head{
+  padding-top:88px;
+  padding-bottom:80px;
+}
+
+/* Premium lightbox entrance */
+.lightbox.is-open{
+  animation:catalogFadeIn 180ms var(--ease-out);
+}
+.lightbox.is-open .lb-card{
+  animation:catalogCardIn 260ms var(--ease-out);
+}
+@keyframes catalogFadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+@keyframes catalogCardIn{
+  from{opacity:0;transform:translateY(14px) scale(.985);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+/* Stronger CTA */
+.lb-whatsapp{
+  min-height:52px;
+  font-size:16px;
+  font-weight:700;
+  box-shadow:0 8px 22px rgba(37,211,102,.24);
+  transition:transform 180ms var(--ease-out),box-shadow 180ms var(--ease-out),background 180ms var(--ease-out);
+}
+.lb-whatsapp:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(37,211,102,.32);
+}
+
+/* More modern counter */
+.lb-counter{
+  background:var(--navy-50);
+  color:var(--navy-700);
+  border-radius:var(--radius-full);
+  padding:6px 10px;
+  font-weight:700;
+}
+
+/* Card finishing */
+.gitem{
+  will-change:transform;
+}
+.gitem:active{
+  transform:translateY(-1px) scale(.995);
+}
+.catalog-section .gallery-grid{
+  align-items:stretch;
+}
+
+/* Better mobile touch feedback */
+@media (hover:none){
+  .gitem-overlay{opacity:1;}
+  .gitem-meta{transform:none;}
+  .gitem:hover{transform:none;}
+}
+
+/* Responsive heading */
+@media (max-width:960px){
+  .products-page .page-head h1{font-size:54px;}
+  .products-page .page-head p{font-size:17px;}
+}
+@media (max-width:640px){
+  .products-page .page-head{
+    padding-top:64px;
+    padding-bottom:60px;
+  }
+  .products-page .page-head h1{font-size:40px;}
+  .products-page .page-head p{font-size:16px;}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .lightbox.is-open,
+  .lightbox.is-open .lb-card{
+    animation:none!important;
+  }
+}
+
