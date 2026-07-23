@@ -42,9 +42,27 @@ window.KATALOG = [
     keywords: "tişört tshirt polo lakos bisiklet yaka",
     unit: "model",
     urunler: [
-      "01.jpeg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg",
-      "08.jpg", "09.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpeg",
-      "15.jpeg", "16.jpeg", "17.jpg", "18.jpeg", "19.jpg", "20.jpg", "21.jpg"
+      { img: "01.jpeg", name: "Polo Tişört — Siyah, Turuncu Detaylar, Dikey Fermuarlı Göğüs Cep, Kısa Kollu", tags: "Siyah | Turuncu detaylar | Polo yaka | Kısa kol | Dikey fermuarlı göğüs cebi | Kontrast fermuar | İş kıyafeti | Reflektör: yok" },
+      { img: "02.jpg",  name: "Performans Tişört — Siyah, Bordo Garni, Bisiklet Yaka, Kısa Kollu, Reflektörlü Kol Şeridi", tags: "Siyah | Bordo garni | Bisiklet yaka | Kısa kol | Reflektörlü kol şeridi | Spor/performans" },
+      { img: "03.jpg",  name: "Tişört Hi‑Vis — Siyah, Omuz ve Kol Reflektörlü Bantlar", tags: "Siyah | Hi‑Vis bant | Omuz reflektörlü bant | Kol reflektörlü bant | İş güvenliği | Kısa kol" },
+      { img: "04.jpg",  name: "Polo Tişört — Kırmızı / Siyah Kontrast Yaka, Kısa Kollu", tags: "Kırmızı | Siyah kontrast yaka | Polo yaka | Kısa kol | Kurumsal/iş modeli | Reflektör: yok" },
+      { img: "05.jpg",  name: "Gri, Kırmızı Yan Garnili Polo Yaka Tişört — Kısa Kollu", tags: "Gri | Kırmızı yan garni | Polo yaka | Kısa kol | Kontrast detaylar | Reflektör: yok" },
+      { img: "06.jpg",  name: "V‑Yaka Tişört — Gri, Siyah Omuz Garnili, Kısa Kollu", tags: "Gri | Siyah omuz garni | V‑yaka | Kısa kol | Spor | Reflektör: yok" },
+      { img: "07.jpg",  name: "Gri, Kırmızı Yaka ve Kol Manşetli, Kısa Kollu", tags: "Gri | Kırmızı yaka | Kırmızı kol manşeti | V‑yaka | Kısa kol | Spor" },
+      { img: "08.jpg",  name: "Uzun Kollu Polo — Antrasit, Siyah Kontrast Yaka", tags: "Antrasit | Siyah kontrast yaka | Polo yaka | Uzun kol | Reflektör: yok" },
+      { img: "09.jpg",  name: "Polo Tişört — Lacivert, Kol/Omuz/Etekte Gri Reflektörlü Şeritler, Kısa Kollu", tags: "Lacivert | Gri reflektörlü şeritler | Polo yaka | Kısa kol | İş/güvenlik unsuru" },
+      { img: "10.jpg",  name: "Polo Tişört — Siyah, Düz, Kısa Kollu", tags: "Siyah | Düz tasarım | Polo yaka | Kısa kol | Temel iş modeli" },
+      { img: "11.jpg",  name: "Polo Tişört — Gri, Kırmızı Reklam Kollu, Polo Yaka, Kısa Kollu", tags: "Gri | Kırmızı reklam kol | Polo yaka | Kısa kol | Kurumsal" },
+      { img: "12.jpg",  name: "Bisiklet Yaka Tişört — Gri, Kol ve Omuzda Saks Garnili, Kısa Kollu", tags: "Gri | Saks garni (kol/omuz) | Bisiklet yaka | Kısa kol | Kontrast detay" },
+      { img: "13.jpg",  name: "Polo Tişört — Lacivert, Kırmızı Garnili Omuz Şeridi, Kısa Kollu", tags: "Lacivert | Kırmızı garni | Polo yaka | Kısa kol" },
+      { img: "14.jpeg", name: "Polo Tişört — Haki, Siyah Göğüs Cep (Dikey Fermuarlı, Yeşil Fermuar Detayı), Kısa Kollu", tags: "Haki | Siyah göğüs cep | Dikey fermuar | Yeşil fermuar detayı | Polo yaka | Kısa kol" },
+      { img: "15.jpeg", name: "Bisiklet Yaka Tişört — Siyah, Dikey Fermuarlı Göğüs Cep, Turuncu Detaylar", tags: "Siyah | Dikey fermuarlı göğüs cebi | Turuncu detaylar | Bisiklet yaka | Kısa kol" },
+      { img: "16.jpeg", name: "Polo Tişört — Siyah, Turuncu Ense Biyeli, Kısa Kollu", tags: "Siyah | Turuncu ense biyeli | Polo yaka | Kısa kol" },
+      { img: "17.jpg",  name: "Uzun Kollu Tişört — Siyah, Omuz ve Kol Reflektörlü, Polo Yaka", tags: "Siyah | Reflektörlü (omuz/kol) | Uzun kol | İş güvenliği" },
+      { img: "18.jpeg", name: "Uzun Kollu Polo — Haki, Ense Biyeli, Pat Altı Reflektörlü Detay", tags: "Haki | Ense biyeli | Pat altı reflektörlü detay | Uzun kol | İş/teknik detay" },
+      { img: "19.jpg",  name: "Uzun Kollu V‑Yaka Tişört — Gri, Mavi Garnili Omuz ve Kol Şeridi", tags: "Gri | Mavi garni | V‑yaka | Uzun kol | Spor/performans" },
+      { img: "20.jpg",  name: "Uzun Kollu V‑Yaka Tişört — Gri, Kırmızı Garnili V‑Yaka ve Manşet", tags: "Gri | Kırmızı garni | V‑yaka | Uzun kol" },
+      { img: "21.jpg",  name: "Polo Tişört — Gri, Yeşil Yan Garni, Polo Yaka, Uzun Kollu", tags: "Gri | Yeşil yan garni | Polo yaka | Uzun kol" }
     ]
   },
 
