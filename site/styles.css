@@ -439,31 +439,34 @@ html{scroll-behavior:smooth;}
 }
 .catalog-toolbar-inner{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 300px;
+  grid-template-columns:1fr;
   align-items:center;
-  gap:18px;
+  gap:12px;
   padding:14px 0;
 }
 .catalog-nav{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(10,minmax(0,1fr));
   gap:8px;
-  overflow-x:auto;
+  overflow:hidden;
   padding:2px 2px 6px;
-  scrollbar-width:thin;
-  scrollbar-color:var(--steel-300) transparent;
 }
 .catalog-nav a{
-  flex:0 0 auto;
+  min-width:0;
   border:1px solid var(--steel-200);
   border-radius:var(--radius-full);
   background:#fff;
   background-image:none;
   color:var(--navy-700);
   padding:10px 16px;
-  font-size:12px;
+  font-size:clamp(9px,.72vw,12px);
   font-weight:700;
   letter-spacing:.06em;
   text-transform:uppercase;
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
   transition:all var(--dur) var(--ease-out);
 }
 .catalog-nav a:hover{
@@ -477,7 +480,11 @@ html{scroll-behavior:smooth;}
   border-color:var(--navy-700);
 }
 
-.catalog-search-wrap{position:relative;}
+.catalog-search-wrap{
+  position:relative;
+  width:min(100%,300px);
+  justify-self:end;
+}
 .catalog-search{
   width:100%;
   height:42px;
@@ -787,7 +794,10 @@ html{scroll-behavior:smooth;}
     grid-template-columns:1fr;
     gap:10px;
   }
-  .catalog-search-wrap{max-width:420px;}
+  .catalog-search-wrap{
+    width:min(100%,420px);
+    justify-self:start;
+  }
   .lightbox{padding:20px 62px;}
   .lb-card{
     grid-template-columns:1fr;
@@ -826,9 +836,14 @@ html{scroll-behavior:smooth;}
     padding:0 20px;
   }
   .catalog-toolbar-inner{padding:10px 0;}
+  .catalog-nav{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:6px;
+    padding-bottom:4px;
+  }
   .catalog-nav a{
-    padding:9px 13px;
-    font-size:11px;
+    padding:9px 7px;
+    font-size:10px;
   }
   .catalog-search{height:40px;}
   .catalog-section{
@@ -2247,4 +2262,3 @@ html{scroll-behavior:smooth;}
     margin-top:12px;
   }
 }
-
