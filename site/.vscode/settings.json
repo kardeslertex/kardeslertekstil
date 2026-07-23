@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd \"c:\\\\Users\\\\kardeşler  tekstil\\\\Documents\\\\GitHub\\\\kardeslertekstil\"; git add site/products\\.js; git commit -m \"Update pantolon product names and tags from image audit\"; git push$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
