@@ -116,8 +116,24 @@ window.KATALOG = [
     keywords: "pantolon iş pantolonu kargo cepli reflektörlü",
     unit: "model",
     urunler: [
-      "01.jpeg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg",
-      "09.jpg", "10.jpg", "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpg", "17.png", "18.png"
+      { img: "01.jpeg", name: "Çok Cepli İş Pantolonu — Haki, Siyah Diz Takviye, Çoklu Kargo Cepler, Dikey Fermuarlı Detay", tags: "Haki | Siyah diz takviye | Çoklu kargo cepleri | Dikey fermuarlı cep | İş/teknik | Reflektör: yok" },
+      { img: "02.jpg",  name: "Kargo Pantolon — Lacivert, Elastik Bel, Çoklu Kargo Cepler, Reflektörlü Üst Şerit", tags: "Lacivert | Elastik bel | Çoklu kargo cepleri | Reflektörlü üst şerit | Fonksiyonel" },
+      { img: "03.jpg",  name: "Klasik İş Pantolonu — Antrasit, Saks Cep Kapaklı Yan Cepli, Elastik Bel", tags: "Antrasit | Saks cep kapaklı | Elastik bel | Yan cep | Kurumsal" },
+      { img: "04.jpg",  name: "Kontrast Panelli İş Pantolonu — Açık Gri / Koyu Gri, Fermuarlı Cep, Diz Panelleri", tags: "Açık gri | Koyu gri kontrast paneller | Fermuarlı cep | Diz takviye panelleri" },
+      { img: "05.jpg",  name: "Reflektörlü Kargo Pantolon — Gri, Dizlik Reflektör Şeridi, Kargo Cep", tags: "Gri | Dizlik reflektör şeridi | Kargo cepli | İş güvenliği unsuru" },
+      { img: "06.jpg",  name: "Reflektörlü Kargo Pantolon — Açık Gri, Elastik Bel, Kargo Cep Kapaklı, Reflektörlü Diz Şeridi", tags: "Açık gri | Elastik bel | Kargo cep kapaklı | Diz reflektörlü şerit | İş güvenliği" },
+      { img: "07.jpg",  name: "Kargo Pantolon — Gri, Kırmızı Garnili Cep Kapaklı, Elastik Bel", tags: "Gri | Kırmızı garni | Cep kapaklı | Elastik bel | Kurumsal" },
+      { img: "08.jpg",  name: "Kargo Pantolon — Koyu Gri, Kırmızı Garnili Cep Kapaklı, Elastik Bel", tags: "Koyu gri | Kırmızı garni | Cep kapaklı | Elastik bel | Fonksiyonel" },
+      { img: "09.jpg",  name: "Çok Cepli İş Pantolonu — Siyah, Diz Takviyeli, Kargo Cep Kapaklı", tags: "Siyah | Çok cepli | Diz takviye | Kargo cep kapaklı | İş/teknik" },
+      { img: "10.jpg",  name: "Kargo Pantolon — Mavi Kot Kumaştan, Elastik Bel, Büyük Kargo Cepler, Dizlik Panelleri", tags: "Mavi kot | Elastik bel | Büyük kargo cepler | Dizlik panelleri | Kurumsal/teknik" },
+      { img: "11.jpeg", name: "Reflektörlü Kargo Pantolon — Gri, Turuncu Reflektör Şeritli, Çoklu Cep, Diz Takviyeli", tags: "Gri | Turuncu reflektör şeritli | Çoklu cep | Diz takviye | İş güvenliği" },
+      { img: "12.jpeg", name: "Koyu Gri Kot Kumaşından Kargo Pantolon, Gri Kontrast Cep Kapakları, Fermuarlı Yan Cep, Diz Takviyeli", tags: "Koyu gri kot | Gri kontrast cep kapakları | Fermuarlı yan cep | Diz takviyeli | Fonksiyonel" },
+      { img: "13.jpeg", name: "Denim Kargo Pantolon — Koyu Mavi, Siyah Diz Takviyeli, Cep Kapaklı, Çoklu Cep", tags: "Koyu mavi | Siyah diz takviyeli | Cep kapaklı | Çoklu cep | Denim" },
+      { img: "14.jpeg", name: "Reflektörlü Kargo Pantolon — Gri, Fosfor Detaylı, Diz Takviyeli", tags: "Gri | Fosfor detaylı | Diz takviyeli | Reflektörlü detay | İş güvenliği" },
+      { img: "15.jpeg", name: "Reflektörlü Kargo Pantolon — Bej, Siyah Diz Takviyeli, Cep Kapaklı", tags: "Bej | Siyah diz takviyeli | Cep kapaklı | Reflektör: yok | İş/kurumsal" },
+      { img: "16.jpg",  name: "Reflektörlü Kargo Pantolon — Bej, Siyah Diz Takviyeli, Cep Kapaklı Taktik Pantolon", tags: "Bej | Siyah diz takviyeli | Cep kapaklı | Reflektör: yok | İş/kurumsal" },
+      { img: "17.png",  name: "Reflektörlü İş Pantolonu — Lacivert, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Lacivert | Reflektörlü diz bandı | Yan cep kapaklı | Kurumsal/iş" },
+      { img: "18.png",  name: "Reflektörlü Kot Pantolon — Koyu Mavi, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Koyu mavi | Reflektörlü diz bandı | Yan cep kapaklı | Denim" }
     ]
   },
 
