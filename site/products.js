@@ -210,8 +210,24 @@ window.KATALOG = [
     keywords: "mont kaban kışlık kapüşonlu reflektörlü",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg",
-      "09.jpg", "10.jpg", "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.png", "18.png"
+      { img: "01.jpg", name: "İş Montu Modeli 1" },
+      { img: "02.jpg", name: "İş Montu Modeli 2" },
+      { img: "03.jpg", name: "Kaban Modeli 1" },
+      { img: "04.jpg", name: "İş Montu Modeli 3" },
+      { img: "05.jpg", name: "Kaban Modeli 2" },
+      { img: "06.jpg", name: "Kaban Modeli 3" },
+      { img: "07.jpg", name: "Kaban Modeli 4" },
+      { img: "08.jpg", name: "İş Montu Modeli 4" },
+      { img: "09.jpg", name: "İş Montu Modeli 5" },
+      { img: "10.jpg", name: "İş Montu Modeli 6" },
+      { img: "11.jpeg", name: "Kaban Modeli 5" },
+      { img: "12.jpeg", name: "Kaban Modeli 6" },
+      { img: "13.jpeg", name: "İş Montu Modeli 7" },
+      { img: "14.jpeg", name: "İş Montu Modeli 8" },
+      { img: "15.jpeg", name: "Kaban Modeli 7" },
+      { img: "16.jpeg", name: "Kaban Modeli 8" },
+      { img: "17.png", name: "İş Montu Modeli 9" },
+      { img: "18.png", name: "İş Montu Modeli 10" }
     ]
   },
 
