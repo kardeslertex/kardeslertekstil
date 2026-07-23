@@ -178,8 +178,22 @@ window.KATALOG = [
     keywords: "önlük mutfak aşçı üretim laboratuvar ofis",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg",
-      "09.jpg", "10.jpg", "11.jpg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg"
+      { img: "01.jpg", name: "Şef Ceketi Modeli 1" },
+      { img: "02.jpg", name: "Askılı Önlük Modeli" },
+      { img: "03.jpg", name: "Askılı Önlük Modeli" },
+      { img: "04.jpg", name: "İş Önlük Modeli" },
+      { img: "05.jpg", name: "Askılı Önlük Modeli" },
+      { img: "06.jpg", name: "Askılı Önlük Modeli" },
+      { img: "07.jpg", name: "Şef Ceketi Modeli 2" },
+      { img: "08.jpg", name: "Askılı Önlük Modeli" },
+      { img: "09.jpg", name: "PVC Askılı Önlük Modeli" },
+      { img: "10.jpg", name: "İş Önlük Modeli" },
+      { img: "11.jpg", name: "ESD İş Önlük Modeli" },
+      { img: "12.jpeg", name: "ESD İş Önlük Modeli" },
+      { img: "13.jpeg", name: "Belden Bağlama Önlük Modeli" },
+      { img: "14.jpeg", name: "Askılı Önlük Modeli" },
+      { img: "15.jpeg", name: "Askılı Önlük Modeli" },
+      { img: "16.jpeg", name: "Belden Bağlama Önlük Modeli" }
     ]
   },
 
