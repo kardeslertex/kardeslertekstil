@@ -150,8 +150,18 @@ window.KATALOG = [
     keywords: "tulum iş tulumu teknik kumaş ağır iş",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpeg", "06.jpg",
-      "07.jpeg", "08.jpeg", "09.jpeg", "10.jpeg", "11.jpg", "12.jpeg"
+      { img: "01.jpg", name: "Bahçıvan Tulum Modeli 1" },
+      { img: "02.jpg", name: "Kollu Tulum Modeli 1" },
+      { img: "03.jpg", name: "Bahçıvan Tulum Modeli 2" },
+      { img: "04.jpg", name: "Kollu Tulum Modeli 2" },
+      { img: "05.jpeg", name: "Bahçıvan Tulum Modeli 3" },
+      { img: "06.jpg", name: "Bahçıvan Tulum Modeli 4" },
+      { img: "07.jpeg", name: "Bahçıvan Tulum Modeli 5" },
+      { img: "08.jpeg", name: "Bahçıvan Tulum Modeli 6" },
+      { img: "09.jpeg", name: "Kollu Tulum Modeli 3" },
+      { img: "10.jpeg", name: "Kollu Tulum Modeli 4" },
+      { img: "11.jpg", name: "Kollu Tulum Modeli 5" },
+      { img: "12.jpeg", name: "Kollu Tulum Modeli 6" }
     ]
   },
 
