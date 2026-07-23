@@ -51,7 +51,7 @@ window.KATALOG = [
   /* ---------------- SWEATSHIRT & HOODIE ---------------- */
   {
     id: "sweat",
-    nav: "Sweatshirt & Hoodie",
+    nav: "Sweatshirt",
     eyebrow: "Kapüşonlu · fermuarlı · reflektörlü",
     title: "Sweatshirt & Hoodie Modellerimiz",
     desc: "Kurumsal kullanım için bisiklet yaka, polo yaka, fermuarlı ve kapüşonlu sweatshirt modelleri.",
@@ -142,7 +142,7 @@ window.KATALOG = [
   /* ---------------- MONT & KABAN ---------------- */
   {
     id: "montkaban",
-    nav: "Mont & Kaban",
+    nav: "Mont",
     eyebrow: "Kapüşonlu · reflektörlü · kışlık",
     title: "Mont & Kaban Modellerimiz",
     desc: "Soğuk hava ve saha şartları için kurumsal mont ve kaban çözümleri.",
