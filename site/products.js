@@ -272,8 +272,18 @@ window.KATALOG = [
     keywords: "yelek reflektörlü şişme çok cepli",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpeg", "04.jpg", "05.jpg", "06.jpg",
-      "07.jpg", "08.jpg", "09.jpg", "10.jpg", "11.jpg", "12.jpeg"
+      { img: "01.jpg", name: "Gri Renk Baklava Desenli Çift Cepli Yelek", tags: "Gri | Baklava desenli | Çift cepli | İş yeleği" },
+      { img: "02.jpg", name: "Siyah Renk Baklava Desenli Çift Cepli Yelek", tags: "Siyah | Baklava desenli | Çift cepli | İş yeleği" },
+      { img: "03.jpeg", name: "Haki Renk Reflektif Fermuarlı Taktik Yelek", tags: "Haki | Reflektif | Fermuarlı | Taktik" },
+      { img: "04.jpg", name: "Siyah Renk Baklava Desenli Çift Cepli Yelek", tags: "Siyah | Baklava desenli | Çift cepli | İş yeleği" },
+      { img: "05.jpg", name: "Lacivert Renk Kontrast Biyeli Baklava Desenli Çift Cepli Yelek", tags: "Lacivert | Kontrast biyeli | Baklava desenli | Çift cepli" },
+      { img: "06.jpg", name: "Turuncu Renk Üç Cepli Göğüs Reflektör Şeritli Yelek", tags: "Turuncu | Üç cepli | Göğüs reflektör şeritli | İş yeleği" },
+      { img: "07.jpg", name: "Siyah Renk Enine Ray Dokumalı Çift Cepli Yelek", tags: "Siyah | Enine ray dokumalı | Çift cepli | İş yeleği" },
+      { img: "08.jpg", name: "Gri Renk Turuncu Reflektör Bantlı Çok Cepli Taktik İş Yeleği", tags: "Gri | Turuncu reflektör bantlı | Çok cepli | Taktik" },
+      { img: "09.jpg", name: "Siyah Renk Sarı Reflektör Bantlı Çok Cepli Taktik İş Yeleği", tags: "Siyah | Sarı reflektör bantlı | Çok cepli | Taktik" },
+      { img: "10.jpg", name: "Kırmızı Renk Göğüs Bölgesi Çift Cep Kapaklı Cepli Omuzlar ve Yanlar Siyah Garnili Yelek", tags: "Kırmızı | Çift cep kapaklı | Cepli | Siyah garnili | Omuz ve yan detaylı" },
+      { img: "11.jpg", name: "Siyah Üç Cepli Enine Dokumalı Yelek", tags: "Siyah | Üç cepli | Enine dokumalı | İş yeleği" },
+      { img: "12.jpeg", name: "Siyah Renk Fermuarlari Turuncu Reflektif Sol Göğüs Fermuarlı Cepli Taktik Yelek", tags: "Siyah | Turuncu reflektif fermuar | Sol göğüs cepli | Taktik" }
     ]
   },
 
