@@ -684,7 +684,7 @@ html{scroll-behavior:smooth;}
 .lb-info h2{
   margin-top:12px;
   color:var(--navy-700);
-  font-size:31px;
+  font-size:24px;
   line-height:1.05;
 }
 .lb-code-row{
