@@ -300,11 +300,11 @@ window.KATALOG = [
     keywords: "softshell soft shell su itici esnek nefes alan",
     unit: "model",
     urunler: [
-      { img: "01.jpg", name: "Softshell Kaban Çift Renk Çıkarılabilir Kapüşonlu Üç Renkli", tags: "Çift renk | Çıkarılabilir kapüşon | Üç renkli | Softshell" },
+      { img: "01.jpg", name: "Softshell Kaban Çift Renk Çıkarılabilir Kapüşonlu Üç Cepli", tags: "Çift renk | Çıkarılabilir kapüşon | Üç cepli | Softshell" },
       { img: "02.jpg", name: "Softshell Pantolon Sağ Tarafta Kargo Cepli Paçalar Çift Sıra Gri Fosfor Şeritli", tags: "Softshell pantolon | Sağ kargo cep | Çift sıra gri fosfor şerit | Paçalar" },
       { img: "03.jpg", name: "Softshell Pantolon Sağ Tarafta Kargo Cepli Paçalar Çift Sıra Gri Fosfor Şeritli Kargo Cep Fosfor ve Mavi Biye Detaylı", tags: "Softshell pantolon | Kargo cep | Fosfor detay | Mavi biye | Gri fosfor şerit" },
       { img: "04.jpg", name: "Lacivert Renk Softshell Mont Ön Fermuarlı Çift Cep Sol Göğüs Yatay Fermuarlı Cepli Hi-Vis Sarı ve Gri Reflektör Detaylı", tags: "Lacivert | Ön fermuarlı | Çift cep | Yatay fermuarlı göğüs cep | Hi-Vis reflektör" },
-      { img: "05.jpg", name: "Siyah Renk Softshell Yelek Ön Çift ve Sağ Göğüs Dik Fermuar Detaylı Hi-Vis Turuncu ve Gri Reflektör Detaylı", tags: "Siyah | Ön çift cepli | Sağ göğüs dik fermuar | Hi-Vis turuncu ve gri reflektör" },
+      { img: "05.jpg", name: "Siyah Renk Softshell Yelek Ön Çift ve Sol Göğüs Cepli Dik Fermuar Detaylı Hi-Vis Turuncu ve Gri Reflektör Detaylı", tags: "Siyah | Ön çift cepli | Sol göğüs cepli | Dik fermuar | Hi-Vis turuncu ve gri reflektör" },
       { img: "06.jpg", name: "Siyah Klasik Üç Cepli Softshell Mont", tags: "Siyah | Klasik | Üç cepli | Softshell mont" },
       { img: "07.jpg", name: "Kırmızı Renk Üç Cepli Klasik Softshell Mont", tags: "Kırmızı | Klasik | Üç cepli | Softshell mont" },
       { img: "08.jpg", name: "Siyah Renk Üç Cepli Klasik Model Softshell Yelek", tags: "Siyah | Üç cepli | Klasik model | Softshell yelek" },
