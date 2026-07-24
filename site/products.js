@@ -43,7 +43,7 @@ window.KATALOG = [
     unit: "model",
     urunler: [
       { img: "01.jpeg", name: "Polo Tişört — Siyah, Turuncu Detaylar, Dikey Fermuarlı Göğüs Cep, Kısa Kollu", tags: "Siyah | Turuncu detaylar | Polo yaka | Kısa kol | Dikey fermuarlı göğüs cebi | Kontrast fermuar | İş kıyafeti | Reflektör: yok" },
-      { img: "02.jpg",  name: "Performans Tişört — Siyah, Bordo Garni, Bisiklet Yaka, Kısa Kollu, Reflektörlü Kol Şeridi", tags: "Siyah | Bordo garni | Bisiklet yaka | Kısa kol | Reflektörlü kol şeridi | Spor/performans" },
+      { img: "02.jpg",  name: "Oversize Tişört — Siyah, Bordo Garni, Bisiklet Yaka, Kısa Kollu, Reflektörlü Kol Şeridi", tags: "Siyah | Bordo garni | Bisiklet yaka | Kısa kol | Reflektörlü kol şeridi | Spor/performans" },
       { img: "03.jpg",  name: "Tişört Hi‑Vis — Siyah, Omuz ve Kol Reflektörlü Bantlar", tags: "Siyah | Hi‑Vis bant | Omuz reflektörlü bant | Kol reflektörlü bant | İş güvenliği | Kısa kol" },
       { img: "04.jpg",  name: "Polo Tişört — Kırmızı / Siyah Kontrast Yaka, Kısa Kollu", tags: "Kırmızı | Siyah kontrast yaka | Polo yaka | Kısa kol | Kurumsal/iş modeli | Reflektör: yok" },
       { img: "05.jpg",  name: "Gri, Kırmızı Yan Garnili Polo Yaka Tişört — Kısa Kollu", tags: "Gri | Kırmızı yan garni | Polo yaka | Kısa kol | Kontrast detaylar | Reflektör: yok" },
