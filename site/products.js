@@ -244,8 +244,18 @@ window.KATALOG = [
     keywords: "polar mont fermuarlı sıcak",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpg", "04.jpeg", "05.jpg", "06.jpg",
-      "07.jpg", "08.jpg", "09.jpg", "10.jpg", "11.jpeg", "12.jpeg"
+      { img: "01.jpg", name: "Çift Renk Üç Cepli Polar Mont", tags: "Çift renk | Üç cepli | Polar mont" },
+      { img: "02.jpg", name: "Siyah Polar Mont Omuz ve Yanlar Saks Garnili", tags: "Siyah | Omuz ve yanlar | Saks garnili | Polar mont" },
+      { img: "03.jpg", name: "Bordo Polar Mont Ön Çift Cepli Sol Kol Fermuarlı Cepli Omuzlar Siyah Garnili", tags: "Bordo | Ön çift cepli | Sol kol fermuarlı cepli | Omuzlar siyah garnili | Polar mont" },
+      { img: "04.jpeg", name: "Taktik Polar Mont Haki Yeşil Ön Çift, Sol Göğüs Fermuar Cepli", tags: "Taktik | Haki | Yeşil | Ön çift cepli | Sol göğüs fermuar cepli | Polar mont" },
+      { img: "05.jpg", name: "Lacivert Klasik Üç Cepli Polar Mont", tags: "Lacivert | Klasik | Üç cepli | Polar mont" },
+      { img: "06.jpg", name: "Çift Renk Polar Mont", tags: "Çift renk | Polar mont" },
+      { img: "07.jpg", name: "Çift Renk Polar Mont", tags: "Çift renk | Polar mont" },
+      { img: "08.jpg", name: "Saks Renk Polar Mont Yarım Fermuar Sağ Göğüs ve Omuzlar Fosfor Biyeli", tags: "Saks renk | Yarım fermuar | Sağ göğüs | Omuzlar fosfor biyeli | Polar mont" },
+      { img: "09.jpg", name: "Lacivert Polar Mont Kolları ve Beden Reflektör Bantlı Üç Cepli Fermuarlar Turuncu Reflektif", tags: "Lacivert | Reflektör bantlı | Üç cepli | Fermuarlar turuncu reflektif | Polar mont" },
+      { img: "10.jpg", name: "Kırmızı Renk Klasik İki Cepli Polar Mont", tags: "Kırmızı | Klasik | İki cepli | Polar mont" },
+      { img: "11.jpeg", name: "Siyah Renk Üç Cepli Taktik Polar Mont Fermuarlar Reflektif", tags: "Siyah | Üç cepli | Taktik | Fermuarlar reflektif | Polar mont" },
+      { img: "12.jpeg", name: "Siyah Renk Klasik Üç Cepli Polar Mont", tags: "Siyah | Klasik | Üç cepli | Polar mont" }
     ]
   },
 
