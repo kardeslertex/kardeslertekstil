@@ -272,7 +272,7 @@ window.KATALOG = [
     keywords: "yelek reflektörlü şişme çok cepli",
     unit: "model",
     urunler: [
-      { img: "01.jpg", name: "Gri Renk Baklava Desenli Çift Cepli Yelek", tags: "Gri | Baklava desenli | Çift cepli | İş yeleği" },
+      { img: "01.jpg", name: "Gri Renk Ön Çift Cepli Sağ ve Sol Göğüs Cep Kapaklı Cepli Fermuarlı Omuz Garnileri Turuncu Detaylı Yelek", tags: "Gri | Ön çift cepli | Göğüs cep kapaklı | Cepli fermuarlı | Omuz garnileri turuncu detaylı" },
       { img: "02.jpg", name: "Siyah Renk Baklava Desenli Çift Cepli Yelek", tags: "Siyah | Baklava desenli | Çift cepli | İş yeleği" },
       { img: "03.jpeg", name: "Haki Renk Reflektif Fermuarlı Taktik Yelek", tags: "Haki | Reflektif | Fermuarlı | Taktik" },
       { img: "04.jpg", name: "Siyah Renk Baklava Desenli Çift Cepli Yelek", tags: "Siyah | Baklava desenli | Çift cepli | İş yeleği" },
@@ -283,7 +283,7 @@ window.KATALOG = [
       { img: "09.jpg", name: "Siyah Renk Sarı Reflektör Bantlı Çok Cepli Taktik İş Yeleği", tags: "Siyah | Sarı reflektör bantlı | Çok cepli | Taktik" },
       { img: "10.jpg", name: "Kırmızı Renk Göğüs Bölgesi Çift Cep Kapaklı Cepli Omuzlar ve Yanlar Siyah Garnili Yelek", tags: "Kırmızı | Çift cep kapaklı | Cepli | Siyah garnili | Omuz ve yan detaylı" },
       { img: "11.jpg", name: "Siyah Üç Cepli Enine Dokumalı Yelek", tags: "Siyah | Üç cepli | Enine dokumalı | İş yeleği" },
-      { img: "12.jpeg", name: "Siyah Renk Fermuarlari Turuncu Reflektif Sol Göğüs Fermuarlı Cepli Taktik Yelek", tags: "Siyah | Turuncu reflektif fermuar | Sol göğüs cepli | Taktik" }
+      { img: "12.jpeg", name: "Siyah Renk Fermuarları Turuncu Reflektif Sol Göğüs Fermuarlı Cepli Taktik Yelek", tags: "Siyah | Turuncu reflektif fermuar | Sol göğüs cepli | Taktik" }
     ]
   },
 
@@ -300,8 +300,18 @@ window.KATALOG = [
     keywords: "softshell soft shell su itici esnek nefes alan",
     unit: "model",
     urunler: [
-      "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg",
-      "07.jpg", "08.jpg", "09.jpg", "10.jpeg", "11.jpeg", "12.jpeg"
+      { img: "01.jpg", name: "Softshell Kaban Çift Renk Çıkarılabilir Kapüşonlu Üç Renkli", tags: "Çift renk | Çıkarılabilir kapüşon | Üç renkli | Softshell" },
+      { img: "02.jpg", name: "Softshell Pantolon Sağ Tarafta Kargo Cepli Paçalar Çift Sıra Gri Fosfor Şeritli", tags: "Softshell pantolon | Sağ kargo cep | Çift sıra gri fosfor şerit | Paçalar" },
+      { img: "03.jpg", name: "Softshell Pantolon Sağ Tarafta Kargo Cepli Paçalar Çift Sıra Gri Fosfor Şeritli Kargo Cep Fosfor ve Mavi Biye Detaylı", tags: "Softshell pantolon | Kargo cep | Fosfor detay | Mavi biye | Gri fosfor şerit" },
+      { img: "04.jpg", name: "Lacivert Renk Softshell Mont Ön Fermuarlı Çift Cep Sol Göğüs Yatay Fermuarlı Cepli Hi-Vis Sarı ve Gri Reflektör Detaylı", tags: "Lacivert | Ön fermuarlı | Çift cep | Yatay fermuarlı göğüs cep | Hi-Vis reflektör" },
+      { img: "05.jpg", name: "Siyah Renk Softshell Yelek Ön Çift ve Sağ Göğüs Dik Fermuar Detaylı Hi-Vis Turuncu ve Gri Reflektör Detaylı", tags: "Siyah | Ön çift cepli | Sağ göğüs dik fermuar | Hi-Vis turuncu ve gri reflektör" },
+      { img: "06.jpg", name: "Siyah Klasik Üç Cepli Softshell Mont", tags: "Siyah | Klasik | Üç cepli | Softshell mont" },
+      { img: "07.jpg", name: "Kırmızı Renk Üç Cepli Klasik Softshell Mont", tags: "Kırmızı | Klasik | Üç cepli | Softshell mont" },
+      { img: "08.jpg", name: "Siyah Renk Üç Cepli Klasik Model Softshell Yelek", tags: "Siyah | Üç cepli | Klasik model | Softshell yelek" },
+      { img: "09.jpg", name: "Siyah Renk Omuzlar Kırmızı Garnili Yaka İçi Kırmızı Renk Detaylı Üç Cepli Klasik Softshell Yelek", tags: "Siyah | Kırmızı garnili omuz | Yaka içi kırmızı detay | Üç cepli | Klasik model" },
+      { img: "10.jpeg", name: "Haki Yeşil Kollar ve Sol Göğüs Cebi Siyah Detaylı Üç Dikey Cepli Kapşonlu Taktik Softshell Mont", tags: "Haki yeşil | Sol göğüs cebi | Siyah detay | Üç dikey cepli | Kapşonlu taktik" },
+      { img: "11.jpeg", name: "Haki Renk Dört Cepli Üç Cep Fermuarlı Bir Cep Cep Kapaklı Diz Takviyeli Taktik Softshell Pantolon", tags: "Haki | Dört cepli | Üç cep fermuarlı | Cep kapaklı | Diz takviyeli | Taktik" },
+      { img: "12.jpeg", name: "Siyah Renk Kollar ve Sol Göğüs Cebi Siyah Detaylı Üç Dikey Cepli Turuncu Reflektif Detaylı Fermuarlı Softshell Yelek", tags: "Siyah | Turuncu reflektif | Üç dikey cepli | Fermuarlı | Softshell yelek" }
     ]
   },
 
