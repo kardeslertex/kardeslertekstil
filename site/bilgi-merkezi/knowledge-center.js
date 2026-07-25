@@ -14,9 +14,9 @@
     {
       slug: "logolu-is-kiyafeti-uretimi",
       title: "Logolu İş Kıyafeti Üretimi",
-      summary: "Kurumsal kimliğe uygun logolu kıyafet planlamasının temel aşamaları.",
+      summary: "Ürün ve kumaş seçiminden nakış, baskı, numune, beden dağılımı ve sipariş sürecine kapsamlı üretim rehberi.",
       category: "Ürün Rehberleri",
-      tags: ["İş Kıyafeti", "Nakış", "Baskı", "Polo Yaka"],
+      tags: ["Logolu İş Kıyafeti", "Kurumsal İş Kıyafeti", "Nakış", "Baskı", "Özel Üretim", "Firma Logolu Kıyafet"],
       published: "2026-07-24",
       views: 82
     },
