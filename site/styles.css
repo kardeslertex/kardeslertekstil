@@ -691,6 +691,18 @@ button{font-family:inherit;cursor:pointer;}
   color:var(--fg2);
   line-height:1.75;
 }
+.knowledge-article-main > ol{
+  margin:12px 0 22px;
+  padding-left:22px;
+  color:var(--fg2);
+  line-height:1.75;
+}
+.knowledge-article-main > hr{
+  height:1px;
+  margin:34px 0;
+  border:0;
+  background:var(--steel-200);
+}
 .knowledge-article-main > p a{
   color:var(--navy-700);
   font-weight:700;

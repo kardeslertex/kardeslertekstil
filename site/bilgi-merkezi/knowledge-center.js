@@ -14,9 +14,9 @@
     {
       slug: "logolu-is-kiyafeti-uretimi",
       title: "Logolu İş Kıyafeti Üretimi",
-      summary: "Ürün ve kumaş seçiminden nakış, baskı, numune, beden dağılımı ve sipariş sürecine kapsamlı üretim rehberi.",
+      summary: "Doğru ürün seçimi, nakış ve baskı, logo yerleşimi, numune ve üretim aşamalarına yönelik rehber.",
       category: "Ürün Rehberleri",
-      tags: ["Logolu İş Kıyafeti", "Kurumsal İş Kıyafeti", "Nakış", "Baskı", "Özel Üretim", "Firma Logolu Kıyafet"],
+      tags: ["Logolu İş Kıyafeti", "Kurumsal İş Kıyafeti", "Nakış", "Baskı", "İş Kıyafeti Üretimi"],
       published: "2026-07-24",
       views: 82
     },
