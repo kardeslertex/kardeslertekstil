@@ -12,6 +12,7 @@
   <meta property="og:url" content="https://kardeslertekstil.com.tr/bilgi-merkezi/">
   <link rel="icon" type="image/png" href="../assets/logo-kit-badge-small.png">
   <link rel="stylesheet" href="../styles.css">
+  <script src="knowledge-center.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,7 +45,7 @@
   }
   </script>
 </head>
-<body data-screen-label="06 Knowledge Center">
+<body data-screen-label="06 Knowledge Center" data-knowledge-index>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../index.html"><img src="../assets/logo-kit-badge-small.png" alt="Kardeşler Tekstil"></a>
@@ -79,22 +80,42 @@
 
     <section class="knowledge-index">
       <div class="container">
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>İş Kıyafeti Rehberi</h2></div>
+        <section class="knowledge-search" aria-labelledby="knowledge-search-title">
+          <label id="knowledge-search-title" for="knowledge-search">Bilgi Merkezi'nde Ara</label>
+          <div class="knowledge-search-control">
+            <input id="knowledge-search" type="search" placeholder="Yazı, kategori veya etiket ara..." autocomplete="off">
+            <button id="knowledge-filter-clear" type="button" hidden>Filtreyi Temizle</button>
+          </div>
+          <div class="knowledge-search-feedback"><span id="knowledge-active-filter"></span><span id="knowledge-search-status" aria-live="polite"></span></div>
+        </section>
+
+        <div class="knowledge-highlights">
+          <section class="knowledge-highlight" aria-labelledby="popular-posts-title">
+            <div class="knowledge-category-head"><h2 id="popular-posts-title">En Çok Okunan Yazılar</h2></div>
+            <ol class="knowledge-ranked-list" id="popular-posts"></ol>
+          </section>
+          <section class="knowledge-highlight" aria-labelledby="latest-posts-title">
+            <div class="knowledge-category-head"><h2 id="latest-posts-title">Son Eklenen Yazılar</h2></div>
+            <ol class="knowledge-ranked-list" id="latest-posts"></ol>
+          </section>
+        </div>
+
+        <section class="knowledge-category" data-category="İş Kıyafeti Rehberi">
+          <div class="knowledge-category-head"><h2>İş Kıyafeti Rehberi</h2><span class="knowledge-count" data-category-count="İş Kıyafeti Rehberi">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="is-kiyafeti-secerken-nelere-dikkat-edilmeli">
               <span class="category">İş Kıyafeti Rehberi</span>
               <h3>İş Kıyafeti Seçerken Nelere Dikkat Edilmeli?</h3>
-              <p>Kullanım alanı, çalışan konforu ve kurumsal ihtiyaçlar için temel seçim ölçütleri.</p>
+              <p>Kumaş, model, beden, mevsim, logo uygulaması ve kullanım alanına göre doğru iş kıyafeti seçimi.</p>
               <a class="read-more" href="is-kiyafeti-secerken-nelere-dikkat-edilmeli/">Yazıyı Oku →</a>
             </article>
           </div>
         </section>
 
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>Ürün Rehberleri</h2></div>
+        <section class="knowledge-category" data-category="Ürün Rehberleri">
+          <div class="knowledge-category-head"><h2>Ürün Rehberleri</h2><span class="knowledge-count" data-category-count="Ürün Rehberleri">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="logolu-is-kiyafeti-uretimi">
               <span class="category">Ürün Rehberleri</span>
               <h3>Logolu İş Kıyafeti Üretimi</h3>
               <p>Kurumsal kimliğe uygun logolu kıyafet planlamasının temel aşamaları.</p>
@@ -103,10 +124,10 @@
           </div>
         </section>
 
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>Kumaş Bilgileri</h2></div>
+        <section class="knowledge-category" data-category="Kumaş Bilgileri">
+          <div class="knowledge-category-head"><h2>Kumaş Bilgileri</h2><span class="knowledge-count" data-category-count="Kumaş Bilgileri">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="gabardin-kumas-nedir">
               <span class="category">Kumaş Bilgileri</span>
               <h3>Gabardin Kumaş Nedir?</h3>
               <p>Gabardin kumaşın yapısı, kullanım alanları ve iş kıyafetlerindeki yeri.</p>
@@ -115,10 +136,10 @@
           </div>
         </section>
 
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>İş Güvenliği</h2></div>
+        <section class="knowledge-category" data-category="İş Güvenliği">
+          <div class="knowledge-category-head"><h2>İş Güvenliği</h2><span class="knowledge-count" data-category-count="İş Güvenliği">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="reflektorlu-is-kiyafeti-nedir">
               <span class="category">İş Güvenliği</span>
               <h3>Reflektörlü İş Kıyafeti Nedir?</h3>
               <p>Görünürlüğü destekleyen reflektörlü ürünlerin temel özellikleri ve kullanım alanları.</p>
@@ -127,10 +148,10 @@
           </div>
         </section>
 
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>Sektörel Çözümler</h2></div>
+        <section class="knowledge-category" data-category="Sektörel Çözümler">
+          <div class="knowledge-category-head"><h2>Sektörel Çözümler</h2><span class="knowledge-count" data-category-count="Sektörel Çözümler">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="nakis-mi-baski-mi">
               <span class="category">Sektörel Çözümler</span>
               <h3>Nakış mı, Baskı mı?</h3>
               <p>Farklı kullanım koşullarında logo uygulaması seçimine yönelik kısa bir başlangıç rehberi.</p>
@@ -139,10 +160,10 @@
           </div>
         </section>
 
-        <section class="knowledge-category">
-          <div class="knowledge-category-head"><h2>Üretim Rehberi</h2></div>
+        <section class="knowledge-category" data-category="Üretim Rehberi">
+          <div class="knowledge-category-head"><h2>Üretim Rehberi</h2><span class="knowledge-count" data-category-count="Üretim Rehberi">1 yazı</span></div>
           <div class="knowledge-grid">
-            <article class="knowledge-card">
+            <article class="knowledge-card" data-post-slug="is-kiyafeti-uretim-sureci">
               <span class="category">Üretim Rehberi</span>
               <h3>İş Kıyafeti Üretim Süreci</h3>
               <p>İhtiyaç analizinden teslimata uzanan kurumsal iş kıyafeti üretim adımları.</p>
