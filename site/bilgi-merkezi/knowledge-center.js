@@ -3,6 +3,16 @@
 
   const posts = [
     {
+      slug: "is-kiyafeti-terimleri-sozlugu",
+      title: "İş Kıyafeti Terimleri Sözlüğü",
+      summary: "Kumaş, dikim, baskı, nakış ve iş kıyafeti üretiminde kullanılan 229 terimi A'dan Z'ye açıklayan kapsamlı sözlük.",
+      category: "Tekstil Sözlüğü",
+      tags: ["İş Kıyafeti Terimleri", "Tekstil Terimleri", "Kumaş", "Dikim", "Nakış", "Baskı", "İş Kıyafeti Üretimi"],
+      searchTerms: ["alpaka", "gabardin", "lakost", "penye", "softshell", "reflektör", "pastal", "reçme", "DTF"],
+      published: "2026-07-27",
+      views: 0
+    },
+    {
       slug: "is-kiyafeti-secerken-nelere-dikkat-edilmeli",
       title: "İş Kıyafeti Seçerken Nelere Dikkat Edilmeli?",
       summary: "Kumaş, model, beden, mevsim, logo uygulaması ve kullanım alanına göre doğru iş kıyafeti seçimi.",

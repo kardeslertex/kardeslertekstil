@@ -870,6 +870,55 @@ button{font-family:inherit;cursor:pointer;}
   text-transform:uppercase;
 }
 .knowledge-post-nav strong{line-height:1.35;}
+
+/* Bilgi Merkezi: İş Kıyafeti Terimleri Sözlüğü */
+.dictionary-alphabet{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:28px 0 36px;
+  padding:18px;
+  border:1px solid var(--steel-200);
+  border-radius:14px;
+  background:var(--cream-100);
+}
+.dictionary-alphabet a,
+.dictionary-alphabet span{
+  display:grid;
+  width:34px;
+  height:34px;
+  place-items:center;
+  border-radius:8px;
+  font-weight:700;
+}
+.dictionary-alphabet a{
+  color:#fff;
+  background:var(--navy-700);
+}
+.dictionary-alphabet a:hover{background:var(--orange-500);}
+.dictionary-alphabet span{color:var(--steel-400);background:#fff;}
+.dictionary-letter{scroll-margin-top:110px;}
+.dictionary-term{
+  margin-top:28px;
+  padding:26px;
+  border:1px solid var(--steel-200);
+  border-radius:16px;
+  background:#fff;
+}
+.knowledge-article-main .dictionary-term h3{margin-top:0;}
+.dictionary-term h4{
+  margin:22px 0 8px;
+  color:var(--navy-700);
+  font-family:var(--font-display);
+  font-size:17px;
+}
+.dictionary-term p{margin:0 0 14px;}
+.dictionary-term ul{margin:0 0 16px;padding-left:22px;}
+.dictionary-term li + li{margin-top:6px;}
+.dictionary-related{
+  padding-top:14px;
+  border-top:1px solid var(--steel-200);
+}
 @media (max-width:960px){
   .knowledge-highlights{grid-template-columns:1fr;}
   .knowledge-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
