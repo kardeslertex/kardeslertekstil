@@ -42,6 +42,10 @@ window.KATALOG = [
     keywords: "tişört tshirt polo lakos bisiklet yaka",
     unit: "model",
     urunler: [
+      { img: "siyah-polo-yaka-tisort.png", code: "KT-TS-022", name: "Siyah Polo Yaka Tişört", tags: "40/1 Full Likralı Lakost | Siyah | Polo yaka | Ribanalı kol bantlı" },
+      { img: "beyaz-polo-yaka-tisort.png", code: "KT-TS-023", name: "Beyaz Polo Yaka Tişört", tags: "40/1 Full Likralı Lakost | Beyaz | Polo yaka | Ribanalı kol bantlı" },
+      { img: "beyaz-bisiklet-yaka-tisort.png", code: "KT-TS-024", name: "Beyaz Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Beyaz | Bisiklet yaka | Regular fit" },
+      { img: "siyah-bisiklet-yaka-tisort.png", code: "KT-TS-025", name: "Siyah Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Siyah | Bisiklet yaka | Regular fit" },
       { img: "01.jpeg", name: "Polo Tişört — Siyah, Turuncu Detaylar, Dikey Fermuarlı Göğüs Cep, Kısa Kollu", tags: "Siyah | Turuncu detaylar | Polo yaka | Kısa kol | Dikey fermuarlı göğüs cebi | Kontrast fermuar | İş kıyafeti | Reflektör: yok" },
       { img: "02.jpg",  name: "Oversize Tişört — Siyah, Bordo Garni, Bisiklet Yaka, Kısa Kollu, Reflektörlü Kol Şeridi", tags: "Siyah | Bordo garni | Bisiklet yaka | Kısa kol | Reflektörlü kol şeridi | Spor/performans" },
       { img: "03.jpg",  name: "Tişört Hi‑Vis — Siyah, Omuz ve Kol Reflektörlü Bantlar", tags: "Siyah | Hi‑Vis bant | Omuz reflektörlü bant | Kol reflektörlü bant | İş güvenliği | Kısa kol" },
@@ -79,6 +83,8 @@ window.KATALOG = [
     keywords: "sweat sweatshirt hoodie kapüşonlu fermuarlı yarım fermuarlı tam fermuarlı polo yaka bisiklet yaka reflektörlü fosforlu",
     unit: "model",
     urunler: [
+      { img: "siyah-polo-yaka-sweatshirt.png", code: "KT-SW-022", name: "Siyah Polo Yaka Sweatshirt", tags: "Polo yaka | Uzun kol | Siyah" },
+      { img: "beyaz-bisiklet-yaka-sweatshirt.png", code: "KT-SW-023", name: "Beyaz Bisiklet Yaka Sweatshirt", tags: "Bisiklet yaka | Uzun kol | Beyaz" },
       { img: "1.png",   name: "Saks Mavi Reflektörlü Kapüşonlu Hoodie",        tags: "Kapüşonlu | Reflektörlü | Saks Mavi" },
       { img: "2.png",   name: "Yeşil Reflektörlü Kapüşonlu Hoodie",            tags: "Kapüşonlu | Reflektörlü | Yeşil" },
       { img: "3.png",   name: "Kırmızı Tam Fermuarlı Hoodie",                  tags: "Kapüşonlu | Tam Fermuarlı | Kırmızı" },
