@@ -75,8 +75,7 @@
     groups.forEach(function (group) {
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
-        var fileNumber = String(p.img || "").match(/^(\d+)\./);
-        var code = p.code || group.prefix + "-" + pad3(fileNumber ? Number(fileNumber[1]) : idx + 1);
+        var code = p.code || group.prefix + "-" + pad3(idx + 1);
         var item = {
           src: GALLERY_PATH + cat.id + "/" + p.img,
           code: code,
