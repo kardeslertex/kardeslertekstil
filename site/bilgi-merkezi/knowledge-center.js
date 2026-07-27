@@ -22,29 +22,30 @@
     },
     {
       slug: "gabardin-kumas-nedir",
-      title: "Gabardin Kumaş Nedir?",
-      summary: "Gabardin kumaşın yapısı, kullanım alanları ve iş kıyafetlerindeki yeri.",
+      title: "Gabardin Kumaş Nedir? Özellikleri, Çeşitleri ve Kullanım Alanları",
+      summary: "Gabardin kumaşın çeşitlerini, gramajını, esneklik ve dayanıklılık özelliklerini, iş kıyafetlerinde kullanım alanlarını inceleyin.",
       category: "Kumaş Bilgileri",
-      tags: ["Kumaş", "Gabardin", "İş Kıyafeti"],
-      published: "2026-07-23",
+      tags: ["Gabardin Kumaş", "İş Kıyafeti Kumaşları", "İş Pantolonu", "Pamuklu Gabardin", "Likralı Gabardin", "İş Kıyafeti Üretimi", "Kumaş Seçimi"],
+      published: "2026-07-27",
       views: 94
     },
     {
       slug: "reflektorlu-is-kiyafeti-nedir",
-      title: "Reflektörlü İş Kıyafeti Nedir?",
-      summary: "Görünürlüğü destekleyen reflektörlü ürünlerin temel özellikleri ve kullanım alanları.",
+      title: "Reflektörlü İş Kıyafeti Nedir? Özellikleri, Standartları ve Kullanım Alanları",
+      summary: "Reflektörlü iş kıyafetlerinin çalışma prensibini, EN ISO 20471 sınıflarını, kullanım alanlarını ve doğru ürün seçimini inceleyin.",
       category: "İş Güvenliği",
-      tags: ["İş Güvenliği", "Reflektör", "İş Kıyafeti"],
-      published: "2026-07-22",
+      tags: ["Reflektörlü İş Kıyafeti", "Yüksek Görünürlüklü İş Kıyafeti", "İş Güvenliği", "Reflektörlü Yelek", "Reflektörlü Mont", "Reflektörlü İş Pantolonu", "EN ISO 20471", "Kişisel Koruyucu Donanım", "Saha İş Kıyafetleri", "Reflektör", "Yüksek Görünürlük", "İkaz Yeleği", "Mühendis Yeleği"],
+      published: "2026-07-27",
       views: 78
     },
     {
       slug: "nakis-mi-baski-mi",
-      title: "Nakış mı, Baskı mı?",
-      summary: "Farklı kullanım koşullarında logo uygulaması seçimine yönelik kısa bir başlangıç rehberi.",
+      title: "Nakış mı, Baskı mı? İş Kıyafetlerinde Doğru Logo Uygulaması Nasıl Seçilir?",
+      summary: "Nakış, DTF, serigrafi ve transfer baskı yöntemlerini; dayanıklılık, görünüm, maliyet ve ürün uyumu açısından karşılaştırın.",
       category: "Sektörel Çözümler",
-      tags: ["Nakış", "Baskı", "İş Kıyafeti", "Polo Yaka"],
-      published: "2026-07-21",
+      tags: ["Nakış mı Baskı mı", "İş Kıyafetinde Nakış", "İş Kıyafetinde Baskı", "Logo Uygulaması", "DTF Baskı", "Serigrafi Baskı", "Kurumsal İş Kıyafeti", "Logolu İş Kıyafeti", "Nakış Baskı Farkı"],
+      searchTerms: ["logo baskısı", "nakış kartı", "polo yaka nakış", "polar nakış"],
+      published: "2026-07-27",
       views: 88
     },
     {
@@ -129,7 +130,7 @@
       let visibleCount = 0;
       cards.forEach((card) => {
         const post = posts.find((item) => item.slug === card.dataset.postSlug);
-        const searchable = normalize([post.title, post.summary, post.category, ...post.tags].join(" "));
+        const searchable = normalize([post.title, post.summary, post.category, ...post.tags, ...(post.searchTerms || [])].join(" "));
         const visible = (!term || searchable.includes(term)) && (!activeTag || post.tags.includes(activeTag));
         card.hidden = !visible;
         if (visible) visibleCount += 1;

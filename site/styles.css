@@ -703,6 +703,53 @@ button{font-family:inherit;cursor:pointer;}
   border:0;
   background:var(--steel-200);
 }
+.knowledge-checklist{
+  list-style:none;
+  padding-left:0!important;
+}
+.knowledge-checklist li{
+  display:grid;
+  grid-template-columns:20px minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+}
+.knowledge-checklist li span{
+  color:var(--orange-600);
+  font-weight:700;
+}
+.knowledge-note{
+  margin:30px 0;
+  padding:20px 22px;
+  border-left:4px solid var(--orange-500);
+  background:var(--navy-100);
+  color:var(--navy-700);
+  line-height:1.65;
+}
+.knowledge-table-wrap{
+  max-width:100%;
+  margin:22px 0 28px;
+  overflow-x:auto;
+  border:1px solid var(--steel-200);
+}
+.knowledge-decision-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  color:var(--fg2);
+  font-size:14px;
+}
+.knowledge-decision-table th,
+.knowledge-decision-table td{
+  padding:13px 16px;
+  border-bottom:1px solid var(--steel-200);
+  text-align:left;
+  vertical-align:top;
+}
+.knowledge-decision-table th{
+  background:var(--navy-700);
+  color:var(--cream-50);
+}
+.knowledge-decision-table tr:last-child td{border-bottom:0;}
 .knowledge-article-main > p a{
   color:var(--navy-700);
   font-weight:700;
@@ -854,6 +901,24 @@ button{font-family:inherit;cursor:pointer;}
   .knowledge-post-nav{grid-template-columns:1fr;}
   .knowledge-post-nav-single .next{grid-column:auto;justify-self:stretch;}
   .knowledge-post-nav .next{text-align:left;}
+  .knowledge-table-wrap{overflow:visible;border:0;}
+  .knowledge-decision-table,
+  .knowledge-decision-table tbody,
+  .knowledge-decision-table tr,
+  .knowledge-decision-table td{display:block;width:100%;}
+  .knowledge-decision-table thead{display:none;}
+  .knowledge-decision-table tr{
+    margin-bottom:10px;
+    border:1px solid var(--steel-200);
+    background:#fff;
+  }
+  .knowledge-decision-table td{border:0;}
+  .knowledge-decision-table td:first-child{
+    padding-bottom:5px;
+    color:var(--navy-700);
+    font-weight:700;
+  }
+  .knowledge-decision-table td:last-child{padding-top:5px;}
 }
 
 
