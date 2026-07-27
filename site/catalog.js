@@ -75,7 +75,7 @@
     groups.forEach(function (group) {
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
-        var code = p.code || group.prefix + "-" + pad3(idx + 1);
+        var code = p.code || group.prefix + "-" + pad3((cat.codeStart || 1) + flat.length);
         var item = {
           src: GALLERY_PATH + cat.id + "/" + p.img,
           code: code,
