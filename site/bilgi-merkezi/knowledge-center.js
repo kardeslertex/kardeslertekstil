@@ -3,6 +3,16 @@
 
   const posts = [
     {
+      slug: "is-pantolonu-secim-rehberi-2026",
+      title: "İş Pantolonu Seçim Rehberi 2026",
+      summary: "Kumaş, model, gramaj, cep yapısı ve kullanım alanına göre doğru iş pantolonu seçimini adım adım inceleyin.",
+      category: "Ürün Rehberleri",
+      tags: ["İş Pantolonu", "İş Pantolonu Seçimi", "Gabardin İş Pantolonu", "Kargo İş Pantolonu", "Reflektörlü İş Pantolonu", "Yazlık İş Pantolonu"],
+      searchTerms: ["streç iş pantolonu", "ripstop pantolon", "iş pantolonu kumaşı", "iş pantolonu bedeni", "diz cepli pantolon"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
       slug: "is-kiyafeti-fiyatlari-2026",
       title: "İş Kıyafeti Fiyatları 2026: Fiyatları Neler Belirler?",
       summary: "İş kıyafeti fiyatlarını etkileyen kumaş, gramaj, logo, sipariş adedi ve üretim detaylarını kapsamlı şekilde inceleyin.",
