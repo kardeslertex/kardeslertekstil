@@ -3,6 +3,16 @@
 
   const posts = [
     {
+      slug: "is-kiyafeti-kumas-rehberi",
+      title: "İş Kıyafeti Kumaş Rehberi (2026)",
+      summary: "Örme, dokuma ve teknik kumaş türlerini; mevsime ve sektöre göre doğru kumaş seçimini kapsamlı şekilde inceleyin.",
+      category: "Kumaş Bilgileri",
+      tags: ["İş Kıyafeti Kumaşları", "Kumaş Rehberi", "Lakost Kumaş", "Gabardin Kumaş", "Softshell", "Polar", "Pamuk Polyester"],
+      searchTerms: ["pike", "süprem", "interlok", "ripstop", "Oxford", "polyamid", "viskon", "kumaş gramajı"],
+      published: "2026-07-27",
+      views: 0
+    },
+    {
       slug: "is-kiyafeti-terimleri-sozlugu",
       title: "İş Kıyafeti Terimleri Sözlüğü",
       summary: "Kumaş, dikim, baskı, nakış ve iş kıyafeti üretiminde kullanılan 229 terimi A'dan Z'ye açıklayan kapsamlı sözlük.",
