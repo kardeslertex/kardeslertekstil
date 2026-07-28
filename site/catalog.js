@@ -117,6 +117,12 @@
     btn.dataset.cat = item.cat;
     btn.dataset.code = item.code;
     btn.dataset.i = item.i;
+    // Stable ID so external links can deep-link to this product card
+    try {
+      var fname = (item.src || '').split('/').pop().replace(/\.[^/.]+$/, '');
+      var safe = (item.cat || 'cat') + '-' + fname.replace(/[^a-z0-9\-]/gi, '-').toLowerCase();
+      btn.id = 'product-' + safe;
+    } catch (e) { /* ignore id if something fails */ }
 
     var img = el("img");
     img.src = item.src;
@@ -490,4 +496,24 @@
   } else {
     setActive("tshirt");
   }
+
+  // If the page was opened with a product anchor (e.g. #product-tshirt-01), scroll to it.
+  function scrollToProductFromHash() {
+    if (!location.hash) return;
+    try {
+      var id = location.hash.substring(1);
+      if (!id) return;
+      var elTarget = document.getElementById(id);
+      if (elTarget) {
+        setTimeout(function () {
+          elTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          elTarget.focus && elTarget.focus();
+        }, 80);
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  // run on load and when hash changes
+  scrollToProductFromHash();
+  window.addEventListener('hashchange', scrollToProductFromHash);
 })();

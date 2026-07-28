@@ -120,6 +120,9 @@ button{font-family:inherit;cursor:pointer;}
   position:relative;overflow:hidden;
 }
 .hero .photo-well img{width:100%;height:100%;object-fit:cover;display:block;}
+/* Slideshow images should contain within the card and not overflow */
+.hero .photo-well[data-slideshow] .slide{display:block;width:100%;height:100%;}
+.hero .photo-well[data-slideshow] .slide img{width:100%;height:100%;object-fit:contain;display:block;}
 .hero .photo-well .tag{
   position:absolute;bottom:16px;left:16px;right:16px;
   background:var(--orange-500);color:#fff;padding:10px 14px;
