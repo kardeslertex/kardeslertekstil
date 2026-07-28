@@ -3,6 +3,36 @@
 
   const posts = [
     {
+      slug: "softshell-mont-rehberi",
+      title: "Softshell Mont Rehberi: Softshell Kumaş Nedir, Özellikleri ve Kullanım Alanları",
+      summary: "Softshell kumaşın katman yapısından su ve rüzgâr direncine, kullanım alanlarından doğru mont seçimine kadar tüm ayrıntıları inceleyin.",
+      category: "Ürün Rehberleri",
+      tags: ["Softshell Mont", "Softshell Kumaş", "Softshell Mont Özellikleri", "İş Montu", "Kurumsal Softshell Mont", "Su İtici Mont"],
+      searchTerms: ["softshell nedir", "softshell mont su geçirir mi", "softshell mont sıcak tutar mı", "softshell mont hangi mevsimde giyilir", "logolu softshell mont"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-yelegi-secim-rehberi-2026",
+      title: "İş Yeleği Seçim Rehberi 2026",
+      summary: "Kumaş, model, cep yapısı, reflektör ve kullanım alanına göre doğru iş yeleği seçimini adım adım inceleyin.",
+      category: "Ürün Rehberleri",
+      tags: ["İş Yeleği", "İş Yeleği Seçimi", "Reflektörlü İş Yeleği", "Çok Cepli İş Yeleği", "Kışlık İş Yeleği", "Kurumsal İş Yeleği"],
+      searchTerms: ["fileli iş yeleği", "softshell yelek", "iş yeleği kumaşı", "iş yeleği bedeni", "logolu iş yeleği"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "polo-yaka-tisort-rehberi-2026",
+      title: "Polo Yaka Tişört Rehberi: Kumaş, Pike Türleri, Baskı ve Nakış Seçimi (2026)",
+      summary: "Lakost ve pike kumaş türlerinden gramaj, kalıp, baskı ve nakış seçimine kadar doğru polo yaka tişörtü kapsamlı şekilde inceleyin.",
+      category: "Ürün Rehberleri",
+      tags: ["Polo Yaka Tişört", "Polo Yaka İş Tişörtü", "Lakost Kumaş", "Pike Kumaş", "Mikro Pike", "Nakış", "Baskı"],
+      searchTerms: ["kurumsal polo tişört", "logolu polo tişört", "polo yaka gramaj", "polo tişört nakış", "polo tişört baskı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
       slug: "is-pantolonu-secim-rehberi-2026",
       title: "İş Pantolonu Seçim Rehberi 2026",
       summary: "Kumaş, model, gramaj, cep yapısı ve kullanım alanına göre doğru iş pantolonu seçimini adım adım inceleyin.",
