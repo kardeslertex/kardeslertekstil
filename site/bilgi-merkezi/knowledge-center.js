@@ -3,6 +3,16 @@
 
   const posts = [
     {
+      slug: "is-kiyafeti-fiyatlari-2026",
+      title: "İş Kıyafeti Fiyatları 2026: Fiyatları Neler Belirler?",
+      summary: "İş kıyafeti fiyatlarını etkileyen kumaş, gramaj, logo, sipariş adedi ve üretim detaylarını kapsamlı şekilde inceleyin.",
+      category: "İş Kıyafeti Rehberi",
+      tags: ["İş Kıyafeti Fiyatları", "İş Kıyafeti Fiyatları 2026", "İş Kıyafeti", "Kumaş Gramajı", "Logo Uygulaması", "Toplu Sipariş"],
+      searchTerms: ["iş kıyafeti maliyeti", "iş elbisesi fiyatları", "nakış fiyatı", "baskı fiyatı", "iş kıyafeti teklifi"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
       slug: "is-kiyafeti-kumas-rehberi",
       title: "İş Kıyafeti Kumaş Rehberi (2026)",
       summary: "Örme, dokuma ve teknik kumaş türlerini; mevsime ve sektöre göre doğru kumaş seçimini kapsamlı şekilde inceleyin.",
