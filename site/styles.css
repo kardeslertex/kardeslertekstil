@@ -1636,10 +1636,12 @@ html{scroll-behavior:smooth;}
   object-fit:contain;
   padding:18px;
   background:transparent;
+  --product-scale:1;
+  transform:scale(var(--product-scale));
 }
 
 .catalog-premium .gitem:hover img{
-  transform:scale(1.025);
+  transform:scale(calc(var(--product-scale) * 1.025));
 }
 
 .catalog-premium .gitem-overlay{

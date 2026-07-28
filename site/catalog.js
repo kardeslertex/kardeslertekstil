@@ -124,6 +124,7 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
+    img.addEventListener("load", function () { normalizeProductScale(img, item); });
 
     var overlay = el("span", "gitem-overlay");
     var meta = el("span", "gitem-meta");
@@ -135,6 +136,106 @@
     btn.appendChild(overlay);
     btn.addEventListener("click", function () { openLightbox(item.cat, item.i, btn); });
     return btn;
+  }
+
+  /*
+     Kaynak fotoğraflardaki beyaz boşluk miktarı birbirinden farklı.
+     KT-TS-003'ün görünür ürün alanını referans alır; yalnızca daha küçük
+     kalan ürünleri büyütür. Dosya ölçüsü değil, fotoğrafın içindeki gerçek
+     ürün sınırı karşılaştırıldığı için farklı çözünürlükler sonucu etkilemez.
+  */
+  var scaleReference = null;
+  var scaleReferenceWaiters = [];
+
+  function productBounds(img) {
+    var size = 160;
+    var canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return null;
+    ctx.drawImage(img, 0, 0, size, size);
+    var px = ctx.getImageData(0, 0, size, size).data;
+    var samples = [];
+    var patch = 10;
+
+    function sampleCorner(x0, y0) {
+      for (var y = y0; y < y0 + patch; y += 2) {
+        for (var x = x0; x < x0 + patch; x += 2) {
+          var i = (y * size + x) * 4;
+          if (px[i + 3] > 16) samples.push([px[i], px[i + 1], px[i + 2]]);
+        }
+      }
+    }
+
+    sampleCorner(0, 0);
+    sampleCorner(size - patch, 0);
+    sampleCorner(0, size - patch);
+    sampleCorner(size - patch, size - patch);
+    if (!samples.length) return null;
+
+    samples.sort(function (a, b) {
+      return (a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2]);
+    });
+    var bg = samples[Math.floor(samples.length / 2)];
+    var rows = new Array(size).fill(0);
+    var cols = new Array(size).fill(0);
+
+    for (var yy = 0; yy < size; yy++) {
+      for (var xx = 0; xx < size; xx++) {
+        var p = (yy * size + xx) * 4;
+        var dr = px[p] - bg[0];
+        var dg = px[p + 1] - bg[1];
+        var db = px[p + 2] - bg[2];
+        var different = px[p + 3] < 245 || (dr * dr + dg * dg + db * db) > 625;
+        if (different) {
+          rows[yy]++;
+          cols[xx]++;
+        }
+      }
+    }
+
+    var minimum = Math.ceil(size * .018);
+    var top = rows.findIndex(function (n) { return n >= minimum; });
+    var left = cols.findIndex(function (n) { return n >= minimum; });
+    var bottom = size - 1;
+    var right = size - 1;
+    while (bottom >= 0 && rows[bottom] < minimum) bottom--;
+    while (right >= 0 && cols[right] < minimum) right--;
+    if (top < 0 || left < 0 || bottom <= top || right <= left) return null;
+
+    return {
+      width: (right - left + 1) / size,
+      height: (bottom - top + 1) / size
+    };
+  }
+
+  function applyProductScale(img, item, bounds) {
+    if (!scaleReference || !bounds) return;
+    var referenceArea = scaleReference.width * scaleReference.height;
+    var itemArea = bounds.width * bounds.height;
+    var scale = itemArea > 0 ? Math.sqrt(referenceArea / itemArea) : 1;
+    scale = Math.max(1, Math.min(1.45, scale));
+    item.visualScale = scale;
+    img.style.setProperty("--product-scale", scale.toFixed(3));
+  }
+
+  function normalizeProductScale(img, item) {
+    var bounds;
+    try { bounds = productBounds(img); } catch (e) { return; }
+    if (item.code === "KT-TS-003") {
+      scaleReference = bounds;
+      scaleReferenceWaiters.forEach(function (pending) {
+        applyProductScale(pending.img, pending.item, pending.bounds);
+      });
+      scaleReferenceWaiters = [];
+      return;
+    }
+    if (!scaleReference) {
+      scaleReferenceWaiters.push({ img: img, item: item, bounds: bounds });
+      return;
+    }
+    applyProductScale(img, item, bounds);
   }
 
   function buildGrid(items, extraClass) {
