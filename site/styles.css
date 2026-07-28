@@ -1094,6 +1094,29 @@ html{scroll-behavior:smooth;}
   pointer-events:auto;
 }
 
+/* Masaüstünde ilk 8 kategori üstte, kalan kategoriler ve arama altta. */
+@media (min-width:1001px){
+  .catalog-toolbar-inner{
+    grid-template-columns:repeat(8,minmax(0,1fr));
+    column-gap:6px;
+    row-gap:6px;
+    padding:8px 0;
+  }
+  .catalog-nav{
+    display:contents;
+  }
+  .catalog-nav a{
+    padding:7px 8px;
+  }
+  .catalog-search-wrap{
+    grid-column:5 / -1;
+    grid-row:2;
+  }
+  .catalog-search{
+    height:34px;
+  }
+}
+
 .catalog-section{
   scroll-margin-top:158px;
   margin-bottom:72px;

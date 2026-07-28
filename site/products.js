@@ -45,8 +45,8 @@ window.KATALOG = [
     urunler: [
       { img: "siyah-polo-yaka-tisort.png", name: "Siyah Polo Yaka Tişört", tags: "40/1 Full Likralı Lakost | Siyah | Polo yaka | Ribanalı kol bantlı" },
       { img: "beyaz-polo-yaka-tisort.png", name: "Beyaz Polo Yaka Tişört", tags: "40/1 Full Likralı Lakost | Beyaz | Polo yaka | Ribanalı kol bantlı" },
-      { img: "beyaz-bisiklet-yaka-tisort.png", name: "Beyaz Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Beyaz | Bisiklet yaka | Regular fit" },
-      { img: "siyah-bisiklet-yaka-tisort.png", name: "Siyah Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Siyah | Bisiklet yaka | Regular fit" },
+      { img: "beyaz-bisiklet-yaka-tisort.png", name: "Siyah Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Siyah | Bisiklet yaka | Regular fit" },
+      { img: "siyah-bisiklet-yaka-tisort.png", name: "Beyaz Bisiklet Yaka Tişört", tags: "30/1 Penye Süprem | Beyaz | Bisiklet yaka | Regular fit" },
       { img: "01.jpeg", name: "Polo Tişört — Siyah, Turuncu Detaylar, Dikey Fermuarlı Göğüs Cep, Kısa Kollu", tags: "Siyah | Turuncu detaylar | Polo yaka | Kısa kol | Dikey fermuarlı göğüs cebi | Kontrast fermuar | İş kıyafeti | Reflektör: yok" },
       { img: "02.jpg",  name: "Oversize Tişört — Siyah, Bordo Garni, Bisiklet Yaka, Kısa Kollu, Reflektörlü Kol Şeridi", tags: "Siyah | Bordo garni | Bisiklet yaka | Kısa kol | Reflektörlü kol şeridi | Spor/performans" },
       { img: "03.jpg",  name: "Tişört Hi‑Vis — Siyah, Omuz ve Kol Reflektörlü Bantlar", tags: "Siyah | Hi‑Vis bant | Omuz reflektörlü bant | Kol reflektörlü bant | İş güvenliği | Kısa kol" },
@@ -398,6 +398,13 @@ window.KATALOG = [
     tags: "Promosyon | Kurumsal | Logolu",
     keywords: "promosyon promosyon ürünleri kurumsal promosyon hediyelik kurumsal hediye ajanda kalem kupa termos powerbank usb bellek anahtarlık şapka çanta",
     unit: "ürün",
-    urunler: []
+    urunler: [
+      { img: "promosyon-triko-bere.png", name: "Promosyon Triko Bere" },
+      { img: "promosyon-sapka.png", name: "Promosyon Şapka" },
+      { img: "promosyon-polar-sal.png", name: "Promosyon Polar Şal" },
+      { img: "promosyon-polar-atki.png", name: "Promosyon Polar Atkı" },
+      { img: "promosyon-polar-boyunluk.png", name: "Promosyon Polar Boyunluk" },
+      { img: "promosyon-triko-eldiven.png", name: "Promosyon Triko Eldiven" }
+    ]
   }
 ];
