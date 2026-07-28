@@ -318,9 +318,55 @@ button{font-family:inherit;cursor:pointer;}
   .logo-giztat img,.logo-toren img,.logo-patis img{max-width:138px;max-height:66px;}
 }
 
-.ref-grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--steel-200);border:1px solid var(--steel-200);}
-@media (max-width:900px){.ref-grid-5{grid-template-columns:repeat(3,1fr);}}
-@media (max-width:540px){.ref-grid-5{grid-template-columns:repeat(2,1fr);}}
+.ref-grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--steel-200);border:1px solid var(--steel-200);} 
+.logo-marquee-wrap{position:relative;margin:12px 0 24px;}
+.logo-marquee{overflow:hidden;position:relative;border-radius:4px;background:transparent;padding:12px 0;}
+.logo-marquee .logo-track{display:flex;gap:24px;align-items:center;width:max-content;padding:6px 0;}
+.logo-marquee .logo-track-clone{position:relative;display:flex;gap:24px;align-items:center;padding:6px 0;}
+.logo-item{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;height:68px;width:180px;text-align:center}
+.logo-item img{max-height:56px;max-width:100%;height:56px;object-fit:contain;display:block;margin:0 auto}
+
+/* fade edges */
+.logo-fade{position:absolute;top:0;bottom:0;width:64px;pointer-events:none;z-index:5}
+.logo-fade-left{left:0;background:linear-gradient(90deg, var(--cream-50) 0%, rgba(255,255,255,0) 100%);}
+.logo-fade-right{right:0;background:linear-gradient(270deg, var(--cream-50) 0%, rgba(255,255,255,0) 100%);}
+
+/* animation: move track left by 50% of its width (clone placed after) */
+
+@keyframes marquee-left{
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.logo-inner{display:flex;align-items:center;gap:24px;width:max-content}
+.logo-marquee .logo-track, .logo-marquee .logo-track-clone{will-change:transform}
+.logo-marquee:not(.is-paused):not(.is-touch) .logo-inner{animation: marquee-left linear infinite}
+
+/* control speed: total loop ~40s -> duration depends on content; set base and adjust via CSS var */
+.logo-marquee .logo-inner{--marquee-duration: 40s; animation-duration: var(--marquee-duration);} 
+
+/* pause */
+.logo-marquee.is-paused .logo-track, .logo-marquee.is-paused .logo-track-clone{animation-play-state:paused}
+
+/* responsive item sizing: desktop ~5-6 visible, mobile 2-3 */
+@media (min-width: 960px){
+  .logo-item{width:160px;height:80px}
+  .logo-item img{height:64px}
+}
+@media (max-width: 640px){
+  .logo-item{width:120px;height:64px}
+  .logo-item img{height:44px}
+  .logo-marquee .logo-track{gap:12px}
+}
+
+/* touch devices: disable animation and allow horizontal scroll */
+.logo-marquee.is-touch{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.logo-marquee.is-touch .logo-track,.logo-marquee.is-touch .logo-track-clone{position:static;animation:none}
+.logo-marquee.is-touch .logo-inner{animation:none}
+
+/* prefers-reduced-motion: stop animation */
+@media (prefers-reduced-motion: reduce){
+  .logo-marquee .logo-track, .logo-marquee .logo-track-clone{animation:none}
+}
 
 /* ---------- Location / Map (home) ---------- */
 .location{background:var(--cream-50);padding:96px 0;border-top:1px solid var(--steel-200);}

@@ -111,27 +111,30 @@
 </section>
 <section class="refs reveal-section">
 <div class="container">
-<div class="section-head" style="margin-bottom:32px;">
-<div>
-<div class="eyebrow eyebrow-accent">300+ KURUMSAL MÜŞTERİ</div>
-<h2>Birlikte Çalıştığımız Markalar</h2>
-</div>
-<p>Otomotivden gıdaya, kimyadan ambalaja farklı sektörlerde yüzlerce kurumsal firmaya iş kıyafeti ürettik.</p>
-</div>
-<div class="ref-grid ref-grid-5">
-<a class="ref-logo" href="referanslarimiz.html" title="Autoliv"><img alt="Autoliv" src="assets/refs/autoliv.jpeg"/></a>
-<a class="ref-logo" href="referanslarimiz.html" title="Nestlé"><img alt="Nestlé" src="assets/refs/nestle.jpeg"/></a>
-<a class="ref-logo" href="referanslarimiz.html" title="Unilever"><img alt="Unilever" src="assets/refs/unilever.jpeg"/></a>
-<a class="ref-logo" href="referanslarimiz.html" title="Henkel"><img alt="Henkel" src="assets/refs/henkel.jpeg"/></a>
-<a class="ref-logo" href="referanslarimiz.html" title="Kia"><img alt="Kia" src="assets/refs/kia.jpeg"/></a>
-</div>
-<div style="margin-top:32px;text-align:right;">
-<a class="btn btn-secondary" href="referanslarimiz.html">
-        Tüm Referanslar
-        <svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-</a>
-</div>
-</div>
+  <div class="section-head" style="margin-bottom:32px;">
+    <div>
+      <div class="eyebrow eyebrow-accent">300+ KURUMSAL MÜŞTERİ</div>
+      <h2>Birlikte Çalıştığımız Markalar</h2>
+    </div>
+    <p>Otomotivden gıdaya, kimyadan ambalaja farklı sektörlerde yüzlerce kurumsal firmaya iş kıyafeti ürettik.</p>
+  </div>
+
+  <div class="logo-marquee-wrap">
+    <div class="logo-fade logo-fade-left" aria-hidden="true"></div>
+    <div class="logo-fade logo-fade-right" aria-hidden="true"></div>
+    <div class="logo-marquee" aria-label="Referans logoları">
+      <div class="logo-track" role="list"></div>
+      <!-- duplicated track for seamless loop will be added by JS (aria-hidden on duplicate) -->
+    </div>
+  </div>
+
+  <div style="margin-top:24px;text-align:right;">
+    <a class="btn btn-secondary" href="referanslarimiz.html">
+      Tüm Referanslar
+      <svg class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </a>
+  </div>
+  </div>
 </section>
 <section class="home-cta-section reveal-section">
 <div class="container">
@@ -305,6 +308,88 @@
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
   });
+})();
+</script>
+
+<script>
+// Populate logo marquee by scraping referanslarimiz.html so source is single place
+(function(){
+  var MARQUEE_SELECTOR = '.logo-marquee .logo-track';
+  var REFS_PAGE = 'referanslarimiz.html';
+  var PLACEHOLDER = 'assets/products/default.svg';
+
+  function isTouchDevice(){
+    return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  }
+
+  function createItem(src, title){
+    var a = document.createElement('a');
+    a.className = 'logo-item';
+    a.href = 'referanslarimiz.html';
+    a.title = title || '';
+    a.setAttribute('role','listitem');
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = title || '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.addEventListener('error', function(){ a.remove(); });
+    a.appendChild(img);
+    return a;
+  }
+
+  fetch(REFS_PAGE).then(function(r){ return r.text(); }).then(function(html){
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(html, 'text/html');
+    var nodes = Array.from(doc.querySelectorAll('.ref-logo img'));
+    var unique = [];
+    var seen = {};
+    nodes.forEach(function(img){
+      var src = img.getAttribute('src');
+      var title = img.getAttribute('alt') || img.getAttribute('title') || '';
+      if (!src) return;
+      if (seen[src]) return; seen[src]=true;
+      unique.push({ src: src, title: title });
+    });
+
+    if (!unique.length) return;
+    var track = document.querySelector(MARQUEE_SELECTOR);
+    if (!track) return;
+
+    unique.forEach(function(item){ track.appendChild(createItem(item.src, item.title)); });
+
+    // Duplicate for seamless loop, and wrap both tracks in an inner wrapper for smooth translate
+    var clone = track.cloneNode(true);
+    clone.setAttribute('aria-hidden','true');
+    clone.classList.add('logo-track-clone');
+
+    // create inner wrapper and move tracks inside
+    var inner = document.createElement('div');
+    inner.className = 'logo-inner';
+    // move original track into inner
+    track.parentNode.replaceChild(inner, track);
+    inner.appendChild(track);
+    inner.appendChild(clone);
+
+    // behavior differences for touch devices: disable auto animation and allow swipe
+    if (isTouchDevice()){
+      inner.parentNode.classList.add('is-touch');
+      // allow manual horizontal scroll
+      inner.parentNode.querySelectorAll('.logo-track, .logo-track-clone').forEach(function(t){ t.style.pointerEvents='auto'; });
+    }
+
+    // pause on hover/focus
+    var marquee = document.querySelector('.logo-marquee');
+    marquee.addEventListener('mouseenter', function(){ marquee.classList.add('is-paused'); });
+    marquee.addEventListener('mouseleave', function(){ marquee.classList.remove('is-paused'); });
+    marquee.addEventListener('focusin', function(){ marquee.classList.add('is-paused'); });
+    marquee.addEventListener('focusout', function(){ marquee.classList.remove('is-paused'); });
+
+    // respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelector('.logo-marquee').classList.add('is-paused');
+    }
+  }).catch(function(){ /* ignore fetch errors */ });
 })();
 </script>
 <script>
