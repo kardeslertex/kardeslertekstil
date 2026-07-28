@@ -466,19 +466,31 @@
     inner.appendChild(track);
     inner.appendChild(clone);
 
-    // behavior differences for touch devices: disable auto animation and allow swipe
-    if (isTouchDevice()){
-      inner.parentNode.classList.add('is-touch');
-      // allow manual horizontal scroll
-      inner.parentNode.querySelectorAll('.logo-track, .logo-track-clone').forEach(function(t){ t.style.pointerEvents='auto'; });
-    }
-
     // pause on hover/focus
     var marquee = document.querySelector('.logo-marquee');
     marquee.addEventListener('mouseenter', function(){ marquee.classList.add('is-paused'); });
     marquee.addEventListener('mouseleave', function(){ marquee.classList.remove('is-paused'); });
     marquee.addEventListener('focusin', function(){ marquee.classList.add('is-paused'); });
     marquee.addEventListener('focusout', function(){ marquee.classList.remove('is-paused'); });
+
+    // Touch devices keep autoplay; switch to native horizontal scrolling only while swiping.
+    if (isTouchDevice()){
+      var touchResumeTimer = null;
+      marquee.addEventListener('touchstart', function(){
+        clearTimeout(touchResumeTimer);
+        marquee.classList.add('is-touch', 'is-paused');
+      }, { passive:true });
+      marquee.addEventListener('touchend', function(){
+        touchResumeTimer = setTimeout(function(){
+          marquee.scrollLeft = 0;
+          marquee.classList.remove('is-touch', 'is-paused');
+        }, 1200);
+      }, { passive:true });
+      marquee.addEventListener('touchcancel', function(){
+        marquee.scrollLeft = 0;
+        marquee.classList.remove('is-touch', 'is-paused');
+      }, { passive:true });
+    }
 
     // respect prefers-reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
