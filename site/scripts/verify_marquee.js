@@ -30,12 +30,14 @@ const hasVar = /--marquee-duration/.test(css);
 console.log('styles.css contains .logo-inner:', !!hasInner, 'and --marquee-duration:', !!hasVar);
 const hasPause = /\.logo-marquee\.is-paused\s+\.logo-inner\s*\{\s*animation-play-state\s*:\s*paused/.test(css);
 const hasReducedMotion = /prefers-reduced-motion:\s*reduce/.test(css);
+const hasDirectAnimation = /\.logo-marquee\s+\.logo-inner\s*\{[^}]*animation\s*:\s*marquee-left/s.test(css);
+const hasPermanentReducedMotionPause = /matchMedia\(['"]\(prefers-reduced-motion:\s*reduce\)['"]\)\.matches[\s\S]{0,160}classList\.add\(['"]is-paused['"]\)/.test(indexHtml);
 const hasContain = /\.logo-item img[^}]*object-fit\s*:\s*contain/s.test(css);
 const usesSharedSource = /fetch\(REFS_PAGE\)/.test(indexHtml) && /querySelectorAll\('\.ref-logo img'\)/.test(indexHtml);
-console.log('pause:', hasPause, 'reduced motion:', hasReducedMotion, 'object-fit contain:', hasContain, 'shared source:', usesSharedSource);
+console.log('direct animation:', hasDirectAnimation, 'pause:', hasPause, 'reduced motion:', hasReducedMotion, 'permanent reduced-motion pause:', hasPermanentReducedMotionPause, 'object-fit contain:', hasContain, 'shared source:', usesSharedSource);
 
 // Sanity: if unique logos > 0, expected behavior is to duplicate in DOM at runtime
-if(unique.length === 0 || missing.length || !hasMarquee || !hasTrack || !hasInner || !hasVar || !hasPause || !hasReducedMotion || !hasContain || !usesSharedSource){
+if(unique.length === 0 || missing.length || !hasMarquee || !hasTrack || !hasInner || !hasVar || !hasDirectAnimation || !hasPause || !hasReducedMotion || hasPermanentReducedMotionPause || !hasContain || !usesSharedSource){
   console.log('ERROR: marquee verification failed');
   process.exit(2);
 }

@@ -344,10 +344,13 @@ button{font-family:inherit;cursor:pointer;}
 }
 .logo-inner{display:flex;align-items:center;gap:0;width:max-content}
 .logo-marquee .logo-track, .logo-marquee .logo-track-clone{will-change:transform}
-.logo-marquee:not(.is-paused):not(.is-touch) .logo-inner{animation: marquee-left linear infinite}
 
 /* control speed: total loop ~40s -> duration depends on content; set base and adjust via CSS var */
-.logo-marquee .logo-inner{--marquee-duration: 40s; animation-duration: var(--marquee-duration);} 
+.logo-marquee .logo-inner{
+  --marquee-duration:40s;
+  animation:marquee-left var(--marquee-duration) linear infinite;
+  will-change:transform;
+}
 
 /* pause */
 .logo-marquee.is-paused .logo-inner{animation-play-state:paused}
@@ -368,9 +371,9 @@ button{font-family:inherit;cursor:pointer;}
 .logo-marquee.is-touch .logo-track,.logo-marquee.is-touch .logo-track-clone{position:static;animation:none}
 .logo-marquee.is-touch .logo-inner{animation:none}
 
-/* prefers-reduced-motion: stop animation */
+/* Keep the shared logo list moving gently when reduced motion is requested. */
 @media (prefers-reduced-motion: reduce){
-  .logo-marquee .logo-track, .logo-marquee .logo-track-clone{animation:none}
+  .logo-marquee .logo-inner{--marquee-duration:120s}
 }
 
 /* ---------- Location / Map (home) ---------- */
