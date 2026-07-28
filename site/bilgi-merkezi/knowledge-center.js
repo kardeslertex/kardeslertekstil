@@ -3,6 +3,326 @@
 
   const posts = [
     {
+      slug: "is-kiyafeti-uretiminde-kumas-kesim-sureci",
+      title: "İş Kıyafeti Üretiminde Kumaş Kesim Süreci",
+      summary: "Pastal hazırlama, kalıp yerleşimi, kumaş yönü, kesim kalitesi, fire ve parça takibi dahil kesim sürecini inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["Kumaş Kesim Süreci", "Pastal Hazırlama", "Kalıp Yerleşimi", "Tekstil Kesim", "Kumaş Firesi"],
+      searchTerms: ["iş kıyafeti kesimi", "pastal nedir", "kumaş kesim hataları", "parça takibi"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-kalip-ve-beden-serileme-rehberi",
+      title: "İş Kıyafetlerinde Kalıp ve Beden Serileme Rehberi",
+      summary: "Temel kalıp, beden serileme, ölçü tablosu, kadın-erkek kalıpları, hareket payı ve toleransları inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Kalıbı", "Beden Serileme", "Ölçü Tablosu", "Beden Seti", "Kalıp Toleransı"],
+      searchTerms: ["iş kıyafeti kalıbı", "beden serileme nedir", "tekstil ölçü tablosu", "beden seti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "toplu-is-kiyafeti-siparisi-nasil-planlanir",
+      title: "Toplu İş Kıyafeti Siparişi Nasıl Planlanır?",
+      summary: "Personel listesi, beden dağılımı, ürün seçimi, numune, bütçe, termin ve teslimat dahil sipariş planlamasını inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["Toplu İş Kıyafeti Siparişi", "İş Kıyafeti Satın Alma", "Beden Dağılımı", "Sipariş Planlama"],
+      searchTerms: ["toplu iş kıyafeti siparişi", "personel kıyafeti alımı", "beden dağılımı", "iş kıyafeti satın alma"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafeti-uretiminde-termin-suresi",
+      title: "İş Kıyafeti Üretiminde Termin Süresi",
+      summary: "Kumaş temini, numune, beden dağılımı, logo uygulaması ve sevkiyatın üretim süresine etkisini inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Termin Süresi", "Üretim Süresi", "Teslimat Planı", "Kumaş Temini"],
+      searchTerms: ["iş kıyafeti kaç günde üretilir", "üretim termin süresi", "sipariş teslim süresi"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "kurumsal-is-kiyafetlerinde-renk-standardi-ve-parti-farki",
+      title: "Kurumsal İş Kıyafetlerinde Renk Standardı ve Parti Farkı",
+      summary: "Kumaş lotları, renk kodu, ışık koşulları, tolerans ve tekrar siparişlerde renk devamlılığını inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["Kumaş Renk Standardı", "Kumaş Parti Farkı", "Renk Toleransı", "Kurumsal Renk"],
+      searchTerms: ["kumaş ton farkı", "kumaş lot farkı", "kurumsal renk standardı", "renk toleransı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-nakis-uretim-sureci",
+      title: "İş Kıyafetlerinde Nakış Üretim Süreci",
+      summary: "Logo dijitalleştirme, iplik ve tela seçimi, prova, makine ayarı, seri üretim ve kalite kontrol aşamalarını inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["Nakış Üretim Süreci", "Logo Nakış", "Nakış Programı", "Nakış İpliği"],
+      searchTerms: ["logo nakış nasıl yapılır", "nakış üretimi", "nakış programı", "iş kıyafeti nakışı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-baski-uretim-sureci",
+      title: "İş Kıyafetlerinde Baskı Üretim Süreci",
+      summary: "DTF, serigrafi ve transfer baskıda dosya, kumaş uyumu, prova, uygulama, fikse ve kalite kontrolü inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["Baskı Üretim Süreci", "DTF Baskı", "Serigrafi Baskı", "Transfer Baskı"],
+      searchTerms: ["iş kıyafeti baskısı", "DTF üretim süreci", "serigrafi baskı", "logo baskı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-paketleme-ve-sevkiyat-planlamasi",
+      title: "İş Kıyafetlerinde Paketleme ve Sevkiyat Planlaması",
+      summary: "Beden etiketleri, personel ve departman bazlı paketleme, koli planı, şube dağıtımı ve teslimat kontrolünü inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Paketleme", "Sevkiyat Planlaması", "Personel Bazlı Paketleme", "Koli Planı"],
+      searchTerms: ["personel bazlı paketleme", "iş kıyafeti sevkiyatı", "beden etiketi", "şube dağıtımı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafeti-tekrar-siparis-yonetimi",
+      title: "İş Kıyafeti Tekrar Sipariş Yönetimi",
+      summary: "Tekrar siparişlerde aynı kumaş, renk, kalıp, beden ve logoyu korumak; yeni personel ve stoku planlamak için rehber.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Tekrar Sipariş", "Kumaş Devamlılığı", "Renk Devamlılığı", "Yedek Stok"],
+      searchTerms: ["tekrar iş kıyafeti siparişi", "kumaş devamlılığı", "personel kıyafeti stoku"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafeti-uretiminde-sik-karsilasilan-hatalar",
+      title: "İş Kıyafeti Üretiminde Sık Karşılaşılan Hatalar",
+      summary: "Ölçü, kumaş, renk, dikiş, aksesuar, baskı, nakış, etiket ve paketleme hatalarının nedenlerini inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Üretim Hataları", "Dikiş Hataları", "Ölçü Hatası", "Baskı Hatası"],
+      searchTerms: ["iş kıyafeti hataları", "dikiş hataları", "tekstil üretim sorunu", "ölçü hatası"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "gida-uretimi-is-kiyafeti-rehberi",
+      title: "Gıda Üretimi İçin İş Kıyafeti Rehberi",
+      summary: "Gıda üretim alanlarında hijyen, kumaş, renk, model ve yıkama koşullarına göre doğru personel kıyafetini seçin.",
+      category: "Sektörel Çözümler",
+      tags: ["Gıda Sektörü İş Kıyafetleri", "Gıda Personeli Kıyafetleri", "Hijyen Kıyafetleri"],
+      searchTerms: ["gıda üretim kıyafetleri", "gıda önlüğü", "gıda fabrikası personel kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "lojistik-depo-personeli-is-kiyafeti-rehberi",
+      title: "Lojistik ve Depo Personeli İçin İş Kıyafeti Rehberi",
+      summary: "Görünürlük, hareket rahatlığı, cepler ve mevsime göre lojistik ve depo personeli iş kıyafeti seçimi.",
+      category: "Sektörel Çözümler",
+      tags: ["Depo İş Kıyafetleri", "Lojistik Personeli", "Reflektörlü Yelek"],
+      searchTerms: ["depo personel kıyafeti", "lojistik iş kıyafeti", "forklift görünürlük kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "insaat-santiye-is-kiyafeti-rehberi",
+      title: "İnşaat ve Şantiye Çalışanları İçin İş Kıyafeti Rehberi",
+      summary: "Dayanıklılık, görünürlük, saha koşulları ve mevsime göre şantiye iş kıyafetlerini planlayın.",
+      category: "Sektörel Çözümler",
+      tags: ["Şantiye İş Kıyafetleri", "İnşaat İş Kıyafetleri", "Reflektörlü İş Kıyafeti"],
+      searchTerms: ["inşaat personeli kıyafeti", "şantiye kıyafetleri", "şantiye iş elbisesi"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "teknik-servis-montaj-is-kiyafeti-rehberi",
+      title: "Teknik Servis ve Montaj Ekipleri İçin İş Kıyafeti Seçimi",
+      summary: "Esnek kumaş, işlevsel cepler, yüzey dostu aksesuarlar ve kurumsal görünümle teknik ekip kıyafetlerini seçin.",
+      category: "Sektörel Çözümler",
+      tags: ["Teknik Servis Kıyafetleri", "Montaj Personeli", "Servis İş Kıyafeti"],
+      searchTerms: ["teknik ekip kıyafeti", "montaj iş elbisesi", "servis personeli kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "otomotiv-sektoru-is-kiyafeti-rehberi",
+      title: "Otomotiv Sektörü İçin İş Kıyafeti Rehberi",
+      summary: "Üretim hattı, bakım ve servis ekipleri için çizmez aksesuar, kumaş, cep ve kurumsal model seçimi.",
+      category: "Sektörel Çözümler",
+      tags: ["Otomotiv İş Kıyafetleri", "Servis Kıyafetleri", "Üretim Personeli"],
+      searchTerms: ["otomotiv personeli kıyafeti", "oto servis kıyafeti", "çizmez iş kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "soguk-hava-deposu-is-kiyafeti-rehberi",
+      title: "Soğuk Hava Deposu Çalışanları İçin İş Kıyafeti Rehberi",
+      summary: "Termal katmanlama, mont, pantolon, hareket ve görünürlüğe göre soğuk depo kıyafetlerini planlayın.",
+      category: "Sektörel Çözümler",
+      tags: ["Soğuk Hava Deposu Kıyafetleri", "Termal İş Kıyafeti", "Soğuk Depo Montu"],
+      searchTerms: ["soğuk depo kıyafeti", "termal iş elbisesi", "soğuk hava montu"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "temizlik-personeli-is-kiyafeti-rehberi",
+      title: "Temizlik Personeli İçin İş Kıyafeti Seçim Rehberi",
+      summary: "Kolay bakım, hareket, kumaş, cep, renk ve kimyasal risklere göre temizlik personeli kıyafetlerini seçin.",
+      category: "Sektörel Çözümler",
+      tags: ["Temizlik Personeli Kıyafetleri", "Temizlik İş Kıyafeti", "Personel Tuniği"],
+      searchTerms: ["temizlikçi kıyafeti", "temizlik personeli forması", "temizlik tuniği"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "restoran-kafe-mutfak-personeli-kiyafet-rehberi",
+      title: "Restoran, Kafe ve Mutfak Personeli Kıyafetleri Rehberi",
+      summary: "Aşçı ceketi, önlük, servis kıyafeti, kumaş ve leke yönetimiyle yiyecek-içecek ekibinizi planlayın.",
+      category: "Sektörel Çözümler",
+      tags: ["Mutfak Personeli Kıyafetleri", "Aşçı Ceketi", "Restoran Önlüğü", "Servis Kıyafeti"],
+      searchTerms: ["kafe personeli kıyafeti", "restoran personel kıyafeti", "aşçı kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "koruyucu-is-kiyafetleri-bakim-kullanim-omru",
+      title: "Koruyucu İş Kıyafetlerinin Bakımı ve Kullanım Ömrü",
+      summary: "Yıkama, kontrol, onarım, saklama ve hizmet dışı bırakma süreçleriyle koruyucu kıyafet performansını nasıl sürdüreceğinizi inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["İş Kıyafeti Bakımı", "Koruyucu Kıyafet Yıkama", "Kullanım Ömrü"],
+      searchTerms: ["iş kıyafeti yıkama", "koruyucu kıyafet kontrolü", "iş kıyafeti onarımı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-guvenligi-kiyafetlerinde-beden-ergonomi",
+      title: "İş Güvenliği Kıyafetlerinde Beden ve Ergonomi",
+      summary: "Koruyucu iş kıyafetlerinde doğru beden, kalıp, hareket özgürlüğü, katmanlama ve diğer KKD'lerle uyumu inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["İş Kıyafeti Bedeni", "Koruyucu Kıyafet Ergonomisi", "İş Kıyafeti Kalıbı"],
+      searchTerms: ["iş kıyafeti beden seçimi", "kkd ergonomisi", "kadın iş kıyafeti kalıbı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "reflektor-serit-secimi-ve-bakimi",
+      title: "İş Kıyafetlerinde Reflektör Şerit Seçimi ve Bakımı",
+      summary: "Reflektif şeritlerin çalışma prensibini, doğru yerleşimini, uygulamasını, yıkama dayanımını ve kontrolünü inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["Reflektör Şerit", "Reflektif Bant", "Yüksek Görünürlük"],
+      searchTerms: ["reflektör bakımı", "reflektif bant yıkama", "reflektör yerleşimi"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "su-gecirmez-is-kiyafetleri-en-343",
+      title: "Su Geçirmez İş Kıyafetleri ve EN 343",
+      summary: "Su geçirmezlik, nefes alabilirlik, dikiş bandı, kapüşon ve katmanlama açısından doğru iş yağmurluğunu seçin.",
+      category: "İş Güvenliği",
+      tags: ["EN 343", "Su Geçirmez İş Kıyafeti", "İş Yağmurluğu"],
+      searchTerms: ["iş yağmurluğu", "su itici su geçirmez farkı", "nefes alabilir yağmurluk"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "soguk-hava-soguk-depo-is-kiyafetleri",
+      title: "Soğuk Hava ve Soğuk Depo İş Kıyafetleri",
+      summary: "EN 342, yalıtım, katmanlama, beden, ter yönetimi ve bakım açısından soğuk ortam kıyafetlerini inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["Soğuk Depo Kıyafeti", "EN 342", "Kışlık İş Kıyafeti"],
+      searchTerms: ["soğuk hava iş kıyafeti", "termal iş kıyafeti", "soğuk depo tulumu"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "kimyasallara-karsi-koruyucu-kiyafetler-tip-6",
+      title: "Kimyasallara Karşı Koruyucu İş Kıyafetleri",
+      summary: "EN 13034, Tip 6 ve PB[6] kapsamında sınırlı kimyasal sıçramaya karşı ürün seçimi ve kullanımını inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["Kimyasal Koruyucu Kıyafet", "EN 13034", "Tip 6"],
+      searchTerms: ["kimyasal sıçrama kıyafeti", "pb6 kıyafet", "kimyasal koruyucu tulum"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "antistatik-is-kiyafeti-rehberi-2026",
+      title: "Antistatik İş Kıyafeti Rehberi 2026",
+      summary: "EN 1149-5 kapsamında elektrostatik yük, kumaş, topraklama sistemi, kullanım ve bakım ayrıntılarını inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["Antistatik İş Kıyafeti", "EN 1149-5", "Elektrostatik Koruma"],
+      searchTerms: ["karbon iplikli kumaş", "patlayıcı ortam kıyafeti", "atex iş kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "yuksek-gorunurluklu-is-kiyafetleri-siniflari",
+      title: "Yüksek Görünürlüklü İş Kıyafetleri Sınıfları",
+      summary: "EN ISO 20471 Sınıf 1, 2 ve 3 arasındaki farkları; görünür alan, tasarım, kullanım ve bakım açısından inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["EN ISO 20471", "Yüksek Görünürlük", "Reflektörlü İş Kıyafeti"],
+      searchTerms: ["sınıf 1 2 3", "yüksek görünürlük sınıfları", "fosforlu iş kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "kaynakci-kiyafetleri-secim-rehberi-2026",
+      title: "Kaynakçı Kıyafetleri Seçim Rehberi 2026",
+      summary: "EN ISO 11611, kumaş, model, sıçrama riski, bakım ve diğer KKD'lerle uyuma göre kaynakçı kıyafeti seçin.",
+      category: "İş Güvenliği",
+      tags: ["Kaynakçı Kıyafeti", "EN ISO 11611", "Kaynakçı Tulumu"],
+      searchTerms: ["kaynakçı elbisesi", "kaynakçı tulumu", "kaynak kıvılcımı kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "alev-geciktirici-is-kiyafetleri-rehberi-2026",
+      title: "Alev Geciktirici İş Kıyafetleri Rehberi 2026",
+      summary: "EN ISO 11612, koruyucu kumaşlar, performans kodları, model ayrıntıları ve bakım süreçlerini inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["Alev Geciktirici İş Kıyafeti", "EN ISO 11612", "Isı ve Alev Koruması"],
+      searchTerms: ["yanmaz iş elbisesi", "alev geciktirici tulum", "ısı koruyucu kıyafet"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-kalite-kontrol-sureci",
+      title: "İş Kıyafetlerinde Kalite Kontrol Süreci",
+      summary: "Kumaş girişinden dikime, ölçü kontrolünden logo, paketleme ve sevkiyata kadar iş kıyafeti kalite kontrol adımlarını inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Kalite Kontrolü", "Tekstil Kalite Kontrol", "Üretim Kalitesi", "Ölçü Kontrolü", "Dikiş Kontrolü", "Final Kontrol"],
+      searchTerms: ["iş kıyafeti kalite kontrol süreci", "tekstil final kontrol", "dikiş kalite kontrol", "logo kontrolü", "ürün ölçü toleransı"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "fabrika-uretim-tesisleri-is-kiyafeti-rehberi",
+      title: "Fabrika ve Üretim Tesisleri İçin İş Kıyafeti Rehberi",
+      summary: "Üretim personeli için kumaş, model, departman, mevsim, güvenlik ve kurumsal kimlik seçimlerini kapsamlı şekilde inceleyin.",
+      category: "Sektörel Çözümler",
+      tags: ["Fabrika İş Kıyafetleri", "Üretim Personeli İş Kıyafeti", "Sanayi İş Kıyafetleri", "Kurumsal İş Kıyafeti"],
+      searchTerms: ["fabrika personel kıyafetleri", "üretim tesisi iş kıyafeti", "fabrika iş elbiseleri", "sanayi personel kıyafeti", "logolu fabrika kıyafeti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-guvenligi-kiyafetleri-rehberi-2026",
+      title: "İş Güvenliği Kıyafetleri Rehberi 2026",
+      summary: "Risklere, sektörlere ve standartlara göre doğru koruyucu iş kıyafeti seçimini, kullanımını ve bakımını inceleyin.",
+      category: "İş Güvenliği",
+      tags: ["İş Güvenliği Kıyafetleri", "Koruyucu İş Kıyafeti", "Kişisel Koruyucu Donanım", "KKD", "EN ISO 20471", "ISO 13688"],
+      searchTerms: ["koruyucu kıyafet", "yüksek görünürlük", "alev geciktirici", "kimyasal koruma", "antistatik kıyafet"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
+      slug: "is-kiyafetlerinde-numune-ve-onay-sureci",
+      title: "İş Kıyafetlerinde Numune ve Onay Süreci",
+      summary: "Toplu üretim öncesinde kumaş, kalıp, beden, renk ve logo uygulamasını numune üzerinden nasıl doğrulayacağınızı adım adım inceleyin.",
+      category: "Üretim Rehberi",
+      tags: ["İş Kıyafeti Numunesi", "Numune Onayı", "Üretim Onayı", "Logo Numunesi", "Beden Seti", "Toplu İş Kıyafeti Üretimi"],
+      searchTerms: ["iş kıyafeti numune süreci", "üretim öncesi numune", "kumaş onayı", "nakış onayı", "baskı onayı", "beden seti"],
+      published: "2026-07-28",
+      views: 0
+    },
+    {
       slug: "softshell-mont-rehberi",
       title: "Softshell Mont Rehberi: Softshell Kumaş Nedir, Özellikleri ve Kullanım Alanları",
       summary: "Softshell kumaşın katman yapısından su ve rüzgâr direncine, kullanım alanlarından doğru mont seçimine kadar tüm ayrıntıları inceleyin.",
