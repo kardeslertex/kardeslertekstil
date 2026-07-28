@@ -57,7 +57,7 @@ window.KATALOG = [
       { img: "08.jpg",  name: "Uzun Kollu Polo — Antrasit, Siyah Kontrast Yaka", tags: "Antrasit | Siyah kontrast yaka | Polo yaka | Uzun kol | Reflektör: yok" },
       { img: "09.jpg",  name: "Polo Tişört — Lacivert, Kol/Omuz/Etekte Gri Reflektörlü Şeritler, Kısa Kollu", tags: "Lacivert | Gri reflektörlü şeritler | Polo yaka | Kısa kol | İş/güvenlik unsuru" },
       { img: "10.jpg",  name: "Polo Tişört — Siyah, Düz, Kısa Kollu", tags: "Siyah | Düz tasarım | Polo yaka | Kısa kol | Temel iş modeli" },
-      { img: "11.jpg",  name: "Polo Tişört — Gri, Kırmızı Reklam Kollu, Polo Yaka, Kısa Kollu", tags: "Gri | Kırmızı reklam kol | Polo yaka | Kısa kol | Kurumsal" },
+      { img: "11.jpg",  name: "Polo Tişört — Gri, Kırmızı Raglan Kollu, Polo Yaka, Kısa Kollu", tags: "Gri | Kırmızı raglan kollu | Polo yaka | Kısa kol | Kurumsal" },
       { img: "12.jpg",  name: "Bisiklet Yaka Tişört — Gri, Kol ve Omuzda Saks Garnili, Kısa Kollu", tags: "Gri | Saks garni (kol/omuz) | Bisiklet yaka | Kısa kol | Kontrast detay" },
       { img: "13.jpg",  name: "Polo Tişört — Lacivert, Kırmızı Garnili Omuz Şeridi, Kısa Kollu", tags: "Lacivert | Kırmızı garni | Polo yaka | Kısa kol" },
       { img: "14.jpeg", name: "Polo Tişört — Haki, Siyah Göğüs Cep (Dikey Fermuarlı, Yeşil Fermuar Detayı), Kısa Kollu", tags: "Haki | Siyah göğüs cep | Dikey fermuar | Yeşil fermuar detayı | Polo yaka | Kısa kol" },
@@ -67,7 +67,9 @@ window.KATALOG = [
       { img: "18.jpeg", name: "Uzun Kollu Polo — Haki, Ense Biyeli, Pat Altı Reflektörlü Detay", tags: "Haki | Ense biyeli | Pat altı reflektörlü detay | Uzun kol | İş/teknik detay" },
       { img: "19.jpg",  name: "Uzun Kollu V‑Yaka Tişört — Gri, Mavi Garnili Omuz ve Kol Şeridi", tags: "Gri | Mavi garni | V‑yaka | Uzun kol | Spor/performans" },
       { img: "20.jpg",  name: "Uzun Kollu V‑Yaka Tişört — Gri, Kırmızı Garnili V‑Yaka ve Manşet", tags: "Gri | Kırmızı garni | V‑yaka | Uzun kol" },
-      { img: "21.jpg",  name: "Polo Tişört — Gri, Yeşil Yan Garni, Polo Yaka, Uzun Kollu", tags: "Gri | Yeşil yan garni | Polo yaka | Uzun kol" }
+      { img: "21.jpg",  name: "Polo Tişört — Gri, Yeşil Yan Garni, Polo Yaka, Uzun Kollu", tags: "Gri | Yeşil yan garni | Polo yaka | Uzun kol" },
+      { img: "beyaz-siyah-raglan-bisiklet-yaka-tisort.png", code: "KT-TS-026", name: "Beyaz Siyah Raglan Kollu Bisiklet Yaka Tişört", tags: "Beyaz | Siyah raglan kollu | Bisiklet yaka | Kısa kol" },
+      { img: "beyaz-siyah-raglan-polo-yaka-tisort.png", code: "KT-TS-027", name: "Beyaz Siyah Raglan Kollu Polo Yaka Tişört", tags: "Beyaz | Siyah raglan kollu | Polo yaka | Kısa kol" }
     ]
   },
 
@@ -107,7 +109,8 @@ window.KATALOG = [
       { img: "18.jpeg", name: "Saks Mavi İki Renk Polo Yaka Sweatshirt",       tags: "Polo Yaka | İki Renk Tasarım | Saks Mavi" },
       { img: "19.jpeg", name: "Saks Mavi Fosfor Kollu Polo Yaka Sweatshirt",   tags: "Polo Yaka | Fosfor Kol Detayı | Saks Mavi" },
       { img: "20.jpeg", name: "Lacivert Bisiklet Yaka Sweatshirt",             tags: "Bisiklet Yaka | Klasik Kesim | Lacivert" },
-      { img: "21.jpg",  name: "Siyah Reflektörlü Bisiklet Yaka Sweatshirt",    tags: "Bisiklet Yaka | Reflektörlü | Siyah" }
+      { img: "21.jpg",  name: "Siyah Reflektörlü Bisiklet Yaka Sweatshirt",    tags: "Bisiklet Yaka | Reflektörlü | Siyah" },
+      { img: "beyaz-siyah-raglan-bisiklet-yaka-sweatshirt.png", code: "KT-SW-024", name: "Beyaz Siyah Raglan Kollu Bisiklet Yaka Sweatshirt", tags: "Beyaz | Siyah raglan kollu | Bisiklet yaka | Uzun kol" }
     ]
   },
 
@@ -189,6 +192,8 @@ window.KATALOG = [
       { img: "04.jpg", name: "İş Önlük Modeli 1" },
       { img: "08.jpg", name: "İş Önlük Modeli 2" },
       { img: "10.jpg", name: "İş Önlük Modeli 3" },
+      { img: "mavi-kareli-is-onlugu.png", code: "KT-ON-004", name: "Mavi Kareli İş Önlüğü", tags: "Mavi beyaz kareli | Kontrast yaka ve manşet | Üç cepli | Uzun kol" },
+      { img: "beyaz-dik-yaka-is-onlugu.png", code: "KT-ON-005", name: "Beyaz Dik Yaka İş Önlüğü", tags: "Beyaz | Dik yaka | Çıtçıtlı | Üç cepli | Uzun kol" },
       { img: "11.jpg", name: "ESD İş Önlük Modeli 1" },
       { img: "12.jpeg", name: "ESD İş Önlük Modeli 2" },
       { img: "02.jpg", name: "Askılı Önlük Modeli 1" },
@@ -379,5 +384,20 @@ window.KATALOG = [
         urunler: ["18.png", "19.png", "20.png"]
       }
     ]
+  },
+
+  /* ---------------- PROMOSYON ---------------- */
+  {
+    id: "promosyon",
+    nav: "PROMOSYON",
+    eyebrow: "PROMOSYON",
+    title: "Promosyon Ürünleri",
+    desc: "Firmanıza özel logolu promosyon ürünleri kurumsal kimliğinize uygun olarak üretilmektedir.",
+    prefix: "KT-PR",
+    baseName: "Promosyon Ürünü",
+    tags: "Promosyon | Kurumsal | Logolu",
+    keywords: "promosyon promosyon ürünleri kurumsal promosyon hediyelik kurumsal hediye ajanda kalem kupa termos powerbank usb bellek anahtarlık şapka çanta",
+    unit: "ürün",
+    urunler: []
   }
 ];
