@@ -191,7 +191,12 @@ button{font-family:inherit;cursor:pointer;}
 .product:hover{border-color:var(--steel-300);box-shadow:0 4px 16px rgba(14,42,68,.12);}
 .product .ph{aspect-ratio:4/3;position:relative;display:grid;place-items:center;overflow:hidden;background:var(--cream-100);}
 .product .ph svg{color:rgba(14,42,68,.15);width:56px;height:56px;}
-.product .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms var(--ease-out);}
+.product .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms var(--ease-out);} 
+
+/* Rotating images inside category cards */
+.product .ph .rotator{position:relative;width:100%;height:100%;display:block}
+.product .ph .rot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 600ms cubic-bezier(.2,0,.0,1);} 
+.product .ph .rot-img.is-active{opacity:1}
 .product:hover .ph img{transform:scale(1.03);}
 .product .badge{
   position:absolute;top:12px;left:12px;background:var(--orange-500);color:#fff;

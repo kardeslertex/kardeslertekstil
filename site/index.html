@@ -76,14 +76,8 @@
 </div>
 <p>Kurumsal kullanım için öne çıkan ürün gruplarını inceleyin. Her model firma renklerinize, logonuza ve kullanım alanınıza göre üretilebilir.</p>
 </div>
-<div class="product-grid product-grid-4">
-<a class="product" href="urunlerimiz.html#tshirt"><div class="ph"><img alt="Tişört" loading="lazy" src="assets/products/90.jpg"/><span class="badge">Özel Üretim</span></div><div class="body"><div><div class="t">Bisiklet Yaka Tişört</div><div class="m">Pamuklu · baskı · nakış</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#tshirt"><div class="ph"><img alt="Tişört" loading="lazy" src="assets/products/91.jpeg"/><span class="badge">Logo Uygulaması</span></div><div class="body"><div><div class="t">Polo Yaka Tişört</div><div class="m">Kurumsal · polo yaka · cepli</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#tulum"><div class="ph"><img alt="İş Tulumu" loading="lazy" src="assets/products/92.jpeg"/><span class="badge">Minimum 50 Adet</span></div><div class="body"><div><div class="t">İş Tulumu</div><div class="m">Teknik kumaş · ağır iş</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#onluk"><div class="ph"><img alt="Önlük" loading="lazy" src="assets/products/93.jpg"/><span class="badge">Özel Üretim</span></div><div class="body"><div><div class="t">İş Önlüğü</div><div class="m">Mutfak · üretim · ofis</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#polar"><div class="ph"><img alt="Polar" loading="lazy" src="assets/products/94.jpg"/><span class="badge">Logo Uygulaması</span></div><div class="body"><div><div class="t">Polar Mont</div><div class="m">Fermuarlı · sıcak tutan</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#montkaban"><div class="ph"><img alt="Kaban" loading="lazy" src="assets/products/95.jpg"/><span class="badge">Minimum 50 Adet</span></div><div class="body"><div><div class="t">Kışlık İş Kabanı</div><div class="m">Çift renk · biyeli · kışlık</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
-<a class="product" href="urunlerimiz.html#yelek"><div class="ph"><img alt="Yelek" loading="lazy" src="assets/products/96.jpg"/><span class="badge">Özel Üretim</span></div><div class="body"><div><div class="t">Reflektörlü İş Yeleği</div><div class="m">Reflektörlü · cepli · garnili</div></div><svg class="arrow" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a>
+<div class="product-grid product-grid-4" id="home-category-grid">
+  <!-- Category cards will be populated here by JS -->
 </div>
 <div style="margin-top:32px;text-align:right;">
 <a class="btn btn-secondary" href="urunlerimiz.html">
@@ -307,6 +301,101 @@
     well.addEventListener('focusout', start);
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+  });
+})();
+</script>
+
+<script>
+// Home category cards: rotate images per category using existing window.KATALOG
+(function(){
+  var CATEGORIES = [
+    { id: 'tshirt', title: 'Tişört Ürünleri' },
+    { id: 'pantolon', title: 'Pantolon Ürünleri' },
+    { id: 'tulum', title: 'İş Tulumu Ürünleri' },
+    { id: 'onluk', title: 'İş Önlüğü Ürünleri' },
+    { id: 'montkaban', title: 'Mont Ürünleri' },
+    { id: 'polar', title: 'Polar Ürünleri' },
+    { id: 'yelek', title: 'Yelek Ürünleri' },
+    { id: 'softshell', title: 'Softshell Ürünleri' }
+  ];
+  var GRID = document.getElementById('home-category-grid');
+  if (!GRID) return;
+  var GALLERY_PATH = 'assets/products/gallery/';
+  var PLACEHOLDER = 'assets/products/default.svg';
+  var INTERVAL = 4000;
+
+  function findCat(id){ if (!window.KATALOG) return null; return window.KATALOG.find(function(c){ return c.id===id; }); }
+
+  CATEGORIES.forEach(function(catCfg, idx){
+    var cat = findCat(catCfg.id) || { nav: catCfg.title, items: [] };
+    var a = document.createElement('a');
+    a.className = 'product';
+    a.href = 'urunlerimiz.html#' + encodeURIComponent(catCfg.id);
+    a.setAttribute('aria-label', catCfg.title + ' sayfasına git');
+
+    var ph = document.createElement('div'); ph.className = 'ph'; ph.style.position='relative'; ph.style.overflow='hidden';
+    var badge = document.createElement('span'); badge.className='badge'; badge.textContent=''; // optional
+    // image wrapper
+    var imgWrap = document.createElement('div'); imgWrap.className='rotator'; imgWrap.style.position='relative'; imgWrap.style.width='100%'; imgWrap.style.height='100%';
+
+    // create two img elements for crossfade
+    var imgA = document.createElement('img'); imgA.className='rot-img is-active'; imgA.alt = catCfg.title; imgA.loading='lazy'; imgA.decoding='async'; imgA.style.width='100%'; imgA.style.height='100%'; imgA.style.objectFit='contain';
+    var imgB = document.createElement('img'); imgB.className='rot-img'; imgB.alt = catCfg.title; imgB.loading='lazy'; imgB.decoding='async'; imgB.style.width='100%'; imgB.style.height='100%'; imgB.style.objectFit='contain';
+
+    imgWrap.appendChild(imgA); imgWrap.appendChild(imgB);
+    ph.appendChild(imgWrap);
+    ph.appendChild(badge);
+
+    var body = document.createElement('div'); body.className='body';
+    var bodyInner = document.createElement('div');
+    var title = document.createElement('div'); title.className='t'; title.textContent = catCfg.title;
+    var sub = document.createElement('div'); sub.className='m'; sub.textContent = cat.eyebrow || '';
+    bodyInner.appendChild(title); bodyInner.appendChild(sub);
+    body.appendChild(bodyInner);
+    var arrow = document.createElementNS('http://www.w3.org/2000/svg','svg'); arrow.setAttribute('class','arrow'); arrow.setAttribute('viewBox','0 0 24 24'); arrow.setAttribute('width','20'); arrow.setAttribute('height','20'); arrow.setAttribute('fill','none'); arrow.setAttribute('stroke','currentColor'); arrow.innerHTML = '<path d="M5 12h14M13 6l6 6-6 6"></path>';
+    body.appendChild(arrow);
+
+    a.appendChild(ph); a.appendChild(body);
+    GRID.appendChild(a);
+
+    // build list of image srcs from cat.items
+    var imgs = [];
+    if (cat.items && cat.items.length){ imgs = cat.items.map(function(it){ return it.src || (GALLERY_PATH + (cat.id||catCfg.id) + '/' + (it.img || '')); }); }
+    // fallback: if no items, try to use first product images from products.js raw data
+    if (!imgs.length && window.KATALOG){
+      var srcs = [];
+      window.KATALOG.forEach(function(c){ if (c.id===catCfg.id){ (c.urunler||[]).forEach(function(u){ var p = typeof u==='string'?{img:u}:u; srcs.push(GALLERY_PATH + (c.id||catCfg.id) + '/' + p.img); }); } });
+      imgs = srcs;
+    }
+
+    // dedupe and filter
+    imgs = imgs.filter(Boolean).filter(function(v,i,a){ return a.indexOf(v)===i; });
+    if (!imgs.length){ imgA.src = PLACEHOLDER; imgB.src = PLACEHOLDER; return; }
+
+    var cur = 0;
+    imgA.src = imgs[cur] || PLACEHOLDER;
+    imgA.addEventListener('error', function(){ imgA.src = PLACEHOLDER; });
+    imgB.addEventListener('error', function(){ imgB.src = PLACEHOLDER; });
+
+    var timer = null; var showingA = true;
+    function step(){
+      var next = (cur + 1) % imgs.length; var nextSrc = imgs[next];
+      var fadeIn = showingA ? imgB : imgA; var fadeOut = showingA ? imgA : imgB;
+      fadeIn.src = nextSrc || PLACEHOLDER;
+      fadeIn.classList.add('is-active');
+      fadeOut.classList.remove('is-active');
+      showingA = !showingA; cur = next;
+    }
+
+    function start(){ if (timer) return; timer = setInterval(step, INTERVAL); }
+    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+
+    // staggered start
+    var delay = (idx % 8) * 600 + (Math.floor(idx/2)*200);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ setTimeout(start, delay); }
+
+    ph.addEventListener('mouseenter', stop); ph.addEventListener('mouseleave', start);
+    ph.addEventListener('focusin', stop); ph.addEventListener('focusout', start);
   });
 })();
 </script>
