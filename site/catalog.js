@@ -145,51 +145,51 @@
   }
 
   /*
-     Kaynak fotoğraflardaki beyaz boşluk miktarı birbirinden farklı.
-     KT-TS-003'ün görünür ürün alanını referans alır; yalnızca daha küçük
-     kalan ürünleri büyütür. Dosya ölçüsü değil, fotoğrafın içindeki gerçek
-     ürün sınırı karşılaştırıldığı için farklı çözünürlükler sonucu etkilemez.
+     Her kaynak görseldeki gerçek ürün sınırını bulur. Ölçek ve konum,
+     kartın üst/yan güvenli alanları ile alttaki model kodu ve İncele alanı
+     dikkate alınarak ürün bazında hesaplanır. Böylece uzun ve kısa modeller
+     aynı ölçeğe zorlanmaz; ürünün hiçbir kenarı kart dışında kalmaz.
   */
-  var scaleReference = null;
-  var scaleReferenceWaiters = [];
-
   function productBounds(img) {
-    var size = 160;
+    var longest = 240;
+    var ratio = Math.min(1, longest / Math.max(img.naturalWidth, img.naturalHeight));
+    var width = Math.max(1, Math.round(img.naturalWidth * ratio));
+    var height = Math.max(1, Math.round(img.naturalHeight * ratio));
     var canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
+    canvas.width = width;
+    canvas.height = height;
     var ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return null;
-    ctx.drawImage(img, 0, 0, size, size);
-    var px = ctx.getImageData(0, 0, size, size).data;
+    ctx.drawImage(img, 0, 0, width, height);
+    var px = ctx.getImageData(0, 0, width, height).data;
     var samples = [];
-    var patch = 10;
+    var patch = Math.max(6, Math.round(Math.min(width, height) * .07));
 
     function sampleCorner(x0, y0) {
-      for (var y = y0; y < y0 + patch; y += 2) {
-        for (var x = x0; x < x0 + patch; x += 2) {
-          var i = (y * size + x) * 4;
+      for (var y = y0; y < Math.min(height, y0 + patch); y += 2) {
+        for (var x = x0; x < Math.min(width, x0 + patch); x += 2) {
+          var i = (y * width + x) * 4;
           if (px[i + 3] > 16) samples.push([px[i], px[i + 1], px[i + 2]]);
         }
       }
     }
 
     sampleCorner(0, 0);
-    sampleCorner(size - patch, 0);
-    sampleCorner(0, size - patch);
-    sampleCorner(size - patch, size - patch);
+    sampleCorner(Math.max(0, width - patch), 0);
+    sampleCorner(0, Math.max(0, height - patch));
+    sampleCorner(Math.max(0, width - patch), Math.max(0, height - patch));
     if (!samples.length) return null;
 
     samples.sort(function (a, b) {
       return (a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2]);
     });
     var bg = samples[Math.floor(samples.length / 2)];
-    var rows = new Array(size).fill(0);
-    var cols = new Array(size).fill(0);
+    var rows = new Array(height).fill(0);
+    var cols = new Array(width).fill(0);
 
-    for (var yy = 0; yy < size; yy++) {
-      for (var xx = 0; xx < size; xx++) {
-        var p = (yy * size + xx) * 4;
+    for (var yy = 0; yy < height; yy++) {
+      for (var xx = 0; xx < width; xx++) {
+        var p = (yy * width + xx) * 4;
         var dr = px[p] - bg[0];
         var dg = px[p + 1] - bg[1];
         var db = px[p + 2] - bg[2];
@@ -201,47 +201,76 @@
       }
     }
 
-    var minimum = Math.ceil(size * .018);
-    var top = rows.findIndex(function (n) { return n >= minimum; });
-    var left = cols.findIndex(function (n) { return n >= minimum; });
-    var bottom = size - 1;
-    var right = size - 1;
-    while (bottom >= 0 && rows[bottom] < minimum) bottom--;
-    while (right >= 0 && cols[right] < minimum) right--;
+    var minimumRow = Math.max(2, Math.ceil(width * .016));
+    var minimumCol = Math.max(2, Math.ceil(height * .016));
+    var top = rows.findIndex(function (n) { return n >= minimumRow; });
+    var left = cols.findIndex(function (n) { return n >= minimumCol; });
+    var bottom = height - 1;
+    var right = width - 1;
+    while (bottom >= 0 && rows[bottom] < minimumRow) bottom--;
+    while (right >= 0 && cols[right] < minimumCol) right--;
     if (top < 0 || left < 0 || bottom <= top || right <= left) return null;
 
     return {
-      width: (right - left + 1) / size,
-      height: (bottom - top + 1) / size
+      left: left / width,
+      top: top / height,
+      right: (right + 1) / width,
+      bottom: (bottom + 1) / height
     };
   }
 
-  function applyProductScale(img, item, bounds) {
-    if (!scaleReference || !bounds) return;
-    var referenceArea = scaleReference.width * scaleReference.height;
-    var itemArea = bounds.width * bounds.height;
-    var scale = itemArea > 0 ? Math.sqrt(referenceArea / itemArea) : 1;
-    scale = Math.max(1, Math.min(1.45, scale));
+  function applyProductFit(img, item, bounds) {
+    if (!bounds) return;
+    var elementWidth = img.clientWidth;
+    var elementHeight = img.clientHeight;
+    if (!elementWidth || !elementHeight) {
+      requestAnimationFrame(function () { applyProductFit(img, item, bounds); });
+      return;
+    }
+
+    /* object-fit:contain ile oluşan gerçek görsel dikdörtgeni */
+    var objectScale = Math.min(elementWidth / img.naturalWidth, elementHeight / img.naturalHeight);
+    var objectWidth = img.naturalWidth * objectScale;
+    var objectHeight = img.naturalHeight * objectScale;
+    var objectLeft = (elementWidth - objectWidth) / 2;
+    var objectTop = (elementHeight - objectHeight) / 2;
+
+    var left = (objectLeft + bounds.left * objectWidth) / elementWidth;
+    var top = (objectTop + bounds.top * objectHeight) / elementHeight;
+    var right = (objectLeft + bounds.right * objectWidth) / elementWidth;
+    var bottom = (objectTop + bounds.bottom * objectHeight) / elementHeight;
+    var contentWidth = Math.max(.01, right - left);
+    var contentHeight = Math.max(.01, bottom - top);
+    var contentCenterX = (left + right) / 2;
+    var contentCenterY = (top + bottom) / 2;
+
+    /* Alt yüzde 18 model kodu / İncele alanına ayrılır. */
+    var safe = { left: .075, top: .055, right: .925, bottom: .79 };
+    var safeWidth = safe.right - safe.left;
+    var safeHeight = safe.bottom - safe.top;
+    var scale = Math.min(safeWidth / contentWidth, safeHeight / contentHeight);
+
+    /* Önlüklerde askı ve alt uçlara daha fazla nefes alanı bırak. */
+    if (item.cat === "onluk") scale *= .88;
+    /* Küçük promosyon ürünlerini dengeli tut; kartı aşırı doldurma. */
+    var maximumScale = item.cat === "promosyon" ? 1.3 : 1.65;
+    scale = Math.max(.62, Math.min(maximumScale, scale));
+
+    var targetCenterX = (safe.left + safe.right) / 2;
+    var targetCenterY = (safe.top + safe.bottom) / 2;
+    var translateX = targetCenterX - .5 - scale * (contentCenterX - .5);
+    var translateY = targetCenterY - .5 - scale * (contentCenterY - .5);
+
     item.visualScale = scale;
-    img.style.setProperty("--product-scale", scale.toFixed(3));
+    img.style.setProperty("--product-scale", scale.toFixed(4));
+    img.style.setProperty("--product-x", (translateX * 100).toFixed(3) + "%");
+    img.style.setProperty("--product-y", (translateY * 100).toFixed(3) + "%");
   }
 
   function normalizeProductScale(img, item) {
     var bounds;
     try { bounds = productBounds(img); } catch (e) { return; }
-    if (item.code === "KT-TS-003") {
-      scaleReference = bounds;
-      scaleReferenceWaiters.forEach(function (pending) {
-        applyProductScale(pending.img, pending.item, pending.bounds);
-      });
-      scaleReferenceWaiters = [];
-      return;
-    }
-    if (!scaleReference) {
-      scaleReferenceWaiters.push({ img: img, item: item, bounds: bounds });
-      return;
-    }
-    applyProductScale(img, item, bounds);
+    applyProductFit(img, item, bounds);
   }
 
   function buildGrid(items, extraClass) {
@@ -436,9 +465,63 @@
     });
   }
 
+  function updateCatalogScrollOffset() {
+    var header = document.querySelector(".site-header");
+    var toolbar = document.querySelector(".catalog-toolbar");
+    var headerHeight = header ? header.getBoundingClientRect().height : 0;
+    var toolbarHeight = toolbar ? toolbar.getBoundingClientRect().height : 0;
+    document.documentElement.style.setProperty(
+      "--catalog-scroll-offset",
+      Math.ceil(headerHeight + toolbarHeight + 12) + "px"
+    );
+  }
+
+  function resetCatalogScrollContainers(section) {
+    var host = document.getElementById("catalogSections");
+    if (host && host.scrollHeight > host.clientHeight) host.scrollTop = 0;
+
+    section.querySelectorAll(".gallery-grid, .isg-group").forEach(function (container) {
+      container.scrollTop = 0;
+      container.scrollLeft = 0;
+    });
+  }
+
+  function scrollCategoryToStart(id) {
+    var section = document.getElementById(id);
+    if (!section || !section.classList.contains("catalog-section")) return false;
+
+    updateCatalogScrollOffset();
+    resetCatalogScrollContainers(section);
+    setActive(id);
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        section.scrollIntoView({ behavior: "auto", block: "start" });
+        setActive(id);
+      });
+    });
+    return true;
+  }
+
   navLinks.forEach(function (link) {
-    link.addEventListener("click", function () { setActive(link.dataset.target); });
+    link.addEventListener("click", function (event) {
+      var id = link.dataset.target;
+      event.preventDefault();
+
+      if (search && search.value) {
+        search.value = "";
+        applySearch();
+      }
+
+      if (location.hash !== "#" + id) {
+        history.pushState(null, "", "#" + id);
+      }
+      scrollCategoryToStart(id);
+    });
   });
+
+  window.addEventListener("resize", updateCatalogScrollOffset);
+  updateCatalogScrollOffset();
 
   if ("IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function (entries) {
@@ -491,20 +574,15 @@
   });
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
-  if (location.hash && document.querySelector(location.hash)) {
-    setActive(location.hash.substring(1));
-  } else {
-    setActive("tshirt");
-  }
-
-  // If the page was opened with a product anchor (e.g. #product-tshirt-01), scroll to it.
-  function scrollToProductFromHash() {
+  function scrollFromHash() {
     if (!location.hash) return;
     try {
       var id = location.hash.substring(1);
       if (!id) return;
       var elTarget = document.getElementById(id);
-      if (elTarget) {
+      if (elTarget && elTarget.classList.contains("catalog-section")) {
+        scrollCategoryToStart(id);
+      } else if (elTarget && id.indexOf("product-") === 0) {
         setTimeout(function () {
           elTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
           elTarget.focus && elTarget.focus();
@@ -513,7 +591,11 @@
     } catch (e) { /* ignore */ }
   }
 
-  // run on load and when hash changes
-  scrollToProductFromHash();
-  window.addEventListener('hashchange', scrollToProductFromHash);
+  if (location.hash) {
+    scrollFromHash();
+  } else {
+    setActive("tshirt");
+  }
+  window.addEventListener("hashchange", scrollFromHash);
+  window.addEventListener("popstate", scrollFromHash);
 })();

@@ -311,6 +311,26 @@ button{font-family:inherit;cursor:pointer;}
 .logo-algida img{max-width:148px;max-height:70px;}
 .logo-kizilay img{max-width:148px;max-height:70px;}
 .logo-unilever img{max-width:150px;max-height:70px;}
+
+/* Normalize reference artwork that contains large built-in white margins. */
+.ref-logo img[src$="/asts-profil.jpeg"]{transform:scale(3.25);}
+.ref-logo img[src$="/faurecia.jpeg"]{transform:scale(2.5);}
+.ref-logo img[src$="/komagene.jpeg"]{transform:scale(2.2);}
+.ref-logo img[src$="/cargill.jpeg"]{transform:scale(2.05);}
+.ref-logo img[src$="/alpla.jpeg"]{transform:scale(2);}
+.ref-logo img[src$="/suptex.jpeg"]{transform:scale(2.05);}
+.ref-logo img[src$="/saffet-abdullah.jpeg"]{transform:scale(1.75);}
+.ref-logo img[src$="/lidersan.jpeg"]{transform:scale(1.85);}
+.ref-logo img[src$="/panasonic.jpeg"]{transform:scale(1.65);}
+.ref-logo img[src$="/nesos.jpeg"]{transform:scale(1.75);}
+.ref-logo img[src$="/patis.jpg"]{transform:scale(1.6);}
+.ref-logo img[src$="/beta-kimya.jpeg"]{transform:scale(1.5);}
+.ref-logo img[src$="/pendik-nistasta.jpeg"]{transform:scale(1.5);}
+.ref-logo img[src$="/autoliv.jpeg"]{transform:scale(1.4);}
+.ref-logo img[src$="/elleair.jpeg"]{transform:scale(1.35);}
+.ref-logo img[src$="/plastic-omnium.jpeg"]{transform:scale(1.35);}
+.ref-logo img[src$="/motherson.jpeg"]{transform:scale(1.25);}
+.ref-logo img[src$="/elvan.jpeg"]{transform:scale(1.2);}
 .ref-logo:hover img{filter:grayscale(0%) contrast(1);opacity:1;}
 @media (max-width:900px){.ref-logo{height:120px;}.ref-logo img{max-width:140px;max-height:60px;}}
 @media (max-width:540px){.ref-logo{height:100px;padding:16px;}.ref-logo img{max-width:120px;max-height:52px;}}
@@ -1175,7 +1195,7 @@ html{scroll-behavior:smooth;}
 }
 
 .catalog-section{
-  scroll-margin-top:158px;
+  scroll-margin-top:var(--catalog-scroll-offset,180px);
   margin-bottom:72px;
 }
 .catalog-section.is-filtered-out{display:none;}
@@ -1470,7 +1490,7 @@ html{scroll-behavior:smooth;}
     margin:-56px -32px 42px;
     padding:0 32px;
   }
-  .catalog-section{scroll-margin-top:204px;}
+  .catalog-section{scroll-margin-top:var(--catalog-scroll-offset,220px);}
   .catalog-section-head{
     align-items:flex-start;
   }
@@ -1500,7 +1520,7 @@ html{scroll-behavior:smooth;}
   }
   .catalog-search{height:40px;}
   .catalog-section{
-    scroll-margin-top:196px;
+    scroll-margin-top:var(--catalog-scroll-offset,220px);
     margin-bottom:54px;
   }
   .catalog-section-head{
@@ -1714,14 +1734,17 @@ html{scroll-behavior:smooth;}
 
 .catalog-premium .gitem img{
   object-fit:contain;
-  padding:18px;
+  padding:0;
   background:transparent;
-  --product-scale:1;
-  transform:scale(var(--product-scale));
+  --product-scale:.82;
+  --product-x:0%;
+  --product-y:-7%;
+  transform:translate(var(--product-x),var(--product-y)) scale(var(--product-scale));
+  transform-origin:center;
 }
 
 .catalog-premium .gitem:hover img{
-  transform:scale(calc(var(--product-scale) * 1.025));
+  transform:translate(var(--product-x),var(--product-y)) scale(var(--product-scale));
 }
 
 .catalog-premium .gitem-overlay{
@@ -1840,7 +1863,7 @@ html{scroll-behavior:smooth;}
     border-radius:var(--radius-md);
   }
   .catalog-premium .gitem img{
-    padding:8px;
+    padding:0;
   }
   .catalog-premium .gitem-overlay{
     padding:9px;
