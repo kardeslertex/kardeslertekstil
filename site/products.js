@@ -69,7 +69,10 @@ window.KATALOG = [
       { img: "20.jpg",  name: "Uzun Kollu V‑Yaka Tişört — Gri, Kırmızı Garnili V‑Yaka ve Manşet", tags: "Gri | Kırmızı garni | V‑yaka | Uzun kol" },
       { img: "21.jpg",  name: "Polo Tişört — Gri, Yeşil Yan Garni, Polo Yaka, Uzun Kollu", tags: "Gri | Yeşil yan garni | Polo yaka | Uzun kol" },
       { img: "beyaz-siyah-raglan-bisiklet-yaka-tisort.png", code: "KT-TS-026", name: "Beyaz Siyah Raglan Kollu Bisiklet Yaka Tişört", tags: "Beyaz | Siyah raglan kollu | Bisiklet yaka | Kısa kol" },
-      { img: "beyaz-siyah-raglan-polo-yaka-tisort.png", code: "KT-TS-027", name: "Beyaz Siyah Raglan Kollu Polo Yaka Tişört", tags: "Beyaz | Siyah raglan kollu | Polo yaka | Kısa kol" }
+      { img: "beyaz-siyah-raglan-polo-yaka-tisort.png", code: "KT-TS-027", name: "Beyaz Siyah Raglan Kollu Polo Yaka Tişört", tags: "Beyaz | Siyah raglan kollu | Polo yaka | Kısa kol" },
+      { img: "kt-ts-028-lacivert-geometrik-garnili-is-tisortu.jpeg", code: "KT-TS-028", name: "Lacivert Geometrik Garnili İş Tişörtü", tags: "Lacivert | Gri geometrik gövde paneli | Reflektif biye | Bisiklet yaka | Kısa kol" },
+      { img: "kt-ts-029-beyaz-lacivert-garnili-polo-tisort.jpeg", code: "KT-TS-029", name: "Beyaz Lacivert Garnili Polo Tişört", tags: "Beyaz | Lacivert omuz ve yaka garnisi | Göğüs şerit detayı | Polo yaka | Kısa kol" },
+      { img: "kt-ts-030-lacivert-fosfor-detayli-polo-tisort.jpeg", code: "KT-TS-030", name: "Lacivert Fosfor Detaylı Polo Tişört", tags: "Lacivert | Fosfor sarı biye | Göğüs cep detayı | Polo yaka | Kısa kol" }
     ]
   },
 
@@ -110,7 +113,10 @@ window.KATALOG = [
       { img: "19.jpeg", name: "Saks Mavi Fosfor Kollu Polo Yaka Sweatshirt",   tags: "Polo Yaka | Fosfor Kol Detayı | Saks Mavi" },
       { img: "20.jpeg", name: "Lacivert Bisiklet Yaka Sweatshirt",             tags: "Bisiklet Yaka | Klasik Kesim | Lacivert" },
       { img: "21.jpg",  name: "Siyah Reflektörlü Bisiklet Yaka Sweatshirt",    tags: "Bisiklet Yaka | Reflektörlü | Siyah" },
-      { img: "beyaz-siyah-raglan-bisiklet-yaka-sweatshirt.png", code: "KT-SW-024", name: "Beyaz Siyah Raglan Kollu Bisiklet Yaka Sweatshirt", tags: "Beyaz | Siyah raglan kollu | Bisiklet yaka | Uzun kol" }
+      { img: "beyaz-siyah-raglan-bisiklet-yaka-sweatshirt.png", code: "KT-SW-024", name: "Beyaz Siyah Raglan Kollu Bisiklet Yaka Sweatshirt", tags: "Beyaz | Siyah raglan kollu | Bisiklet yaka | Uzun kol" },
+      { img: "kt-sw-025-siyah-gri-omuz-garnili-sweatshirt.jpeg", code: "KT-SW-025", name: "Siyah Gri Omuz Garnili Sweatshirt", tags: "Siyah | Gri omuz paneli | Kırmızı biye | Göğüs şerit detayı | Bisiklet yaka | Uzun kol" },
+      { img: "kt-sw-026-beyaz-siyah-cepli-sweatshirt.jpeg", code: "KT-SW-026", name: "Beyaz Siyah Garnili Cepli Sweatshirt", tags: "Beyaz | Siyah omuz ve kol garnisi | Fermuarlı göğüs cebi | Bisiklet yaka | Uzun kol" },
+      { img: "kt-sw-027-gri-siyah-polo-yaka-sweatshirt.jpeg", code: "KT-SW-027", name: "Gri Siyah Garnili Polo Yaka Sweatshirt", tags: "Gri | Siyah omuz paneli | Göğüs şerit detayı | Polo yaka | Uzun kol" }
     ]
   },
 
@@ -144,7 +150,10 @@ window.KATALOG = [
       { img: "15.jpeg", name: "Reflektörlü Kargo Pantolon — Bej, Siyah Diz Takviyeli, Cep Kapaklı", tags: "Bej | Siyah diz takviyeli | Cep kapaklı | Reflektör: yok | İş/kurumsal" },
       { img: "16.jpg",  name: "Reflektörlü Kargo Pantolon — Bej, Siyah Diz Takviyeli, Cep Kapaklı Taktik Pantolon", tags: "Bej | Siyah diz takviyeli | Cep kapaklı | Reflektör: yok | İş/kurumsal" },
       { img: "17.png",  name: "Reflektörlü İş Pantolonu — Lacivert, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Lacivert | Reflektörlü diz bandı | Yan cep kapaklı | Kurumsal/iş" },
-      { img: "18.png",  name: "Reflektörlü Kot Pantolon — Koyu Mavi, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Koyu mavi | Reflektörlü diz bandı | Yan cep kapaklı | Denim" }
+      { img: "18.png",  name: "Reflektörlü Kot Pantolon — Koyu Mavi, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Koyu mavi | Reflektörlü diz bandı | Yan cep kapaklı | Denim" },
+      { img: "kt-pt-019-antrasit-kargo-cepli-is-pantolonu.jpeg", code: "KT-PT-019", name: "Antrasit Kargo Cepli İş Pantolonu", tags: "Antrasit | Yan kargo cebi | Düz paça | Kurumsal iş modeli | Reflektör: yok" },
+      { img: "kt-pt-020-antrasit-reflektorlu-is-pantolonu.jpeg", code: "KT-PT-020", name: "Antrasit Turuncu Detaylı Reflektörlü İş Pantolonu", tags: "Antrasit | Turuncu cep garnisi | Çift reflektif paça bandı | Kargo cepli | İş güvenliği" },
+      { img: "kt-pt-021-gri-diz-takviyeli-is-pantolonu.jpeg", code: "KT-PT-021", name: "Gri Siyah Diz Takviyeli İş Pantolonu", tags: "Gri | Siyah diz takviyesi | Kargo cebi | Esnek bel paneli | Teknik iş pantolonu" }
     ]
   },
 
@@ -172,7 +181,10 @@ window.KATALOG = [
       { img: "09.jpeg", name: "Kollu Tulum Modeli 3" },
       { img: "10.jpeg", name: "Kollu Tulum Modeli 4" },
       { img: "11.jpg", name: "Kollu Tulum Modeli 5" },
-      { img: "12.jpeg", name: "Kollu Tulum Modeli 6" }
+      { img: "12.jpeg", name: "Kollu Tulum Modeli 6" },
+      { img: "kt-tl-013-saks-mavi-reflektorlu-is-tulumu.jpeg", code: "KT-TL-013", name: "Saks Mavi Reflektörlü İş Tulumu", tags: "Saks mavi | Siyah omuz ve göğüs garnisi | Kol ve paça reflektörü | Çok cepli | Tam boy fermuarlı" },
+      { img: "kt-tl-014-siyah-cift-reflektorlu-is-tulumu.jpeg", code: "KT-TL-014", name: "Siyah Çift Reflektörlü İş Tulumu", tags: "Siyah | Göğüs reflektif biyeli | Çift reflektif paça bandı | Çok cepli | Tam boy fermuarlı" },
+      { img: "kt-tl-015-saks-mavi-bahcivan-tulumu.jpeg", code: "KT-TL-015", name: "Saks Mavi Reflektörlü Bahçıvan Tulumu", tags: "Saks mavi | Ayarlanabilir askı | Göğüs ve yan cepler | Reflektif paça bandı | Bahçıvan tulumu" }
     ]
   },
 
@@ -206,7 +218,10 @@ window.KATALOG = [
       { img: "07.jpg", name: "Şef Ceketi Modeli 2" },
       { img: "13.jpeg", name: "Belden Bağlama Önlük Modeli 1" },
       { img: "16.jpeg", name: "Belden Bağlama Önlük Modeli 2" },
-      { img: "09.jpg", name: "PVC Askılı Önlük Modeli 1" }
+      { img: "09.jpg", name: "PVC Askılı Önlük Modeli 1" },
+      { img: "kt-on-019-antrasit-kruvaze-sef-ceketi.jpeg", code: "KT-ON-019", name: "Antrasit Kruvaze Şef Ceketi", tags: "Antrasit | Hakim yaka | Kruvaze düğme | Kol cepli | Profesyonel mutfak" },
+      { img: "kt-on-020-siyah-boyundan-askili-mutfak-onlugu.jpeg", code: "KT-ON-020", name: "Siyah Boyundan Askılı Mutfak Önlüğü", tags: "Siyah | Ayarlanabilir boyun askısı | Göğüs cebi | Bölmeli alt cep | Mutfak önlüğü" },
+      { img: "kt-on-021-siyah-beyaz-biyeli-sef-ceketi.jpeg", code: "KT-ON-021", name: "Siyah Beyaz Biyeli Şef Ceketi", tags: "Siyah | Beyaz biye | Hakim yaka | Kruvaze düğme | Kol cepli" }
     ]
   },
 
@@ -240,7 +255,10 @@ window.KATALOG = [
       { img: "11.jpeg", name: "Kaban Modeli 5" },
       { img: "12.jpeg", name: "Kaban Modeli 6" },
       { img: "15.jpeg", name: "Kaban Modeli 7" },
-      { img: "16.jpeg", name: "Kaban Modeli 8" }
+      { img: "16.jpeg", name: "Kaban Modeli 8" },
+      { img: "kt-mk-019-lacivert-kapusonlu-reflektorlu-is-montu.jpeg", code: "KT-MK-019", name: "Lacivert Kapüşonlu Reflektörlü İş Montu", tags: "Lacivert | Kapüşonlu | Siyah omuz garnisi | Reflektif kol bandı | Kışlık iş montu" },
+      { img: "kt-mk-020-lacivert-uzun-is-parkasi.jpeg", code: "KT-MK-020", name: "Lacivert Uzun İş Parkası", tags: "Lacivert | Uzun kesim | Kapüşonlu | Göğüs ve alt kapaklı cepler | Kışlık parka" },
+      { img: "kt-mk-021-lacivert-reflektorlu-is-montu.jpeg", code: "KT-MK-021", name: "Lacivert Reflektörlü İş Montu", tags: "Lacivert | Göğüs ve kol reflektörü | Kapaklı göğüs cepleri | Ribanalı manşet | Kışlık iş montu" }
     ]
   },
 
@@ -268,7 +286,10 @@ window.KATALOG = [
       { img: "09.jpg", name: "Lacivert Polar Mont Kolları ve Beden Reflektör Bantlı Üç Cepli Fermuarlar Turuncu Reflektif", tags: "Lacivert | Reflektör bantlı | Üç cepli | Fermuarlar turuncu reflektif | Polar mont" },
       { img: "10.jpg", name: "Kırmızı Renk Klasik İki Cepli Polar Mont", tags: "Kırmızı | Klasik | İki cepli | Polar mont" },
       { img: "11.jpeg", name: "Siyah Renk Üç Cepli Taktik Polar Mont Fermuarlar Reflektif", tags: "Siyah | Üç cepli | Taktik | Fermuarlar reflektif | Polar mont" },
-      { img: "12.jpeg", name: "Siyah Renk Klasik Üç Cepli Polar Mont", tags: "Siyah | Klasik | Üç cepli | Polar mont" }
+      { img: "12.jpeg", name: "Siyah Renk Klasik Üç Cepli Polar Mont", tags: "Siyah | Klasik | Üç cepli | Polar mont" },
+      { img: "kt-pl-013-siyah-reflektif-biyeli-polar-mont.jpeg", code: "KT-PL-013", name: "Siyah Reflektif Biyeli Polar Mont", tags: "Siyah | Reflektif göğüs biyesi | Üç fermuarlı cep | Dik yaka | Polar mont" },
+      { img: "kt-pl-014-lacivert-cepli-polar-mont.jpeg", code: "KT-PL-014", name: "Lacivert Siyah Cepli Polar Mont", tags: "Lacivert | Siyah göğüs cep paneli | Turuncu fermuar detayı | Üç cepli | Polar mont" },
+      { img: "kt-pl-015-antrasit-omuz-garnili-polar-mont.jpeg", code: "KT-PL-015", name: "Antrasit Omuz Garnili Polar Mont", tags: "Antrasit | Siyah omuz garnisi | Turuncu fermuar detayı | Üç cepli | Polar mont" }
     ]
   },
 
@@ -296,7 +317,10 @@ window.KATALOG = [
       { img: "09.jpg", name: "Siyah Renk Sarı Reflektör Bantlı Çok Cepli Taktik İş Yeleği", tags: "Siyah | Sarı reflektör bantlı | Çok cepli | Taktik" },
       { img: "10.jpg", name: "Kırmızı Renk Göğüs Bölgesi Çift Cep Kapaklı Cepli Omuzlar ve Yanlar Siyah Garnili Yelek", tags: "Kırmızı | Çift cep kapaklı | Cepli | Siyah garnili | Omuz ve yan detaylı" },
       { img: "11.jpg", name: "Siyah Üç Cepli Enine Dokumalı Yelek", tags: "Siyah | Üç cepli | Enine dokumalı | İş yeleği" },
-      { img: "12.jpeg", name: "Siyah Renk Fermuarları Turuncu Reflektif Sol Göğüs Fermuarlı Cepli Taktik Yelek", tags: "Siyah | Turuncu reflektif fermuar | Sol göğüs cepli | Taktik" }
+      { img: "12.jpeg", name: "Siyah Renk Fermuarları Turuncu Reflektif Sol Göğüs Fermuarlı Cepli Taktik Yelek", tags: "Siyah | Turuncu reflektif fermuar | Sol göğüs cepli | Taktik" },
+      { img: "kt-yl-013-siyah-dolgulu-is-yelegi.jpeg", code: "KT-YL-013", name: "Siyah Çok Cepli Dolgulu İş Yeleği", tags: "Siyah | Dolgulu | Çok cepli | Fermuarlı göğüs cebi | Soğuk ortam iş yeleği" },
+      { img: "kt-yl-014-siyah-softshell-is-yelegi.jpeg", code: "KT-YL-014", name: "Siyah Reflektif Biyeli Softshell İş Yeleği", tags: "Siyah | Softshell kumaş | Reflektif göğüs biyesi | Üç fermuarlı cep | Dik yaka" },
+      { img: "kt-yl-015-lacivert-polar-is-yelegi.jpeg", code: "KT-YL-015", name: "Lacivert Siyah Cepli Polar İş Yeleği", tags: "Lacivert | Polar kumaş | Siyah göğüs cep paneli | Turuncu fermuar detayı | Dik yaka" }
     ]
   },
 
@@ -324,7 +348,10 @@ window.KATALOG = [
       { img: "09.jpg", name: "Siyah Renk Omuzlar Kırmızı Garnili Yaka İçi Kırmızı Renk Detaylı Üç Cepli Klasik Softshell Yelek", tags: "Siyah | Kırmızı garnili omuz | Yaka içi kırmızı detay | Üç cepli | Klasik model" },
       { img: "10.jpeg", name: "Haki Yeşil Kollar ve Sol Göğüs Cebi Siyah Detaylı Üç Dikey Cepli Kapşonlu Taktik Softshell Mont", tags: "Haki yeşil | Sol göğüs cebi | Siyah detay | Üç dikey cepli | Kapşonlu taktik" },
       { img: "11.jpeg", name: "Haki Renk Dört Cepli Üç Cep Fermuarlı Bir Cep Cep Kapaklı Diz Takviyeli Taktik Softshell Pantolon", tags: "Haki | Dört cepli | Üç cep fermuarlı | Cep kapaklı | Diz takviyeli | Taktik" },
-      { img: "12.jpeg", name: "Siyah Renk Kollar ve Sol Göğüs Cebi Siyah Detaylı Üç Dikey Cepli Turuncu Reflektif Detaylı Fermuarlı Softshell Yelek", tags: "Siyah | Turuncu reflektif | Üç dikey cepli | Fermuarlı | Softshell yelek" }
+      { img: "12.jpeg", name: "Siyah Renk Kollar ve Sol Göğüs Cebi Siyah Detaylı Üç Dikey Cepli Turuncu Reflektif Detaylı Fermuarlı Softshell Yelek", tags: "Siyah | Turuncu reflektif | Üç dikey cepli | Fermuarlı | Softshell yelek" },
+      { img: "kt-ss-013-antrasit-softshell-pantolon.jpeg", code: "KT-SS-013", name: "Antrasit Fermuarlı Cepli Softshell Pantolon", tags: "Antrasit | Softshell kumaş | Fermuarlı kargo cebi | Diz formu | Esnek iş pantolonu" },
+      { img: "kt-ss-014-haki-kapusonlu-softshell-mont.jpeg", code: "KT-SS-014", name: "Haki Kapüşonlu Taktik Softshell Mont", tags: "Haki | Siyah omuz garnisi | Kapüşonlu | Kol cepli | Dikey göğüs cepli" },
+      { img: "kt-ss-015-antrasit-kapusonlu-softshell-mont.jpeg", code: "KT-SS-015", name: "Antrasit Kapüşonlu Softshell Mont", tags: "Antrasit | Siyah omuz garnisi | Kapüşonlu | Fermuarlı göğüs cebi | Üç cepli" }
     ]
   },
 
