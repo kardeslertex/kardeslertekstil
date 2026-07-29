@@ -476,7 +476,7 @@
     document.querySelectorAll("[data-category-count]").forEach((counter) => {
       const category = counter.dataset.categoryCount;
       const count = posts.filter((post) => post.category === category).length;
-      counter.textContent = `${count} yazi`;
+      counter.textContent = `${count} yazı`;
     });
 
     renderRankedList(
@@ -510,7 +510,7 @@
       document.querySelectorAll(".knowledge-category[data-category]").forEach((section) => {
         section.hidden = !section.querySelector(".knowledge-card:not([hidden])");
       });
-      status.textContent = `${visibleCount} yazi gösteriliyor`;
+      status.textContent = `${visibleCount} yazı gösteriliyor`;
       tagHeading.textContent = activeTag ? `Etiket: ${activeTag}` : "";
       clear.hidden = !activeTag && !term;
     }
@@ -555,7 +555,7 @@
     const section = document.createElement("section");
     section.className = "knowledge-related";
     const heading = document.createElement("h2");
-    heading.textContent = "Benzer Yazilar";
+    heading.textContent = "Benzer Yazılar";
     const grid = document.createElement("div");
     grid.className = "knowledge-related-grid";
     similar.forEach(({ post }) => {
