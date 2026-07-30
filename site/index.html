@@ -188,17 +188,19 @@
 <div class="section-head" style="margin-bottom:28px;">
 <div>
 <div class="eyebrow eyebrow-accent">BİLGİ MERKEZİ</div>
-<h2>Yeni Eklenen Rehberler</h2>
+<h2>Makaleler</h2>
 </div>
-<p>Ürün, kumaş ve bakım kararlarını kolaylaştıran son rehberleri inceleyin.</p>
+<p>Sitedeki tüm makaleler 7 saniyede bir değişerek sırayla gösterilir.</p>
 </div>
-<div class="home-blog-grid">
-<a class="home-blog-card" href="bilgi-merkezi/filament-polyester-kesik-elyaf-polyester-farklari/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Filament Polyester ile Kesik Elyaf Polyester Arasındaki Farklar</h3><p>Yüzey, dayanım, nem yönetimi ve boncuklanma açısından polyester türlerini karşılaştırın.</p><span class="read-more">Yazıyı Oku</span></a>
-<a class="home-blog-card" href="bilgi-merkezi/dope-dyed-cozeltiden-boyali-polyester/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Çözeltiden Boyalı Polyester Nedir? Dope Dyed Kumaş Rehberi</h3><p>Renk tutarlılığı, haslık ve üretim sırasında boya ekleme yaklaşımını öğrenin.</p><span class="read-more">Yazıyı Oku</span></a>
-<a class="home-blog-card" href="bilgi-merkezi/sanfor-islemi-kumas-cekmesi/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Sanfor İşlemi Nedir? Kumaş Çekmesini Nasıl Azaltır?</h3><p>Ön çekmezlik işlemini, çekme toleransını ve kabul sürecindeki etkisini inceleyin.</p><span class="read-more">Yazıyı Oku</span></a>
-<a class="home-blog-card" href="bilgi-merkezi/merserize-pamuk-polo-tisort/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Merserize Pamuk Nedir? Polo Tişörtlerde Kullanımı</h3><p>Parlaklık, boya alma, mukavemet ve kurumsal polo tişört seçimi açısından değerlendirin.</p><span class="read-more">Yazıyı Oku</span></a>
-<a class="home-blog-card" href="bilgi-merkezi/easy-care-apre-nedir/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Easy Care Apre Nedir? Ütü Kolaylığı ve Dayanım</h3><p>Kırışıklık toparlanması, yıkama dayanımı ve iş gömleği seçimine etkisini görün.</p><span class="read-more">Yazıyı Oku</span></a>
-<a class="home-blog-card" href="bilgi-merkezi/antibakteriyel-tekstil-apresi/"><span class="meta">Kumaş Bilgileri · 29 Temmuz 2026</span><h3>Antibakteriyel Tekstil Apresi Nedir? İddia ve Test Rehberi</h3><p>Etki mekanizması, test yöntemi, yıkama dayanımı ve iddia kontrolünü öğrenin.</p><span class="read-more">Yazıyı Oku</span></a>
+<div class="home-blog-carousel" data-home-blog-carousel>
+<div class="home-blog-viewport">
+<div class="home-blog-track" data-home-blog-track></div>
+</div>
+<div class="home-blog-controls">
+<button aria-label="Önceki makaleler" class="home-blog-control" data-home-blog-prev type="button">‹</button>
+<div class="home-blog-counter" data-home-blog-counter></div>
+<button aria-label="Sonraki makaleler" class="home-blog-control" data-home-blog-next type="button">›</button>
+</div>
 </div>
 </div>
 </section>
@@ -330,6 +332,7 @@
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
 </a>
 <script src="products.js"></script>
+<script src="bilgi-merkezi/knowledge-center.js"></script>
 <script>
 (function(){
   var INTERVAL = 4000;
@@ -427,6 +430,109 @@
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
   });
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  var section = document.querySelector('[data-home-blog-carousel]');
+  var posts = (window.KNOWLEDGE_CENTER_POSTS || []).slice();
+  if (!section || !posts.length) return;
+
+  var track = section.querySelector('[data-home-blog-track]');
+  var counter = section.querySelector('[data-home-blog-counter]');
+  var prevBtn = section.querySelector('[data-home-blog-prev]');
+  var nextBtn = section.querySelector('[data-home-blog-next]');
+  var interval = 7000;
+  var current = 0;
+  var timer = null;
+
+  posts.sort(function(a, b){ return b.published.localeCompare(a.published); });
+
+  function formatDate(value){
+    var date = new Date(value + 'T00:00:00');
+    return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function createCard(post){
+    var link = document.createElement('a');
+    link.className = 'home-blog-card';
+    link.href = 'bilgi-merkezi/' + post.slug + '/';
+
+    var meta = document.createElement('span');
+    meta.className = 'meta';
+    meta.textContent = post.category + ' · ' + formatDate(post.published);
+
+    var title = document.createElement('h3');
+    title.textContent = post.title;
+
+    var summary = document.createElement('p');
+    summary.textContent = post.summary;
+
+    var readMore = document.createElement('span');
+    readMore.className = 'read-more';
+    readMore.textContent = 'Yazıyı Oku';
+
+    link.append(meta, title, summary, readMore);
+    return link;
+  }
+
+  function buildPages(){
+    var pages = [];
+    for (var i = 0; i < posts.length; i += 3) {
+      pages.push(posts.slice(i, i + 3));
+    }
+    return pages;
+  }
+
+  var pages = buildPages();
+  if (!pages.length) return;
+
+  pages.forEach(function(page){
+    var panel = document.createElement('div');
+    panel.className = 'home-blog-page';
+    page.forEach(function(post){ panel.appendChild(createCard(post)); });
+    track.appendChild(panel);
+  });
+
+  function render(){
+    track.style.transform = 'translateX(' + (-current * 100) + '%)';
+    counter.textContent = (current + 1) + ' / ' + pages.length;
+  }
+
+  function go(next, userAction){
+    current = (next + pages.length) % pages.length;
+    render();
+    if (userAction) restart();
+  }
+
+  function start(){
+    if (timer || pages.length < 2) return;
+    timer = setInterval(function(){ go(current + 1, false); }, interval);
+  }
+
+  function stop(){
+    if (!timer) return;
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function restart(){
+    stop();
+    start();
+  }
+
+  prevBtn.addEventListener('click', function(){ go(current - 1, true); });
+  nextBtn.addEventListener('click', function(){ go(current + 1, true); });
+  section.addEventListener('mouseenter', stop);
+  section.addEventListener('mouseleave', start);
+  section.addEventListener('focusin', stop);
+  section.addEventListener('focusout', start);
+
+  render();
+  start();
 })();
 </script>
 

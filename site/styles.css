@@ -2532,6 +2532,55 @@ html{scroll-behavior:smooth;}
   text-transform:uppercase;
 }
 .home-blog-card .read-more:hover{color:var(--orange-600);}
+.home-blog-carousel{
+  display:grid;
+  gap:16px;
+}
+.home-blog-viewport{
+  overflow:hidden;
+}
+.home-blog-track{
+  display:flex;
+  transition:transform .55s var(--ease-out);
+  will-change:transform;
+}
+.home-blog-page{
+  flex:0 0 100%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+.home-blog-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.home-blog-control{
+  width:44px;
+  height:44px;
+  border:1px solid var(--steel-200);
+  border-radius:999px;
+  background:#fff;
+  color:var(--navy-700);
+  font-size:24px;
+  line-height:1;
+  box-shadow:var(--shadow-1);
+  transition:transform .2s var(--ease-out), border-color .2s var(--ease-out), color .2s var(--ease-out);
+}
+.home-blog-control:hover,
+.home-blog-control:focus-visible{
+  transform:translateY(-1px);
+  border-color:var(--orange-500);
+  color:var(--orange-600);
+}
+.home-blog-counter{
+  color:var(--fg2);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
 
 .catalog-content-block{
   margin:12px 0 54px;
@@ -2571,7 +2620,7 @@ html{scroll-behavior:smooth;}
   .home-trust article:nth-child(odd){border-right:0;}
   .home-trust article:nth-child(-n+4){border-bottom:1px solid var(--steel-200);}
   .home-sector-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .home-blog-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .home-blog-page{grid-template-columns:repeat(2,minmax(0,1fr));}
   .home-v3 .product-grid-4{grid-template-columns:repeat(2,1fr);}
   .about-v3-grid{grid-template-columns:1fr;gap:44px;}
   .home-cta{grid-template-columns:1fr;}
@@ -2591,7 +2640,7 @@ html{scroll-behavior:smooth;}
   .home-trust-head h2{font-size:28px;}
   .home-sectors{padding:64px 0;}
   .home-sector-grid{grid-template-columns:1fr;}
-  .home-blog-grid{grid-template-columns:1fr;}
+  .home-blog-page{grid-template-columns:1fr;}
   .catalog-content-block{padding:22px;}
   .catalog-content-block h2{font-size:28px;}
   .home-v3 .product-grid-4{grid-template-columns:1fr;}
