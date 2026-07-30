@@ -240,8 +240,8 @@ window.KATALOG = [
     urunler: [
       { img: "01.jpg", name: "Antrasit Siyah Reflektörlü İş Montu", tags: "Antrasit | Siyah omuz paneli | Gri reflektif göğüs bandı | Turuncu biyeli çift kapaklı göğüs cep | Siyah dirsek takviyesi | Kışlık iş montu" },
       { img: "02.jpg", name: "Siyah Haki Şişme İş Montu", tags: "Siyah | Haki gövde paneli | Şişme dolgulu | Dik yaka | Fermuarlı yan cepler | Günlük saha montu" },
-      { img: "04.jpg", name: "Üst roba siyah beden Gri enine ray şişme mont", tags: "Saks mavi | Siyah yaka, yan panel ve kol detayı | Göğüste reflektif şerit | Çift kapaklı göğüs cep | Fermuarlı yan cepler | İş montu" },
-      { img: "08.jpg", name: "Saks mavi üç cepli mont", tags: "Siyah | Gri V kesim gövde paneli | Enine ray dikişli şişme yapı | Çıtçıt kapamalı ön pat | Yan cepler | Kışlık mont" },
+      { img: "04.jpg", code: "KT-MK-003", name: "Siyah Gri Enine dikişli Şişme Mont", tags: "Siyah | Gri V kesim gövde paneli | Enine ray dikişli şişme yapı | Çıtçıt kapamalı ön pat | Yan cepler | Kışlık mont" },
+      { img: "08.jpg", code: "KT-MK-004", name: "Saks Mavi Reflektörlü İş Montu", tags: "Saks mavi | Siyah yaka, yan panel ve kol detayı | Göğüste reflektif şerit | Çift kapaklı göğüs cep | Fermuarlı yan cepler | İş montu" },
       { img: "09.jpg", name: "Siyah Gri Reflektör Şeritli İş Montu", tags: "Siyah | Göğüs ve kollarda gri reflektör şerit | Çift kapaklı göğüs cep | Dik yaka | Yan cepler | İş montu" },
       { img: "10.jpg", name: "Siyah Enine Ray Şişme Mont", tags: "Siyah | Enine ray dikişli şişme yapı | Dik yaka | Fermuarlı yan cepler | Sade tasarım | Kışlık mont" },
       { img: "13.jpeg", name: "Saks Mavi Sportif Kışlık Mont", tags: "Saks mavi | Omuz ve göğüste beyaz reflektif desen | Dikey fermuarlı göğüs cep | Yan reflektif cep detayı | Dik yaka | Kışlık saha montu" },

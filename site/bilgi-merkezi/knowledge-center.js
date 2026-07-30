@@ -498,12 +498,6 @@
     return CATEGORY_MAP[category] || "";
   }
 
-  function estimateReadTime(post) {
-    const text = [post.title, post.summary, ...(post.searchTerms || [])].join(" ");
-    const words = text.trim().split(/\s+/).filter(Boolean).length;
-    return Math.max(3, Math.round(words / 38));
-  }
-
   function formatPublishedDate(value) {
     if (!value) return "";
     const date = new Date(`${value}T00:00:00`);
@@ -833,7 +827,6 @@
   function injectArticleSchemas(current, article) {
     const canonicalTag = document.querySelector("link[rel='canonical']");
     const pageUrl = (canonicalTag && canonicalTag.getAttribute("href")) || window.location.href.split("#")[0];
-    const readMinutes = estimateReadTime(current);
 
     injectJsonLd({
       "@context": "https://schema.org",
@@ -857,7 +850,6 @@
       inLanguage: "tr-TR",
       articleSection: current.category,
       keywords: current.tags.join(", "),
-      timeRequired: `PT${readMinutes}M`,
       url: pageUrl,
       mainEntityOfPage: {
         "@type": "WebPage",
