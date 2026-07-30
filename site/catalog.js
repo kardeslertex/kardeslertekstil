@@ -351,6 +351,8 @@
   var lbCategory = document.getElementById("lbCategory");
   var lbCounter = document.getElementById("lbCounter");
   var lbWhatsapp = document.getElementById("lbWhatsapp");
+  var lbQuote = document.getElementById("lbQuote");
+  var lbFormDetail = document.getElementById("lbFormDetail");
   var lbTags = document.getElementById("lbTags");
   var lbCopy = document.getElementById("lbCopy");
   var lbNoteTitle = document.getElementById("lbNoteTitle");
@@ -390,6 +392,11 @@
       ? "Merhaba, " + item.code + " kodlu " + item.name + " için fiyat, beden/model ve stok bilgisi almak istiyorum."
       : "Merhaba, " + item.code + " kodlu " + item.name + " için fiyat, kumaş, renk ve üretim bilgisi almak istiyorum.";
     lbWhatsapp.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
+
+    var quoteText = item.code + " " + item.name;
+    var quoteLink = "iletisim.html?urun=" + encodeURIComponent(quoteText) + "&mesaj=" + encodeURIComponent("Merhaba, " + quoteText + " için kurumsal teklif almak istiyorum.");
+    if (lbQuote) lbQuote.href = quoteLink;
+    if (lbFormDetail) lbFormDetail.href = quoteLink;
   }
 
   function openLightbox(cat, i, trigger) {

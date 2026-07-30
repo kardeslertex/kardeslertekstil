@@ -429,11 +429,134 @@
     { slug: "is-kiyafetlerinde-numune-ve-onay-sureci", title: "İş Kıyafetlerinde Numune ve Onay Süreci", summary: "Toplu üretim öncesinde kumaş, kalıp, beden, renk ve logo uygulamasını numune üzerinden nasıl doğrulayacağınızı inceleyin.", category: "Üretim Rehberi", tags: ["İş Kıyafetlerinde Numune ve Onay Süreci"], searchTerms: ["İş kıyafetlerinde numune ve onay süreci"], published: "2026-07-28", views: 0 },
     { slug: "is-kiyafeti-uretim-sureci", title: "İş Kıyafeti Üretim Süreci", summary: "İhtiyaç analizinden teslimata uzanan kurumsal iş kıyafeti üretim adımları.", category: "Üretim Rehberi", tags: ["İş Kıyafeti Üretim Süreci"], searchTerms: ["İş kıyafeti üretim süreci"], published: "2026-07-28", views: 70 },
     { slug: "is-kiyafeti-terimleri-sozlugu", title: "İş Kıyafeti Terimleri Sözlüğü", summary: "Kumaş, dikim, baskı, nakış ve iş kıyafeti üretiminde kullanılan 229 terimi A'dan Z'ye inceleyin.", category: "Tekstil Sözlüğü", tags: ["İş Kıyafeti Terimleri Sözlüğü"], searchTerms: ["İş kıyafeti terimleri sözlüğü"], published: "2026-07-28", views: 0 },
+    { slug: "is-kiyafeti-satin-alma-sureci-rehberi", title: "İş Kıyafeti Satın Alma Süreci Nasıl Kurulur?", summary: "İş kıyafeti satın alma sürecini ihtiyaç toplama, onay, numune, teklif karşılaştırma, teslimat ve kapanış adımlarıyla kurun.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Satın Alma Süreci Nasıl Kurulur?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-sartname-hazirlama-rehberi", title: "İş Kıyafeti Şartnamesi Nasıl Hazırlanır?", summary: "Kumaş, beden, logo, paketleme, kalite ve teslimat kriterlerini ölçülebilir bir iş kıyafeti şartnamesine dönüştürün.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Şartnamesi Nasıl Hazırlanır?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-numune-onay-akisi", title: "İş Kıyafeti Numune Onay Akışı Nasıl Yönetilir?", summary: "PP numune, ölçü seti, logo onayı, revizyon ve seri üretim serbest bırakma akışını tek sıraya oturtun.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Numune Onay Akışı Nasıl Yönetilir?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-tedarikci-karsilastirma-matrisi", title: "İş Kıyafeti Tedarikçi Karşılaştırma Matrisi Nasıl Hazırlanır?", summary: "Tedarikçileri fiyat, termin, kalite, numune, iletişim, kapasite ve tekrar sipariş uyumu ile aynı tabloda karşılaştırın.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Tedarikçi Karşılaştırma Matrisi Nasıl Hazırlanır?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-beden-dagitim-plani", title: "İş Kıyafeti Beden Dağıtım Planı Nasıl Oluşturulur?", summary: "Beden dağıtımını çalışan profili, geçmiş tüketim, lokasyon, yeni işe giriş ve yedek stokla birlikte planlayın.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Beden Dağıtım Planı Nasıl Oluşturulur?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-logo-onay-proseduru", title: "İş Kıyafeti Logo Onay Prosedürü Nasıl İşler?", summary: "Logo yerleşimi, renk, ölçü, onay numunesi, baskı-nakış seçimi ve revizyon sürecini tek prosedürde toplayın.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Logo Onay Prosedürü Nasıl İşler?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-teslimat-zimmet-akisi", title: "İş Kıyafeti Teslimat ve Zimmet Akışı Nasıl Kurulur?", summary: "Ürün teslimatı, çalışan imzası, beden doğrulama, etiketleme ve iade koşullarını izlenebilir bir akışa dönüştürün.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Teslimat ve Zimmet Akışı Nasıl Kurulur?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-degisim-iade-akisi", title: "İş Kıyafeti Değişim ve İade Akışı Nasıl Yönetilir?", summary: "Yanlış beden, hasar, bakım sorunu ve personel değişimlerinde iade ve değişim akışını standartlaştırın.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Değişim ve İade Akışı Nasıl Yönetilir?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-stok-esik-degeri", title: "İş Kıyafeti Stok Eşik Değeri Nasıl Belirlenir?", summary: "Kritik stok seviyesini tüketim, tedarik süresi, beden dağılımı ve sezon etkisine göre belirleyin.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Stok Eşik Değeri Nasıl Belirlenir?"], published: "2026-07-30", views: 0 },
+    { slug: "is-kiyafeti-acil-siparis-akisi", title: "İş Kıyafeti Acil Sipariş Akışı Nasıl Hazırlanır?", summary: "Acil siparişlerde ön onaylı ürün, hızlı numune, beden teyidi, sevkiyat ve iletişim akışını önceden hazırlayın.", category: "İş Kıyafeti Rehberi", tags: ["İş Kıyafeti Rehberi", "Satın Alma ve Planlama"], searchTerms: ["İş Kıyafeti Acil Sipariş Akışı Nasıl Hazırlanır?"], published: "2026-07-30", views: 0 },
   ];
 
   const normalize = (value) => value.toLocaleLowerCase("tr-TR").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const postUrl = (post, onIndex) => onIndex ? `${post.slug}/` : `../${post.slug}/`;
   const tagUrl = (tag, onIndex) => onIndex ? `?tag=${encodeURIComponent(tag)}` : `../?tag=${encodeURIComponent(tag)}`;
+
+  const CATEGORY_GROUPS = [
+    "Ürün Rehberleri",
+    "Kumaş Bilgileri",
+    "İş Güvenliği",
+    "Sektörel Çözümler",
+    "Üretim Rehberi"
+  ];
+
+  const CATEGORY_MAP = {
+    "Ürün Rehberleri": "Ürün Rehberleri",
+    "İş Kıyafeti Rehberi": "Ürün Rehberleri",
+    "Beden ve Ergonomi": "Ürün Rehberleri",
+    "Kumaş Bilgileri": "Kumaş Bilgileri",
+    "Tekstil Sözlüğü": "Kumaş Bilgileri",
+    "İş Güvenliği": "İş Güvenliği",
+    "Sektörel Çözümler": "Sektörel Çözümler",
+    "Saha Yönetimi": "Sektörel Çözümler",
+    "Üretim Rehberi": "Üretim Rehberi",
+    "Sürdürülebilirlik": "Üretim Rehberi"
+  };
+
+  const PRODUCT_LINKS_BY_GROUP = {
+    "Ürün Rehberleri": [
+      { title: "Tişört Modelleri", hash: "tshirt" },
+      { title: "Pantolon Modelleri", hash: "pantolon" },
+      { title: "Mont ve Softshell", hash: "montkaban" }
+    ],
+    "Kumaş Bilgileri": [
+      { title: "İş Tişörtü Ürünleri", hash: "tshirt" },
+      { title: "İş Pantolonu Ürünleri", hash: "pantolon" },
+      { title: "Polar Ürünleri", hash: "polar" }
+    ],
+    "İş Güvenliği": [
+      { title: "İş Güvenliği Ürünleri", hash: "isg" },
+      { title: "Yelek Modelleri", hash: "yelek" },
+      { title: "Tulum Modelleri", hash: "tulum" }
+    ],
+    "Sektörel Çözümler": [
+      { title: "Tişört Modelleri", hash: "tshirt" },
+      { title: "Pantolon Modelleri", hash: "pantolon" },
+      { title: "Önlük Modelleri", hash: "onluk" }
+    ],
+    "Üretim Rehberi": [
+      { title: "Tişört Modelleri", hash: "tshirt" },
+      { title: "İş Güvenliği Ürünleri", hash: "isg" },
+      { title: "Softshell Modelleri", hash: "softshell" }
+    ]
+  };
+
+  function toCategoryGroup(category) {
+    return CATEGORY_MAP[category] || "";
+  }
+
+  function estimateReadTime(post) {
+    const text = [post.title, post.summary, ...(post.searchTerms || [])].join(" ");
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(3, Math.round(words / 38));
+  }
+
+  function formatPublishedDate(value) {
+    if (!value) return "";
+    const date = new Date(`${value}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return value;
+    return new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", year: "numeric" }).format(date);
+  }
+
+  function slugifyId(text) {
+    return normalize(text || "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  }
+
+  function createCardMeta(post) {
+    const meta = document.createElement("div");
+    meta.className = "knowledge-card-meta";
+
+    const category = document.createElement("span");
+    category.textContent = post.category;
+    const read = document.createElement("span");
+    read.textContent = `${estimateReadTime(post)} dk`;
+    const date = document.createElement("span");
+    date.textContent = formatPublishedDate(post.published);
+
+    meta.append(category, read, date);
+    return meta;
+  }
+
+  function buildCategoryFilterBar(posts, selectedGroup) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "knowledge-topic-filters";
+    wrapper.setAttribute("role", "group");
+    wrapper.setAttribute("aria-label", "Kategori filtresi");
+
+    function button(label, group, count) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "knowledge-topic-filter";
+      btn.dataset.groupFilter = group;
+      btn.textContent = `${label} (${count})`;
+      if (selectedGroup === group) btn.classList.add("is-active");
+      return btn;
+    }
+
+    wrapper.appendChild(button("Tümü", "", posts.length));
+    CATEGORY_GROUPS.forEach((group) => {
+      const count = posts.filter((post) => toCategoryGroup(post.category) === group).length;
+      wrapper.appendChild(button(group, group, count));
+    });
+    return wrapper;
+  }
 
   function tagList(post, onIndex) {
     const list = document.createElement("div");
@@ -471,11 +594,20 @@
     const status = document.querySelector("#knowledge-search-status");
     const clear = document.querySelector("#knowledge-filter-clear");
     const tagHeading = document.querySelector("#knowledge-active-filter");
+    const searchBox = document.querySelector(".knowledge-search");
+    const indexRoot = document.querySelector(".knowledge-index");
+    const query = new URLSearchParams(window.location.search);
     let activeTag = new URLSearchParams(window.location.search).get("tag") || "";
+    let activeGroup = query.get("kategori") || "";
+
+    if (!CATEGORY_GROUPS.includes(activeGroup)) activeGroup = "";
+
+    const postMap = new Map(posts.map((post) => [post.slug, post]));
 
     document.querySelectorAll("[data-category-count]").forEach((counter) => {
       const category = counter.dataset.categoryCount;
       const count = posts.filter((post) => post.category === category).length;
+      counter.setAttribute("aria-live", "polite");
       counter.textContent = `${count} yazı`;
     });
 
@@ -493,44 +625,342 @@
     );
 
     cards.forEach((card) => {
-      const post = posts.find((item) => item.slug === card.dataset.postSlug);
-      if (post) card.insertBefore(tagList(post, true), card.querySelector(".read-more"));
+      const post = postMap.get(card.dataset.postSlug);
+      if (!post) return;
+
+      const readMore = card.querySelector(".read-more");
+      if (!card.querySelector(".knowledge-card-meta") && readMore) {
+        card.insertBefore(createCardMeta(post), readMore);
+      }
+      if (!card.querySelector(".knowledge-tags") && readMore) {
+        card.insertBefore(tagList(post, true), readMore);
+      }
     });
+
+    if (searchBox && !searchBox.querySelector(".knowledge-topic-filters")) {
+      const filterBar = buildCategoryFilterBar(posts, activeGroup);
+      searchBox.insertBefore(filterBar, searchBox.querySelector(".knowledge-search-feedback"));
+    }
+
+    function setUrlState(term) {
+      const params = new URLSearchParams();
+      if (term) params.set("q", term);
+      if (activeTag) params.set("tag", activeTag);
+      if (activeGroup) params.set("kategori", activeGroup);
+      const qs = params.toString();
+      window.history.replaceState({}, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
+    }
 
     function filterPosts() {
       const term = normalize(search.value.trim());
       let visibleCount = 0;
       cards.forEach((card) => {
-        const post = posts.find((item) => item.slug === card.dataset.postSlug);
+        const post = postMap.get(card.dataset.postSlug);
+        if (!post) return;
+        const group = toCategoryGroup(post.category);
         const searchable = normalize([post.title, post.summary, post.category, ...post.tags, ...(post.searchTerms || [])].join(" "));
-        const visible = (!term || searchable.includes(term)) && (!activeTag || post.tags.includes(activeTag));
+        const visible = (!term || searchable.includes(term))
+          && (!activeTag || post.tags.includes(activeTag))
+          && (!activeGroup || group === activeGroup);
         card.hidden = !visible;
         if (visible) visibleCount += 1;
       });
       document.querySelectorAll(".knowledge-category[data-category]").forEach((section) => {
         section.hidden = !section.querySelector(".knowledge-card:not([hidden])");
       });
+
+      if (indexRoot) {
+        indexRoot.querySelectorAll("[data-group-filter]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.groupFilter === activeGroup);
+        });
+      }
+
       status.textContent = `${visibleCount} yazı gösteriliyor`;
-      tagHeading.textContent = activeTag ? `Etiket: ${activeTag}` : "";
-      clear.hidden = !activeTag && !term;
+      if (activeTag && activeGroup) {
+        tagHeading.textContent = `Kategori: ${activeGroup} • Etiket: ${activeTag}`;
+      } else if (activeTag) {
+        tagHeading.textContent = `Etiket: ${activeTag}`;
+      } else if (activeGroup) {
+        tagHeading.textContent = `Kategori: ${activeGroup}`;
+      } else {
+        tagHeading.textContent = "";
+      }
+      clear.hidden = !activeTag && !term && !activeGroup;
+      setUrlState(term);
     }
 
     search.addEventListener("input", filterPosts);
     document.querySelector(".knowledge-index").addEventListener("click", (event) => {
       const tag = event.target.closest("[data-tag]");
-      if (!tag) return;
-      event.preventDefault();
-      activeTag = tag.dataset.tag;
-      window.history.replaceState({}, "", `?tag=${encodeURIComponent(activeTag)}`);
-      filterPosts();
+      if (tag) {
+        event.preventDefault();
+        activeTag = tag.dataset.tag;
+        filterPosts();
+        return;
+      }
+
+      const category = event.target.closest("[data-group-filter]");
+      if (category) {
+        activeGroup = category.dataset.groupFilter || "";
+        filterPosts();
+      }
     });
     clear.addEventListener("click", () => {
       activeTag = "";
+      activeGroup = "";
       search.value = "";
-      window.history.replaceState({}, "", window.location.pathname);
       filterPosts();
     });
+
+    const presetSearch = query.get("q") || "";
+    if (presetSearch) search.value = presetSearch;
     filterPosts();
+  }
+
+  function buildTableOfContents(article) {
+    const headings = Array.from(article.querySelectorAll("h2, h3"))
+      .filter((heading) => !heading.closest(".knowledge-related") && !heading.closest(".knowledge-article-toc") && !heading.closest(".knowledge-article-offer"));
+    if (!headings.length) return null;
+
+    const section = document.createElement("section");
+    section.className = "knowledge-article-toc";
+    section.setAttribute("aria-labelledby", "knowledge-toc-title");
+
+    const title = document.createElement("h2");
+    title.id = "knowledge-toc-title";
+    title.textContent = "İçindekiler";
+
+    const list = document.createElement("ol");
+    headings.forEach((heading) => {
+      if (!heading.id) {
+        const baseId = slugifyId(heading.textContent);
+        heading.id = `k-${baseId || "baslik"}`;
+      }
+      const li = document.createElement("li");
+      li.className = heading.tagName.toLowerCase() === "h3" ? "is-sub" : "";
+      const link = document.createElement("a");
+      link.href = `#${heading.id}`;
+      link.textContent = heading.textContent;
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+
+    section.append(title, list);
+    return section;
+  }
+
+  function buildProductLinks(current) {
+    const group = toCategoryGroup(current.category);
+    const list = PRODUCT_LINKS_BY_GROUP[group] || PRODUCT_LINKS_BY_GROUP["Ürün Rehberleri"];
+
+    const section = document.createElement("section");
+    section.className = "knowledge-product-links";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "İlgili Ürün Kategorileri";
+
+    const grid = document.createElement("div");
+    grid.className = "knowledge-product-links-grid";
+    list.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = `../../urunlerimiz.html#${item.hash}`;
+      link.textContent = item.title;
+      grid.appendChild(link);
+    });
+
+    section.append(heading, grid);
+    return section;
+  }
+
+  function buildOfferCta(current) {
+    const section = document.createElement("section");
+    section.className = "knowledge-article-offer";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Bu Konuya Uygun Ürün İçin Teklif Alın";
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = "Makaledeki ihtiyaca göre ürün modeli, kumaş ve logo uygulamasını firmanıza özel planlayalım.";
+
+    const link = document.createElement("a");
+    link.className = "btn btn-accent";
+    link.href = `../../iletisim.html?urun=${encodeURIComponent("Özel Tasarım")}&mesaj=${encodeURIComponent(`Merhaba, ${current.title} içeriğine uygun ürün için teklif almak istiyorum.`)}`;
+    link.textContent = "Teklif Formunu Doldur";
+
+    section.append(heading, paragraph, link);
+    return section;
+  }
+
+  function buildKnowledgeHubLinks(current) {
+    const section = document.createElement("section");
+    section.className = "knowledge-product-links knowledge-hub-links";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Konuya Göre Daha Fazla İçerik";
+
+    const grid = document.createElement("div");
+    grid.className = "knowledge-product-links-grid";
+
+    const categorySlug = toCategoryGroup(current.category) || current.category;
+    const categoryArchive = document.createElement("a");
+    categoryArchive.href = `../?kategori=${encodeURIComponent(categorySlug)}`;
+    categoryArchive.textContent = `${current.category} içindeki tüm yazılar`;
+    grid.appendChild(categoryArchive);
+
+    const related = posts
+      .filter((post) => post.slug !== current.slug)
+      .map((post) => ({
+        post,
+        categoryMatch: post.category === current.category ? 2 : 0,
+        sharedTags: post.tags.filter((tag) => (current.tags || []).includes(tag)).length,
+        termMatch: (post.searchTerms || []).some((term) => (current.searchTerms || []).includes(term)) ? 1 : 0
+      }))
+      .sort((a, b) => b.categoryMatch - a.categoryMatch || b.sharedTags - a.sharedTags || b.termMatch - a.termMatch || b.post.views - a.post.views || b.post.published.localeCompare(a.post.published))
+      .slice(0, 8);
+
+    related.forEach(({ post }) => {
+      const link = document.createElement("a");
+      link.href = postUrl(post, false);
+      link.textContent = post.title;
+      grid.appendChild(link);
+    });
+
+    section.append(heading, grid);
+    return section;
+  }
+
+  function injectJsonLd(schema, key) {
+    if (document.querySelector(`script[data-dynamic-schema="${key}"]`)) return;
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.dataset.dynamicSchema = key;
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  function getArticleImageUrl(article) {
+    const media = article.querySelector("img[src]");
+    if (!media) return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png";
+    try {
+      return new URL(media.getAttribute("src"), window.location.href).href;
+    } catch (_) {
+      return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png";
+    }
+  }
+
+  function injectArticleSchemas(current, article) {
+    const canonicalTag = document.querySelector("link[rel='canonical']");
+    const pageUrl = (canonicalTag && canonicalTag.getAttribute("href")) || window.location.href.split("#")[0];
+    const readMinutes = estimateReadTime(current);
+
+    injectJsonLd({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://kardeslertekstil.com.tr/#organization",
+      name: "Kardeşler Tekstil",
+      url: "https://kardeslertekstil.com.tr/",
+      logo: "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png",
+      telephone: "+90 216 396 19 88",
+      email: "kardesler@kardeslertekstil.com.tr"
+    }, "article-organization");
+
+    injectJsonLd({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: current.title,
+      description: current.summary,
+      datePublished: current.published,
+      dateModified: current.published,
+      inLanguage: "tr-TR",
+      articleSection: current.category,
+      keywords: current.tags.join(", "),
+      timeRequired: `PT${readMinutes}M`,
+      url: pageUrl,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": pageUrl
+      },
+      image: getArticleImageUrl(article),
+      author: {
+        "@id": "https://kardeslertekstil.com.tr/#organization"
+      },
+      publisher: {
+        "@id": "https://kardeslertekstil.com.tr/#organization"
+      }
+    }, "knowledge-article");
+
+    injectJsonLd({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://kardeslertekstil.com.tr/" },
+        { "@type": "ListItem", position: 2, name: "Bilgi Merkezi", item: "https://kardeslertekstil.com.tr/bilgi-merkezi/" },
+        { "@type": "ListItem", position: 3, name: current.title, item: pageUrl }
+      ]
+    }, "knowledge-article-breadcrumb");
+  }
+
+  function upsertMetaByName(name, content) {
+    if (!content) return;
+    let meta = document.head.querySelector(`meta[name="${name}"]`);
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", name);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", content);
+  }
+
+  function upsertMetaByProperty(property, content) {
+    if (!content) return;
+    let meta = document.head.querySelector(`meta[property="${property}"]`);
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("property", property);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", content);
+  }
+
+  function upsertCanonical(href) {
+    if (!href) return;
+    let canonical = document.head.querySelector("link[rel='canonical']");
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", href);
+  }
+
+  function normalizeArticleHeadMeta(current, article) {
+    const cleanUrl = window.location.href.split("#")[0].split("?")[0];
+    const pageUrl = cleanUrl.endsWith("/") ? cleanUrl : `${cleanUrl}/`;
+    const title = current.title || document.title;
+    const description = current.summary || "İş kıyafetleri hakkında bilgilendirici içerik.";
+    const imageUrl = getArticleImageUrl(article);
+
+    upsertCanonical(pageUrl);
+    upsertMetaByName("description", description);
+
+    upsertMetaByProperty("og:type", "article");
+    upsertMetaByProperty("og:locale", "tr_TR");
+    upsertMetaByProperty("og:site_name", "Kardeşler Tekstil");
+    upsertMetaByProperty("og:title", title);
+    upsertMetaByProperty("og:description", description);
+    upsertMetaByProperty("og:url", pageUrl);
+    upsertMetaByProperty("og:image", imageUrl);
+
+    upsertMetaByName("twitter:card", "summary_large_image");
+    upsertMetaByName("twitter:title", title);
+    upsertMetaByName("twitter:description", description);
+    upsertMetaByName("twitter:image", imageUrl);
+  }
+
+  function markKnowledgeNavActive() {
+    const blogLink = document.querySelector('nav.nav a[href="../"]');
+    if (blogLink) blogLink.classList.add("active");
   }
 
   function initArticle(slug) {
@@ -540,6 +970,21 @@
 
     const anchor = article.querySelector(".knowledge-article-meta") || article.querySelector(".intro");
     anchor.insertAdjacentElement("afterend", tagList(current, false));
+
+    const insertedTags = article.querySelector(":scope > .knowledge-tags");
+    if (insertedTags) {
+      const toc = buildTableOfContents(article);
+      if (toc) insertedTags.insertAdjacentElement("afterend", toc);
+    }
+
+    const intro = article.querySelector(".intro");
+    if (intro) {
+      const afterIntro = document.createDocumentFragment();
+      afterIntro.append(buildProductLinks(current));
+      afterIntro.append(buildKnowledgeHubLinks(current));
+      afterIntro.append(buildOfferCta(current));
+      intro.after(afterIntro);
+    }
 
     const similar = posts
       .filter((post) => post.slug !== current.slug)
@@ -571,7 +1016,13 @@
     section.append(heading, grid);
     const navigation = article.querySelector(".knowledge-post-nav");
     article.insertBefore(section, navigation);
+
+    normalizeArticleHeadMeta(current, article);
+    injectArticleSchemas(current, article);
+    markKnowledgeNavActive();
   }
+
+  window.KNOWLEDGE_CENTER_POSTS = posts;
 
   document.addEventListener("DOMContentLoaded", () => {
     const index = document.querySelector("[data-knowledge-index]");
