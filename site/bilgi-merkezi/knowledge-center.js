@@ -519,21 +519,6 @@
       .replace(/-+/g, "-");
   }
 
-  function createCardMeta(post) {
-    const meta = document.createElement("div");
-    meta.className = "knowledge-card-meta";
-
-    const category = document.createElement("span");
-    category.textContent = post.category;
-    const read = document.createElement("span");
-    read.textContent = `${estimateReadTime(post)} dk`;
-    const date = document.createElement("span");
-    date.textContent = formatPublishedDate(post.published);
-
-    meta.append(category, read, date);
-    return meta;
-  }
-
   function buildCategoryFilterBar(posts, selectedGroup) {
     const wrapper = document.createElement("div");
     wrapper.className = "knowledge-topic-filters";
@@ -629,9 +614,6 @@
       if (!post) return;
 
       const readMore = card.querySelector(".read-more");
-      if (!card.querySelector(".knowledge-card-meta") && readMore) {
-        card.insertBefore(createCardMeta(post), readMore);
-      }
       if (!card.querySelector(".knowledge-tags") && readMore) {
         card.insertBefore(tagList(post, true), readMore);
       }
