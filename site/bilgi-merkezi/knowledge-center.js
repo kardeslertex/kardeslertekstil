@@ -783,6 +783,11 @@
     categoryArchive.textContent = `${current.category} içindeki tüm yazılar`;
     grid.appendChild(categoryArchive);
 
+    const knowledgeHome = document.createElement("a");
+    knowledgeHome.href = "../";
+    knowledgeHome.textContent = "Bilgi Merkezi ana sayfası";
+    grid.appendChild(knowledgeHome);
+
     const related = posts
       .filter((post) => post.slug !== current.slug)
       .map((post) => ({
@@ -792,7 +797,7 @@
         termMatch: (post.searchTerms || []).some((term) => (current.searchTerms || []).includes(term)) ? 1 : 0
       }))
       .sort((a, b) => b.categoryMatch - a.categoryMatch || b.sharedTags - a.sharedTags || b.termMatch - a.termMatch || b.post.views - a.post.views || b.post.published.localeCompare(a.post.published))
-      .slice(0, 8);
+      .slice(0, 6);
 
     related.forEach(({ post }) => {
       const link = document.createElement("a");
@@ -827,6 +832,17 @@
   function injectArticleSchemas(current, article) {
     const canonicalTag = document.querySelector("link[rel='canonical']");
     const pageUrl = (canonicalTag && canonicalTag.getAttribute("href")) || window.location.href.split("#")[0];
+    const faqSection = Array.from(article.querySelectorAll("section")).find((section) => {
+      const heading = section.querySelector(":scope > h2");
+      return heading && /sık sorulan sorular/i.test(heading.textContent);
+    });
+    const faqItems = faqSection ? Array.from(faqSection.querySelectorAll("h3")).map((question) => {
+      const answer = question.nextElementSibling;
+      return {
+        question: question.textContent.trim(),
+        answer: answer ? answer.textContent.trim() : ""
+      };
+    }).filter((item) => item.question && item.answer) : [];
 
     injectJsonLd({
       "@context": "https://schema.org",
@@ -839,14 +855,17 @@
       email: "kardesler@kardeslertekstil.com.tr"
     }, "article-organization");
 
+    const datePublished = current.published;
+    const dateModified = current.dateModified || current.published;
+
     injectJsonLd({
       "@context": "https://schema.org",
       "@type": "Article",
       "@id": `${pageUrl}#article`,
       headline: current.title,
       description: current.summary,
-      datePublished: current.published,
-      dateModified: current.published,
+      datePublished,
+      dateModified,
       inLanguage: "tr-TR",
       articleSection: current.category,
       keywords: current.tags.join(", "),
@@ -864,15 +883,6 @@
       }
     }, "knowledge-article");
 
-    injectJsonLd({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://kardeslertekstil.com.tr/" },
-        { "@type": "ListItem", position: 2, name: "Bilgi Merkezi", item: "https://kardeslertekstil.com.tr/bilgi-merkezi/" },
-        { "@type": "ListItem", position: 3, name: current.title, item: pageUrl }
-      ]
-    }, "knowledge-article-breadcrumb");
   }
 
   function upsertMetaByName(name, content) {
@@ -908,15 +918,34 @@
     canonical.setAttribute("href", href);
   }
 
+  function upsertAlternateHrefLang(href, hrefLang) {
+    if (!href || !hrefLang) return;
+    let link = document.head.querySelector(`link[rel='alternate'][hreflang='${hrefLang}']`);
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "alternate");
+      link.setAttribute("hreflang", hrefLang);
+      document.head.appendChild(link);
+    }
+    link.setAttribute("href", href);
+  }
+
   function normalizeArticleHeadMeta(current, article) {
     const cleanUrl = window.location.href.split("#")[0].split("?")[0];
     const pageUrl = cleanUrl.endsWith("/") ? cleanUrl : `${cleanUrl}/`;
     const title = current.title || document.title;
     const description = current.summary || "İş kıyafetleri hakkında bilgilendirici içerik.";
     const imageUrl = getArticleImageUrl(article);
+    const published = current.published || "";
+    const existingModified = document.head.querySelector("meta[property='article:modified_time']")?.getAttribute("content") || "";
+    const modified = existingModified || published;
 
     upsertCanonical(pageUrl);
+    upsertAlternateHrefLang(pageUrl, "tr-TR");
+    upsertAlternateHrefLang(pageUrl, "tr");
+    upsertAlternateHrefLang(pageUrl, "x-default");
     upsertMetaByName("description", description);
+    upsertMetaByName("robots", "index,follow,max-image-preview:large");
 
     upsertMetaByProperty("og:type", "article");
     upsertMetaByProperty("og:locale", "tr_TR");
@@ -925,6 +954,8 @@
     upsertMetaByProperty("og:description", description);
     upsertMetaByProperty("og:url", pageUrl);
     upsertMetaByProperty("og:image", imageUrl);
+    if (published) upsertMetaByProperty("article:published_time", published);
+    if (modified) upsertMetaByProperty("article:modified_time", modified);
 
     upsertMetaByName("twitter:card", "summary_large_image");
     upsertMetaByName("twitter:title", title);
@@ -969,7 +1000,7 @@
       }))
       .filter((item) => item.categoryMatch || item.sharedTags)
       .sort((a, b) => b.categoryMatch - a.categoryMatch || b.sharedTags - a.sharedTags || b.post.published.localeCompare(a.post.published))
-      .slice(0, 3);
+      .slice(0, 4);
 
     const section = document.createElement("section");
     section.className = "knowledge-related";
@@ -992,6 +1023,8 @@
     article.insertBefore(section, navigation);
 
     normalizeArticleHeadMeta(current, article);
+    const pageModified = document.head.querySelector("meta[property='article:modified_time']")?.getAttribute("content") || current.published;
+    current.dateModified = pageModified;
     injectArticleSchemas(current, article);
     markKnowledgeNavActive();
   }
