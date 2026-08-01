@@ -151,12 +151,6 @@
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
       purchase.appendChild(el("span", "gitem-purchase-badge", text));
     });
-    var searchableDetails = [item.name].concat(item.tags).join(" ").toLocaleLowerCase("tr-TR");
-    var productionDays = searchableDetails.indexOf("klasik") !== -1 ? "7 İş Günü" : "10 İş Günü";
-    var leadTime = el("span", "gitem-lead-time");
-    leadTime.appendChild(el("small", null, "Tahmini Üretim Süresi"));
-    leadTime.appendChild(el("strong", null, productionDays));
-    purchase.appendChild(leadTime);
     var meta = el("span", "gitem-meta");
     meta.appendChild(el("span", "gitem-code", item.code));
     meta.appendChild(el("span", "gitem-action", "İncele"));
