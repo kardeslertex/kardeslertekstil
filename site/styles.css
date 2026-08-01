@@ -2997,7 +2997,7 @@ html{scroll-behavior:smooth;}
   gap:12px;
   width:100%;
   min-width:0;
-  margin-top:30px;
+  margin-top:58px;
 }
 .about-production-video{
   display:block;
@@ -3257,7 +3257,7 @@ html{scroll-behavior:smooth;}
     padding:72px 0;
   }
   .about-story-grid{gap:36px;}
-  .about-production-grid{gap:8px;margin-top:22px;}
+  .about-production-grid{gap:8px;margin-top:34px;}
   .about-production-video{border-radius:3px;}
   .about-story h2,
   .about-sectors h2{
