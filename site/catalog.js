@@ -145,6 +145,7 @@
     img.setAttribute("fetchpriority", "low");
     img.addEventListener("load", function () { normalizeProductScale(img, item); });
 
+    var visual = el("span", "gitem-visual");
     var overlay = el("span", "gitem-overlay");
     var purchase = el("span", "gitem-purchase-info");
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
@@ -161,9 +162,10 @@
     meta.appendChild(el("span", "gitem-action", "İncele"));
     overlay.appendChild(meta);
 
-    btn.appendChild(img);
+    visual.appendChild(img);
+    visual.appendChild(overlay);
+    btn.appendChild(visual);
     btn.appendChild(purchase);
-    btn.appendChild(overlay);
     btn.addEventListener("click", function () { openLightbox(item.cat, item.i, btn); });
     return btn;
   }
