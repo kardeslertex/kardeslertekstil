@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KİT">
+  <rect width="64" height="64" fill="#FFFFFF"></rect>
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#E6662A" stroke-width="3"></rect>
+  <g fill="#E6662A" font-family="&#39;Archivo Black&#39;, &#39;Impact&#39;, sans-serif" font-weight="900">
+    <text x="6" y="48" font-size="40" font-style="italic" letter-spacing="-2">K</text>
+    <text x="32" y="48" font-size="40" font-style="italic" letter-spacing="-2">T</text>
+  </g>
+  
+  <g transform="translate(28,8) rotate(-12)">
+    <rect x="0" y="0" width="5" height="10" rx="1" fill="#E6662A"></rect>
+    <circle cx="2.5" cy="2" r="2.5" fill="#E6662A"></circle>
+    <circle cx="2.5" cy="2" r="1" fill="#FFFFFF"></circle>
+  </g>
+</svg>

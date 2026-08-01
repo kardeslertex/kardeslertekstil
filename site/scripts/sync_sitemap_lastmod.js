@@ -65,9 +65,24 @@ function sync(xml, publishedBySlug) {
     });
 
     if (!found) {
-      missingInSitemap.push(slug);
+      const pagePath = path.join(ROOT, 'bilgi-merkezi', slug, 'index.html');
+      if (fs.existsSync(pagePath)) {
+        const entry = `  <url><loc>${url}</loc><lastmod>${published}</lastmod></url>\n`;
+        nextXml = nextXml.replace('</urlset>', `${entry}</urlset>`);
+        insertedCount += 1;
+      } else {
+        missingInSitemap.push(slug);
+      }
     }
   }
+
+  // changefreq and priority are intentionally omitted: the site has no
+  // reliable per-page signals from which to derive those values.
+  nextXml = nextXml
+    .replace(/<changefreq>[^<]+<\/changefreq>/g, '')
+    .replace(/<priority>[^<]+<\/priority>/g, '')
+    .replace(/[ \t]+$/gm, '')
+    .replace(/(?:\r?\n){3,}/g, '\n\n');
 
   return {
     xml: nextXml,
