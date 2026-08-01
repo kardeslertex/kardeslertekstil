@@ -14,6 +14,19 @@
 
   var WHATSAPP = "902163961988";
   var GALLERY_PATH = "assets/products/gallery/";
+  var categoryInsights = {
+    tshirt: ["Üretim, depo ve saha ekipleri", "Baskı veya nakış", "Kurumsal renge özel seri üretim"],
+    sweat: ["Depo, servis ve saha ekipleri", "Göğüs ve sırt logo uygulaması", "Mevsimlik katmanlı üretim"],
+    pantolon: ["Üretim, bakım ve teknik ekipler", "Cep üstü logo seçenekleri", "Göreve uygun cep ve kumaş planı"],
+    tulum: ["Bakım, üretim ve ağır iş ekipleri", "Göğüs ve sırt logo uygulaması", "Hareket ve dayanıklılık odaklı üretim"],
+    onluk: ["Gıda, mutfak ve laboratuvar", "Nakış ve transfer baskı", "Hijyen ve görev bazlı modelleme"],
+    montkaban: ["Saha, lojistik ve dış ortam", "Nakış ve reflektif baskı", "İklim koşullarına uygun katmanlama"],
+    polar: ["Servis, depo ve saha ekipleri", "Göğüs nakışı ve baskı", "Kurumsal renklerde mevsimlik üretim"],
+    yelek: ["Teknik servis ve saha operasyonları", "Baskı, nakış ve reflektör", "Cep düzenine göre fonksiyonel üretim"],
+    softshell: ["Dış saha ve mobil ekipler", "Göğüs ve kol logo uygulaması", "Rüzgâr ve hareket konforu odaklı üretim"],
+    isg: ["Şantiye, üretim ve iş güvenliği", "Ürüne uygun kurumsal işaretleme", "İhtiyaca göre ürün ve beden tedariki"],
+    promosyon: ["Etkinlik, saha ve kurumsal tanıtım", "Logo baskı seçenekleri", "Kampanya ve ekip ihtiyacına göre planlama"]
+  };
 
   /* Lightbox'taki açıklama kutusu + özellik listesi.
      Ürünün "kind" alanına göre seçilir; yoksa "default" kullanılır. */
@@ -133,12 +146,23 @@
     img.addEventListener("load", function () { normalizeProductScale(img, item); });
 
     var overlay = el("span", "gitem-overlay");
+    var purchase = el("span", "gitem-purchase-info");
+    ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
+      purchase.appendChild(el("span", "gitem-purchase-badge", text));
+    });
+    var searchableDetails = [item.name].concat(item.tags).join(" ").toLocaleLowerCase("tr-TR");
+    var productionDays = searchableDetails.indexOf("klasik") !== -1 ? "10 İş Günü" : "15 İş Günü";
+    var leadTime = el("span", "gitem-lead-time");
+    leadTime.appendChild(el("small", null, "Tahmini Üretim Süresi"));
+    leadTime.appendChild(el("strong", null, productionDays));
+    purchase.appendChild(leadTime);
     var meta = el("span", "gitem-meta");
     meta.appendChild(el("span", "gitem-code", item.code));
     meta.appendChild(el("span", "gitem-action", "İncele"));
     overlay.appendChild(meta);
 
     btn.appendChild(img);
+    btn.appendChild(purchase);
     btn.appendChild(overlay);
     btn.addEventListener("click", function () { openLightbox(item.cat, item.i, btn); });
     return btn;
@@ -288,9 +312,37 @@
     left.appendChild(eyebrow);
     left.appendChild(el("h2", "cat-title", cat.title));
     left.appendChild(el("p", "catalog-section-desc", cat.desc));
+    var insights = categoryInsights[cat.id];
+    if (insights) {
+      var info = el("div", "catalog-category-info");
+      info.appendChild(el("span", null, "Sektörler: " + insights[0]));
+      info.appendChild(el("span", null, "Logo: " + insights[1]));
+      info.appendChild(el("span", null, "Üretim: " + insights[2]));
+      left.appendChild(info);
+    }
     head.appendChild(left);
     head.appendChild(el("div", "catalog-count", cat.items.length + " " + (cat.unit || "model")));
     return head;
+  }
+
+  function buildCategoryQuote(cat) {
+    var box = el("aside", "catalog-mini-quote");
+    var copy = el("div");
+    copy.appendChild(el("h3", null, "Bu kategori için teklif alın."));
+    copy.appendChild(el("p", null, "Ürün, logo uygulaması, adet ve teslimat bilgilerinizi paylaşın. Size uygun üretim planını birlikte oluşturalım."));
+    var actions = el("div", "catalog-mini-quote-actions");
+    var wa = el("a", "btn btn-whatsapp", "WhatsApp ile Hızlı Görüşün");
+    wa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Merhaba, " + cat.title + " için hızlı ön görüşme yapmak istiyorum.");
+    wa.target = "_blank";
+    wa.rel = "noopener";
+    var form = el("a", "btn btn-secondary-dark", "Yazılı Teklif İsteyin");
+    var intent = cat.title + " için yazılı kurumsal teklif almak istiyorum.";
+    form.href = "iletisim.html?urun=" + encodeURIComponent(cat.title) + "&mesaj=" + encodeURIComponent(intent) + "#teklif-formu";
+    actions.appendChild(wa);
+    actions.appendChild(form);
+    box.appendChild(copy);
+    box.appendChild(actions);
+    return box;
   }
 
   function buildSection(cat) {
@@ -316,6 +368,7 @@
     } else {
       section.appendChild(buildGrid(cat.items));
     }
+    section.appendChild(buildCategoryQuote(cat));
     return section;
   }
 
