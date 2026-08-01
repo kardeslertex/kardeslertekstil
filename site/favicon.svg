@@ -1,14 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KİT">
-  <rect width="64" height="64" fill="#FFFFFF"></rect>
-  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#E6662A" stroke-width="3"></rect>
-  <g fill="#E6662A" font-family="&#39;Archivo Black&#39;, &#39;Impact&#39;, sans-serif" font-weight="900">
-    <text x="6" y="48" font-size="40" font-style="italic" letter-spacing="-2">K</text>
-    <text x="32" y="48" font-size="40" font-style="italic" letter-spacing="-2">T</text>
-  </g>
-  
-  <g transform="translate(28,8) rotate(-12)">
-    <rect x="0" y="0" width="5" height="10" rx="1" fill="#E6662A"></rect>
-    <circle cx="2.5" cy="2" r="2.5" fill="#E6662A"></circle>
-    <circle cx="2.5" cy="2" r="1" fill="#FFFFFF"></circle>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kardeşler Tekstil logosu">
+  <rect width="64" height="64" fill="#FFFFFF"/>
+  <rect x="2" y="2" width="60" height="43" fill="#FFFFFF" stroke="#f97316" stroke-width="2.5"/>
+  <path fill="#f97316" d="M11 10h13L19 27l16-17h11L33 28l6 9H27l-4-7-5 7H8l7-14z"/>
+  <path fill="none" stroke="#2f3fae" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M31.5 12.5c1.8-.2 4.2.4 5.8 1.5l-1.2 21.7-6.2-1.9 1.6-20.4zm4.7.3c1.6.2 3.5 1 4.8 2.1l-2 22.1-5.1-1.2 2.3-23zm-5.1 1.7c1.4-.1 2.9.3 4.2 1.1m2.4 1.3c1.1.4 2 .9 2.8 1.5m-10.1 14.6 5.9 1.8m2.5-1.3-5.8-1.4"/>
+  <rect x="2" y="48" width="60" height="14" fill="#2f3fae"/>
+  <text x="32" y="58.6" fill="#ffffff" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="9.7" font-weight="700" text-anchor="middle">KARDEŞLER</text>
+  <text x="32" y="63.1" fill="#ffffff" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" font-size="4.8" font-weight="700" letter-spacing="0.55" text-anchor="middle">TEKSTIL</text>
 </svg>
