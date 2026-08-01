@@ -1,7 +1,27 @@
-﻿(function () {
+(function () {
   "use strict";
 
   const posts = [
+{"slug":"is-kiyafeti-aykiri-kullanim-politikasi","title":"İş Kıyafetinde Aykırı Kullanım Politikası Nasıl Yazılır?","summary":"İş kıyafeti aykırı kullanım politikası ile yanlış kullanım, yüksek hasar ve tekrar eden iade sorunlarını azaltın. Kural, denetim ve eğitim adımları.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Aykırı Kullanım Politikası Nasıl Yazılır?","is kiyafeti aykiri kullanim politikasi"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafeti-bolge-bazli-renk-kodlama-sistemi","title":"İş Kıyafetinde Bölge Bazlı Renk Kodlama Sistemi","summary":"Bölge bazlı renk kodlama sistemi ile çok lokasyonlu iş kıyafeti yönetiminde hız ve görünürlük kazanın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Bölge Bazlı Renk Kodlama Sistemi","is kiyafeti bolge bazli renk kodlama sistemi"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-deneme-gunu-pilotu-nasil-kurulur","title":"İş Kıyafetinde Deneme Günü Pilotu Nasıl Kurulur?","summary":"Toplu siparişten önce deneme günü pilotu ile beden, kalıp ve görev uyumunu doğrulayın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Deneme Günü Pilotu Nasıl Kurulur?","is kiyafeti deneme gunu pilotu nasil kurulur"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-iklim-bolgesi-matrisi-turkiye","title":"İş Kıyafetinde Türkiye İklim Bölgesi Matrisi Nasıl Kurulur?","summary":"Türkiye\u0027nin farklı iklim bölgelerine göre iş kıyafeti seti nasıl planlanır? Yazlık-kışlık geçiş, katmanlama ve stok matrisi rehberi.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Türkiye İklim Bölgesi Matrisi Nasıl Kurulur?","is kiyafeti iklim bolgesi matrisi turkiye"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafeti-kullanim-disiplin-endeksi-kde-modeli","title":"İş Kıyafeti Kullanım Disiplin Endeksi (KDE) Modeli","summary":"Kullanım disiplin endeksi modeliyle iş kıyafeti uygunluk seviyesini puanlayın ve iyileştirin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafeti Kullanım Disiplin Endeksi (KDE) Modeli","is kiyafeti kullanim disiplin endeksi kde modeli"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-persona-haritasi-ile-beden-planlama","title":"İş Kıyafetinde Persona Haritası ile Beden Planlama","summary":"Persona haritası yöntemiyle beden planlamasını güçlendirin, değişim ve iade oranlarını düşürün.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Persona Haritası ile Beden Planlama","is kiyafeti persona haritasi ile beden planlama"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-rol-bazli-urun-seti-mimarisi","title":"İş Kıyafetinde Rol Bazlı Ürün Seti Mimarisi Nasıl Kurulur?","summary":"Departman ve görev bazlı ürün seti mimarisi ile iş kıyafeti yönetimini standartlaştırın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Rol Bazlı Ürün Seti Mimarisi Nasıl Kurulur?","is kiyafeti rol bazli urun seti mimarisi"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-saha-denetiminde-puanlama-modeli","title":"İş Kıyafeti Saha Denetiminde Puanlama Modeli","summary":"İş kıyafeti saha denetiminde puanlama modeli ile uygunsuzlukları ölçün, lokasyon karşılaştırması yapın ve sürekli iyileştirme planı oluşturun.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafeti Saha Denetiminde Puanlama Modeli","is kiyafeti saha denetiminde puanlama modeli"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafeti-saha-gorevi-icin-hizli-katmanlama-protokolu","title":"İş Kıyafetinde Saha Görevi İçin Hızlı Katmanlama Protokolü","summary":"Saha ekipleri için hızlı katmanlama protokolü ile mevsim geçişlerinde konforu ve iş güvenliğini koruyun.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Saha Görevi İçin Hızlı Katmanlama Protokolü","is kiyafeti saha gorevi icin hizli katmanlama protokolu"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-satin-almada-teknik-karsilastirma-cizelgesi","title":"İş Kıyafeti Satın Almada Teknik Karşılaştırma Çizelgesi","summary":"Teklifleri yalnız fiyatla değil teknik karşılaştırma çizelgesiyle değerlendirerek daha doğru tedarik kararı verin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafeti Satın Almada Teknik Karşılaştırma Çizelgesi","is kiyafeti satin almada teknik karsilastirma cizelgesi"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-termin-krizi-icin-acil-alternatif-model-plani","title":"İş Kıyafetinde Termin Krizi İçin Acil Alternatif Model Planı","summary":"Termin gecikmelerine karşı acil alternatif model planı oluşturarak operasyon kesintisini önleyin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Termin Krizi İçin Acil Alternatif Model Planı","is kiyafeti termin krizi icin acil alternatif model plani"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-urun-kodlama-standardi-nasil-kurulur","title":"İş Kıyafetinde Ürün Kodlama Standardı Nasıl Kurulur?","summary":"Ürün kodlama standardı ile sipariş, stok ve zimmet süreçlerinde hata oranını düşürün.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Ürün Kodlama Standardı Nasıl Kurulur?","is kiyafeti urun kodlama standardi nasil kurulur"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafeti-uyum-egitimi-30-60-90-gun","title":"İş Kıyafeti Uyum Eğitimi: 30-60-90 Günlük Yol Haritası","summary":"Yeni personel için 30-60-90 günlük iş kıyafeti uyum eğitimi planı. Doğru giyim, bakım, zimmet ve denetim adımlarını standartlaştırın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafeti Uyum Eğitimi: 30-60-90 Günlük Yol Haritası","is kiyafeti uyum egitimi 30 60 90 gun"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafeti-yikama-dongusu-izleme-karti","title":"İş Kıyafetinde Yıkama Döngüsü İzleme Kartı Nasıl Kullanılır?","summary":"Yıkama döngüsü izleme kartı ile ürün ömrünü ve bakım kalitesini ölçülebilir hale getirin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Yıkama Döngüsü İzleme Kartı Nasıl Kullanılır?","is kiyafeti yikama dongusu izleme karti"],"published":"2026-08-02","views":0},
+{"slug":"is-kiyafetinde-gorev-bazli-cep-standardi","title":"İş Kıyafetinde Görev Bazlı Cep Standardı Nasıl Kurulur?","summary":"İş kıyafetinde görev bazlı cep standardı ile güvenli, ergonomik ve verimli kullanım sağlayın. Cep yerleşimi, ölçü ve dayanım kriterleri bu rehberde.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Görev Bazlı Cep Standardı Nasıl Kurulur?","is kiyafetinde gorev bazli cep standardi"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafetinde-konsinye-stok-modeli","title":"İş Kıyafetinde Konsinye Stok Modeli Nasıl Kurulur?","summary":"İş kıyafetinde konsinye stok modeli ile nakit akışı ve tedarik hızını dengeleyin. Sözleşme, KPI, risk ve denetim başlıklarıyla kapsamlı rehber.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Konsinye Stok Modeli Nasıl Kurulur?","is kiyafetinde konsinye stok modeli"],"published":"2026-08-01","views":0},
+{"slug":"is-kiyafetinde-qr-kodlu-zimmet-karti","title":"İş Kıyafetinde QR Kodlu Zimmet Kartı Nasıl Kurulur?","summary":"QR kodlu zimmet kartı ile iş kıyafeti teslim, iade, bakım ve değişim süreçlerini hızlandırın. Dijital izlenebilirlik için pratik uygulama rehberi.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde QR Kodlu Zimmet Kartı Nasıl Kurulur?","is kiyafetinde qr kodlu zimmet karti"],"published":"2026-08-01","views":0},
+{"slug":"saha-fotografiyla-is-kiyafeti-uygunsuzluk-raporlama","title":"Saha Fotoğrafıyla İş Kıyafeti Uygunsuzluk Raporlama Rehberi","summary":"Sahadan fotoğrafla iş kıyafeti uygunsuzluk raporu nasıl hazırlanır? Kanıt standardı, sınıflandırma, aksiyon ve kapanış adımlarını öğrenin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["Saha Fotoğrafıyla İş Kıyafeti Uygunsuzluk Raporlama Rehberi","saha fotografiyla is kiyafeti uygunsuzluk raporlama"],"published":"2026-08-01","views":0},
+{"slug":"vardiya-devir-teslimde-is-kiyafeti-kontrol-karti","title":"Vardiya Devir Tesliminde İş Kıyafeti Kontrol Kartı Nasıl Kullanılır?","summary":"Vardiya devir tesliminde iş kıyafeti kontrol kartı ile zimmet, hasar, hijyen ve stok bilgisini standartlaştırın. Adım adım uygulama rehberi.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["Vardiya Devir Tesliminde İş Kıyafeti Kontrol Kartı Nasıl Kullanılır?","vardiya devir teslimde is kiyafeti kontrol karti"],"published":"2026-08-01","views":0},
+{"slug":"yeni-sube-acilisinda-is-kiyafeti-devreye-alma-plani","title":"Yeni Şube Açılışında İş Kıyafeti Devreye Alma Planı","summary":"Yeni şube açılışında iş kıyafeti devreye alma planı nasıl hazırlanır? Ürün seti, stok, zimmet, eğitim ve denetim adımlarını tek akışta yönetin.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["Yeni Şube Açılışında İş Kıyafeti Devreye Alma Planı","yeni sube acilisinda is kiyafeti devreye alma plani"],"published":"2026-08-01","views":0},
 { slug: "mobilya-uretim-personeli-is-kiyafetleri", title: "Mobilya Üretim Personeli İş Kıyafetleri", summary: "Mobilya Üretim Personeli İş Kıyafetleri için ahşap tozu, kıymık ve hareketli tezgâh çevresi koşullarına uygun ürün, kumaş, katman ve bakım planını görev bazında oluşturun.", category: "Sektörel Çözümler", tags: ["Yeni Rehber"], searchTerms: ["Mobilya Üretim Personeli İş Kıyafetleri", "mobilya üretim personeli is kiyafetleri"], published: "2026-08-02", views: 0 },
 { slug: "mermer-dogal-tas-isleme-is-kiyafetleri", title: "Mermer ve Doğal Taş İşleme Personeli İş Kıyafetleri", summary: "Mermer ve Doğal Taş İşleme Personeli İş Kıyafetleri için taş tozu, su sıçraması ve keskin kenarlar koşullarına uygun ürün, kumaş, katman ve bakım planını görev bazında oluşturun.", category: "Sektörel Çözümler", tags: ["Yeni Rehber"], searchTerms: ["Mermer ve Doğal Taş İşleme Personeli İş Kıyafetleri", "mermer dogal tas isleme is kiyafetleri"], published: "2026-08-02", views: 0 },
 { slug: "matbaa-baski-tesisi-is-kiyafetleri", title: "Matbaa ve Baskı Tesisi Personeli İş Kıyafetleri", summary: "Matbaa ve Baskı Tesisi Personeli İş Kıyafetleri için mürekkep lekesi, solvent teması ve makine çevresi koşullarına uygun ürün, kumaş, katman ve bakım planını görev bazında oluşturun.", category: "Sektörel Çözümler", tags: ["Yeni Rehber"], searchTerms: ["Matbaa ve Baskı Tesisi Personeli İş Kıyafetleri", "matbaa baski tesisi is kiyafetleri"], published: "2026-08-02", views: 0 },
@@ -742,7 +762,43 @@
     });
   }
 
+  function ensureIndexCards() {
+    const existing = new Set(
+      Array.from(document.querySelectorAll(".knowledge-card[data-post-slug]"))
+        .map((card) => card.dataset.postSlug)
+    );
+    const sections = Array.from(document.querySelectorAll(".knowledge-category[data-category]"));
+
+    posts.forEach((post) => {
+      if (existing.has(post.slug)) return;
+      const section = sections.find((item) => item.dataset.category === post.category) || sections[0];
+      const grid = section && section.querySelector(".knowledge-grid");
+      if (!grid) return;
+
+      const card = document.createElement("article");
+      card.className = "knowledge-card";
+      card.dataset.postSlug = post.slug;
+
+      const category = document.createElement("span");
+      category.className = "category";
+      category.textContent = post.category;
+      const title = document.createElement("h3");
+      title.textContent = post.title;
+      const summary = document.createElement("p");
+      summary.textContent = post.summary;
+      const link = document.createElement("a");
+      link.className = "read-more";
+      link.href = postUrl(post, true);
+      link.textContent = "Yazıyı Oku →";
+
+      card.append(category, title, summary, link);
+      grid.appendChild(card);
+      existing.add(post.slug);
+    });
+  }
+
   function initIndex() {
+    ensureIndexCards();
     const cards = Array.from(document.querySelectorAll(".knowledge-card[data-post-slug]"));
     const search = document.querySelector("#knowledge-search");
     const status = document.querySelector("#knowledge-search-status");
@@ -996,11 +1052,11 @@
 
   function getArticleImageUrl(article) {
     const media = article.querySelector("img[src]");
-    if (!media) return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png";
+    if (!media) return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp";
     try {
       return new URL(media.getAttribute("src"), window.location.href).href;
     } catch (_) {
-      return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png";
+      return "https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp";
     }
   }
 
@@ -1025,7 +1081,7 @@
       "@id": "https://kardeslertekstil.com.tr/#organization",
       name: "Kardeşler Tekstil",
       url: "https://kardeslertekstil.com.tr/",
-      logo: "https://kardeslertekstil.com.tr/assets/logo-kit-badge.png",
+      logo: "https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp",
       telephone: "+90 216 396 19 88",
       email: "kardesler@kardeslertekstil.com.tr"
     }, "article-organization");

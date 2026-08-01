@@ -78,6 +78,9 @@
      products.js'teki kısa yazımı ("01.jpg" gibi) tam ürün objesine çevir.
      --------------------------------------------------------------- */
   function pad3(n) { return ("00" + n).slice(-3); }
+  function webpSource(filename) {
+    return String(filename || "").replace(/\.(png|jpe?g)$/i, ".webp");
+  }
 
   function normalizeProducts(cat) {
     var flat = [];
@@ -90,7 +93,7 @@
         var p = typeof raw === "string" ? { img: raw } : raw;
         var code = p.code || group.prefix + "-" + pad3((cat.codeStart || 1) + flat.length);
         var item = {
-          src: GALLERY_PATH + cat.id + "/" + p.img,
+          src: GALLERY_PATH + cat.id + "/" + webpSource(p.img),
           code: code,
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
@@ -401,6 +404,7 @@
   var lbCounter = document.getElementById("lbCounter");
   var lbWhatsapp = document.getElementById("lbWhatsapp");
   var lbQuote = document.getElementById("lbQuote");
+  var lbAddToQuote = document.getElementById("lbAddToQuote");
   var lbFormDetail = document.getElementById("lbFormDetail");
   var lbTags = document.getElementById("lbTags");
   var lbCopy = document.getElementById("lbCopy");
@@ -446,6 +450,11 @@
     var quoteLink = "iletisim.html?urun=" + encodeURIComponent(quoteText) + "&mesaj=" + encodeURIComponent("Merhaba, " + quoteText + " için kurumsal teklif almak istiyorum.");
     if (lbQuote) lbQuote.href = quoteLink;
     if (lbFormDetail) lbFormDetail.href = quoteLink;
+    if (lbAddToQuote) {
+      lbAddToQuote.dataset.code = item.code;
+      lbAddToQuote.dataset.name = item.name;
+      lbAddToQuote.textContent = "Teklif Listesine Ekle";
+    }
   }
 
   function openLightbox(cat, i, trigger) {
@@ -476,6 +485,17 @@
   document.getElementById("lbClose").addEventListener("click", closeLightbox);
   document.getElementById("lbPrev").addEventListener("click", function () { step(-1); });
   document.getElementById("lbNext").addEventListener("click", function () { step(1); });
+  if (lbAddToQuote) {
+    lbAddToQuote.addEventListener("click", function () {
+      var list = galleries[state.cat];
+      var item = list && list[state.i];
+      if (!item) return;
+      document.dispatchEvent(new CustomEvent("quote-list:add", {
+        detail: { code: item.code, name: item.name, category: (catById(state.cat) || {}).title || "Ürün" }
+      }));
+      lbAddToQuote.textContent = "Listeye Eklendi ✓";
+    });
+  }
   lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
 
   document.addEventListener("keydown", function (e) {
