@@ -452,7 +452,10 @@ button{font-family:inherit;cursor:pointer;}
 .quote-path-card li{position:relative;padding-left:15px;}
 .quote-path-card li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;border-radius:50%;background:var(--orange-500);}
 .quote-path-card strong{margin-top:auto;color:var(--navy-700);font-size:13px;}
-.contact-channel-select{padding:56px 0;}
+.contact-channel-select{padding:56px 0;background:var(--orange-500);border-bottom-color:var(--orange-600);}
+.contact-channel-select .eyebrow{color:var(--navy-700);}
+.contact-channel-select .quote-paths-head h1{color:var(--navy-800);}
+.contact-channel-select .quote-paths-head>p{color:var(--navy-800);}
 .contact .details a{color:inherit;}
 .contact .details+div{display:flex;gap:10px;flex-wrap:wrap;}
 .catalog-premium .cta-primary.cta-written{box-shadow:none;}
