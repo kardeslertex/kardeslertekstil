@@ -152,7 +152,7 @@
       purchase.appendChild(el("span", "gitem-purchase-badge", text));
     });
     var searchableDetails = [item.name].concat(item.tags).join(" ").toLocaleLowerCase("tr-TR");
-    var productionDays = searchableDetails.indexOf("klasik") !== -1 ? "10 İş Günü" : "15 İş Günü";
+    var productionDays = searchableDetails.indexOf("klasik") !== -1 ? "7 İş Günü" : "10 İş Günü";
     var leadTime = el("span", "gitem-lead-time");
     leadTime.appendChild(el("small", null, "Tahmini Üretim Süresi"));
     leadTime.appendChild(el("strong", null, productionDays));
