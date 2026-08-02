@@ -100,6 +100,24 @@
   }
 
   function initConversionTracking() {
+    function confirmEmailAddress() {
+      var address = "kardesler@kardeslertekstil.com.tr";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).catch(function () { /* Mailto remains available. */ });
+      }
+      var toast = document.querySelector(".email-copy-toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.className = "email-copy-toast";
+        toast.setAttribute("role", "status");
+        document.body.appendChild(toast);
+      }
+      toast.textContent = "E-posta adresi kopyalandı: " + address;
+      toast.classList.add("is-visible");
+      window.clearTimeout(toast._hideTimer);
+      toast._hideTimer = window.setTimeout(function () { toast.classList.remove("is-visible"); }, 3600);
+    }
+
     document.addEventListener("click", function (event) {
       var link = event.target.closest("a[href]");
       if (!link) return;
@@ -108,7 +126,10 @@
       var data = { link_url: link.href, link_text: label, page_path: window.location.pathname };
 
       if (/wa\.me|whatsapp/i.test(href)) track("whatsapp_click", data);
-      else if (/^mailto:/i.test(href)) track("email_click", data);
+      else if (/^mailto:/i.test(href)) {
+        track("email_click", data);
+        confirmEmailAddress();
+      }
       else if (/^tel:/i.test(href)) track("phone_click", data);
       else if (/iletisim(?:\.html)?|#teklif-formu/i.test(href)) track("quote_cta_click", data);
     });
