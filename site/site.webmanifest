@@ -2,8 +2,8 @@
   "name":"Kardeşler Tekstil",
   "short_name":"KT",
   "icons":[
-    {"src":"/android-chrome-192x192.png?v=10","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"/android-chrome-512x512.png?v=10","sizes":"512x512","type":"image/png","purpose":"any"}
+    {"src":"/android-chrome-192x192.png?v=11","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/android-chrome-512x512.png?v=11","sizes":"512x512","type":"image/png","purpose":"any"}
   ],
   "theme_color":"#f97316",
   "background_color":"#ffffff",

@@ -100,12 +100,22 @@
   }
 
   function initConversionTracking() {
-    function confirmEmailAddress() {
+    function copyEmailAddress(toast) {
       var address = "kardesler@kardeslertekstil.com.tr";
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(address).catch(function () { /* Mailto remains available. */ });
+      } else {
+        var helper = document.createElement("textarea");
+        helper.value = address;
+        helper.setAttribute("readonly", "");
+        helper.style.position = "fixed";
+        helper.style.opacity = "0";
+        document.body.appendChild(helper);
+        helper.select();
+        try { document.execCommand("copy"); } catch (error) { /* Selection remains available. */ }
+        helper.remove();
       }
-      var toast = document.querySelector(".email-copy-toast");
+      toast = toast || document.querySelector(".email-copy-toast");
       if (!toast) {
         toast = document.createElement("div");
         toast.className = "email-copy-toast";
@@ -118,17 +128,73 @@
       toast._hideTimer = window.setTimeout(function () { toast.classList.remove("is-visible"); }, 3600);
     }
 
+    function openEmailChooser(mailtoHref) {
+      var address = "kardesler@kardeslertekstil.com.tr";
+      var subjectMatch = mailtoHref.match(/[?&]subject=([^&]+)/i);
+      var subject = subjectMatch ? decodeURIComponent(subjectMatch[1].replace(/\+/g, " ")) : "Kurumsal Teklif Talebi";
+      var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(address) + "&su=" + encodeURIComponent(subject);
+      var outlookUrl = "https://outlook.office.com/mail/deeplink/compose?to=" + encodeURIComponent(address) + "&subject=" + encodeURIComponent(subject);
+      var overlay = document.querySelector(".email-channel-overlay");
+
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.className = "email-channel-overlay";
+        overlay.innerHTML = '<div class="email-channel-dialog" role="dialog" aria-modal="true" aria-labelledby="email-channel-title">' +
+          '<button class="email-channel-close" type="button" aria-label="E-posta seçeneklerini kapat">×</button>' +
+          '<span class="quote-path-kicker">E-POSTA KANALI</span>' +
+          '<h2 id="email-channel-title">E-posta Yöntemini Seçin</h2>' +
+          '<p>Teklif talebiniz için size uygun e-posta uygulamasını açın.</p>' +
+          '<div class="email-channel-actions">' +
+            '<a class="btn btn-primary" data-email-native>Mail Uygulamasını Aç</a>' +
+            '<a class="btn btn-secondary" data-email-gmail target="_blank" rel="noopener">Gmail ile Gönder</a>' +
+            '<a class="btn btn-secondary" data-email-outlook target="_blank" rel="noopener">Outlook ile Gönder</a>' +
+            '<button class="btn btn-secondary" data-email-copy type="button">Adresi Kopyala</button>' +
+          '</div>' +
+          '<small>' + address + '</small>' +
+        '</div>';
+        document.body.appendChild(overlay);
+        overlay.addEventListener("click", function (event) {
+          if (event.target === overlay || event.target.closest(".email-channel-close")) closeEmailChooser();
+        });
+        overlay.querySelector("[data-email-copy]").addEventListener("click", function () {
+          copyEmailAddress();
+          track("email_channel_selected", { channel: "copy", page_path: window.location.pathname });
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && overlay.classList.contains("is-visible")) closeEmailChooser();
+        });
+      }
+
+      overlay.querySelector("[data-email-native]").href = mailtoHref;
+      overlay.querySelector("[data-email-gmail]").href = gmailUrl;
+      overlay.querySelector("[data-email-outlook]").href = outlookUrl;
+      overlay.querySelector("[data-email-native]").onclick = function () { track("email_channel_selected", { channel: "native", page_path: window.location.pathname }); };
+      overlay.querySelector("[data-email-gmail]").onclick = function () { track("email_channel_selected", { channel: "gmail", page_path: window.location.pathname }); };
+      overlay.querySelector("[data-email-outlook]").onclick = function () { track("email_channel_selected", { channel: "outlook", page_path: window.location.pathname }); };
+      overlay.classList.add("is-visible");
+      document.body.classList.add("email-channel-open");
+      overlay.querySelector(".email-channel-close").focus();
+    }
+
+    function closeEmailChooser() {
+      var overlay = document.querySelector(".email-channel-overlay");
+      if (overlay) overlay.classList.remove("is-visible");
+      document.body.classList.remove("email-channel-open");
+    }
+
     document.addEventListener("click", function (event) {
       var link = event.target.closest("a[href]");
       if (!link) return;
+      if (link.hasAttribute("data-email-native")) return;
       var href = link.getAttribute("href") || "";
       var label = (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100);
       var data = { link_url: link.href, link_text: label, page_path: window.location.pathname };
 
       if (/wa\.me|whatsapp/i.test(href)) track("whatsapp_click", data);
       else if (/^mailto:/i.test(href)) {
+        event.preventDefault();
         track("email_click", data);
-        confirmEmailAddress();
+        openEmailChooser(href);
       }
       else if (/^tel:/i.test(href)) track("phone_click", data);
       else if (/iletisim(?:\.html)?|#teklif-formu/i.test(href)) track("quote_cta_click", data);
