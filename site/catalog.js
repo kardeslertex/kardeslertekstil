@@ -311,6 +311,19 @@
     left.appendChild(eyebrow);
     left.appendChild(el("h2", "cat-title", cat.title));
     left.appendChild(el("p", "catalog-section-desc", cat.desc));
+    var seoPages = {
+      tshirt: "polo-yaka-is-tisortu/", sweat: "kurumsal-is-sweatshirtu/",
+      pantolon: "is-pantolonu/", tulum: "is-tulumu/",
+      onluk: "asci-kiyafeti-is-onlugu/", montkaban: "is-montu-kaban/",
+      polar: "polar-is-montu/", yelek: "reflektorlu-is-yelegi/",
+      softshell: "softshell-is-montu/", isg: "is-guvenligi-ekipmanlari/",
+      promosyon: "kurumsal-promosyon-urunleri/"
+    };
+    if (seoPages[cat.id]) {
+      var guide = el("a", "catalog-category-guide", "Kategori detaylarını inceleyin →");
+      guide.href = seoPages[cat.id];
+      left.appendChild(guide);
+    }
     var insights = categoryInsights[cat.id];
     if (insights) {
       var info = el("div", "catalog-category-info");
