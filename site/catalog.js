@@ -1,5 +1,5 @@
 /* =====================================================================
-   KATALOG MOTORU — urunlerimiz.html
+   KATALOG MOTORU — urunlerimiz
    =====================================================================
    Bu dosya products.js içindeki KATALOG verisini okuyup sayfayı çizer:
    - Kategori menüsü (yapışkan nav) ve bölümler otomatik oluşur
@@ -349,7 +349,7 @@
     wa.rel = "noopener";
     var form = el("a", "btn btn-secondary-dark", "Yazılı Teklif İsteyin");
     var intent = cat.title + " için yazılı kurumsal teklif almak istiyorum.";
-    form.href = "iletisim.html?urun=" + encodeURIComponent(cat.title) + "&mesaj=" + encodeURIComponent(intent) + "#teklif-formu";
+    form.href = "iletisim?urun=" + encodeURIComponent(cat.title) + "&mesaj=" + encodeURIComponent(intent) + "#teklif-formu";
     actions.appendChild(wa);
     actions.appendChild(form);
     box.appendChild(copy);
@@ -460,7 +460,7 @@
     lbWhatsapp.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
 
     var quoteText = item.code + " " + item.name;
-    var quoteLink = "iletisim.html?urun=" + encodeURIComponent(quoteText) + "&mesaj=" + encodeURIComponent("Merhaba, " + quoteText + " için kurumsal teklif almak istiyorum.");
+    var quoteLink = "iletisim?urun=" + encodeURIComponent(quoteText) + "&mesaj=" + encodeURIComponent("Merhaba, " + quoteText + " için kurumsal teklif almak istiyorum.");
     if (lbQuote) lbQuote.href = quoteLink;
     if (lbFormDetail) lbFormDetail.href = quoteLink;
     if (lbAddToQuote) {

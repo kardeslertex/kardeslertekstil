@@ -2,7 +2,7 @@
   "use strict";
 
   /* Kimlikler tek noktadan tanımlanır: "G-..." veya "GTM-...". */
-  var GA4_MEASUREMENT_ID = "";
+  var GA4_MEASUREMENT_ID = "G-6LMDSV9GBZ";
   var GTM_CONTAINER_ID = "";
   var directGa4Active = false;
   window.dataLayer = window.dataLayer || [];
@@ -109,6 +109,7 @@
 
       if (/wa\.me|whatsapp/i.test(href)) track("whatsapp_click", data);
       else if (/^mailto:/i.test(href)) track("email_click", data);
+      else if (/^tel:/i.test(href)) track("phone_click", data);
       else if (/iletisim(?:\.html)?|#teklif-formu/i.test(href)) track("quote_cta_click", data);
     });
 
@@ -209,7 +210,7 @@
       actions.className = "quote-list-actions";
       var submit = document.createElement("a");
       submit.className = "btn btn-primary";
-      submit.href = "/iletisim.html?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage()) + "#teklif-formu";
+      submit.href = "/iletisim?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage()) + "#teklif-formu";
       submit.textContent = "Liste İçin Yazılı Teklif İsteyin";
       submit.addEventListener("click", function () {
         track("quote_list_submit", { item_count: items.length, product_codes: items.map(function (item) { return item.code; }).join(",") });

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const refsPath = path.join(__dirname, '..', 'referanslarimiz.html');
+const refsPath = path.join(__dirname, '..', 'referanslarimiz');
 const indexPath = path.join(__dirname, '..', 'index.html');
 const cssPath = path.join(__dirname, '..', 'styles.css');
 
@@ -14,7 +14,7 @@ const imgRe = /<a class=["'][^"']*\bref-logo\b[^"']*["'][^>]*>\s*<img[^>]+src=["
 let m; const srcs = [];
 while((m = imgRe.exec(refs))){ srcs.push(m[1]); }
 const unique = Array.from(new Set(srcs));
-console.log('Found logos in referanslarimiz.html:', srcs.length);
+console.log('Found logos in referanslarimiz:', srcs.length);
 console.log('Unique logos count:', unique.length);
 const missing = unique.filter(src => !fs.existsSync(path.join(__dirname, '..', src)));
 console.log('Missing logo files:', missing.length);

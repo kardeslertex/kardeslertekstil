@@ -970,7 +970,7 @@
     grid.className = "knowledge-product-links-grid";
     list.forEach((item) => {
       const link = document.createElement("a");
-      link.href = `../../urunlerimiz.html#${item.hash}`;
+      link.href = `../../urunlerimiz#${item.hash}`;
       link.textContent = item.title;
       grid.appendChild(link);
     });
@@ -991,7 +991,7 @@
 
     const link = document.createElement("a");
     link.className = "btn btn-accent";
-    link.href = `../../iletisim.html?urun=${encodeURIComponent("Özel Tasarım")}&mesaj=${encodeURIComponent(`Merhaba, ${current.title} içeriğine uygun ürün için teklif almak istiyorum.`)}`;
+    link.href = `../../iletisim?urun=${encodeURIComponent("Özel Tasarım")}&mesaj=${encodeURIComponent(`Merhaba, ${current.title} içeriğine uygun ürün için teklif almak istiyorum.`)}`;
     link.textContent = "Teklif Formunu Doldur";
 
     section.append(heading, paragraph, link);
