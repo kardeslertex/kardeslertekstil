@@ -3408,6 +3408,7 @@ html{scroll-behavior:smooth;}
 .product-seo-copy{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.55fr);gap:72px;align-items:start;}
 .product-seo-copy h2,.product-seo-sector-layout h2,.product-seo-links h2{margin:12px 0 22px;font-family:var(--font-display);font-size:42px;line-height:1.05;text-transform:uppercase;color:var(--navy-700);}
 .product-seo-copy p,.product-seo-sector-layout p,.product-seo-links p{color:var(--fg2);font-size:16px;line-height:1.75;}
+.product-seo-copy .local-service-note p{color:var(--navy-100);}
 .product-seo-sector-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
 .product-seo-sector-layout ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none;}
 .product-seo-sector-layout li{padding:16px 18px;border-left:3px solid var(--orange-500);background:#fff;color:var(--navy-700);font-weight:800;box-shadow:var(--shadow-1);}
