@@ -1411,6 +1411,45 @@ html{scroll-behavior:smooth;}
   pointer-events:auto;
 }
 
+.catalog-subfilters{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:4px 0 20px;
+  padding-bottom:2px;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--steel-300) transparent;
+}
+.catalog-subfilter{
+  flex:0 0 auto;
+  min-height:38px;
+  padding:8px 15px;
+  border:1px solid var(--steel-200);
+  border-radius:var(--radius-full);
+  background:#fff;
+  color:var(--navy-700);
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.02em;
+  cursor:pointer;
+  transition:background var(--dur),border-color var(--dur),color var(--dur),transform var(--dur);
+}
+.catalog-subfilter:hover{
+  border-color:var(--orange-500);
+  transform:translateY(-1px);
+}
+.catalog-subfilter.is-active{
+  border-color:var(--orange-500);
+  background:var(--orange-500);
+  color:#fff;
+}
+.catalog-subfilter:focus-visible{
+  outline:3px solid rgba(249,115,22,.22);
+  outline-offset:2px;
+}
+
 /* Masaüstünde ilk 8 kategori üstte, kalan kategoriler ve arama altta. */
 @media (min-width:1001px){
   .catalog-toolbar-inner{
@@ -1773,6 +1812,15 @@ html{scroll-behavior:smooth;}
     font-size:10px;
   }
   .catalog-search{height:40px;}
+  .catalog-subfilters{
+    margin:2px -4px 16px;
+    padding:0 4px 5px;
+  }
+  .catalog-subfilter{
+    min-height:36px;
+    padding:7px 12px;
+    font-size:11px;
+  }
   .catalog-section{
     scroll-margin-top:var(--catalog-scroll-offset,220px);
     margin-bottom:54px;

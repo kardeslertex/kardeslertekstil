@@ -303,6 +303,51 @@
     return grid;
   }
 
+  var tshirtFilter = "all";
+
+  function matchesTshirtFilter(item, filter) {
+    if (!item || item.cat !== "tshirt" || filter === "all") return true;
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (filter === "polo") return text.indexOf("polo yaka") !== -1;
+    if (filter === "crew") return text.indexOf("bisiklet yaka") !== -1;
+    if (filter === "vneck") return /v[\s‑-]*yaka/.test(text);
+    if (filter === "long") return text.indexOf("uzun kol") !== -1;
+    return true;
+  }
+
+  function buildTshirtFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "polo", label: "Polo Yaka" },
+      { id: "crew", label: "Bisiklet Yaka" },
+      { id: "vneck", label: "V Yaka" },
+      { id: "long", label: "Uzun Kollu" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Tişört modelini yaka ve kol tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesTshirtFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.tshirtFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === tshirtFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === tshirtFilter);
+      button.addEventListener("click", function () {
+        tshirtFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.tshirtFilter === tshirtFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -378,6 +423,7 @@
         section.appendChild(wrap);
       });
     } else {
+      if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -639,7 +685,9 @@
         (cat && cat.keywords || "") + " " +
         item.tags.join(" ") + " " + item.search
       ).toLowerCase();
-      btn.hidden = !(!q || haystack.indexOf(q) !== -1);
+      var matchesSearch = !q || haystack.indexOf(q) !== -1;
+      var matchesSubtype = btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter);
+      btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
     document.querySelectorAll(".isg-group").forEach(function (group) {
