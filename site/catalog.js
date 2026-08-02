@@ -93,7 +93,7 @@
         var p = typeof raw === "string" ? { img: raw } : raw;
         var code = p.code || group.prefix + "-" + pad3((cat.codeStart || 1) + flat.length);
         var item = {
-          src: GALLERY_PATH + cat.id + "/" + webpSource(p.img),
+          src: GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img)),
           code: code,
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
