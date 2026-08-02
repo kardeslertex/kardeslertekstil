@@ -472,6 +472,19 @@
   var lbFeatures = document.getElementById("lbFeatures");
   var lastTrigger = null;
   var state = { cat: null, i: 0 };
+  var formCategoryByCatalogId = {
+    tshirt: "Tişört",
+    sweat: "Sweatshirt ve Hoodie",
+    pantolon: "İş Pantolonu",
+    tulum: "İş Tulumu",
+    onluk: "İş Önlüğü",
+    montkaban: "Mont ve Kaban",
+    polar: "Polar ve Polar Mont",
+    yelek: "İş Yeleği",
+    softshell: "Softshell",
+    isg: "İş Güvenliği Ekipmanları",
+    promosyon: "Promosyon Ürünleri"
+  };
 
   function catById(id) {
     for (var k = 0; k < CATALOG.length; k++) if (CATALOG[k].id === id) return CATALOG[k];
@@ -500,15 +513,15 @@
     lbFeatures.innerHTML = "";
     set.features.forEach(function (f) { lbFeatures.appendChild(el("li", null, f)); });
 
-    var message = state.cat === "isg"
-      ? "Merhaba, " + item.code + " kodlu " + item.name + " için fiyat, beden/model ve stok bilgisi almak istiyorum."
-      : "Merhaba, " + item.code + " kodlu " + item.name + " için fiyat, kumaş, renk ve üretim bilgisi almak istiyorum.";
+    var message = "Merhaba, " + item.code + " kodlu ürün için fiyat istiyorum.";
     lbWhatsapp.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
 
-    var quoteText = item.code + " " + item.name;
-    var quoteLink = "iletisim?urun=" + encodeURIComponent(quoteText) + "&mesaj=" + encodeURIComponent("Merhaba, " + quoteText + " için kurumsal teklif almak istiyorum.");
-    if (lbQuote) lbQuote.href = quoteLink;
-    if (lbFormDetail) lbFormDetail.href = quoteLink;
+    var formCategory = formCategoryByCatalogId[state.cat] || "Özel Tasarım";
+    var formLink = "iletisim?urun=" + encodeURIComponent(formCategory) + "&mesaj=" + encodeURIComponent(message) + "#teklif-formu";
+    if (lbQuote) {
+      lbQuote.href = "mailto:kardesler@kardeslertekstil.com.tr?subject=" + encodeURIComponent(item.code + " Kodlu Ürün İçin Fiyat Talebi") + "&body=" + encodeURIComponent(message);
+    }
+    if (lbFormDetail) lbFormDetail.href = formLink;
     if (lbAddToQuote) {
       lbAddToQuote.dataset.code = item.code;
       lbAddToQuote.dataset.name = item.name;

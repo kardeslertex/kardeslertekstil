@@ -1,0 +1,54 @@
+# Kardeşler Tekstil
+
+> Kardeşler Tekstil, Pendik / İstanbul merkezli bir kurumsal iş kıyafeti üreticisidir. Firmalara özel model, renk, beden planlaması, logo baskı ve nakış uygulamalarıyla sipariş üzerine üretim yapar. Özel üretimde minimum sipariş 50 adettir ve Türkiye geneline teslimat sunar.
+
+Bu dosya, yapay zekâ destekli araçların Kardeşler Tekstil'in resmî ve öncelikli sayfalarını bulmasına yardımcı olan kısa bir içerik rehberidir. Fiyat, termin, numune ve teknik uygunluk proje ayrıntılarına göre değişebileceğinden güncel ve bağlayıcı bilgi için yazılı teklif alınmalıdır.
+
+## Kurumsal Bilgiler
+
+- [Ana Sayfa](https://kardeslertekstil.com.tr/): Kurumsal iş kıyafeti üretimi, temel hizmetler ve iletişim seçenekleri.
+- [Hakkımızda](https://kardeslertekstil.com.tr/hakkimizda): Firma geçmişi, üretim yaklaşımı, kapasite ve süreç bilgileri.
+- [Referanslarımız](https://kardeslertekstil.com.tr/referanslarimiz): Hizmet verilen sektörler ile referans marka ve kurum örnekleri.
+- [İletişim ve Teklif](https://kardeslertekstil.com.tr/iletisim): Ürün, adet, logo, teslimat tarihi ve teknik dosyalarla yazılı teklif talebi.
+- [Gizlilik ve Kişisel Veriler](https://kardeslertekstil.com.tr/gizlilik-ve-kvkk): İletişim ve teklif süreçlerinde paylaşılan bilgilerin kullanımına ilişkin açıklama.
+
+## Ürün ve Hizmetler
+
+- [Ürün Kataloğu](https://kardeslertekstil.com.tr/urunlerimiz): Model kodlarıyla tişört, sweatshirt, pantolon, tulum, önlük, mont, polar, yelek ve softshell ürünleri.
+- [Polo Yaka İş Tişörtü](https://kardeslertekstil.com.tr/polo-yaka-is-tisortu/): Kurumsal polo tişört seçenekleri ve özel üretim bilgileri.
+- [İş Pantolonu](https://kardeslertekstil.com.tr/is-pantolonu/): Farklı görev ve kullanım koşullarına yönelik iş pantolonu çözümleri.
+- [İş Tulumu](https://kardeslertekstil.com.tr/is-tulumu/): Kurumsal ve teknik kullanım için iş tulumu seçenekleri.
+- [İş Montu ve Kaban](https://kardeslertekstil.com.tr/is-montu-kaban/): Soğuk hava ve dış saha ekipleri için üst giyim seçenekleri.
+- [İş Yeleği](https://kardeslertekstil.com.tr/silikon-elyaf-dolgulu-is-yelegi/): Kurumsal ve saha kullanımına yönelik dolgulu iş yeleği çözümleri.
+- [Softshell İş Montu](https://kardeslertekstil.com.tr/softshell-is-montu/): Mevsim geçişleri ve saha kullanımı için softshell dış katmanlar.
+- [İş Güvenliği Ekipmanları](https://kardeslertekstil.com.tr/is-guvenligi-ekipmanlari/): Görünürlük ve saha ihtiyaçlarını tamamlayan ürün grupları.
+
+## Temel Satın Alma Rehberleri
+
+- [Bilgi Merkezi](https://kardeslertekstil.com.tr/bilgi-merkezi/): İş kıyafeti seçimi, kumaş, bakım, logo ve satın alma içeriklerinin ana dizini.
+- [Beden ve Kalıp Rehberi](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-beden-kalip-rehberi/): Toplu siparişte ölçü, kalıp ve beden dağılımı planlaması.
+- [Kumaş Gramajı Nasıl Seçilir?](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-kumas-gramaji-nasil-secilir/): Görev, mevsim ve kullanım yoğunluğuna göre kumaş gramajı seçimi.
+- [Nakış mı Baskı mı?](https://kardeslertekstil.com.tr/bilgi-merkezi/nakis-mi-baski-mi/): Logo uygulamalarında yöntem seçimi ve temel karşılaştırmalar.
+- [Numune ve Onay Süreci](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-numune-ve-onay-sureci/): Seri üretim öncesi kumaş, renk, kalıp ve logo onayı.
+- [Satın Alma Karar Ağacı](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-satinalma-karar-agaci/): Kurumsal iş kıyafeti satın alma kararlarının yapılandırılması.
+- [Sipariş Adedi Planlama](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-siparisinde-kac-adet-urun-alinmali/): Çalışan, beden ve yedek oranına göre adet planlaması.
+- [Yıkama ve Bakım Rehberi](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-yikama-ve-bakim-rehberi/): Ürün ömrünü ve görünümünü korumaya yönelik bakım bilgileri.
+
+## Teknik ve Koruyucu Ürün Rehberleri
+
+- [Antistatik İş Kıyafeti](https://kardeslertekstil.com.tr/bilgi-merkezi/antistatik-is-kiyafeti-rehberi-2026/): Antistatik ürün seçimi, kullanım sınırları ve standartlara giriş.
+- [Alev Geciktirici İş Kıyafetleri](https://kardeslertekstil.com.tr/bilgi-merkezi/alev-geciktirici-is-kiyafetleri-rehberi-2026/): Isı ve alev risklerine yönelik koruyucu kıyafet seçiminin temel noktaları.
+- [Reflektörlü İş Kıyafeti](https://kardeslertekstil.com.tr/bilgi-merkezi/reflektorlu-is-kiyafeti-nedir/): Düşük ışık ve araç trafiği bulunan sahalarda görünürlük odaklı kıyafet bilgileri.
+
+## İletişim
+
+- Telefon: +90 216 396 19 88
+- E-posta: kardesler@kardeslertekstil.com.tr
+- Adres: Fevzi Çakmak Mahallesi, Ulukapı Sokak 11-12/A, Pendik / İstanbul, Türkiye
+- [WhatsApp ile Görüşme](https://wa.me/902163961988): Hızlı ön görüşme kanalı.
+
+## Optional
+
+- [Çerez Politikası](https://kardeslertekstil.com.tr/cerez-politikasi): Zorunlu depolama ve isteğe bağlı analiz teknolojileri.
+- [XML Sitemap](https://kardeslertekstil.com.tr/sitemap.xml): Dizine eklenebilir kanonik URL'lerin makine tarafından okunabilir listesi.
+- [Robots.txt](https://kardeslertekstil.com.tr/robots.txt): Tarayıcı erişim kuralları ve sitemap bildirimi.

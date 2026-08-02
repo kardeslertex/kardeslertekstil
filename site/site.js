@@ -8,8 +8,9 @@
   window.dataLayer = window.dataLayer || [];
 
   function track(eventName, details) {
-    window.dataLayer.push(Object.assign({ event: eventName }, details || {}));
+    if (!window.__ktAnalyticsAllowed) return;
     if (directGa4Active && window.gtag) window.gtag("event", eventName, details || {});
+    else if (window.__ktGtmActive) window.dataLayer.push(Object.assign({ event: eventName }, details || {}));
   }
 
   function initAnalytics() {
@@ -19,6 +20,7 @@
     var containerId = gtmMeta && gtmMeta.content ? gtmMeta.content.trim() : GTM_CONTAINER_ID;
 
     if (/^GTM-[A-Z0-9]+$/i.test(containerId)) {
+      window.__ktGtmActive = true;
       window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
       var gtmScript = document.createElement("script");
       gtmScript.async = true;
@@ -27,6 +29,7 @@
       return;
     }
     if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+    window.__ktAnalyticsAllowed = true;
 
     var script = document.createElement("script");
     script.async = true;
@@ -36,6 +39,82 @@
     window.gtag("js", new Date());
     window.gtag("config", measurementId);
     directGa4Active = true;
+  }
+
+  function initPrivacyControls() {
+    var storageKey = "kt_cookie_consent_v1";
+    var analyticsStarted = false;
+    if (!document.querySelector('link[href^="/privacy.css"]')) {
+      var privacyStyles = document.createElement("link");
+      privacyStyles.rel = "stylesheet";
+      privacyStyles.href = "/privacy.css?v=20260802-1";
+      document.head.appendChild(privacyStyles);
+    }
+
+    function startAnalyticsOnce() {
+      if (analyticsStarted) return;
+      analyticsStarted = true;
+      window.__ktAnalyticsAllowed = true;
+      initAnalytics();
+    }
+
+    function readConsent() {
+      try { return localStorage.getItem(storageKey); } catch (error) { return null; }
+    }
+
+    function saveConsent(value) {
+      var mustReload = analyticsStarted && value === "rejected";
+      try { localStorage.setItem(storageKey, value); } catch (error) { /* Storage may be unavailable. */ }
+      if (value === "accepted") startAnalyticsOnce();
+      var banner = document.querySelector(".cookie-consent");
+      if (banner) banner.remove();
+      if (mustReload) window.location.reload();
+    }
+
+    function showPreferences() {
+      var existing = document.querySelector(".cookie-consent");
+      if (existing) {
+        existing.querySelector("button")?.focus();
+        return;
+      }
+
+      var banner = document.createElement("section");
+      banner.className = "cookie-consent";
+      banner.setAttribute("role", "dialog");
+      banner.setAttribute("aria-modal", "true");
+      banner.setAttribute("aria-labelledby", "cookie-consent-title");
+      banner.innerHTML =
+        '<div class="cookie-consent__inner">' +
+          '<div><strong id="cookie-consent-title">&Ccedil;erez tercihleri</strong>' +
+          '<p>Siteyi &ccedil;alıştırmak i&ccedil;in zorunlu depolama kullanılır. Ziyaretleri anlamamıza yardımcı olan Google Analytics ise yalnızca izninizle y&uuml;klenir. <a href="/cerez-politikasi">Ayrıntılar</a></p></div>' +
+          '<div class="cookie-consent__actions">' +
+            '<button type="button" class="btn btn-secondary" data-cookie-choice="rejected">Yalnızca zorunlu</button>' +
+            '<button type="button" class="btn btn-primary" data-cookie-choice="accepted">Analitiğe izin ver</button>' +
+          '</div>' +
+        '</div>';
+      banner.addEventListener("click", function (event) {
+        var choice = event.target.closest("[data-cookie-choice]");
+        if (choice) saveConsent(choice.dataset.cookieChoice);
+      });
+      document.body.appendChild(banner);
+      banner.querySelector("button")?.focus();
+    }
+
+    window.ktOpenCookiePreferences = showPreferences;
+    document.querySelectorAll(".site-footer").forEach(function (footer) {
+      if (footer.querySelector("[data-cookie-preferences]")) return;
+      var link = document.createElement("button");
+      link.type = "button";
+      link.className = "footer-privacy-link";
+      link.dataset.cookiePreferences = "";
+      link.textContent = "Çerez tercihleri";
+      link.addEventListener("click", showPreferences);
+      footer.querySelector(".container")?.appendChild(link);
+    });
+
+    var consent = readConsent();
+    if (consent === "accepted") startAnalyticsOnce();
+    else if (consent !== "rejected") showPreferences();
   }
 
   function initMobileNavigation() {
@@ -209,6 +288,7 @@
         track("quote_form_start", { form_id: "teklif-formu" });
       });
       form.addEventListener("submit", function () {
+        track("quote_form_attempt", { form_id: "teklif-formu" });
         track("quote_form_submit", { form_id: "teklif-formu" });
       });
     }
@@ -266,12 +346,16 @@
       count.textContent = String(items.length);
       content.replaceChildren();
       if (!items.length) {
+        dock.hidden = true;
+        panel.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
         var empty = document.createElement("p");
         empty.className = "quote-list-empty";
         empty.textContent = "Henüz ürün eklemediniz. Ürün detayından listenize model ekleyebilirsiniz.";
         content.appendChild(empty);
         return;
       }
+      dock.hidden = false;
 
       var list = document.createElement("ul");
       list.className = "quote-list-items";
@@ -429,6 +513,20 @@
       return;
     }
 
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reducedMotion || saveData) {
+      startFallback();
+      window.setTimeout(function () { leaveIntro("/"); }, 1200);
+      return;
+    }
+
+    video.querySelectorAll("source[data-src]").forEach(function (source) {
+      source.src = source.dataset.src;
+      source.removeAttribute("data-src");
+    });
+    video.load();
+
     video.addEventListener("ended", function () {
       leaveIntro("/");
     }, { once: true });
@@ -438,6 +536,37 @@
     if (playAttempt && typeof playAttempt.catch === "function") {
       playAttempt.catch(startFallback);
     }
+  }
+
+  function initDeferredVideos() {
+    var videos = Array.prototype.slice.call(document.querySelectorAll("video[data-deferred-video]"));
+    if (!videos.length) return;
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reducedMotion || saveData) return;
+
+    function loadVideo(video) {
+      video.querySelectorAll("source[data-src]").forEach(function (source) {
+        source.src = source.dataset.src;
+        source.removeAttribute("data-src");
+      });
+      video.load();
+      var playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === "function") playAttempt.catch(function () {});
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(loadVideo);
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        loadVideo(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "240px" });
+    videos.forEach(function (video) { observer.observe(video); });
   }
 
   function initBrandIntroLinks() {
@@ -450,10 +579,11 @@
   document.addEventListener("DOMContentLoaded", function () {
     initHomeIntro();
     initBrandIntroLinks();
-    initAnalytics();
+    initPrivacyControls();
     initMobileNavigation();
     initConversionTracking();
     initQuoteList();
     initTargetDate();
+    initDeferredVideos();
   });
 })();

@@ -158,7 +158,7 @@
           <option value="Promosyon Ürünleri">Promosyon Ürünleri</option>
           <option value="Özel Tasarım">Özel Tasarım</option>
         </select></div>
-        <div class="field"><label for="adet">Adet</label><input id="adet" type="number" name="adet" min="50" placeholder="Örn. 250" required></div>
+        <div class="field"><label for="adet">Adet</label><input id="adet" type="number" name="adet" min="50" step="1" placeholder="En az 50" required></div>
         <div class="field"><label for="teslimat-sehri">Teslimat Şehri</label><input id="teslimat-sehri" type="text" name="teslimat_sehri" placeholder="Örn. İstanbul" autocomplete="address-level2" required></div>
         <div class="field"><label for="hedef-tarih">Hedef Teslim Tarihi</label><input id="hedef-tarih" type="date" name="hedef_teslim_tarihi" required></div>
         <div class="field"><label for="logo-dosyasi">Logo Dosyası <span class="field-optional">(Opsiyonel)</span></label><input id="logo-dosyasi" type="file" name="logo_dosyasi" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps"></div>
@@ -166,6 +166,7 @@
         <div class="field full"><p class="file-help">Logo, teknik çizim, ürün listesi veya şartnamenizi ekleyebilirsiniz.</p></div>
         <div class="field full"><label for="mesaj">Mesajınız</label><textarea id="mesaj" name="mesaj" rows="4" placeholder="Renk, logo, baskı türü, teslim tarihi..."></textarea></div>
       </div>
+      <p class="form-privacy-note">Formu göndererek bilgilerinizin teklif talebinizi değerlendirmek ve sizinle iletişime geçmek amacıyla kullanılacağını kabul etmiş olursunuz. Ayrıntılar için <a href="gizlilik-ve-kvkk" target="_blank" rel="noopener">Gizlilik ve Kişisel Veriler bilgilendirmesini</a> ve <a href="cerez-politikasi" target="_blank" rel="noopener">Çerez Politikasını</a> inceleyin.</p>
       <div class="form-foot">
         <span class="hint">Minimum sipariş 50 adet.</span>
         <button type="submit" class="btn btn-primary">Teklif Gönder
@@ -229,6 +230,7 @@
     var adetField = form.querySelector('[name="adet"]');
     var mesajField = form.querySelector('[name="mesaj"]');
 
+    var matchedCategory = false;
     if (urun && urunField) {
       var match = Array.prototype.find.call(urunField.options, function (opt) {
         return opt.value.toLowerCase() === urun.toLowerCase();
@@ -236,6 +238,7 @@
 
       if (match) {
         urunField.value = match.value;
+        matchedCategory = true;
       } else {
         var custom = Array.prototype.find.call(urunField.options, function (opt) {
           return opt.value === "Özel Tasarım";
@@ -254,13 +257,43 @@
     if (mesajField) {
       var existing = mesajField.value ? mesajField.value.trim() : "";
       var lines = [];
-      if (urun) lines.push("Ürün: " + urun);
+      if (urun && !matchedCategory) lines.push("Ürün: " + urun);
       if (mesaj) lines.push(mesaj);
       var prefill = lines.join("\n").trim();
       if (prefill) {
         mesajField.value = existing ? (existing + "\n" + prefill) : prefill;
       }
     }
+  })();
+</script>
+<script>
+  (function () {
+    var form = document.getElementById("teklif-formu");
+    var adetField = document.getElementById("adet");
+    if (!form || !adetField) return;
+
+    function validateMinimumOrder() {
+      if (adetField.value === "") {
+        adetField.setCustomValidity("");
+        return true;
+      }
+      var value = Number(adetField.value);
+      var valid = Number.isInteger(value) && value >= 50;
+      adetField.setCustomValidity(valid ? "" : "Minimum sipariş adedi 50 olmalıdır.");
+      return valid;
+    }
+
+    adetField.addEventListener("input", validateMinimumOrder);
+    adetField.addEventListener("blur", function () {
+      if (adetField.value !== "" && Number(adetField.value) < 50) adetField.value = "50";
+      validateMinimumOrder();
+    });
+    form.addEventListener("submit", function (event) {
+      if (validateMinimumOrder()) return;
+      event.preventDefault();
+      adetField.reportValidity();
+      adetField.focus();
+    });
   })();
 </script>
 </body></html>

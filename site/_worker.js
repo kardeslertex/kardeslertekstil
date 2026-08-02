@@ -7,7 +7,7 @@ const LEGACY_PATHS = new Map([
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
-    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; frame-src 'self' https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https:; frame-src 'self' https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -32,7 +32,29 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
-    const response = await env.ASSETS.fetch(request);
+    let response = await env.ASSETS.fetch(request);
+
+    // Eski, bozuk Turkce karakterli urun adreslerini HTML meta-refresh yerine
+    // edge seviyesinde kalici yonlendirmeye cevirir.
+    const looksLikeLegacyProduct = url.pathname.startsWith("/urun/");
+    if (response.ok && looksLikeLegacyProduct) {
+      const legacyHtml = await response.clone().text();
+      const refreshMatch = legacyHtml.match(/<meta[^>]+http-equiv=["']refresh["'][^>]+content=["'][^"']*url=([^"']+)/i);
+      if (refreshMatch) return Response.redirect(new URL(refreshMatch[1], url).toString(), 308);
+    }
+
+    // Rehber detay sayfalari, yalnızca dizin/arama ekraninin ihtiyac duydugu
+    // buyuk knowledge-center.js veri paketini indirmesin.
+    const isKnowledgeArticle =
+      /^\/bilgi-merkezi\/[^/]+\/$/.test(url.pathname) &&
+      !url.pathname.endsWith("/bilgi-merkezi/");
+    if (response.ok && isKnowledgeArticle) {
+      response = new HTMLRewriter()
+        .on('script[src*="knowledge-center.js"]', {
+          element(element) { element.remove(); },
+        })
+        .transform(response);
+    }
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
       headers.set(name, value);
@@ -55,10 +77,17 @@ export default {
       "/android-chrome-512x512.png",
     ]);
 
-    if (faviconAssets.has(url.pathname)) {
+    if (url.pathname === "/site.js" || url.pathname === "/styles.css") {
+      headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+    } else if (url.pathname === "/privacy.css" || url.pathname === "/llms.txt") {
+      headers.set("Cache-Control", "public, max-age=3600, must-revalidate");
+    } else if (faviconAssets.has(url.pathname)) {
       headers.set("Cache-Control", "public, max-age=86400, must-revalidate");
     } else if (url.pathname === "/manifest.webmanifest") {
       headers.set("Cache-Control", "public, max-age=3600, must-revalidate");
+    }
+    if (url.pathname === "/llms.txt") {
+      headers.set("Content-Type", "text/plain; charset=utf-8");
     }
     if (response.status === 404) headers.set("X-Robots-Tag", "noindex, follow");
 
