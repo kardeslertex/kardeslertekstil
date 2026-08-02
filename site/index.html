@@ -2,7 +2,7 @@
 
 <html lang="tr"><head><meta charset="utf-8"/>
 <title>Kurumsal İş Kıyafeti Üretimi — Kardeşler Tekstil</title>
-<meta content="width=device-width,initial-scale=1" name="viewport"/><link href="styles.css?v=20260803-6" rel="stylesheet"/><meta content="1982'den beri kurumsal firmalara özel iş kıyafeti üretiyoruz. İstanbul Pendik'te doğrudan üretim, firma logolu baskı ve nakış uygulaması, numune ve Türkiye geneli teslimat desteği sunuyoruz." name="description"/><meta name="robots" content="index,follow,max-image-preview:large"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/><link href="styles.css?v=20260803-6" rel="stylesheet"/><meta content="İstanbul Pendik'te kurumsal iş kıyafeti üretimi, firma logolu baskı ve nakış, numune desteği ve Türkiye geneli teslimat." name="description"/><meta name="robots" content="index,follow,max-image-preview:large"/>
 <link rel="canonical" href="https://kardeslertekstil.com.tr/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
@@ -88,15 +88,20 @@
 <script>
 (function () {
   try {
-    if (sessionStorage.getItem("kt_home_intro_seen_v1") !== "1") {
+    var forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
+    window.__ktForceHomeIntro = forceIntro;
+    if (forceIntro || sessionStorage.getItem("kt_home_intro_seen_v1") !== "1") {
       document.documentElement.classList.add("intro-splash-pending");
+    }
+    if (forceIntro && window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.hash);
     }
   } catch (error) {
     document.documentElement.classList.add("intro-splash-pending");
   }
 })();
 </script>
-<script src="/site.js?v=20260803-4" defer></script>
+<script src="/site.js?v=20260804-2" defer></script>
 </head>
 <body class="home-v3" data-screen-label="01 Home">
 <section class="intro-splash" data-home-intro aria-label="Kardeşler Tekstil karşılama ekranı" aria-hidden="true">
@@ -105,11 +110,11 @@
 </div>
 <div class="intro-splash-copy">
 <div class="intro-splash-copy-inner">
-<p class="intro-splash-kicker">1982'DEN BERİ ÜRETİM</p>
-<h1>1982’den beri işinizi giydiriyoruz.</h1>
-<p class="intro-splash-lead">Tasarımdan üretime, kurumsal iş kıyafetlerinde uçtan uca çözüm.</p>
+<p class="intro-splash-kicker">KURUMSAL İŞ KIYAFETİ ÜRETİMİ</p>
+<h1>Firmanız için özel üretiyoruz.</h1>
+<p class="intro-splash-lead">Tişörtten monta; kurumsal renk, baskı ve nakışla üretim.</p>
 <nav class="intro-splash-actions" aria-label="Hızlı yönlendirmeler">
-<a class="intro-splash-button intro-splash-button-primary" href="/" data-intro-target="home">Anasayfaya Git</a>
+<a class="intro-splash-button intro-splash-button-primary" href="/" data-intro-target="home">Siteye Gir</a>
 <a class="intro-splash-button" href="/urunlerimiz" data-intro-target="products">Ürünleri İncele</a>
 <a class="intro-splash-button" href="/iletisim#teklif-formu" data-intro-target="quote">Teklif Al</a>
 </nav>

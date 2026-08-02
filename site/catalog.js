@@ -698,6 +698,12 @@
     document.querySelectorAll(".catalog-section").forEach(function (section) {
       var hasVisible = Array.from(section.querySelectorAll(".gitem")).some(function (btn) { return !btn.hidden; });
       section.classList.toggle("is-filtered-out", !hasVisible);
+      var count = section.querySelector(".catalog-count");
+      if (count) {
+        var visibleCount = Array.from(section.querySelectorAll(".gitem")).filter(function (btn) { return !btn.hidden; }).length;
+        var cat = catById(section.dataset.category);
+        count.textContent = visibleCount + " " + (cat && cat.unit || "model");
+      }
     });
 
     clearBtn.classList.toggle("is-visible", !!q);

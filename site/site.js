@@ -362,7 +362,7 @@
       hasSeenIntro = false;
     }
 
-    if (hasSeenIntro) {
+    if (hasSeenIntro && !window.__ktForceHomeIntro) {
       document.documentElement.classList.remove("intro-splash-pending");
       intro.hidden = true;
       return;
@@ -440,8 +440,16 @@
     }
   }
 
+  function initBrandIntroLinks() {
+    document.querySelectorAll(".site-header a.brand").forEach(function (brand) {
+      brand.setAttribute("href", "/?intro=1");
+      brand.setAttribute("aria-label", "Kardeşler Tekstil karşılama ekranını aç");
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHomeIntro();
+    initBrandIntroLinks();
     initAnalytics();
     initMobileNavigation();
     initConversionTracking();

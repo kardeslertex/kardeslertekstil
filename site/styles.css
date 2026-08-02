@@ -499,6 +499,7 @@ html.intro-splash-pending .intro-splash,
 .contact .details .row.top{align-items:flex-start;}
 .contact .details .row span.big{font-family:var(--font-display);font-size:22px;}
 .contact form{background:var(--cream-100);padding:32px;color:var(--fg1);border-radius:4px;}
+#teklif-formu{scroll-margin-top:112px;}
 .contact form h3{font-family:var(--font-display);font-size:22px;text-transform:uppercase;margin:0 0 20px;color:var(--navy-700);}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .field{display:flex;flex-direction:column;gap:6px;}
@@ -624,6 +625,7 @@ html.intro-splash-pending .intro-splash,
   .site-header .brand{margin-right:auto;}
 }
 @media (max-width:640px){
+  #teklif-formu{scroll-margin-top:92px;}
   .site-header{height:72px;}
   .site-header a.brand img{height:44px;}
   .site-header .container > .btn{display:none;}
@@ -1607,6 +1609,7 @@ html{scroll-behavior:smooth;}
   isolation:isolate;
   transition:transform 240ms var(--ease-out),box-shadow 240ms var(--ease-out),border-color 240ms var(--ease-out);
 }
+.gitem[hidden]{display:none!important;}
 .gitem-visual{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--cream-50);}
 .gitem-purchase-info{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:6px;width:100%;padding:14px;background:#fff;pointer-events:none;text-align:left;}
 .gitem-purchase-badge{padding:6px 8px;border:1px solid var(--steel-200);border-radius:var(--radius-full);background:var(--cream-50);color:var(--navy-700);font-size:9px;font-weight:700;line-height:1;}
@@ -3217,6 +3220,16 @@ html{scroll-behavior:smooth;}
   border-radius:var(--radius-md);
   background:var(--navy-700);
 }
+.about-production-feature{
+  display:block;
+  width:100%;
+  max-width:100%;
+  aspect-ratio:16 / 9;
+  object-fit:cover;
+  margin-top:12px;
+  border-radius:var(--radius-md);
+  background:var(--navy-700);
+}
 .about-story-copy{
   display:grid;
   gap:20px;
@@ -3469,6 +3482,7 @@ html{scroll-behavior:smooth;}
   .about-story-grid{gap:36px;}
   .about-production-grid{gap:8px;margin-top:34px;}
   .about-production-video{border-radius:3px;}
+  .about-production-feature{margin-top:8px;border-radius:3px;}
   .about-story h2,
   .about-sectors h2{
     font-size:34px;
