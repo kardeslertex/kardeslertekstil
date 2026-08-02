@@ -429,6 +429,46 @@
     field.min = localDate;
   }
 
+  function appendLanguageAwareText(target, value) {
+    var text = String(value == null ? "" : value);
+    var englishTerms = /\b(?:sweatshirt|hoodie|t-?shirt|ripstop|hi-vis|high visibility|slim fit|regular fit|unisex|size set|reflective)\b/gi;
+    var cursor = 0;
+    var match;
+    target.textContent = "";
+    while ((match = englishTerms.exec(text)) !== null) {
+      if (match.index > cursor) target.appendChild(document.createTextNode(text.slice(cursor, match.index)));
+      var english = document.createElement("span");
+      english.lang = "en";
+      english.textContent = match[0];
+      target.appendChild(english);
+      cursor = match.index + match[0].length;
+    }
+    if (cursor < text.length) target.appendChild(document.createTextNode(text.slice(cursor)));
+  }
+
+  function initLanguageAwareTerms() {
+    var root = document.body;
+    if (!root || !("createTreeWalker" in document)) return;
+    var nodes = [];
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentElement;
+        if (!parent || parent.closest("script,style,textarea,code,[lang='en']")) return NodeFilter.FILTER_REJECT;
+        return /\b(?:sweatshirt|hoodie|t-?shirt|ripstop|hi-vis|high visibility|slim fit|regular fit|unisex|size set|reflective)\b/i.test(node.nodeValue || "")
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT;
+      }
+    });
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var holder = document.createDocumentFragment();
+      appendLanguageAwareText(holder, node.nodeValue);
+      node.parentNode.replaceChild(holder, node);
+    });
+  }
+
+  window.ktSetLanguageAwareText = appendLanguageAwareText;
+
   function initHomeIntro() {
     var intro = document.querySelector("[data-home-intro]");
     if (!intro) return;
@@ -585,5 +625,6 @@
     initQuoteList();
     initTargetDate();
     initDeferredVideos();
+    initLanguageAwareTerms();
   });
 })();

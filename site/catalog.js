@@ -499,7 +499,8 @@
 
     lbImg.src = item.src;
     lbImg.alt = item.code + " " + item.name;
-    lbTitle.textContent = item.name;
+    if (window.ktSetLanguageAwareText) window.ktSetLanguageAwareText(lbTitle, item.name);
+    else lbTitle.textContent = item.name;
     lbCode.textContent = item.code;
     lbCategory.textContent = cat ? (cat.gruplar ? cat.title : cat.nav) : "Ürün";
     lbCounter.textContent = (state.i + 1) + " / " + list.length;
