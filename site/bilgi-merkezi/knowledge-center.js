@@ -799,7 +799,7 @@
 
   function initIndex() {
     ensureIndexCards();
-    const cards = Array.from(document.querySelectorAll(".knowledge-card[data-post-slug]"));
+    const cards = Array.from(document.querySelectorAll(".knowledge-category:not([data-index-hidden]) .knowledge-card[data-post-slug]"));
     const search = document.querySelector("#knowledge-search");
     const status = document.querySelector("#knowledge-search-status");
     const clear = document.querySelector("#knowledge-filter-clear");
@@ -872,7 +872,7 @@
         card.hidden = !visible;
         if (visible) visibleCount += 1;
       });
-      document.querySelectorAll(".knowledge-category[data-category]").forEach((section) => {
+      document.querySelectorAll(".knowledge-category[data-category]:not([data-index-hidden])").forEach((section) => {
         section.hidden = !section.querySelector(".knowledge-card:not([hidden])");
       });
 
