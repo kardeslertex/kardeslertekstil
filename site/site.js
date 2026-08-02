@@ -345,7 +345,103 @@
     field.min = localDate;
   }
 
+  function initHomeIntro() {
+    var intro = document.querySelector("[data-home-intro]");
+    if (!intro) return;
+
+    var storageKey = "kt_home_intro_seen_v1";
+    var video = intro.querySelector("video");
+    var links = Array.prototype.slice.call(intro.querySelectorAll("[data-intro-target]"));
+    var fallbackTimer = null;
+    var leaving = false;
+    var hasSeenIntro = false;
+
+    try {
+      hasSeenIntro = window.sessionStorage.getItem(storageKey) === "1";
+    } catch (error) {
+      hasSeenIntro = false;
+    }
+
+    if (hasSeenIntro) {
+      document.documentElement.classList.remove("intro-splash-pending");
+      intro.hidden = true;
+      return;
+    }
+
+    function rememberIntro() {
+      try {
+        window.sessionStorage.setItem(storageKey, "1");
+      } catch (error) {
+        // Depolama kapalı olsa da açılış deneyimi çalışmaya devam eder.
+      }
+    }
+
+    function clearFallback() {
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      fallbackTimer = null;
+    }
+
+    function startFallback() {
+      clearFallback();
+      fallbackTimer = window.setTimeout(function () {
+        leaveIntro("/");
+      }, 14000);
+    }
+
+    function finish(destination) {
+      document.documentElement.classList.remove("intro-splash-pending");
+      document.body.classList.remove("intro-splash-active");
+      intro.classList.remove("is-active", "is-leaving");
+      intro.setAttribute("aria-hidden", "true");
+      intro.hidden = true;
+      if (video) video.pause();
+
+      if (destination && destination !== "/") {
+        window.location.assign(destination);
+      }
+    }
+
+    function leaveIntro(destination) {
+      if (leaving) return;
+      leaving = true;
+      rememberIntro();
+      clearFallback();
+      intro.classList.add("is-leaving");
+      window.setTimeout(function () {
+        finish(destination || "/");
+      }, 360);
+    }
+
+    intro.hidden = false;
+    intro.setAttribute("aria-hidden", "false");
+    intro.classList.add("is-active");
+    document.body.classList.add("intro-splash-active");
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        leaveIntro(link.getAttribute("href") || "/");
+      });
+    });
+
+    if (!video) {
+      startFallback();
+      return;
+    }
+
+    video.addEventListener("ended", function () {
+      leaveIntro("/");
+    }, { once: true });
+    video.addEventListener("error", startFallback, { once: true });
+
+    var playAttempt = video.play();
+    if (playAttempt && typeof playAttempt.catch === "function") {
+      playAttempt.catch(startFallback);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    initHomeIntro();
     initAnalytics();
     initMobileNavigation();
     initConversionTracking();
