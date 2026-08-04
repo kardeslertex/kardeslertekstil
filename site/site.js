@@ -47,7 +47,7 @@
     if (!document.querySelector('link[href^="/privacy.css"]')) {
       var privacyStyles = document.createElement("link");
       privacyStyles.rel = "stylesheet";
-      privacyStyles.href = "/privacy.css?v=20260802-1";
+      privacyStyles.href = "/privacy.css?v=20260804-2";
       document.head.appendChild(privacyStyles);
     }
 
@@ -85,11 +85,11 @@
       banner.setAttribute("aria-labelledby", "cookie-consent-title");
       banner.innerHTML =
         '<div class="cookie-consent__inner">' +
-          '<div><strong id="cookie-consent-title">&Ccedil;erez tercihleri</strong>' +
-          '<p>Siteyi &ccedil;alıştırmak i&ccedil;in zorunlu depolama kullanılır. Ziyaretleri anlamamıza yardımcı olan Google Analytics ise yalnızca izninizle y&uuml;klenir. <a href="/cerez-politikasi">Ayrıntılar</a></p></div>' +
+          '<div class="cookie-consent__content"><strong id="cookie-consent-title">&Ccedil;erez tercihiniz</strong>' +
+          '<p>Sitenin d&uuml;zg&uuml;n &ccedil;alışması i&ccedil;in zorunlu &ccedil;erezler kullanılır. İsteğe bağlı &ccedil;erezleri kabul edebilir veya reddedebilirsiniz. <a href="/cerez-politikasi">&Ccedil;erez politikası</a></p></div>' +
           '<div class="cookie-consent__actions">' +
-            '<button type="button" class="btn btn-secondary" data-cookie-choice="rejected">Yalnızca zorunlu</button>' +
-            '<button type="button" class="btn btn-primary" data-cookie-choice="accepted">Analitiğe izin ver</button>' +
+            '<button type="button" class="btn cookie-consent__reject" data-cookie-choice="rejected">Reddet</button>' +
+            '<button type="button" class="btn cookie-consent__accept" data-cookie-choice="accepted">&Ccedil;erezleri kabul et</button>' +
           '</div>' +
         '</div>';
       banner.addEventListener("click", function (event) {
