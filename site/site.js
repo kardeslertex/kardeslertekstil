@@ -664,6 +664,7 @@
     var imageRequest = 0;
     var imageCache = Object.create(null);
     var logoUrl = "";
+    var logoObjectUrl = "";
     var logoPosition = { x: 42, y: 31 };
 
     function updateLogoVisibility() {
@@ -680,27 +681,76 @@
       logoPreview.style.top = logoPosition.y + "%";
     }
 
+    function revokeLogoObjectUrl() {
+      if (!logoObjectUrl) return;
+      URL.revokeObjectURL(logoObjectUrl);
+      logoObjectUrl = "";
+    }
+
+    function applyLogoSource(source) {
+      return new Promise(function (resolve, reject) {
+        logoImage.onload = function () {
+          logoImage.onload = null;
+          logoImage.onerror = null;
+          resolve();
+        };
+        logoImage.onerror = function () {
+          logoImage.onload = null;
+          logoImage.onerror = null;
+          reject(new Error("Logo yüklenemedi"));
+        };
+        logoImage.src = source;
+      });
+    }
+
     logoUpload.addEventListener("click", function () { logoInput.click(); });
     logoInput.addEventListener("change", function () {
       var file = logoInput.files && logoInput.files[0];
-      if (!file || !file.type.match(/^image\//)) return;
-      var reader = new FileReader();
-      reader.onload = function () {
-        logoUrl = String(reader.result || "");
-        if (!logoUrl) return;
-        logoImage.src = logoUrl;
+      if (!file) return;
+
+      logoPreview.hidden = true;
+      var candidateObjectUrl = URL.createObjectURL(file);
+
+      applyLogoSource(candidateObjectUrl).then(function () {
+        revokeLogoObjectUrl();
+        logoObjectUrl = candidateObjectUrl;
+        logoUrl = candidateObjectUrl;
         logoPreview.hidden = false;
         logoSizeControl.hidden = false;
         logoRemove.hidden = false;
         logoUpload.textContent = "Logoyu Değiştir";
         setLogoPosition(42, 31);
-      };
-      reader.readAsDataURL(file);
+      }).catch(function () {
+        URL.revokeObjectURL(candidateObjectUrl);
+        var reader = new FileReader();
+        reader.onload = function () {
+          var dataUrl = String(reader.result || "");
+          if (!dataUrl) return;
+          applyLogoSource(dataUrl).then(function () {
+            revokeLogoObjectUrl();
+            logoUrl = dataUrl;
+            logoPreview.hidden = false;
+            logoSizeControl.hidden = false;
+            logoRemove.hidden = false;
+            logoUpload.textContent = "Logoyu Değiştir";
+            setLogoPosition(42, 31);
+          }).catch(function () {
+            logoUrl = "";
+            logoImage.removeAttribute("src");
+            logoPreview.hidden = true;
+            logoSizeControl.hidden = true;
+            logoRemove.hidden = true;
+            logoUpload.textContent = "Logo Ekle";
+          });
+        };
+        reader.readAsDataURL(file);
+      });
     });
     logoSize.addEventListener("input", function () {
       logoPreview.style.width = logoSize.value + "px";
     });
     logoRemove.addEventListener("click", function () {
+      revokeLogoObjectUrl();
       logoUrl = "";
       logoImage.removeAttribute("src");
       logoInput.value = "";
