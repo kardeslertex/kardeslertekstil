@@ -684,14 +684,39 @@
     logoInput.addEventListener("change", function () {
       var file = logoInput.files && logoInput.files[0];
       if (!file || !file.type.match(/^image\//)) return;
-      if (logoUrl) URL.revokeObjectURL(logoUrl);
-      logoUrl = URL.createObjectURL(file);
-      logoImage.src = logoUrl;
-      logoPreview.hidden = false;
-      logoSizeControl.hidden = false;
-      logoRemove.hidden = false;
-      logoUpload.textContent = "Logoyu Değiştir";
-      setLogoPosition(42, 31);
+      var previousLogoUrl = logoUrl;
+      var candidateLogoUrl = URL.createObjectURL(file);
+
+      logoPreview.hidden = true;
+      logoImage.onload = function () {
+        logoImage.onload = null;
+        logoImage.onerror = null;
+        if (previousLogoUrl) URL.revokeObjectURL(previousLogoUrl);
+        logoUrl = candidateLogoUrl;
+        logoPreview.hidden = false;
+        logoSizeControl.hidden = false;
+        logoRemove.hidden = false;
+        logoUpload.textContent = "Logoyu Değiştir";
+        setLogoPosition(42, 31);
+      };
+      logoImage.onerror = function () {
+        logoImage.onload = null;
+        logoImage.onerror = null;
+        URL.revokeObjectURL(candidateLogoUrl);
+        logoInput.value = "";
+        if (previousLogoUrl) {
+          logoImage.src = previousLogoUrl;
+          logoPreview.hidden = false;
+        } else {
+          logoUrl = "";
+          logoImage.removeAttribute("src");
+          logoPreview.hidden = true;
+          logoSizeControl.hidden = true;
+          logoRemove.hidden = true;
+          logoUpload.textContent = "Logo Ekle";
+        }
+      };
+      logoImage.src = candidateLogoUrl;
     });
     logoSize.addEventListener("input", function () {
       logoPreview.style.width = logoSize.value + "px";
