@@ -505,8 +505,15 @@
       fallbackTimer = null;
     }
 
+    function resetHomeScroll() {
+      if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+
     function startFallback() {
-      clearFallback();
+      if (fallbackTimer || leaving) return;
       fallbackTimer = window.setTimeout(function () {
         leaveIntro("/");
       }, 14000);
@@ -522,6 +529,10 @@
 
       if (destination && destination !== "/") {
         window.location.assign(destination);
+      } else {
+        resetHomeScroll();
+        window.requestAnimationFrame(resetHomeScroll);
+        window.setTimeout(resetHomeScroll, 80);
       }
     }
 
@@ -537,9 +548,12 @@
     }
 
     intro.hidden = false;
+    resetHomeScroll();
     intro.setAttribute("aria-hidden", "false");
     intro.classList.add("is-active");
     document.body.classList.add("intro-splash-active");
+    // Video oynatmayı kabul edip veri beklerken takılsa bile intro açık kalmasın.
+    startFallback();
 
     links.forEach(function (link) {
       link.addEventListener("click", function (event) {
@@ -549,14 +563,12 @@
     });
 
     if (!video) {
-      startFallback();
       return;
     }
 
     var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var saveData = navigator.connection && navigator.connection.saveData;
     if (reducedMotion || saveData) {
-      startFallback();
       window.setTimeout(function () { leaveIntro("/"); }, 1200);
       return;
     }
@@ -616,6 +628,231 @@
     });
   }
 
+  function initProductShowcase() {
+    var showcase = document.querySelector("[data-product-showcase]");
+    var products = window.HERO_PRODUCTS || [];
+    if (!showcase || !products.length) return;
+
+    var stage = showcase.querySelector("[data-showcase-stage]");
+    var image = showcase.querySelector("[data-showcase-image]");
+    var status = showcase.querySelector("[data-showcase-status]");
+    var productLink = showcase.querySelector("[data-showcase-product-link]");
+    var categoryLink = showcase.querySelector("[data-showcase-category-link]");
+    var colorList = showcase.querySelector("[data-showcase-colors]");
+    var categoryList = showcase.querySelector("[data-showcase-categories]");
+    var infoName = showcase.querySelector("[data-info-name]");
+    var infoColors = showcase.querySelector("[data-info-colors]");
+    var infoFabric = showcase.querySelector("[data-info-fabric]");
+    var infoWeight = showcase.querySelector("[data-info-weight]");
+    var infoComposition = showcase.querySelector("[data-info-composition]");
+    var infoUse = showcase.querySelector("[data-info-use]");
+    var infoLogo = showcase.querySelector("[data-info-logo]");
+    var infoMinimum = showcase.querySelector("[data-info-minimum]");
+    var infoWash = showcase.querySelector("[data-info-wash]");
+    var infoDescription = showcase.querySelector("[data-info-description]");
+    var logoTool = showcase.querySelector("[data-logo-tool]");
+    var logoInput = showcase.querySelector("[data-logo-input]");
+    var logoUpload = showcase.querySelector("[data-logo-upload]");
+    var logoPreview = showcase.querySelector("[data-logo-preview]");
+    var logoImage = showcase.querySelector("[data-logo-image]");
+    var logoSize = showcase.querySelector("[data-logo-size]");
+    var logoSizeControl = showcase.querySelector("[data-logo-size-control]");
+    var logoRemove = showcase.querySelector("[data-logo-remove]");
+    var currentProduct = 0;
+    var currentColor = 0;
+    var transitionTimer = null;
+    var imageRequest = 0;
+    var imageCache = Object.create(null);
+    var logoUrl = "";
+    var logoPosition = { x: 42, y: 31 };
+
+    function updateLogoVisibility() {
+      logoTool.hidden = false;
+      logoPreview.hidden = !logoUrl;
+      if (logoUrl) setLogoPosition(logoPosition.x, logoPosition.y);
+    }
+
+    function setLogoPosition(x, y) {
+      var minimumY = products[currentProduct] && products[currentProduct].id === "tulum" ? 12 : 20;
+      logoPosition.x = Math.max(25, Math.min(66, x));
+      logoPosition.y = Math.max(minimumY, Math.min(58, y));
+      logoPreview.style.left = logoPosition.x + "%";
+      logoPreview.style.top = logoPosition.y + "%";
+    }
+
+    logoUpload.addEventListener("click", function () { logoInput.click(); });
+    logoInput.addEventListener("change", function () {
+      var file = logoInput.files && logoInput.files[0];
+      if (!file || !file.type.match(/^image\//)) return;
+      if (logoUrl) URL.revokeObjectURL(logoUrl);
+      logoUrl = URL.createObjectURL(file);
+      logoImage.src = logoUrl;
+      logoPreview.hidden = false;
+      logoSizeControl.hidden = false;
+      logoRemove.hidden = false;
+      logoUpload.textContent = "Logoyu Değiştir";
+      setLogoPosition(42, 31);
+    });
+    logoSize.addEventListener("input", function () {
+      logoPreview.style.width = logoSize.value + "px";
+    });
+    logoRemove.addEventListener("click", function () {
+      if (logoUrl) URL.revokeObjectURL(logoUrl);
+      logoUrl = "";
+      logoImage.removeAttribute("src");
+      logoInput.value = "";
+      logoPreview.hidden = true;
+      logoSizeControl.hidden = true;
+      logoRemove.hidden = true;
+      logoUpload.textContent = "Logo Ekle";
+    });
+    logoPreview.addEventListener("pointerdown", function (event) {
+      if (!logoUrl) return;
+      logoPreview.setPointerCapture(event.pointerId);
+      function move(moveEvent) {
+        var bounds = stage.getBoundingClientRect();
+        setLogoPosition(((moveEvent.clientX - bounds.left) / bounds.width) * 100, ((moveEvent.clientY - bounds.top) / bounds.height) * 100);
+      }
+      function stop() {
+        logoPreview.removeEventListener("pointermove", move);
+        logoPreview.removeEventListener("pointerup", stop);
+        logoPreview.removeEventListener("pointercancel", stop);
+      }
+      logoPreview.addEventListener("pointermove", move);
+      logoPreview.addEventListener("pointerup", stop);
+      logoPreview.addEventListener("pointercancel", stop);
+    });
+
+    function primeImage(src) {
+      if (!src) return Promise.reject(new Error("Ürün görseli bulunamadı"));
+      if (imageCache[src]) return imageCache[src];
+
+      imageCache[src] = new Promise(function (resolve, reject) {
+        var candidate = new Image();
+        candidate.decoding = "async";
+        candidate.onload = function () {
+          if (typeof candidate.decode === "function") {
+            candidate.decode().catch(function () { /* Decode hatası geçişi engellemesin. */ }).then(resolve);
+          } else {
+            resolve();
+          }
+        };
+        candidate.onerror = reject;
+        candidate.src = src;
+      });
+      imageCache[src].catch(function () { delete imageCache[src]; });
+      return imageCache[src];
+    }
+
+    function swapShowcaseImage(src, alt, animate, productId) {
+      var request = ++imageRequest;
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function commit() {
+        if (request !== imageRequest) return;
+        if (productId) stage.setAttribute("data-product-id", productId);
+        image.src = src;
+        image.alt = alt;
+        status.hidden = true;
+        stage.classList.remove("is-changing");
+      }
+
+      if (!animate || reducedMotion) {
+        commit();
+        return;
+      }
+
+      primeImage(src).then(function () {
+        if (request !== imageRequest) return;
+        window.clearTimeout(transitionTimer);
+        stage.classList.add("is-changing");
+        transitionTimer = window.setTimeout(commit, 160);
+      }).catch(function () {
+        if (request !== imageRequest) return;
+        stage.classList.remove("is-changing");
+        status.hidden = false;
+      });
+    }
+
+    function renderColors(product) {
+      colorList.innerHTML = "";
+      product.colors.forEach(function (color, index) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-color-button";
+        button.style.setProperty("--swatch", color.value);
+        button.setAttribute("aria-label", color.name);
+        button.setAttribute("aria-pressed", index === currentColor ? "true" : "false");
+        button.title = color.name;
+        button.addEventListener("click", function () {
+          currentColor = index;
+          colorList.querySelectorAll("button").forEach(function (item, itemIndex) {
+            item.setAttribute("aria-pressed", itemIndex === currentColor ? "true" : "false");
+          });
+          if (color.image) {
+            swapShowcaseImage(color.image, product.productName + " - " + color.name, true, product.id);
+          }
+        });
+        button.addEventListener("pointerenter", function () { if (color.image) primeImage(color.image); }, { passive: true });
+        button.addEventListener("focus", function () { if (color.image) primeImage(color.image); });
+        colorList.appendChild(button);
+      });
+    }
+
+    function applyProduct(index, animate) {
+      var product = products[index];
+      var productImage = (product.colors[0] && product.colors[0].image) || product.image;
+      currentProduct = index;
+      currentColor = 0;
+
+      function update() {
+        status.hidden = !product.placeholder;
+        productLink.href = product.href;
+        categoryLink.href = product.href;
+        categoryLink.firstChild.nodeValue = "Tüm " + product.name + " Ürünlerini Gör ";
+        infoName.textContent = product.productName;
+        infoColors.textContent = product.colors.map(function (color) { return color.name; }).join(", ");
+        infoFabric.textContent = product.fabric;
+        infoWeight.textContent = product.weight;
+        infoComposition.textContent = product.composition;
+        infoUse.textContent = product.useArea;
+        infoLogo.textContent = product.logoOptions;
+        infoMinimum.textContent = product.minimumOrder;
+        infoWash.textContent = product.wash;
+        infoDescription.textContent = product.description;
+        updateLogoVisibility();
+        renderColors(product);
+        categoryList.querySelectorAll("button").forEach(function (button, buttonIndex) {
+          var active = buttonIndex === currentProduct;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      window.clearTimeout(transitionTimer);
+      update();
+      swapShowcaseImage(productImage, product.imageAlt, animate, product.id);
+    }
+
+    products.forEach(function (product, index) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "product-category-button";
+      button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+      button.textContent = product.name;
+      button.addEventListener("click", function () { applyProduct(index, true); });
+      button.addEventListener("pointerenter", function () {
+        primeImage((product.colors[0] && product.colors[0].image) || product.image);
+      }, { passive: true });
+      button.addEventListener("focus", function () {
+        primeImage((product.colors[0] && product.colors[0].image) || product.image);
+      });
+      categoryList.appendChild(button);
+    });
+
+    applyProduct(0, false);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHomeIntro();
     initBrandIntroLinks();
@@ -626,5 +863,6 @@
     initTargetDate();
     initDeferredVideos();
     initLanguageAwareTerms();
+    initProductShowcase();
   });
 })();
