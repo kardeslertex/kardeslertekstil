@@ -684,20 +684,23 @@
     logoInput.addEventListener("change", function () {
       var file = logoInput.files && logoInput.files[0];
       if (!file || !file.type.match(/^image\//)) return;
-      if (logoUrl) URL.revokeObjectURL(logoUrl);
-      logoUrl = URL.createObjectURL(file);
-      logoImage.src = logoUrl;
-      logoPreview.hidden = false;
-      logoSizeControl.hidden = false;
-      logoRemove.hidden = false;
-      logoUpload.textContent = "Logoyu Değiştir";
-      setLogoPosition(42, 31);
+      var reader = new FileReader();
+      reader.onload = function () {
+        logoUrl = String(reader.result || "");
+        if (!logoUrl) return;
+        logoImage.src = logoUrl;
+        logoPreview.hidden = false;
+        logoSizeControl.hidden = false;
+        logoRemove.hidden = false;
+        logoUpload.textContent = "Logoyu Değiştir";
+        setLogoPosition(42, 31);
+      };
+      reader.readAsDataURL(file);
     });
     logoSize.addEventListener("input", function () {
       logoPreview.style.width = logoSize.value + "px";
     });
     logoRemove.addEventListener("click", function () {
-      if (logoUrl) URL.revokeObjectURL(logoUrl);
       logoUrl = "";
       logoImage.removeAttribute("src");
       logoInput.value = "";
