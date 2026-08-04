@@ -689,6 +689,34 @@
     ]
   };
 
+  const PRODUCT_CATEGORIES = {
+    tshirt: { title: "Tişörtler", description: "Polo yaka, bisiklet yaka ve kurumsal tişört modellerini inceleyin." },
+    sweat: { title: "Sweatshirtler", description: "Serin çalışma ortamlarına uygun sweatshirt ve hoodie modellerini inceleyin." },
+    pantolon: { title: "İş Pantolonları", description: "Dayanıklı kumaş ve işlevsel cep seçeneklerine sahip iş pantolonlarını inceleyin." },
+    tulum: { title: "İş Tulumları", description: "Üretim, bakım ve saha ekiplerine uygun iş tulumu modellerini inceleyin." },
+    onluk: { title: "İş Önlükleri", description: "Mutfak, üretim, laboratuvar ve hizmet ekiplerine uygun önlükleri inceleyin." },
+    montkaban: { title: "İş Montları", description: "Soğuk hava ve dış saha kullanımına uygun mont ve kabanları inceleyin." },
+    polar: { title: "Polar Mont", description: "Katmanlı kullanıma uygun, sıcak tutan kurumsal polar modellerini inceleyin." },
+    yelek: { title: "İş Yelekleri", description: "Depo, sevkiyat ve saha ekiplerine uygun işlevsel yelekleri inceleyin." },
+    softshell: { title: "Softshell", description: "Değişken hava koşullarına uygun, hareket odaklı softshell modellerini inceleyin." },
+    isg: { title: "İş Güvenliği Ürünleri", description: "Görünürlük ve koruma ihtiyaçlarına yönelik iş güvenliği ürünlerini inceleyin." },
+    promosyon: { title: "Promosyon Ürünleri", description: "Kurumsal kimliğe özel logolu promosyon ürünlerini inceleyin." }
+  };
+
+  const PRODUCT_MATCH_RULES = [
+    { hash: "pantolon", terms: ["iş pantolonu", "pantolon", "salopet", "alt giyim"] },
+    { hash: "softshell", terms: ["softshell"] },
+    { hash: "polar", terms: ["polar"] },
+    { hash: "tulum", terms: ["iş tulumu", "tulum", "bahçıvan tulumu"] },
+    { hash: "onluk", terms: ["iş önlüğü", "önlük", "aşçı ceketi", "şef ceketi", "mutfak"] },
+    { hash: "tshirt", terms: ["polo yaka", "tişört", "tshirt", "lakost", "bisiklet yaka"] },
+    { hash: "sweat", terms: ["sweatshirt", "hoodie"] },
+    { hash: "yelek", terms: ["iş yeleği", "yelek"] },
+    { hash: "montkaban", terms: ["iş montu", "mont", "kaban", "parka"] },
+    { hash: "isg", terms: ["iş güvenliği", "yüksek görünürlük", "ikaz", "baret", "iş ayakkabısı"] },
+    { hash: "promosyon", terms: ["promosyon", "kurumsal hediye"] }
+  ];
+
   function toCategoryGroup(category) {
     return CATEGORY_MAP[category] || "";
   }
@@ -958,20 +986,42 @@
 
   function buildProductLinks(current) {
     const group = toCategoryGroup(current.category);
-    const list = PRODUCT_LINKS_BY_GROUP[group] || PRODUCT_LINKS_BY_GROUP["Ürün Rehberleri"];
+    const metadata = normalize([
+      current.title,
+      current.summary,
+      current.category,
+      ...(current.tags || []),
+      ...(current.searchTerms || [])
+    ].filter(Boolean).join(" "));
+    const ranked = PRODUCT_MATCH_RULES.map((rule, order) => ({
+      hash: rule.hash,
+      order,
+      score: rule.terms.reduce((score, term) => score + (metadata.includes(normalize(term)) ? 1 : 0), 0)
+    })).filter((item) => item.score)
+      .sort((a, b) => b.score - a.score || a.order - b.order)
+      .map((item) => item.hash);
+    const fallback = (PRODUCT_LINKS_BY_GROUP[group] || PRODUCT_LINKS_BY_GROUP["Ürün Rehberleri"])
+      .map((item) => item.hash);
+    const list = [...new Set([...ranked, ...fallback])].slice(0, 3)
+      .map((hash) => ({ hash, ...PRODUCT_CATEGORIES[hash] }))
+      .filter((item) => item.title);
 
     const section = document.createElement("section");
-    section.className = "knowledge-product-links";
+    section.className = "knowledge-product-links knowledge-related-products";
 
     const heading = document.createElement("h2");
-    heading.textContent = "İlgili Ürün Kategorileri";
+    heading.textContent = "İlgili Ürünler";
 
     const grid = document.createElement("div");
     grid.className = "knowledge-product-links-grid";
     list.forEach((item) => {
       const link = document.createElement("a");
       link.href = `../../urunlerimiz#${item.hash}`;
-      link.textContent = item.title;
+      const title = document.createElement("strong");
+      title.textContent = item.title;
+      const description = document.createElement("span");
+      description.textContent = item.description;
+      link.append(title, description);
       grid.appendChild(link);
     });
 
@@ -1216,7 +1266,6 @@
     const intro = article.querySelector(".intro");
     if (intro) {
       const afterIntro = document.createDocumentFragment();
-      afterIntro.append(buildProductLinks(current));
       afterIntro.append(buildKnowledgeHubLinks(current));
       afterIntro.append(buildOfferCta(current));
       intro.after(afterIntro);
@@ -1252,6 +1301,7 @@
     section.append(heading, grid);
     const navigation = article.querySelector(".knowledge-post-nav");
     article.insertBefore(section, navigation);
+    article.insertBefore(buildProductLinks(current), navigation);
 
     normalizeArticleHeadMeta(current, article);
     const pageModified = document.head.querySelector("meta[property='article:modified_time']")?.getAttribute("content") || current.published;
