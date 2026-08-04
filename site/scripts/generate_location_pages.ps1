@@ -1,7 +1,13 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 Remove-Item Alias:H -ErrorAction SilentlyContinue
 $siteRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $utf8 = New-Object System.Text.UTF8Encoding($false)
+
+# Windows PowerShell 5.1 reads UTF-8 scripts correctly only when they carry a BOM.
+# Fail closed instead of publishing mojibake if that marker is ever removed.
+if ([int][char]'İ' -ne 304 -or [int][char]'ş' -ne 351) {
+  throw "Bu dosya UTF-8 olarak okunamadı. Bölgesel sayfalar oluşturulmadı."
+}
 
 $locations = @(
   [ordered]@{ slug="pendik-is-elbiseleri"; place="Pendik"; target="Pendik iş elbiseleri"; title="Pendik İş Elbiseleri ve Personel Kıyafetleri"; meta="Pendik iş elbiseleri ve personel kıyafetleri için doğrudan üretim, logo baskı, nakış ve numune desteği. Minimum 50 adet kurumsal teklif alın."; hero="Pendik İş Elbiseleri ve Personel Kıyafetleri Üreticisi"; lead="Pendik'teki üretim tesisimizden ilçedeki fabrikalara, lojistik ekiplerine, teknik servislere ve hizmet işletmelerine özel iş elbiseleri ve personel kıyafetleri hazırlıyoruz."; areas="Fevzi Çakmak, Kaynarca, Kurtköy, Şeyhli, Güzelyalı ve çevresi"; profile="Pendik; sanayi üretimi, Sabiha Gökçen çevresindeki havacılık hizmetleri, liman bağlantılı lojistik, teknik servis ve yoğun saha operasyonlarının aynı ilçede buluştuğu bir çalışma alanıdır. Bu çeşitlilik nedeniyle tek tip bir personel kıyafeti yaklaşımı yerine görev, vardiya, açık-kapalı alan dengesi ve kurumsal görünüm birlikte değerlendirilmelidir."; need="Üretim tesisimizin Pendik'te bulunması; numune görüşmesi, kumaş ve renk kontrolü, logo konumu değerlendirmesi ve tekrar sipariş standardının yüz yüze yürütülebilmesini kolaylaştırır. Yerel işletmeler ürün örneğini veya teknik dosyasını paylaşarak karar süresini kısaltabilir."; plan="Pendik'teki depo ve üretim ekiplerinde hareket kolaylığı sağlayan pantolonlar, görünürlüğü destekleyen yelekler ve mevsim geçişine uygun katmanlar öne çıkar. Müşteriyle temas eden servis personelinde ise temiz siluet, dengeli logo ölçüsü ve gün boyu formunu koruyan kumaşlar önem kazanır."; delivery="Pendik içindeki teslimatlar üretim planına ve sipariş kapsamına göre tek noktaya veya bölüm bazlı paketlerle organize edilebilir. Beden listesi, departman kodu ve teslim alacak yetkili baştan paylaşıldığında sayım ve dağıtım süreci daha kontrollü ilerler."; neighbors=@("tuzla-is-elbiseleri","kartal-is-elbiseleri","anadolu-yakasi-is-elbiseleri") },
@@ -111,10 +117,10 @@ foreach ($loc in $locations) {
 <!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>$(H $loc.title)</title><meta name="description" content="$(H $loc.meta)"><meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://kardeslertekstil.com.tr/$($loc.slug)/"><link rel="stylesheet" href="../styles.css?v=20260803-5">
+<link rel="canonical" href="https://kardeslertekstil.com.tr/$($loc.slug)/"><link rel="stylesheet" href="../styles.css?v=20260804-26">
 <meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="Kardeşler Tekstil"><meta property="og:title" content="$(H $loc.title)"><meta property="og:description" content="$(H $loc.meta)"><meta property="og:url" content="https://kardeslertekstil.com.tr/$($loc.slug)/"><meta property="og:image" content="https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="$(H $loc.title)"><meta name="twitter:description" content="$(H $loc.meta)"><meta name="twitter:image" content="https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp"><script type="application/ld+json">$localSchema</script><script type="application/ld+json">$breadcrumb</script><script type="application/ld+json">$faqSchema</script>
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=11"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=11"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=11"><link rel="shortcut icon" href="/favicon.ico?v=11"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=11"><link rel="manifest" href="/manifest.webmanifest?v=11"><meta name="theme-color" content="#f97316"><meta name="google-analytics-id" content=""><script src="/site.js?v=20260803-3" defer></script></head>
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=11"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=11"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=11"><link rel="shortcut icon" href="/favicon.ico?v=11"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=11"><link rel="manifest" href="/manifest.webmanifest?v=11"><meta name="theme-color" content="#f97316"><meta name="google-analytics-id" content=""><script src="/site.js?v=20260804-12" defer></script></head>
 <body class="local-page" data-screen-label="Local SEO"><header class="site-header"><div class="container"><a class="brand" href="../"><img src="../assets/logo-kit-badge.webp" alt="Kardeşler Tekstil"></a><nav class="nav" aria-label="Ana navigasyon"><a href="../">Ana Sayfa</a><a href="../urunlerimiz">Ürünlerimiz</a><a href="../referanslarimiz">Referanslarımız</a><a href="../hakkimizda">Hakkımızda</a><a href="../bilgi-merkezi/">Bilgi Merkezi</a><a href="../iletisim">İletişim</a></nav><a class="btn btn-accent" href="https://wa.me/902163961988" target="_blank" rel="noopener">Teklif Al</a></div></header>
 <main><section class="page-head local-hero"><div class="container"><div class="eyebrow eyebrow-accent">$(H $loc.place) / İstanbul</div><h1>$(H $loc.hero)</h1><p>$(H $loc.lead)</p><div class="cta-row"><a class="btn btn-whatsapp" href="https://wa.me/902163961988?text=$waText" target="_blank" rel="noopener">WhatsApp ile Görüşün</a><a class="btn btn-quote-form" href="../iletisim?urun=%C3%96zel%20Tasar%C4%B1m&amp;mesaj=$formMessage#teklif-formu">Teklif İsteyin</a></div></div></section>
 <section class="local-section"><div class="container local-two-col"><div><div class="eyebrow eyebrow-accent">BÖLGEYE ÖZEL PLANLAMA</div><h2>$(H $loc.place) için iş kıyafeti yaklaşımımız</h2><p>$(H $loc.profile)</p><p>$(H $loc.need)</p><p>$(H $loc.plan)</p><p>$(H $loc.place) satın alma ekipleri teklif toplarken yalnız birim fiyatı değil, $context nedeniyle ürünün kullanım ömrünü, çalışan tarafından kabulünü, sonraki beden ihtiyaçlarını ve aynı standardın yeniden üretilebilir olmasını da değerlendirmelidir. Açık teknik tanım, numune kararı ve düzenli ürün kodları bu karşılaştırmayı kolaylaştırır.</p></div><aside class="local-service-note"><strong>Hizmet alanı</strong><p>$(H $loc.areas)</p><span>Minimum 50 adet · Özel üretim · Logo uygulaması</span></aside></div></section>
@@ -130,6 +136,9 @@ foreach ($loc in $locations) {
   $targetDir = Join-Path $siteRoot $loc.slug
   New-Item -ItemType Directory -Path $targetDir -Force | Out-Null
   $html = $html.Replace("<p>$context ", "<p>$contextSentence ")
+  if ($html -match 'Ã|Ä|Å|Â|â€|&#19[567];|&#196;|&#197;') {
+    throw "Bozuk Türkçe karakter algılandı: $($loc.slug)"
+  }
   [IO.File]::WriteAllText((Join-Path $targetDir "index.html"), $html, $utf8)
 }
 
