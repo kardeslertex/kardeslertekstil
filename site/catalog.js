@@ -601,15 +601,36 @@
   /* ---------------------------------------------------------------
      4) YAPIŞKAN MENÜ — görünen bölüme göre aktif sekme
      --------------------------------------------------------------- */
+  var nav = document.getElementById("catalogNav");
   var navLinks = Array.from(document.querySelectorAll(".catalog-nav a"));
   var sections = Array.from(document.querySelectorAll(".catalog-section"));
+
+  function keepActiveNavLinkInView(link) {
+    if (!nav || !link) return;
+    if (nav.scrollWidth <= nav.clientWidth + 1) return;
+
+    var navRect = nav.getBoundingClientRect();
+    var linkRect = link.getBoundingClientRect();
+    var edgePadding = 16;
+    var nextLeft = nav.scrollLeft;
+
+    if (linkRect.left < navRect.left + edgePadding) {
+      nextLeft += linkRect.left - navRect.left - edgePadding;
+    } else if (linkRect.right > navRect.right - edgePadding) {
+      nextLeft += linkRect.right - navRect.right + edgePadding;
+    }
+
+    if (nextLeft !== nav.scrollLeft) {
+      nav.scrollTo({ left: Math.max(0, nextLeft), behavior: "smooth" });
+    }
+  }
 
   function setActive(id) {
     navLinks.forEach(function (link) {
       var active = link.dataset.target === id;
       link.classList.toggle("is-active", active);
       if (active) {
-        link.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        keepActiveNavLinkInView(link);
       }
     });
   }
