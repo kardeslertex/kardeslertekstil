@@ -448,6 +448,35 @@
     var sumCats = document.getElementById("sumCats");
     if (sumModels) sumModels.textContent = total;
     if (sumCats) sumCats.textContent = CATALOG.length;
+
+    var jsonLd = document.getElementById("productCatalogJsonLd");
+    if (jsonLd) {
+      var position = 0;
+      jsonLd.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": "https://kardeslertekstil.com.tr/urunlerimiz#product-list",
+        "name": "Kardeşler Tekstil Ürün Kataloğu",
+        "url": "https://kardeslertekstil.com.tr/urunlerimiz",
+        "numberOfItems": total,
+        "itemListElement": CATALOG.reduce(function (items, cat) {
+          cat.items.forEach(function (item) {
+            items.push({
+              "@type": "ListItem",
+              "position": ++position,
+              "item": {
+                "@type": "Product",
+                "name": item.name,
+                "sku": item.code,
+                "category": cat.title,
+                "image": "https://kardeslertekstil.com.tr/" + item.src
+              }
+            });
+          });
+          return items;
+        }, [])
+      });
+    }
   }
 
   renderCatalog();

@@ -41,25 +41,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Kardeşler Tekstil Ürün Kataloğu",
-    "url": "https://kardeslertekstil.com.tr/urunlerimiz",
-    "numberOfItems": 8,
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Tişört Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#tshirt"},
-      {"@type":"ListItem","position":2,"name":"Pantolon Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#pantolon"},
-      {"@type":"ListItem","position":3,"name":"İş Tulumu Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#tulum"},
-      {"@type":"ListItem","position":4,"name":"Önlük Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#onluk"},
-      {"@type":"ListItem","position":5,"name":"Mont Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#montkaban"},
-      {"@type":"ListItem","position":6,"name":"Polar Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#polar"},
-      {"@type":"ListItem","position":7,"name":"Yelek Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#yelek"},
-      {"@type":"ListItem","position":8,"name":"Softshell Modelleri","url":"https://kardeslertekstil.com.tr/urunlerimiz#softshell"}
-    ]
-  }
-  </script>
+  <script id="productCatalogJsonLd" type="application/ld+json">{}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,9 +53,7 @@
       "@id": "https://kardeslertekstil.com.tr/#organization"
     },
     "mainEntity": {
-      "@type": "ItemList",
-      "name": "Kardeşler Tekstil Ürün Kategorileri",
-      "numberOfItems": 8
+      "@id": "https://kardeslertekstil.com.tr/urunlerimiz#product-list"
     }
   }
   </script>
@@ -133,8 +113,8 @@
     <h1>Ürünlerimiz</h1>
     <p>Modeli ve kodunu seçin. Hızlı ön görüşmeler için WhatsApp’ı; yazılı teklif ve kurumsal satın alma süreçleri için teklif formunu veya e-postayı kullanabilirsiniz.</p>
     <div class="catalog-summary">
-      <div><strong id="sumModels">158</strong><span>Ürün Modeli</span></div>
-      <div><strong id="sumCats">10</strong><span>Ürün Kategorisi</span></div>
+      <div><strong id="sumModels"></strong><span>Ürün Modeli</span></div>
+      <div><strong id="sumCats"></strong><span>Ürün Kategorisi</span></div>
       <div><strong>50 Adet</strong><span>Minimum Sipariş</span></div>
     </div>
   </div>
@@ -308,7 +288,7 @@
 
 <!-- Önce ürün verisi, sonra sayfayı çizen motor -->
 <script src="products.js?v=20260804-3"></script>
-<script src="catalog.js?v=20260804-4"></script>
+<script src="catalog.js?v=20260804-5"></script>
 </body>
 </html>
 
