@@ -89,7 +89,7 @@
           '<p>Siteyi &ccedil;alıştırmak i&ccedil;in zorunlu depolama kullanılır. Ziyaretleri anlamamıza yardımcı olan Google Analytics ise yalnızca izninizle y&uuml;klenir. <a href="/cerez-politikasi">Ayrıntılar</a></p></div>' +
           '<div class="cookie-consent__actions">' +
             '<button type="button" class="btn btn-secondary" data-cookie-choice="rejected">Yalnızca zorunlu</button>' +
-            '<button type="button" class="btn btn-primary" data-cookie-choice="accepted">Analitiğe izin ver</button>' +
+            '<button type="button" class="btn btn-primary" data-cookie-choice="accepted">Çerezleri kabul et</button>' +
           '</div>' +
         '</div>';
       banner.addEventListener("click", function (event) {
