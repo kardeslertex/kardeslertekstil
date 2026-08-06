@@ -47,7 +47,7 @@
     if (!document.querySelector('link[href^="/privacy.css"]')) {
       var privacyStyles = document.createElement("link");
       privacyStyles.rel = "stylesheet";
-      privacyStyles.href = "/privacy.css?v=20260804-2";
+      privacyStyles.href = "/privacy.css?v=20260807-3";
       document.head.appendChild(privacyStyles);
     }
 

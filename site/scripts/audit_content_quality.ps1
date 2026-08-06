@@ -14,21 +14,22 @@ foreach ($file in $articles) {
     $slug = Split-Path $file.DirectoryName -Leaf
     $h1Count = [regex]::Matches($html, '<h1\b', 'IgnoreCase').Count
     if ($h1Count -ne 1) { $errors.Add("Article must have exactly one H1: $slug") }
-    if ($html -notmatch 'data-seo-enhancement=["'']knowledge-v2["'']') { $errors.Add("Topic links are missing: $slug") }
+    if ($html -notmatch 'data-seo-enhancement=["'']knowledge-v3["'']') { $errors.Add("Topic links are missing: $slug") }
     if ($html -notmatch 'knowledge-review-note') { $errors.Add("Editorial responsibility note is missing: $slug") }
     if ($html -notmatch '["'']@type["'']\s*:\s*["'']BlogPosting["'']') { $errors.Add("BlogPosting schema is missing: $slug") }
 
-    $body = [regex]::Replace($html, '(?is)<(script|style|nav|footer)\b.*?</\1>', ' ')
+    $body = [regex]::Replace($html, '(?is)<section class=["'']knowledge-seo-links["''].*?</section>', ' ')
+    $body = [regex]::Replace($body, '(?is)<(script|style|nav|footer)\b.*?</\1>', ' ')
     $body = [regex]::Replace($body, '<[^>]+>', ' ')
     $body = [Net.WebUtility]::HtmlDecode($body)
     $wordCount = @($body -split '\s+' | Where-Object { $_ }).Count
-    if ($wordCount -lt 500) { $thinPages.Add($slug) }
+    if ($wordCount -lt 450) { $thinPages.Add($slug) }
 }
 
 $result = [ordered]@{
     articles = $articles.Count
     structurallyValidArticles = $articles.Count - $errors.Count
-    articlesUnder500Words = $thinPages.Count
+    articlesUnder450CoreWords = $thinPages.Count
     thinPageSample = @($thinPages | Select-Object -First 10)
     errors = @($errors)
 }

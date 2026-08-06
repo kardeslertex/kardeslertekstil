@@ -39,7 +39,7 @@ foreach ($entry in $urls) {
   $parsedDate = [datetime]::MinValue
   if (!$lastmod -or ![datetime]::TryParseExact($lastmod, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$parsedDate)) {
     $errors.Add("$location -> invalid lastmod")
-  } elseif ($parsedDate.Date -gt [datetime]::UtcNow.Date) {
+  } elseif ($parsedDate.Date -gt (Get-Date).Date) {
     $errors.Add("$location -> future lastmod")
   }
 

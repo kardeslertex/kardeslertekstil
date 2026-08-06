@@ -3,6 +3,7 @@
   inset: auto 16px 16px;
   z-index: 10000;
   margin: 0 auto;
+  width: calc(100% - 32px);
   max-width: 1120px;
   color: #f8fafc;
   background: #0b2742;
@@ -52,6 +53,9 @@
   cursor: pointer;
 }
 @media (max-width: 760px) {
+  .cookie-consent__inner,
+  .cookie-consent__content,
+  .cookie-consent__actions { min-width: 0; }
   .cookie-consent__inner { align-items: stretch; flex-direction: column; }
   .cookie-consent__actions { flex-direction: column-reverse; }
   .cookie-consent__actions .btn { width: 100%; }
