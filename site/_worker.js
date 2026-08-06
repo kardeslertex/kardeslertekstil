@@ -24,6 +24,23 @@ const SECURITY_HEADERS = {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const isPreviewHost = url.hostname.endsWith(".pages.dev");
+    if (isPreviewHost) {
+      const expected = env.PREVIEW_AUTH_TOKEN;
+      const supplied = request.headers.get("Authorization");
+      if (!expected || supplied !== `Bearer ${expected}`) {
+        return new Response("Authentication required", {
+          status: 401,
+          headers: {
+            ...SECURITY_HEADERS,
+            "Cache-Control": "private, no-store",
+            "Content-Type": "text/plain; charset=utf-8",
+            "WWW-Authenticate": 'Bearer realm="preview"',
+            "X-Robots-Tag": "noindex, nofollow, noarchive",
+          },
+        });
+      }
+    }
     const legacyPath = url.pathname.replace(/\/$/, "") || "/";
     const canonicalPath = LEGACY_PATHS.get(legacyPath);
     const needsCanonicalHost =

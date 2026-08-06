@@ -1,4 +1,4 @@
-param([switch]$Quiet)
+param([switch]$Quiet, [switch]$Live)
 
 $ErrorActionPreference = 'Stop'
 $site = Split-Path -Parent $PSScriptRoot
@@ -6,6 +6,9 @@ $origin = 'https://kardeslertekstil.com.tr'
 $sitemapPath = Join-Path $site 'sitemap.xml'
 $errors = [Collections.Generic.List[string]]::new()
 $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+
+& (Join-Path $PSScriptRoot 'generate_sitemap.ps1') -Quiet
+if (!$?) { exit 1 }
 
 function Resolve-PageFile([Uri]$uri) {
   $relative = [Uri]::UnescapeDataString($uri.AbsolutePath).Trim('/')
@@ -55,9 +58,28 @@ foreach ($entry in $urls) {
   if ($canonical -ne $location) { $errors.Add("$location -> canonical mismatch: $canonical") }
 }
 
+$liveChecked = 0
+if ($Live -and $urls.Count) {
+  $locations = @($urls | ForEach-Object { [string]$_.loc })
+  $output = ''
+  for ($offset = 0; $offset -lt $locations.Count; $offset += 40) {
+    $end = [Math]::Min($offset + 39, $locations.Count - 1)
+    $arguments = @('-sS','--parallel','--parallel-max','10','--max-time','30','-w','%{http_code}|%{url_effective}~')
+    foreach ($location in $locations[$offset..$end]) { $arguments += @('-o','NUL',$location) }
+    $output += ((& curl.exe @arguments) -join '')
+  }
+  $responses = @($output.Split('~', [StringSplitOptions]::RemoveEmptyEntries))
+  $liveChecked = $responses.Count
+  foreach ($response in $responses) {
+    if ($response -notmatch '^200\|(.+)$') { $errors.Add("Live sitemap target failed: $response") }
+  }
+  if ($responses.Count -ne $urls.Count) { $errors.Add("Live sitemap response count mismatch: $($responses.Count)/$($urls.Count)") }
+}
+
 $result = [ordered]@{
   sitemapUrls = $urls.Count
   uniqueUrls = $seen.Count
+  liveHttp200Checked = $liveChecked
   errors = @($errors)
 }
 if (!$Quiet) { $result | ConvertTo-Json -Depth 3 }

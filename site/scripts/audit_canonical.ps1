@@ -1,4 +1,4 @@
-param([switch]$Quiet)
+param([switch]$Quiet, [switch]$Live)
 
 $ErrorActionPreference = 'Stop'
 $siteRoot = Split-Path $PSScriptRoot -Parent
@@ -52,12 +52,52 @@ foreach ($file in $htmlFiles) {
         $errors.Add("Canonical host or format is invalid: $relative -> $canonical")
     }
     if (-not $sitemapSet.ContainsKey($canonical)) { $errors.Add("Canonical is absent from sitemap: $relative") }
+
+    $ogMatch = [regex]::Match($html, '<meta\s+[^>]*property=["'']og:url["''][^>]*content=["'']([^"'']+)', 'IgnoreCase')
+    if (!$ogMatch.Success) { $ogMatch = [regex]::Match($html, '<meta\s+[^>]*content=["'']([^"'']+)["''][^>]*property=["'']og:url["'']', 'IgnoreCase') }
+    if (!$ogMatch.Success -or [Net.WebUtility]::HtmlDecode($ogMatch.Groups[1].Value) -ne $canonical) { $errors.Add("OG URL differs from canonical: $relative") }
+
+    foreach ($jsonMatch in [regex]::Matches($html, '(?is)<script[^>]+type=["'']application/ld\+json["''][^>]*>(.*?)</script>')) {
+        try {
+            $data = $jsonMatch.Groups[1].Value | ConvertFrom-Json
+            $items = if ($data.'@graph') { @($data.'@graph') } else { @($data) }
+            foreach ($item in $items) {
+                if ($item.'@type' -eq 'BreadcrumbList' -and $item.itemListElement.Count) {
+                    $lastItem = @($item.itemListElement | Sort-Object position)[-1]
+                    $breadcrumbUrl = if ($lastItem.item -is [string]) { $lastItem.item } elseif ($lastItem.item.'@id') { $lastItem.item.'@id' } else { '' }
+                    if ($breadcrumbUrl -and $breadcrumbUrl -ne $canonical) { $errors.Add("Breadcrumb URL differs from canonical: $relative") }
+                }
+            }
+        } catch { $errors.Add("Invalid JSON-LD while checking canonical: $relative") }
+    }
+}
+
+& (Join-Path $PSScriptRoot 'audit_redirects.ps1') -Quiet -Live:$Live
+if (!$?) { $errors.Add('Redirect audit failed') }
+
+$liveParameterChecks = 0
+if ($Live) {
+    $parameterCases = [ordered]@{
+        'https://kardeslertekstil.com.tr/urunlerimiz?q=polar&kategori=polar' = 'https://kardeslertekstil.com.tr/urunlerimiz'
+        'https://kardeslertekstil.com.tr/bilgi-merkezi/?q=kumas&tag=dayanim' = 'https://kardeslertekstil.com.tr/bilgi-merkezi/'
+        'https://kardeslertekstil.com.tr/iletisim?urun=KT-TEST&adet=50&mesaj=teklif' = 'https://kardeslertekstil.com.tr/iletisim'
+    }
+    foreach ($requestUrl in $parameterCases.Keys) {
+        $body = (& curl.exe -sS --max-time 30 $requestUrl) -join "`n"
+        $match = [regex]::Match($body, '<link[^>]+rel=["'']canonical["''][^>]+href=["'']([^"'']+)', 'IgnoreCase')
+        if (!$match.Success) { $match = [regex]::Match($body, '<link[^>]+href=["'']([^"'']+)["''][^>]+rel=["'']canonical["'']', 'IgnoreCase') }
+        if (!$match.Success -or [Net.WebUtility]::HtmlDecode($match.Groups[1].Value) -ne $parameterCases[$requestUrl]) {
+            $errors.Add("Live parameter canonical mismatch: $requestUrl")
+        }
+        $liveParameterChecks++
+    }
 }
 
 $result = [ordered]@{
     indexablePages = $indexableCount
     redirectPages = $redirectCount
     sitemapUrls = $sitemapUrls.Count
+    liveParameterChecks = $liveParameterChecks
     errors = @($errors)
 }
 if (-not $Quiet) {

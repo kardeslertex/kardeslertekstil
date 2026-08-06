@@ -1,4 +1,4 @@
-param([switch]$Quiet)
+param([switch]$Quiet, [switch]$Live)
 
 $ErrorActionPreference = 'Stop'
 $siteRoot = Split-Path $PSScriptRoot -Parent
@@ -38,9 +38,42 @@ if (-not (Test-Path -LiteralPath $robotsPath)) {
     }
 }
 
+$workerPath = Join-Path $siteRoot '_worker.js'
+$worker = if (Test-Path $workerPath) { Get-Content -LiteralPath $workerPath -Raw } else { '' }
+if ($worker -notmatch '\.pages\.dev' -or $worker -notmatch 'PREVIEW_AUTH_TOKEN' -or $worker -notmatch 'status:\s*401') {
+    $errors.Add('Preview deployments must fail closed behind authentication.')
+}
+
+$parameterLinkCount = 0
+foreach ($file in Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse) {
+    $html = Get-Content -LiteralPath $file.FullName -Raw
+    $parameterLinkCount += [regex]::Matches($html, 'href=["''][^"'']*\?(?:q|tag|kategori|urun|adet|mesaj)=', 'IgnoreCase').Count
+}
+
+$liveChecks = 0
+if ($Live) {
+    $targets = @(
+        @{ Url='https://kardeslertekstil.com.tr/robots.txt'; Type='text/plain' },
+        @{ Url='https://kardeslertekstil.com.tr/sitemap.xml'; Type='xml' },
+        @{ Url='https://kardeslertekstil.com.tr/styles.css'; Type='text/css' },
+        @{ Url='https://kardeslertekstil.com.tr/site.js'; Type='javascript' },
+        @{ Url='https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp'; Type='image/webp' }
+    )
+    foreach ($target in $targets) {
+        $headers = & curl.exe -sS -I -A 'Googlebot' $target.Url
+        $status = [regex]::Match(($headers -join "`n"), 'HTTP/\S+\s+(\d{3})').Groups[1].Value
+        $type = [regex]::Match(($headers -join "`n"), '(?im)^content-type:\s*([^\r\n]+)').Groups[1].Value
+        if ($status -ne '200') { $errors.Add("Live Googlebot request failed: $($target.Url) -> $status") }
+        if ($type -notmatch [regex]::Escape($target.Type)) { $errors.Add("Unexpected live content type: $($target.Url) -> $type") }
+        $liveChecks++
+    }
+}
+
 $result = [ordered]@{
     robotsFile = $robotsPath
     blockedQueryParameters = 6
+    internalParameterLinks = $parameterLinkCount
+    liveGooglebotChecks = $liveChecks
     errors = @($errors)
 }
 
