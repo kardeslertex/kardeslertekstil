@@ -492,6 +492,13 @@
       return;
     }
 
+    var compactViewport = window.matchMedia("(max-width: 767px)").matches;
+    if (compactViewport && !window.__ktForceHomeIntro) {
+      document.documentElement.classList.remove("intro-splash-pending");
+      intro.hidden = true;
+      return;
+    }
+
     function rememberIntro() {
       try {
         window.sessionStorage.setItem(storageKey, "1");
