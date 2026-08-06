@@ -47,3 +47,22 @@ Temsilci adresler sırasıyla `/`, `/urunlerimiz`, gerçek bir `/urun/.../`, `/b
 5. Değişiklik sonrası aynı 14 koşuyu üçer kez çalıştırıp medyanı karşılaştır; dağıtımdan sonra PSI ve 28 günlük Search Console/CrUX saha verisini şablon gruplarıyla izle.
 
 Bu aşamada tasarım, renk, tipografi veya görünür yerleşim değiştirilmemiştir.
+
+## Uygulama sonrası yerel katalog kontrolü
+
+İlk production ölçümünden sonra katalog görselleri için 500 px viewport yaklaşım eşiği olan `IntersectionObserver` yüklemesi eklendi; ilk altı görünür ürün geriye dönük tarayıcı desteğiyle doğrudan yüklenmeye devam ediyor. Ayrıca kaynak dosyası belli 1.155 statik görsel denetlendi ve eksik 108 etikete gerçek intrinsic `width`/`height` değerleri eklendi. Kaynağı kullanıcı etkileşiminde belirlenen iki dinamik görsel sabit kart oranıyla korunuyor.
+
+Değişiklik henüz push/deploy edilmediği için karşılaştırma yerel HTTP sunucusunda tek mobil Lighthouse koşusudur; production saha sonucu değildir:
+
+| Katalog mobil | İlk production laboratuvarı | Uygulama sonrası yerel laboratuvar |
+|---|---:|---:|
+| Performans skoru | 66 | 83 |
+| LCP | 4.284 ms | 3.992 ms |
+| TBT | 302 ms | 89 ms |
+| CLS | 0,000 | 0,013 |
+| Transfer | 13.333 KB | 3.332 KB |
+| Main thread | 15.660 ms | 4.811 ms |
+| Ağ isteği | 260 | 68 |
+| Görsel isteği | 245 | 53 |
+
+Sunucu, cache ve sıkıştırma koşulları aynı olmadığı için değerler kesin kazanç yüzdesi olarak yorumlanmamalıdır. Buna karşılık istek sayısındaki 260→68 ve görsel isteğindeki 245→53 düşüş, yükleme kapsamının kod düzeyinde daraldığını doğrudan doğrular. Dağıtımdan sonra aynı production URL üzerinde üç koşu medyanı alınmalıdır.

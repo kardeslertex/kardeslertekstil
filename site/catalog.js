@@ -126,6 +126,23 @@
     return node;
   }
 
+  function loadCatalogImage(img) {
+    var source = img.dataset.src;
+    if (!source) return;
+    delete img.dataset.src;
+    img.src = source;
+  }
+
+  var catalogImageObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          loadCatalogImage(entry.target);
+        });
+      }, { rootMargin: "500px 0px", threshold: 0.01 })
+    : null;
+
   function buildItemButton(item) {
     var btn = el("button", "gitem");
     btn.type = "button";
@@ -141,12 +158,18 @@
     } catch (e) { /* ignore id if something fails */ }
 
     var img = el("img");
-    img.src = item.src;
     img.alt = item.code + " " + item.name;
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
     img.addEventListener("load", function () { normalizeProductScale(img, item); });
+    var isInitialCatalogImage = item.cat === "tshirt" && item.i < 6;
+    if (isInitialCatalogImage || !catalogImageObserver) {
+      img.src = item.src;
+    } else {
+      img.dataset.src = item.src;
+      catalogImageObserver.observe(img);
+    }
 
     var visual = el("span", "gitem-visual");
     var overlay = el("span", "gitem-overlay");
