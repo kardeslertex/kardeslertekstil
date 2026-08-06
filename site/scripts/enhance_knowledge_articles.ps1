@@ -23,16 +23,19 @@ function Cluster([string]$slug, [string]$title) {
 }
 function ProductTarget([string]$slug, [string]$title) {
   $text = "$slug $title".ToLowerInvariant()
-  if ($text -match 'pantolon|paca|diz') { return @{ slug='is-pantolonu'; name='İş Pantolonu' } }
-  if ($text -match 'softshell') { return @{ slug='softshell-is-montu'; name='Softshell İş Montu' } }
-  if ($text -match 'yelek|reflektor|gorunurluk|ikaz') { return @{ slug='reflektorlu-is-yelegi'; name='Reflektörlü İş Yeleği' } }
-  if ($text -match 'polar') { return @{ slug='polar-is-montu'; name='Polar İş Montu' } }
-  if ($text -match 'sweat|hoodie') { return @{ slug='kurumsal-is-sweatshirtu'; name='Kurumsal İş Sweatshirtü' } }
-  if ($text -match 'asci|mutfak|onluk|restoran|gida') { return @{ slug='asci-kiyafeti-is-onlugu'; name='Aşçı Kıyafeti ve İş Önlüğü' } }
-  if ($text -match 'tulum|salopet') { return @{ slug='is-tulumu'; name='İş Tulumu' } }
-  if ($text -match 'mont|kaban|parka|kapuson') { return @{ slug='is-montu-kaban'; name='İş Montu ve Kaban' } }
-  if ($text -match 'baret|ayakkabi|isg|guvenlik ekipman') { return @{ slug='is-guvenligi-ekipmanlari'; name='İş Güvenliği Ekipmanları' } }
-  return @{ slug='polo-yaka-is-tisortu'; name='Polo Yaka İş Tişörtü' }
+  if ($text -match 'softshell.*pantolon') { return @{ slug='softshell-is-pantolonu'; href='../../softshell-is-pantolonu/'; name='Softshell İş Pantolonu' } }
+  if ($text -match 'pantolon|paca|diz') { return @{ slug='is-pantolonu'; href='../../is-pantolonu/'; name='İş Pantolonu' } }
+  if ($text -match 'softshell') { return @{ slug='softshell-is-montu'; href='../../softshell-is-montu/'; name='Softshell İş Montu' } }
+  if ($text -match 'yelek|reflektor|gorunurluk|ikaz') { return @{ slug='reflektorlu-is-yelegi'; href='../../reflektorlu-is-yelegi/'; name='Reflektörlü İş Yeleği' } }
+  if ($text -match 'polar') { return @{ slug='polar-is-montu'; href='../../polar-is-montu/'; name='Polar İş Montu' } }
+  if ($text -match 'sweat|hoodie') { return @{ slug='kurumsal-is-sweatshirtu'; href='../../kurumsal-is-sweatshirtu/'; name='Kurumsal İş Sweatshirtü' } }
+  if ($text -match 'asci|mutfak|onluk|restoran|gida|laboratuvar|medikal') { return @{ slug='asci-kiyafeti-is-onlugu'; href='../../asci-kiyafeti-is-onlugu/'; name='Aşçı Kıyafeti ve İş Önlüğü' } }
+  if ($text -match 'tulum|salopet') { return @{ slug='is-tulumu'; href='../../is-tulumu/'; name='İş Tulumu' } }
+  if ($text -match 'mont|kaban|parka|kapuson') { return @{ slug='is-montu-kaban'; href='../../is-montu-kaban/'; name='İş Montu ve Kaban' } }
+  if ($text -match 'baret|ayakkabi|isg|guvenlik ekipman') { return @{ slug='is-guvenligi-ekipmanlari'; href='../../is-guvenligi-ekipmanlari/'; name='İş Güvenliği Ekipmanları' } }
+  if ($text -match 'promosyon|etkinlik|fuar|organizasyon') { return @{ slug='kurumsal-promosyon-urunleri'; href='../../kurumsal-promosyon-urunleri/'; name='Kurumsal Promosyon Ürünleri' } }
+  if ($text -match 'tisort|polo|lakost|suprem|penye') { return @{ slug='polo-yaka-is-tisortu'; href='../../polo-yaka-is-tisortu/'; name='Polo Yaka İş Tişörtü' } }
+  return @{ slug='urunlerimiz'; href='../../urunlerimiz'; name='İş Kıyafeti Modelleri' }
 }
 function LocationTarget([string]$slug, [string]$title) {
   $targets = @(
@@ -64,7 +67,7 @@ $changed = 0
 
 foreach ($article in $articles) {
   $html = [IO.File]::ReadAllText($article.path, [Text.Encoding]::UTF8)
-  if ($html -match 'data-seo-enhancement="knowledge-v1"') { continue }
+  if ($html -match 'data-seo-enhancement="knowledge-v2"') { continue }
   $description = Meta $html 'description'
   $canonical = [regex]::Match($html, '(?is)<link[^>]+rel=["'']canonical["''][^>]+href=["'']([^"'']+)').Groups[1].Value
   if (!$canonical) { $canonical = "https://kardeslertekstil.com.tr/bilgi-merkezi/$($article.slug)/" }
@@ -98,10 +101,14 @@ foreach ($article in $articles) {
   $peers = @($byCluster[$article.cluster] | Where-Object slug -ne $article.slug | Sort-Object slug | Select-Object -First 3)
   $peerLinks = ($peers | ForEach-Object { "<a href=`"../$($_.slug)/`">$(Html $_.title)</a>" }) -join ''
   $block = @"
-<section class="knowledge-seo-links" data-seo-enhancement="knowledge-v1" aria-label="İlgili ürün ve rehberler"><div class="eyebrow eyebrow-accent">İLGİLİ ÇÖZÜMLER</div><h2>Bilgiyi üretim planına dönüştürün</h2><p>Bu rehber, Kardeşler Tekstil üretim ekibinin kurumsal iş kıyafeti planlama yaklaşımı esas alınarak hazırlanmış ve içerik bütünlüğü açısından kontrol edilmiştir.</p><div class="knowledge-seo-link-grid"><a href="../../$($product.slug)/"><strong>$(Html $product.name)</strong><span>Ürün, kumaş ve logo seçeneklerini inceleyin.</span></a><a href="../../$($location.slug)/"><strong>$(Html $location.name)</strong><span>Bölgesel üretim ve teslimat yaklaşımını inceleyin.</span></a></div><nav class="knowledge-related-links" aria-label="Aynı konudaki rehberler"><strong>$(Html $article.cluster)</strong>$peerLinks</nav><p class="knowledge-review-note">Hazırlayan ve kontrol eden: <a href="../../hakkimizda">Kardeşler Tekstil Üretim Ekibi</a></p></section>
+<section class="knowledge-seo-links" data-seo-enhancement="knowledge-v2" aria-label="İlgili ürün ve rehberler"><div class="eyebrow eyebrow-accent">İLGİLİ ÇÖZÜMLER</div><h2>Bilgiyi üretim planına dönüştürün</h2><p>Bu rehber, Kardeşler Tekstil üretim ekibinin kurumsal iş kıyafeti planlama yaklaşımı esas alınarak hazırlanmış ve içerik bütünlüğü açısından kontrol edilmiştir.</p><div class="knowledge-seo-link-grid"><a href="$($product.href)"><strong>$(Html $product.name)</strong><span>Ürün, kumaş ve logo seçeneklerini inceleyin.</span></a><a href="../../$($location.slug)/"><strong>$(Html $location.name)</strong><span>Bölgesel üretim ve teslimat yaklaşımını inceleyin.</span></a></div><nav class="knowledge-related-links" aria-label="Aynı konudaki rehberler"><strong>$(Html $article.cluster)</strong>$peerLinks</nav><p class="knowledge-review-note">Hazırlayan ve kontrol eden: <a href="../../hakkimizda">Kardeşler Tekstil Üretim Ekibi</a></p></section>
 "@
-  $index = $html.IndexOf('</article>', [StringComparison]::OrdinalIgnoreCase)
-  if ($index -ge 0) { $html = $html.Insert($index, $block) } else { $html = $html.Replace('</main>', "$block</main>") }
+  if ($html -match 'data-seo-enhancement="knowledge-v1"') {
+    $html = [regex]::Replace($html, '(?s)<section class="knowledge-seo-links" data-seo-enhancement="knowledge-v1".*?</section>', [Text.RegularExpressions.MatchEvaluator]{ param($match) $block }, 1)
+  } else {
+    $index = $html.IndexOf('</article>', [StringComparison]::OrdinalIgnoreCase)
+    if ($index -ge 0) { $html = $html.Insert($index, $block) } else { $html = $html.Replace('</main>', "$block</main>") }
+  }
   [IO.File]::WriteAllText($article.path, $html, $utf8)
   $changed++
 }
