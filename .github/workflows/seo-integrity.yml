@@ -1,0 +1,42 @@
+name: SEO integrity
+
+on:
+  pull_request:
+    paths:
+      - "site/**"
+      - ".github/workflows/seo-integrity.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "site/**"
+      - ".github/workflows/seo-integrity.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Canonical, sitemap and crawl gates
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify sitemap uses the canonical page source
+        shell: pwsh
+        run: ./site/scripts/generate_sitemap.ps1
+
+      - name: Reject redirect chains, loops and legacy internal links
+        shell: pwsh
+        run: ./site/scripts/audit_redirects.ps1
+
+      - name: Run complete public-site integrity audit
+        shell: pwsh
+        run: ./site/scripts/audit_site_integrity.ps1
