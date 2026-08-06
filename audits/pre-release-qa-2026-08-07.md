@@ -42,8 +42,8 @@ Gerçek Chromium DevTools Protocol cihaz metrikleri kullanıldı. Her şablonda 
 
 `audit_site_integrity.ps1` ve çağırdığı tüm alt denetimler son favicon değişikliğinden sonra yeniden çalıştırıldı.
 
-- Taranan genel HTML: 823; kapsam dışı arşiv HTML: 1.
-- Legacy yönlendirme: 74; geçersiz hedef: 0.
+- Taranan genel HTML: 749; kapsam dışı arşiv HTML: 1.
+- Legacy yönlendirme HTML'i: 0. Yetmiş dört eski ürün alias dosyası tek adımlı kalıcı `301` kurallarına taşındı; geçersiz hedef: 0.
 - İndekslenebilir canonical: 747; sitemap URL: 747.
 - Sitemap eksiği, sitemap dışı hedef, kırık iç link, yetim canonical ve eksik `site.js`: 0.
 - Meta denetimi: 747 indekslenebilir sayfa, hata 0.

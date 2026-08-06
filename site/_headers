@@ -23,7 +23,7 @@
   Cache-Control: public, max-age=3600, must-revalidate
 
 /favicon.ico
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=604800, must-revalidate
 
 /favicon-16x16.png
   Cache-Control: public, max-age=86400, must-revalidate
@@ -32,7 +32,7 @@
   Cache-Control: public, max-age=86400, must-revalidate
 
 /favicon-48x48.png
-  Cache-Control: public, max-age=86400, must-revalidate
+  Cache-Control: public, max-age=604800, must-revalidate
 
 /apple-touch-icon.png
   Cache-Control: public, max-age=86400, must-revalidate

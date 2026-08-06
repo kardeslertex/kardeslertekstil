@@ -633,6 +633,26 @@
 
   function findCat(id){ if (!window.KATALOG) return null; return window.KATALOG.find(function(c){ return c.id===id; }); }
 
+  // Production serves optimized WEBP files, while older/local copies may still
+  // contain the extension declared in products.js. Try both without leaving a
+  // category card on the placeholder after the first failed request.
+  function setProductImage(img, src){
+    var webpSrc = src.replace(/\.(?:jpe?g|png)$/i, '.webp');
+    var candidates = webpSrc === src ? [src] : [webpSrc, src];
+    var candidateIndex = 0;
+
+    img.onerror = function(){
+      candidateIndex += 1;
+      if (candidateIndex < candidates.length){
+        img.src = candidates[candidateIndex];
+        return;
+      }
+      img.onerror = null;
+      img.src = PLACEHOLDER;
+    };
+    img.src = candidates[candidateIndex] || PLACEHOLDER;
+  }
+
   CATEGORIES.forEach(function(catCfg, idx){
     var cat = findCat(catCfg.id) || { nav: catCfg.title, items: [] };
     var a = document.createElement('a');
@@ -680,15 +700,13 @@
     if (!imgs.length){ imgA.src = PLACEHOLDER; imgB.src = PLACEHOLDER; return; }
 
     var cur = 0;
-    imgA.src = imgs[cur] || PLACEHOLDER;
-    imgA.addEventListener('error', function(){ imgA.src = PLACEHOLDER; });
-    imgB.addEventListener('error', function(){ imgB.src = PLACEHOLDER; });
+    setProductImage(imgA, imgs[cur]);
 
     var timer = null; var showingA = true;
     function step(){
       var next = (cur + 1) % imgs.length; var nextSrc = imgs[next];
       var fadeIn = showingA ? imgB : imgA; var fadeOut = showingA ? imgA : imgB;
-      fadeIn.src = nextSrc || PLACEHOLDER;
+      setProductImage(fadeIn, nextSrc);
       fadeIn.classList.add('is-active');
       fadeOut.classList.remove('is-active');
       showingA = !showingA; cur = next;
