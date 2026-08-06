@@ -5,6 +5,11 @@ const LEGACY_PATHS = new Map([
   ["/references", "/referanslarimiz"],
 ]);
 
+const PRIVATE_PATH_PREFIXES = [
+  "/hero-archive/",
+  "/scripts/",
+];
+
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https:; frame-src 'self' https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
@@ -30,6 +35,21 @@ export default {
       url.port = "";
       if (canonicalPath) url.pathname = canonicalPath;
       return Response.redirect(url.toString(), 308);
+    }
+
+    const isPrivatePath = PRIVATE_PATH_PREFIXES.some((prefix) =>
+      url.pathname.startsWith(prefix),
+    );
+    if (isPrivatePath) {
+      return new Response("Not Found", {
+        status: 404,
+        headers: {
+          ...SECURITY_HEADERS,
+          "Cache-Control": "no-store",
+          "Content-Type": "text/plain; charset=utf-8",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
     }
 
     let response = await env.ASSETS.fetch(request);

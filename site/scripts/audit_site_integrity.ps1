@@ -16,18 +16,48 @@ foreach ($match in [regex]::Matches($sitemapText, '<loc>([^<]+)</loc>')) { [void
 $canonicals = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 $brokenLinks = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 $missingSiteJs = [Collections.Generic.List[string]]::new()
+$pageMetadataErrors = [Collections.Generic.List[string]]::new()
+$invalidLegacyRedirects = [Collections.Generic.List[string]]::new()
+$legacyRedirectCount = 0
 $incomingLinks = @{}
-$htmlFiles = Get-ChildItem $site -Recurse -File -Filter '*.html'
+$allHtmlFiles = Get-ChildItem $site -Recurse -File -Filter '*.html'
+$htmlFiles = @($allHtmlFiles | Where-Object {
+  $relativePath = $_.FullName.Substring($site.Length + 1)
+  !$relativePath.StartsWith('hero-archive\', [StringComparison]::OrdinalIgnoreCase)
+})
 
 foreach ($file in $htmlFiles) {
   $html = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
+  $relativePath = $file.FullName.Substring($site.Length + 1)
   $canonicalMatch = [regex]::Match($html, '<link[^>]+rel=["'']canonical["''][^>]+href=["'']([^"'']+)', 'IgnoreCase')
   if (!$canonicalMatch.Success) { $canonicalMatch = [regex]::Match($html, '<link[^>]+href=["'']([^"'']+)["''][^>]+rel=["'']canonical["'']', 'IgnoreCase') }
   $canonical = if ($canonicalMatch.Success) { $canonicalMatch.Groups[1].Value } else { '' }
   $noindex = [regex]::IsMatch($html, '<meta[^>]+name=["'']robots["''][^>]+content=["''][^"'']*noindex', 'IgnoreCase')
+
+  $refreshMatch = [regex]::Match($html, '<meta[^>]+http-equiv=["'']refresh["''][^>]+content=["''][^"'']*url=([^"'']+)', 'IgnoreCase')
+  if ($refreshMatch.Success) {
+    $legacyRedirectCount++
+    try {
+      $sourceUrl = if ($canonical) { [Uri]$canonical } else { [Uri]"$origin/" }
+      $redirectTarget = [Uri]::new($sourceUrl, $refreshMatch.Groups[1].Value)
+      if ($redirectTarget.Host -notmatch '^(www\.)?kardeslertekstil\.com\.tr$' -or !(Test-SiteTarget $redirectTarget.AbsolutePath)) {
+        $invalidLegacyRedirects.Add("$relativePath -> $($refreshMatch.Groups[1].Value)")
+      }
+    } catch {
+      $invalidLegacyRedirects.Add("$relativePath -> $($refreshMatch.Groups[1].Value)")
+    }
+    continue
+  }
+
+  if (!$noindex) {
+    if (![regex]::IsMatch($html, '<title>\s*[^<]+\s*</title>', 'IgnoreCase')) { $pageMetadataErrors.Add("$relativePath -> missing title") }
+    if (![regex]::IsMatch($html, '<meta[^>]+name=["'']description["'']', 'IgnoreCase')) { $pageMetadataErrors.Add("$relativePath -> missing description") }
+    if (!$canonical) { $pageMetadataErrors.Add("$relativePath -> missing canonical") }
+    if (![regex]::IsMatch($html, '<h1\b', 'IgnoreCase')) { $pageMetadataErrors.Add("$relativePath -> missing h1") }
+  }
   if ($canonical -and !$noindex) { [void]$canonicals.Add($canonical) }
   if (!$noindex -and ![regex]::IsMatch($html, '<script[^>]+src=["''][^"'']*site\.js(?:\?[^"'']*)?["'']', 'IgnoreCase')) {
-    $missingSiteJs.Add($file.FullName.Substring($site.Length + 1))
+    $missingSiteJs.Add($relativePath)
   }
 
   $baseUrl = if ($canonical) { [Uri]$canonical } else { [Uri]"$origin/" }
@@ -37,7 +67,7 @@ foreach ($file in $htmlFiles) {
     try { $target = [Uri]::new($baseUrl, $href) } catch { continue }
     if ($target.Host -notmatch '^(www\.)?kardeslertekstil\.com\.tr$') { continue }
     if (!(Test-SiteTarget $target.AbsolutePath)) {
-      [void]$brokenLinks.Add("$($file.FullName.Substring($site.Length + 1)) -> $href")
+      [void]$brokenLinks.Add("$relativePath -> $href")
     } else {
       $targetPath = if ($target.AbsolutePath -eq '/') { '/' } else { $target.AbsolutePath.TrimEnd('/') }
       if (!$incomingLinks.ContainsKey($targetPath)) { $incomingLinks[$targetPath] = 0 }
@@ -83,15 +113,19 @@ $analyticsChecks = [ordered]@{
 }
 $failedAnalyticsChecks = @($analyticsChecks.GetEnumerator() | Where-Object { !$_.Value } | ForEach-Object { $_.Key })
 $result = [ordered]@{
-  htmlFiles = $htmlFiles.Count
+  scannedPublicHtmlFiles = $htmlFiles.Count
+  excludedArchiveHtmlFiles = $allHtmlFiles.Count - $htmlFiles.Count
+  legacyRedirects = $legacyRedirectCount
   indexableCanonicals = $canonicals.Count
   sitemapUrls = $sitemapUrls.Count
   missingInSitemap = $missingInSitemap
   invalidSitemapUrls = $invalidSitemapUrls
+  invalidLegacyRedirects = @($invalidLegacyRedirects)
+  pageMetadataErrors = @($pageMetadataErrors)
   brokenLinks = @($brokenLinks)
   orphanCanonicals = $orphanCanonicals
   missingSiteJs = @($missingSiteJs)
   analyticsChecks = $analyticsChecks
 }
 $result | ConvertTo-Json -Depth 4
-if ($missingInSitemap.Count -or $invalidSitemapUrls.Count -or $brokenLinks.Count -or $orphanCanonicals.Count -or $missingSiteJs.Count -or $failedAnalyticsChecks.Count) { exit 1 }
+if ($missingInSitemap.Count -or $invalidSitemapUrls.Count -or $invalidLegacyRedirects.Count -or $pageMetadataErrors.Count -or $brokenLinks.Count -or $orphanCanonicals.Count -or $missingSiteJs.Count -or $failedAnalyticsChecks.Count) { exit 1 }
