@@ -129,3 +129,6 @@ $result = [ordered]@{
 }
 $result | ConvertTo-Json -Depth 4
 if ($missingInSitemap.Count -or $invalidSitemapUrls.Count -or $invalidLegacyRedirects.Count -or $pageMetadataErrors.Count -or $brokenLinks.Count -or $orphanCanonicals.Count -or $missingSiteJs.Count -or $failedAnalyticsChecks.Count) { exit 1 }
+
+& (Join-Path $PSScriptRoot 'audit_schema.ps1') -Quiet
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
