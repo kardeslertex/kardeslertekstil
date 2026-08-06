@@ -147,3 +147,6 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 & (Join-Path $PSScriptRoot 'audit_core_web_vitals.ps1') -Quiet
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+& (Join-Path $PSScriptRoot 'audit_content_quality.ps1') -Quiet
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
