@@ -270,7 +270,23 @@
 </div>
 <div class="home-blog-carousel" data-home-blog-carousel>
 <div class="home-blog-viewport">
-<div class="home-blog-track" data-home-blog-track></div>
+<div class="home-blog-track" data-home-blog-track>
+<div class="home-blog-page">
+<a class="home-blog-card" href="bilgi-merkezi/is-kiyafeti-secerken-nelere-dikkat-edilmeli/"><h3>İş Kıyafeti Seçerken Nelere Dikkat Edilmeli?</h3><p>Kullanım alanı, kumaş, kalıp ve kurumsal görünüm için doğru seçim kriterlerini inceleyin.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/is-kiyafeti-kumas-rehberi/"><h3>İş Kıyafeti Kumaş Rehberi</h3><p>Dayanım, konfor, mevsim ve çalışma koşullarına göre kumaş alternatiflerini karşılaştırın.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/nakis-mi-baski-mi/"><h3>Nakış mı, Baskı mı?</h3><p>Kurumsal logonuz için görünüm, dayanıklılık ve uygulama açısından doğru yöntemi belirleyin.</p><span class="read-more">Yazıyı Oku</span></a>
+</div>
+<div class="home-blog-page">
+<a class="home-blog-card" href="bilgi-merkezi/is-kiyafetlerinde-beden-kalip-rehberi/"><h3>Beden ve Kalıp Rehberi</h3><p>Toplu siparişlerde beden dağılımını ve çalışanlara uygun kalıp seçimini doğru planlayın.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/toplu-is-kiyafeti-siparisi-nasil-planlanir/"><h3>Toplu Sipariş Nasıl Planlanır?</h3><p>Ürün listesi, beden dağılımı, numune, logo onayı ve teslimat adımlarını birlikte yönetin.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/softshell-mont-rehberi/"><h3>Softshell Mont Rehberi</h3><p>Rüzgâr, hafif yağış ve hareketli saha çalışmaları için doğru softshell modeli seçin.</p><span class="read-more">Yazıyı Oku</span></a>
+</div>
+<div class="home-blog-page">
+<a class="home-blog-card" href="bilgi-merkezi/polo-yaka-tisort-rehberi-2026/"><h3>Polo Yaka İş Tişörtü Rehberi</h3><p>Kumaş, yaka, renk ve logo uygulaması seçeneklerini kurumsal kullanım için değerlendirin.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/reflektorlu-is-yelegi-secim-rehberi/"><h3>Reflektörlü İş Yeleği Seçimi</h3><p>Görünürlük ihtiyacı, kullanım ortamı ve yelek özellikleri için temel kriterleri öğrenin.</p><span class="read-more">Yazıyı Oku</span></a>
+<a class="home-blog-card" href="bilgi-merkezi/kislik-is-kiyafetleri-rehberi/"><h3>Kışlık İş Kıyafetleri Rehberi</h3><p>Soğuk hava koşullarında katman, dış giyim ve ekip bütünlüğünü doğru şekilde planlayın.</p><span class="read-more">Yazıyı Oku</span></a>
+</div>
+</div>
 </div>
 <div class="home-blog-controls">
 <button aria-label="Önceki makaleler" class="home-blog-control" data-home-blog-prev type="button">‹</button>
@@ -459,7 +475,6 @@
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
 </a>
 <script src="products.js?v=20260804-3"></script>
-<script src="bilgi-merkezi/knowledge-center.js?v=20260802-2"></script>
 <script>
 (function(){
   var INTERVAL = 4000;
@@ -565,60 +580,17 @@
   'use strict';
 
   var section = document.querySelector('[data-home-blog-carousel]');
-  var posts = (window.KNOWLEDGE_CENTER_POSTS || []).slice();
-  if (!section || !posts.length) return;
+  if (!section) return;
 
   var track = section.querySelector('[data-home-blog-track]');
+  var pages = Array.prototype.slice.call(track.querySelectorAll('.home-blog-page'));
   var counter = section.querySelector('[data-home-blog-counter]');
   var prevBtn = section.querySelector('[data-home-blog-prev]');
   var nextBtn = section.querySelector('[data-home-blog-next]');
+  if (!pages.length || !counter || !prevBtn || !nextBtn) return;
   var interval = 7000;
   var current = 0;
   var timer = null;
-
-  posts.sort(function(a, b){ return b.published.localeCompare(a.published); });
-
-  function formatDate(value){
-    var date = new Date(value + 'T00:00:00');
-    return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
-  }
-
-  function createCard(post){
-    var link = document.createElement('a');
-    link.className = 'home-blog-card';
-    link.href = 'bilgi-merkezi/' + post.slug + '/';
-
-    var title = document.createElement('h3');
-    title.textContent = post.title;
-
-    var summary = document.createElement('p');
-    summary.textContent = post.summary;
-
-    var readMore = document.createElement('span');
-    readMore.className = 'read-more';
-    readMore.textContent = 'Yazıyı Oku';
-
-    link.append(title, summary, readMore);
-    return link;
-  }
-
-  function buildPages(){
-    var pages = [];
-    for (var i = 0; i < posts.length; i += 3) {
-      pages.push(posts.slice(i, i + 3));
-    }
-    return pages;
-  }
-
-  var pages = buildPages();
-  if (!pages.length) return;
-
-  pages.forEach(function(page){
-    var panel = document.createElement('div');
-    panel.className = 'home-blog-page';
-    page.forEach(function(post){ panel.appendChild(createCard(post)); });
-    track.appendChild(panel);
-  });
 
   function render(){
     track.style.transform = 'translateX(' + (-current * 100) + '%)';

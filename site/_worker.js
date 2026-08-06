@@ -97,9 +97,12 @@ export default {
       "/android-chrome-512x512.png",
     ]);
 
-    if (url.pathname === "/site.js" || url.pathname === "/styles.css") {
+    const isCodeAsset = /\.(?:css|js)$/.test(url.pathname);
+    if (isCodeAsset && url.searchParams.has("v")) {
+      headers.set("Cache-Control", "public, max-age=31536000, immutable");
+    } else if (isCodeAsset) {
       headers.set("Cache-Control", "public, max-age=0, must-revalidate");
-    } else if (url.pathname === "/privacy.css" || url.pathname === "/llms.txt") {
+    } else if (url.pathname === "/llms.txt") {
       headers.set("Cache-Control", "public, max-age=3600, must-revalidate");
     } else if (faviconAssets.has(url.pathname)) {
       headers.set("Cache-Control", "public, max-age=86400, must-revalidate");
