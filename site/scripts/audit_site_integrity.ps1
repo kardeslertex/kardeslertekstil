@@ -132,3 +132,6 @@ if ($missingInSitemap.Count -or $invalidSitemapUrls.Count -or $invalidLegacyRedi
 
 & (Join-Path $PSScriptRoot 'audit_schema.ps1') -Quiet
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+& (Join-Path $PSScriptRoot 'audit_meta.ps1') -Quiet
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
