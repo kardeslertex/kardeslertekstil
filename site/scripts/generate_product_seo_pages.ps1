@@ -45,7 +45,7 @@ foreach ($p in $products) {
     @{q="$($p.name) renkleri kurumsal kimliğe göre üretilebilir mi?";a="Kumaş ve aksesuar seçenekleri elverdiğinde kurum renkleri ana yüzey, garni, biye veya tamamlayıcı parçalarda uygulanabilir. Ton kararı fiziksel kartela ya da numune üzerinden doğrulanır."},
     @{q="$($p.name) siparişinde teklif için hangi bilgiler gerekir?";a="Yaklaşık adet, görev ve sektör, beden dağılımı, tercih edilen model, renk, logo dosyası, teslimat şehri ve hedef tarih paylaşılırsa yazılı teklif kapsamı daha doğru hazırlanabilir."}
   )
-  $productSchema = [ordered]@{'@context'='https://schema.org';'@type'='Product';name=$p.name;description=$p.meta;url=$url;image=@($image);sku="KT-$($p.id.ToUpper())-KATEGORI";category='Kurumsal iş kıyafeti';brand=@{'@type'='Brand';name='Kardeşler Tekstil'};manufacturer=@{'@type'='Organization';name='Kardeşler Tekstil';'@id'='https://kardeslertekstil.com.tr/#organization'};additionalProperty=@(@{'@type'='PropertyValue';name='Minimum sipariş';value='50 adet'},@{'@type'='PropertyValue';name='Üretim türü';value='Sipariş üzerine kurumsal üretim'},@{'@type'='PropertyValue';name='Logo uygulaması';value=$p.logo})}
+  $productSchema = [ordered]@{'@context'='https://schema.org';'@type'='CollectionPage';'@id'="$url#collection";name=$p.name;description=$p.meta;url=$url;isPartOf=@{'@id'='https://kardeslertekstil.com.tr/#website'};about=@{'@id'='https://kardeslertekstil.com.tr/#organization'}}
   $breadcrumb = [ordered]@{'@context'='https://schema.org';'@type'='BreadcrumbList';itemListElement=@(@{'@type'='ListItem';position=1;name='Ana Sayfa';item='https://kardeslertekstil.com.tr/'},@{'@type'='ListItem';position=2;name='Ürünlerimiz';item='https://kardeslertekstil.com.tr/urunlerimiz'},@{'@type'='ListItem';position=3;name=$p.name;item=$url})}
   $faqSchema = [ordered]@{'@context'='https://schema.org';'@type'='FAQPage';mainEntity=@($faqs | ForEach-Object { @{'@type'='Question';name=$_.q;acceptedAnswer=@{'@type'='Answer';text=$_.a}} })}
   $faqHtml = ($faqs | ForEach-Object { "<details><summary>$(Html $_.q)</summary><p>$(Html $_.a)</p></details>" }) -join ''
@@ -74,7 +74,7 @@ foreach ($p in $products) {
   $html = @"
 <!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>$(Html $p.title)</title><meta name="description" content="$(Html $p.meta)"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="$url"><link rel="stylesheet" href="../styles.css?v=20260803-5">
-<meta property="og:type" content="product"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="Kardeşler Tekstil"><meta property="og:title" content="$(Html $p.title)"><meta property="og:description" content="$(Html $p.meta)"><meta property="og:url" content="$url"><meta property="og:image" content="$image"><meta property="og:image:alt" content="$(Html $p.name) kurumsal üretim modeli">
+<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="Kardeşler Tekstil"><meta property="og:title" content="$(Html $p.title)"><meta property="og:description" content="$(Html $p.meta)"><meta property="og:url" content="$url"><meta property="og:image" content="$image"><meta property="og:image:alt" content="$(Html $p.name) kurumsal üretim modeli">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="$(Html $p.title)"><meta name="twitter:description" content="$(Html $p.meta)"><meta name="twitter:image" content="$image"><meta name="twitter:image:alt" content="$(Html $p.name) kurumsal üretim modeli">
 <script type="application/ld+json">$(J $productSchema)</script><script type="application/ld+json">$(J $breadcrumb)</script><script type="application/ld+json">$(J $faqSchema)</script>
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=11"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=11"><link rel="shortcut icon" href="/favicon.ico?v=11"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=11"><meta name="theme-color" content="#f97316"><meta name="google-analytics-id" content=""><script src="/site.js?v=20260804-2" defer></script></head>
@@ -106,5 +106,8 @@ foreach ($p in $products) {
   }
 }
 [IO.File]::WriteAllText($mapPath, $map, (New-Object Text.UTF8Encoding($false)))
+
+& (Join-Path $PSScriptRoot 'normalize_entity_schema.ps1')
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Output "Generated $($products.Count) product SEO pages."
