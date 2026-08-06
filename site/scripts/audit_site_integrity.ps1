@@ -135,3 +135,6 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 & (Join-Path $PSScriptRoot 'audit_meta.ps1') -Quiet
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+& (Join-Path $PSScriptRoot 'audit_sitemap.ps1') -Quiet
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
