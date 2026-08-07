@@ -33,3 +33,18 @@ Search Console Sitemaps ekranının kullanıcı tarafından sağlanan görüntü
 - Keşfedilen video: 0
 
 Bu kanıtla Search Console sitemap adresi ve okuma durumu doğrulanmıştır. Hesap/API yetkisi repoda tutulmaz; sonraki kontroller yine yetkili kullanıcının ekran görüntüsü veya dışa aktarımıyla kayda alınır.
+
+### Ana sayfa canonical doğrulaması — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https://kardeslertekstil.com.tr/` için şunları doğruladı:
+
+- Dizin durumu: Sayfa dizine eklendi
+- Son tarama: 6 Ağustos 2026 14:09:26
+- Tarama aracı: Googlebot akıllı telefon
+- Taramaya izin: Evet
+- Sayfa getirme: Başarılı
+- Dizine eklenmesine izin: Evet
+- Kullanıcı tarafından bildirilen canonical: `https://kardeslertekstil.com.tr/`
+- Google tarafından seçilen canonical: İncelenen URL
+
+Ana sayfada Google-selected canonical ile HTML'de bildirilen canonical aynıdır. Görüntüdeki harici “yönlendiren sayfa” keşif kaynağıdır; canonical kararını değiştirmemiştir ve tek başına site güvenlik ihlali kanıtı sayılmaz.
