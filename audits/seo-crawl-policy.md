@@ -80,3 +80,18 @@ Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https:/
 - Keşif bağlantısı: `https://kardeslertekstil.com.tr/urunlerimiz`
 
 Ürün detay şablonunda Google-selected canonical ile HTML canonical aynıdır. URL Denetimi görüntüsünde sitemap keşif alanında “Geçici işleme hatası” metni de görünmektedir; ancak sitemap genel raporu başarılıdır, ürün dizindedir ve sayfa başarıyla getirilmiştir. Bu nedenle durum anlık Search Console işleme notu olarak izlenecek, kalıcı hata kanıtı sayılmayacaktır.
+
+### Bilgi merkezi indeksleme durumu — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console URL Denetimi görüntüsünde `https://kardeslertekstil.com.tr/bilgi-merkezi/` için “URL Google'da yok / URL Google tarafından bilinmiyor” sonucu görüldü. Henüz tarama, sitemap ilişkilendirmesi veya canonical seçimi oluşmamıştır.
+
+Aynı anda yapılan canlı ve yerel doğrulamalar şunları gösterdi:
+
+- Production yanıtı: HTTP 200
+- Meta robots: `index,follow,max-image-preview:large`
+- Self-canonical: `https://kardeslertekstil.com.tr/bilgi-merkezi/`
+- Sitemap üyeliği: Var (`lastmod` 30 Temmuz 2026)
+- Sitemap genel durumu: Başarılı, son okuma 6 Ağustos 2026
+- Doğrudan iç link: Ana sayfa, ürün kataloğu, iletişim, hakkımızda ve referanslar dahil ana navigasyonlarda var
+
+Kod veya crawl politikası kaynaklı bir engel bulunmadı. Bu durum Search Console keşif/işleme gecikmesi olarak sınıflandırıldı. URL için bir kez “Dizine eklenmesini iste” kullanılmalı; ardından yeniden istek göndermeden Google'ın tarama sonucu beklenmelidir.
