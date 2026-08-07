@@ -23,7 +23,7 @@ const LEGACY_PHP_PAGES = new Map([
 const RELEASE_ASSET_ALIASES = new Map([
   ["/home-styles-20260807-20.css", "/styles.css"],
   ["/assets/runtime/home-hero-products-20260807-21.js", "/hero-products.js"],
-  ["/assets/runtime/home-site-20260807-18.js", "/site.js"],
+  ["/assets/runtime/home-site-20260807-19.js", "/site.js"],
   ["/products-data-20260807-24.js", "/products.js"],
   ["/catalog-ui-20260807-22.js", "/catalog.js"],
   ["/knowledge-data-20260807-22.js", "/bilgi-merkezi/knowledge-center.js"],

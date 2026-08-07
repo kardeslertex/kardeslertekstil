@@ -630,7 +630,7 @@
 
   function initBrandIntroLinks() {
     document.querySelectorAll(".site-header a.brand").forEach(function (brand) {
-      brand.setAttribute("href", "/?intro=1");
+      brand.setAttribute("href", "/#intro");
       brand.setAttribute("aria-label", "Kardeşler Tekstil karşılama ekranını aç");
     });
   }
