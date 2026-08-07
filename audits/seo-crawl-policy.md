@@ -95,3 +95,5 @@ Aynı anda yapılan canlı ve yerel doğrulamalar şunları gösterdi:
 - Doğrudan iç link: Ana sayfa, ürün kataloğu, iletişim, hakkımızda ve referanslar dahil ana navigasyonlarda var
 
 Kod veya crawl politikası kaynaklı bir engel bulunmadı. Bu durum Search Console keşif/işleme gecikmesi olarak sınıflandırıldı. URL için bir kez “Dizine eklenmesini iste” kullanılmalı; ardından yeniden istek göndermeden Google'ın tarama sonucu beklenmelidir.
+
+Kullanıcı aynı gün dizine ekleme isteğini başarıyla gönderdi. Search Console durumu “Keşfedildi — şu anda dizine eklenmiş değil” olarak güncellendi ve `https://kardeslertekstil.com.tr/sitemap.xml` keşif kaynağı olarak görünmeye başladı. Henüz tarama/canonical verisi oluşmadığından yeni istek gönderilmeyecek; Google'ın mevcut kuyruğu işlemesi beklenecektir.
