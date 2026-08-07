@@ -646,6 +646,7 @@
     var productLink = showcase.querySelector("[data-showcase-product-link]");
     var categoryLink = showcase.querySelector("[data-showcase-category-link]");
     var colorList = showcase.querySelector("[data-showcase-colors]");
+    var modelList = showcase.querySelector("[data-showcase-models]");
     var categoryList = showcase.querySelector("[data-showcase-categories]");
     var infoName = showcase.querySelector("[data-info-name]");
     var infoColors = showcase.querySelector("[data-info-colors]");
@@ -666,6 +667,7 @@
     var logoSizeControl = showcase.querySelector("[data-logo-size-control]");
     var logoRemove = showcase.querySelector("[data-logo-remove]");
     var currentProduct = 0;
+    var currentModel = 0;
     var currentColor = 0;
     var transitionTimer = null;
     var imageRequest = 0;
@@ -806,9 +808,9 @@
       });
     }
 
-    function renderColors(product) {
+    function renderColors(model, category) {
       colorList.innerHTML = "";
-      product.colors.forEach(function (color, index) {
+      model.colors.forEach(function (color, index) {
         var button = document.createElement("button");
         button.type = "button";
         button.className = "product-color-button";
@@ -822,7 +824,7 @@
             item.setAttribute("aria-pressed", itemIndex === currentColor ? "true" : "false");
           });
           if (color.image) {
-            swapShowcaseImage(color.image, product.productName + " - " + color.name, true, product.id);
+            swapShowcaseImage(color.image, model.productName + " - " + color.name, true, category.id);
           }
         });
         button.addEventListener("pointerenter", function () { if (color.image) primeImage(color.image); }, { passive: true });
@@ -831,11 +833,65 @@
       });
     }
 
+    function categoryModels(category) {
+      return [category].concat(category.alternates || []);
+    }
+
+    function applyModel(category, model, modelIndex, animate) {
+      var productImage = (model.colors[0] && model.colors[0].image) || model.image;
+      currentModel = modelIndex;
+      currentColor = 0;
+      status.hidden = !model.placeholder;
+      infoName.textContent = model.productName;
+      infoColors.textContent = model.colors.map(function (color) { return color.name; }).join(", ");
+      infoFabric.textContent = model.fabric;
+      infoWeight.textContent = model.weight;
+      infoComposition.textContent = model.composition;
+      infoUse.textContent = model.useArea;
+      infoLogo.textContent = model.logoOptions;
+      infoMinimum.textContent = model.minimumOrder;
+      infoWash.textContent = model.wash;
+      infoDescription.textContent = model.description;
+      updateLogoVisibility();
+      renderColors(model, category);
+      modelList.querySelectorAll("button").forEach(function (button, buttonIndex) {
+        var active = buttonIndex === currentModel;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      window.clearTimeout(transitionTimer);
+      swapShowcaseImage(productImage, model.imageAlt, animate, category.id);
+    }
+
+    function renderModels(category) {
+      modelList.innerHTML = "";
+      categoryModels(category).forEach(function (model, index) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-model-button";
+        button.textContent = model.code;
+        button.title = model.productName;
+        button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+        button.addEventListener("click", function () { applyModel(category, model, index, true); });
+        button.addEventListener("pointerenter", function () {
+          var src = model.colors[0] && model.colors[0].image;
+          if (src) primeImage(src);
+        }, { passive: true });
+        button.addEventListener("focus", function () {
+          var src = model.colors[0] && model.colors[0].image;
+          if (src) primeImage(src);
+        });
+        modelList.appendChild(button);
+      });
+    }
+
     function applyProduct(index, animate) {
       var product = products[index];
       var productImage = (product.colors[0] && product.colors[0].image) || product.image;
       currentProduct = index;
+      currentModel = 0;
       currentColor = 0;
+      renderModels(product);
 
       function update() {
         status.hidden = !product.placeholder;
@@ -853,7 +909,7 @@
         infoWash.textContent = product.wash;
         infoDescription.textContent = product.description;
         updateLogoVisibility();
-        renderColors(product);
+        renderColors(product, product);
         categoryList.querySelectorAll("button").forEach(function (button, buttonIndex) {
           var active = buttonIndex === currentProduct;
           button.classList.toggle("is-active", active);
