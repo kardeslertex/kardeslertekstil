@@ -10,6 +10,14 @@ const PRIVATE_PATH_PREFIXES = [
   "/scripts/",
 ];
 
+// Homepage runtime assets use release-specific paths. Some upstream/browser
+// caches ignore query strings, so a new pathname is required for a reliable
+// cache break when the hero markup and its JavaScript change together.
+const RELEASE_ASSET_ALIASES = new Map([
+  ["/assets/runtime/home-hero-products-20260807-18.js", "/hero-products.js"],
+  ["/assets/runtime/home-site-20260807-18.js", "/site.js"],
+]);
+
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
     "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https:; frame-src 'self' https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
@@ -69,7 +77,16 @@ export default {
       });
     }
 
-    let response = await env.ASSETS.fetch(request);
+    const releaseAssetPath = RELEASE_ASSET_ALIASES.get(url.pathname);
+    let assetRequest = request;
+    if (releaseAssetPath) {
+      const assetUrl = new URL(request.url);
+      assetUrl.pathname = releaseAssetPath;
+      assetUrl.search = "";
+      assetRequest = new Request(assetUrl.toString(), request);
+    }
+
+    let response = await env.ASSETS.fetch(assetRequest);
 
     // Eski, bozuk Turkce karakterli urun adreslerini HTML meta-refresh yerine
     // edge seviyesinde kalici yonlendirmeye cevirir.
