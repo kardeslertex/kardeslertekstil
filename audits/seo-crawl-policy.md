@@ -64,3 +64,19 @@ Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https:/
 - Google tarafından seçilen canonical: İncelenen URL
 
 Ürün katalog şablonunda Google-selected canonical ile HTML canonical aynıdır.
+
+### Ürün detay canonical doğrulaması — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https://kardeslertekstil.com.tr/urun/kt-mk-019-lacivert-kapusonlu-reflektorlu-s-montu/` için şunları doğruladı:
+
+- Dizin durumu: Sayfa dizine eklendi
+- Son tarama: 3 Ağustos 2026 17:44:19
+- Tarama aracı: Googlebot akıllı telefon
+- Taramaya izin: Evet
+- Sayfa getirme: Başarılı
+- Dizine eklenmesine izin: Evet
+- Kullanıcı tarafından bildirilen canonical: İncelenen ürün URL'si
+- Google tarafından seçilen canonical: İncelenen URL
+- Keşif bağlantısı: `https://kardeslertekstil.com.tr/urunlerimiz`
+
+Ürün detay şablonunda Google-selected canonical ile HTML canonical aynıdır. URL Denetimi görüntüsünde sitemap keşif alanında “Geçici işleme hatası” metni de görünmektedir; ancak sitemap genel raporu başarılıdır, ürün dizindedir ve sayfa başarıyla getirilmiştir. Bu nedenle durum anlık Search Console işleme notu olarak izlenecek, kalıcı hata kanıtı sayılmayacaktır.
