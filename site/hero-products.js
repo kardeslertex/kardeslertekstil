@@ -14,9 +14,9 @@
     { name: "Beyaz", value: "#f4f1e9" }
   ];
   var colorSlugs = ["lacivert", "antrasit", "saks-mavisi", "turuncu", "siyah", "kirmizi", "bordo", "haki", "bej", "beyaz"];
-  function colorsFor(folder, code) {
+  function colorsFor(folder, code, version) {
     return sharedColors.map(function (color, index) {
-      return { name: color.name, value: color.value, image: "assets/products/hero/" + folder + "/" + code + "-" + colorSlugs[index] + ".webp" };
+      return { name: color.name, value: color.value, image: "assets/products/hero/" + folder + "/" + code + "-" + colorSlugs[index] + ".webp" + (version ? "?v=" + version : "") };
     });
   }
   var tshirtColors = colorsFor("tshirt", "kt-ts-035");
@@ -27,14 +27,14 @@
   var polarColors = colorsFor("polar", "kt-pl-009");
   var yelekColors = colorsFor("yelek", "kt-yl-017");
   var softshellColors = colorsFor("softshell", "kt-ss-001");
-  var tshirtAltColors = colorsFor("tshirt", "kt-ts-036");
-  var sweatAltColors = colorsFor("sweat", "kt-sw-028");
-  var pantolonAltColors = colorsFor("pantolon", "kt-pt-015");
-  var tulumAltColors = colorsFor("tulum", "kt-tl-001");
-  var montkabanAltColors = colorsFor("montkaban", "kt-mk-023");
-  var polarAltColors = colorsFor("polar", "kt-pl-023");
-  var yelekAltColors = colorsFor("yelek", "kt-yl-009");
-  var softshellAltColors = colorsFor("softshell", "kt-ss-016");
+  var tshirtAltColors = colorsFor("tshirt", "kt-ts-036", "20260807-2");
+  var sweatAltColors = colorsFor("sweat", "kt-sw-028", "20260807-2");
+  var pantolonAltColors = colorsFor("pantolon", "kt-pt-015", "20260807-2");
+  var tulumAltColors = colorsFor("tulum", "kt-tl-001", "20260807-2");
+  var montkabanAltColors = colorsFor("montkaban", "kt-mk-023", "20260807-2");
+  var polarAltColors = colorsFor("polar", "kt-pl-023", "20260807-2");
+  var yelekAltColors = colorsFor("yelek", "kt-yl-009", "20260807-2");
+  var softshellAltColors = colorsFor("softshell", "kt-ss-016", "20260807-2");
 
   window.HERO_PRODUCTS = [
     {
