@@ -82,7 +82,9 @@ window.KATALOG = [
       { img: "kt-ts-037-lacivert-petrol-fermuar-cepli-polo-is-tisortu.png", code: "KT-TS-037", name: "Lacivert Petrol Fermuar Cepli Polo İş Tişörtü", tags: "Lacivert | Petrol omuz paneli | Turuncu biye | Fermuarlı göğüs cebi | Polo yaka", description: "Lacivert gövdeyi petrol mavisi omuz panelleri, turuncu biyeler ve dikey fermuarlı göğüs cebiyle tamamlayan teknik polo iş tişörtüdür. Servis, bakım ve saha ekipleri için kurumsal renklerle üretilebilir." },
       { img: "kt-ts-038-antrasit-bordo-raglan-cepli-is-tisortu.png", code: "KT-TS-038", name: "Antrasit Bordo Raglan Cepli İş Tişörtü", tags: "Antrasit | Bordo raglan kol | Gri biye | Kapaklı göğüs cebi | Bisiklet yaka", description: "Antrasit gövde, bordo raglan kollar ve kapaklı göğüs cebiyle hareket rahatlığı ve işlevi birleştiren kısa kollu iş tişörtüdür. Depo, üretim ve teknik ekip kullanımına uygundur." },
       { img: "kt-ts-039-tas-gri-lacivert-biyeli-polo-is-tisortu.png", code: "KT-TS-039", name: "Taş Gri Lacivert Biyeli Polo İş Tişörtü", tags: "Taş gri | Lacivert polo yaka | Saks omuz biyesi | Göğüs cebi | Kısa kol", description: "Taş gri ana rengi lacivert yaka ve kol manşetleriyle tamamlanan sade polo iş tişörtüdür. Saks mavisi omuz biyesi kurumsal renk ayrımını destekler; logo göğüs veya kol alanına uygulanabilir." },
-      { img: "kt-ts-040-petrol-siyah-v-yaka-teknik-is-tisortu.png", code: "KT-TS-040", name: "Petrol Siyah V Yaka Teknik İş Tişörtü", tags: "Petrol yeşili | Siyah omuz robası | V yaka | Turuncu biye | Fermuarlı göğüs cebi", description: "Petrol yeşili gövdeyi siyah omuz robası, V yaka ve turuncu yan biyelerle birleştiren teknik iş tişörtüdür. Küçük fermuarlı göğüs cebi kart ve hafif ekipman taşımaya yardımcı olur." }
+      { img: "kt-ts-040-petrol-siyah-v-yaka-teknik-is-tisortu.png", code: "KT-TS-040", name: "Petrol Siyah V Yaka Teknik İş Tişörtü", tags: "Petrol yeşili | Siyah omuz robası | V yaka | Turuncu biye | Fermuarlı göğüs cebi", description: "Petrol yeşili gövdeyi siyah omuz robası, V yaka ve turuncu yan biyelerle birleştiren teknik iş tişörtüdür. Küçük fermuarlı göğüs cebi kart ve hafif ekipman taşımaya yardımcı olur." },
+      { img: "kt-ts-041-grafit-turuncu-fermuar-cepli-polo-is-tisortu.webp", code: "KT-TS-041", name: "Grafit Turuncu Fermuar Cepli Polo İş Tişörtü", tags: "Grafit | Turuncu omuz paneli | Polo yaka | Fermuarlı göğüs cebi | Kısa kol", description: "Grafit gövdeyi turuncu omuz panelleri, siyah polo yaka ve dikey fermuarlı göğüs cebiyle tamamlayan teknik iş tişörtüdür. Servis, bakım ve saha ekipleri için kurumsal renk uygulamasına uygundur." },
+      { img: "kt-ts-042-lacivert-saks-panelli-cepli-is-tisortu.webp", code: "KT-TS-042", name: "Lacivert Saks Panelli Cepli İş Tişörtü", tags: "Lacivert | Saks yan panel | Bisiklet yaka | Kapaklı göğüs cebi | Reflektif biye", description: "Lacivert gövdeyi saks yan paneller, omuzlarda ince reflektif biye ve kapaklı göğüs cebiyle birleştiren bisiklet yaka iş tişörtüdür. Hareketli saha ekipleri için sade ve işlevsel bir modeldir." }
     ]
   },
 
@@ -179,7 +181,9 @@ window.KATALOG = [
       { img: "kt-pt-025-lacivert-fosfor-panelli-dikey-reflektorlu-is-pantolonu.webp", code: "KT-PT-025", name: "Lacivert Fosfor Panelli Dikey Reflektörlü İş Pantolonu", tags: "Lacivert | Fosfor sarı üst panel | Dikey reflektif paça detayı | Fermuarlı cep | Diz takviyesi", description: "Lacivert gövdeyi fosfor sarı bel panelleri, aşınmaya dayanıklı diz parçaları ve dikey reflektif paça detaylarıyla birleştiren özgün yüksek görünürlüklü iş pantolonudur." },
       { img: "kt-pt-026-grafit-asimetrik-panelli-teknik-is-pantolonu.webp", code: "KT-PT-026", name: "Grafit Asimetrik Panelli Teknik İş Pantolonu", tags: "Grafit | Asimetrik siyah paneller | Fermuarlı cep | Tek kargo cebi | Diz takviyesi", description: "Asimetrik siyah üst panelleri, tek kapaklı kargo cebi, dikey fermuarlı cebi ve geniş diz takviyeleriyle hareketli teknik görevler için geliştirilen grafit iş pantolonudur." },
       { img: "kt-pt-027-bej-kahverengi-panelli-teknik-is-pantolonu.webp", code: "KT-PT-027", name: "Bej Kahverengi Panelli Teknik İş Pantolonu", tags: "Bej | Kahverengi yan paneller | Gizli fermuarlı cepler | Ton sür ton diz formu | Ayarlanabilir paça", description: "Sıcak bej gövde, kahverengi yan paneller, dikiş hattına yerleştirilen fermuarlı cepler ve ayarlanabilir paçalarla sade görünümü teknik ayrıntılarla tamamlayan iş pantolonudur." },
-      { img: "kt-pt-028-lacivert-antrasit-diz-takviyeli-is-pantolonu.png", code: "KT-PT-028", name: "Lacivert Antrasit Diz Takviyeli İş Pantolonu", tags: "Lacivert | Antrasit diz takviyesi | Turuncu biye | Kargo cep | Cetvel cebi", description: "Lacivert iş pantolonunu antrasit formlu diz takviyeleri, kargo ve cetvel cepleriyle tamamlayan teknik modeldir. Montaj, bakım ve saha çalışmalarında ekipman taşımayı ve hareketi destekler." }
+      { img: "kt-pt-028-lacivert-antrasit-diz-takviyeli-is-pantolonu.png", code: "KT-PT-028", name: "Lacivert Antrasit Diz Takviyeli İş Pantolonu", tags: "Lacivert | Antrasit diz takviyesi | Turuncu biye | Kargo cep | Cetvel cebi", description: "Lacivert iş pantolonunu antrasit formlu diz takviyeleri, kargo ve cetvel cepleriyle tamamlayan teknik modeldir. Montaj, bakım ve saha çalışmalarında ekipman taşımayı ve hareketi destekler." },
+      { img: "kt-pt-029-grafit-petrol-panelli-teknik-is-pantolonu.webp", code: "KT-PT-029", name: "Grafit Petrol Panelli Teknik İş Pantolonu", tags: "Grafit | Petrol diz paneli | Turuncu biye | Kargo cepleri | Siyah diz takviyesi", description: "Grafit ana kumaşı petrol renkli formlu paneller, siyah diz takviyeleri ve turuncu biyelerle tamamlayan teknik iş pantolonudur. Çoklu cepleri bakım ve montaj ekipmanlarının düzenli taşınmasını destekler." },
+      { img: "kt-pt-030-lacivert-fosfor-cift-reflektorlu-is-pantolonu.webp", code: "KT-PT-030", name: "Lacivert Fosfor Çift Reflektörlü İş Pantolonu", tags: "Lacivert | Fosfor sarı panel | Çift reflektif bant | Siyah diz takviyesi | Kargo cep", description: "Lacivert gövdeyi fosfor sarı üst paneller, siyah diz takviyeleri ve paçalardaki çift reflektif bantla birleştiren yüksek görünürlüklü iş pantolonudur. Gece ve saha çalışmalarına uygun cepli bir modeldir." }
     ]
   },
 
@@ -267,7 +271,8 @@ window.KATALOG = [
       { img: "kt-on-029-bordo-antrasit-kruvaze-bel-onlugu.webp", code: "KT-ON-029", name: "Bordo Antrasit Kruvaze Bel Önlüğü", tags: "Bordo | Antrasit bel bandı ve bağlar | Kruvaze ön panel | Gizli fermuarlı cep | Diz boyu", description: "Bordo kumaşı, antrasit bel bandı, çapraz bindirmeli ön paneli ve gizli fermuarlı cebiyle restoran, bar ve servis ekiplerine düzenli bir siluet sunan belden bağlama önlüktür." },
       { img: "kt-on-030-camel-yesil-cok-cepli-bel-onlugu.webp", code: "KT-ON-030", name: "Camel Yeşil Çok Cepli Bel Önlüğü", tags: "Camel | Koyu yeşil alt panel | Üç farklı cep | Metal perçin detayı | Kısa servis modeli", description: "Camel kanvas gövdesi, koyu yeşil kavisli alt paneli ve farklı ölçülerde üç cebiyle kafe, fırın ve perakende hizmet ekipleri için işlevsel kısa bel önlüğüdür." },
       { img: "kt-on-031-antrasit-kiremit-asimetrik-sef-ceketi.png", code: "KT-ON-031", name: "Antrasit Kiremit Asimetrik Şef Ceketi", tags: "Antrasit | Kiremit yaka ve manşet | Asimetrik kapama | Uzun kol | Kalem cebi", description: "Antrasit gövdeyi kiremit renkli yaka ve manşet biyeleriyle tamamlayan asimetrik şef ceketidir. Gizli kapama ve kol kalem cebi profesyonel mutfak kullanımına düzenli bir görünüm kazandırır." },
-      { img: "kt-on-032-petrol-camel-capraz-askili-onluk.png", code: "KT-ON-032", name: "Petrol Camel Çapraz Askılı Önlük", tags: "Petrol mavisi | Camel çapraz askı | Antrasit bölmeli cep | Bakır perçin | Uzun önlük", description: "Petrol mavisi gövde, ayarlanabilir camel çapraz askılar ve geniş bölmeli ön ceple hazırlanan uzun servis önlüğüdür. Kafe, restoran ve perakende ekipleri için logo uygulamasına uygundur." }
+      { img: "kt-on-032-petrol-camel-capraz-askili-onluk.png", code: "KT-ON-032", name: "Petrol Camel Çapraz Askılı Önlük", tags: "Petrol mavisi | Camel çapraz askı | Antrasit bölmeli cep | Bakır perçin | Uzun önlük", description: "Petrol mavisi gövde, ayarlanabilir camel çapraz askılar ve geniş bölmeli ön ceple hazırlanan uzun servis önlüğüdür. Kafe, restoran ve perakende ekipleri için logo uygulamasına uygundur." },
+      { img: "kt-on-033-antrasit-adacayi-asimetrik-sef-ceketi.webp", code: "KT-ON-033", name: "Antrasit Adaçayı Asimetrik Şef Ceketi", tags: "Antrasit | Adaçayı yaka ve manşet | Asimetrik kapama | Kısa kol | Bakır biye", description: "Antrasit gövdeyi adaçayı renkli yaka ve kol manşetleriyle tamamlayan kısa kollu şef ceketidir. Asimetrik kapama hattı ve ince bakır biye, mutfak ve servis ekiplerine çağdaş bir kurumsal görünüm kazandırır." }
     ]
   },
 
@@ -311,7 +316,9 @@ window.KATALOG = [
       { img: "kt-mk-025-haki-siyah-uzun-kapusonlu-is-kabani.webp", code: "KT-MK-025", name: "Haki Siyah Uzun Kapüşonlu İş Kabanı", tags: "Haki | Siyah omuz ve kol panelleri | Diz üstü uzun kesim | Kapüşonlu | Dört cepli", description: "Haki suya dayanıklı gövdesi, siyah takviye panelleri, sabit kapüşonu ve diz üstüne uzanan yalıtımlı kesimiyle soğuk hava saha çalışmaları için geliştirilen uzun iş kabanıdır." },
       { img: "kt-mk-026-lacivert-camel-uzun-kislik-is-kabani.webp", code: "KT-MK-026", name: "Lacivert Camel Uzun Kışlık İş Kabanı", tags: "Lacivert | Camel omuz robası | Diz üstü uzun kesim | Kapüşonlu | Alt kapaklı cepler", description: "Lacivert ana kumaşı, camel omuz robası, aşağı konumlandırılmış geniş cepleri ve diz üstü yalıtımlı gövdesiyle depo, tesis ve açık saha ekiplerine yönelik uzun kışlık iş kabanıdır." },
       { img: "kt-mk-027-bordo-antrasit-uzun-teknik-is-kabani.webp", code: "KT-MK-027", name: "Bordo Antrasit Uzun Teknik İş Kabanı", tags: "Bordo | Antrasit kapüşon ve omuz paneli | Diz üstü uzun kesim | Gizli fermuarlı cepler | Reflektif biye", description: "Bordo gövdeyi antrasit omuz, kapüşon ve kol panelleriyle birleştiren; diz üstüne uzanan kesimi, gizli cepleri ve ince reflektif biyeleriyle kurumsal teknik ekipler için tasarlanan uzun iş kabanıdır." },
-      { img: "kt-mk-028-lacivert-camel-kapusonlu-uzun-is-kabani.png", code: "KT-MK-028", name: "Lacivert Camel Kapüşonlu Uzun İş Kabanı", tags: "Lacivert | Camel omuz | Antrasit alt panel | Çıkarılabilir kapüşon | Reflektif biye", description: "Lacivert uzun gövdeyi camel omuz panelleri ve antrasit alt bölümle tamamlayan kapüşonlu kışlık iş kabanıdır. Fırtına patı ve kapalı cepleri açık alan ekipleri için planlanmıştır." }
+      { img: "kt-mk-028-lacivert-camel-kapusonlu-uzun-is-kabani.png", code: "KT-MK-028", name: "Lacivert Camel Kapüşonlu Uzun İş Kabanı", tags: "Lacivert | Camel omuz | Antrasit alt panel | Çıkarılabilir kapüşon | Reflektif biye", description: "Lacivert uzun gövdeyi camel omuz panelleri ve antrasit alt bölümle tamamlayan kapüşonlu kışlık iş kabanıdır. Fırtına patı ve kapalı cepleri açık alan ekipleri için planlanmıştır." },
+      { img: "kt-mk-029-grafit-petrol-kapusonlu-teknik-is-montu.webp", code: "KT-MK-029", name: "Grafit Petrol Kapüşonlu Teknik İş Montu", tags: "Grafit | Petrol omuz ve yan panel | Turuncu biye | Çıkarılabilir kapüşon | Üç fermuarlı cep", description: "Grafit gövdeyi petrol omuz ve yan paneller ile turuncu biyelerle tamamlayan bel boy teknik iş montudur. Çıkarılabilir kapüşonu, ayarlı manşetleri ve üç fermuarlı cebi değişken saha koşullarına uyum sağlar." },
+      { img: "kt-mk-030-lacivert-fosfor-cift-reflektorlu-is-kabani.webp", code: "KT-MK-030", name: "Lacivert Fosfor Çift Reflektörlü İş Kabanı", tags: "Lacivert | Fosfor sarı omuz | Çift reflektif bant | Kapüşonlu | Kapaklı cepler", description: "Lacivert dolgulu gövdeyi fosfor sarı omuz panelleri ve gövde ile kollardaki çift reflektif bantlarla birleştiren kapüşonlu iş kabanıdır. Açık alan ve düşük ışıklı saha ekipleri için yüksek görünürlük sunar." }
     ]
   },
 
@@ -355,7 +362,9 @@ window.KATALOG = [
       { img: "kt-pl-025-grafit-petrol-tam-fermuarli-polar-mont.png", code: "KT-PL-025", name: "Grafit Petrol Tam Fermuarlı Polar Mont", tags: "Grafit polar | Petrol omuz ve yan panel | Turuncu biye | Tam fermuarlı | Üç cep", description: "Grafit polar kumaşı petrol paneller ve turuncu biyelerle tamamlayan tam fermuarlı iş polar montudur. Üç fermuarlı cep günlük teknik ekip kullanımını destekler." },
       { img: "kt-pl-026-bordo-antrasit-yarim-fermuarli-kapusonlu-polar.png", code: "KT-PL-026", name: "Bordo Antrasit Yarım Fermuarlı Kapüşonlu Polar", tags: "Bordo polar | Antrasit omuz ve dirsek | Yarım fermuarlı | Kapüşonlu | Bölmeli kanguru cep", description: "Bordo polar gövde, antrasit takviyeler ve bölmeli kanguru ceple hazırlanan yarım fermuarlı kapüşonlu iş polar modelidir." },
       { img: "kt-pl-027-tas-gri-lacivert-hibrit-polar-mont.png", code: "KT-PL-027", name: "Taş Gri Lacivert Hibrit Polar Mont", tags: "Taş gri polar | Lacivert kapitone göğüs | Tam fermuarlı | Göğüs cebi | Hibrit yapı", description: "Taş gri polar gövdeyi lacivert hafif dolgulu kapitone göğüs paneliyle birleştiren hibrit polar monttur. Serin depo ve saha geçişlerinde katmanlı kullanıma uygundur." },
-      { img: "kt-pl-028-orman-yesili-siyah-takviyeli-polar-mont.png", code: "KT-PL-028", name: "Orman Yeşili Siyah Takviyeli Polar Mont", tags: "Orman yeşili polar | Siyah omuz ve dirsek | Turuncu biye | Tam fermuarlı | Üç cep", description: "Orman yeşili polar kumaşı siyah omuz ve dirsek takviyeleriyle tamamlayan tam fermuarlı iş polar montudur. Üç fermuarlı cep ve dik yaka işlevsel kullanım sunar." }
+      { img: "kt-pl-028-orman-yesili-siyah-takviyeli-polar-mont.png", code: "KT-PL-028", name: "Orman Yeşili Siyah Takviyeli Polar Mont", tags: "Orman yeşili polar | Siyah omuz ve dirsek | Turuncu biye | Tam fermuarlı | Üç cep", description: "Orman yeşili polar kumaşı siyah omuz ve dirsek takviyeleriyle tamamlayan tam fermuarlı iş polar montudur. Üç fermuarlı cep ve dik yaka işlevsel kullanım sunar." },
+      { img: "kt-pl-029-lacivert-bordo-takviyeli-polar-mont.webp", code: "KT-PL-029", name: "Lacivert Bordo Takviyeli Polar Mont", tags: "Lacivert polar | Bordo omuz | Grafit dirsek takviyesi | Reflektif biye | Üç fermuarlı cep", description: "Lacivert polar gövdeyi bordo omuz panelleri, grafit dirsek takviyeleri ve ince reflektif biyelerle tamamlayan tam fermuarlı polar monttur. Üç fermuarlı cebi günlük saha kullanımını destekler." },
+      { img: "kt-pl-030-tas-gri-petrol-kapusonlu-polar-sweat.webp", code: "KT-PL-030", name: "Taş Gri Petrol Kapüşonlu Polar Sweat", tags: "Taş gri polar | Petrol göğüs paneli | Siyah takviye | Yarım fermuar | Kanguru cep", description: "Taş gri polar kumaşı petrol göğüs paneli, siyah omuz ve dirsek takviyeleriyle birleştiren yarım fermuarlı kapüşonlu modeldir. Çift girişli fermuarlı kanguru cep ve ayarlı kapüşon serin çalışma ortamlarına uygundur." }
     ]
   },
 
@@ -439,30 +448,6 @@ window.KATALOG = [
     ]
   },
 
-  /* ---------------- REFLEKTÖR ÇEŞİTLERİ ---------------- */
-  {
-    id: "reflektor",
-    nav: "Reflektör",
-    eyebrow: "Reflektif kumaş · şerit · renk seçenekleri",
-    title: "Reflektör Çeşitlerimiz",
-    desc: "İş kıyafetlerinde kullanılabilen farklı parlaklık, renk ve en seçeneklerine sahip reflektif kumaş ve şerit çeşitleri.",
-    prefix: "KT-RF",
-    baseName: "Reflektör Kataloğu",
-    tags: "Reflektör | Reflektif Kumaş | Reflektif Şerit | İş Güvenliği",
-    keywords: "reflektör reflektif kumaş reflektif şerit 6001 6002 1001 1102 1201 1202 1210 1211 gümüş gri polyester cd 2 cm 2,5 cm 3 cm 5 cm",
-    unit: "föy",
-    urunler: [
-      {
-        img: "reflektor-cesitleri-2-logo-duzeltilmis.png",
-        keepFormat: true,
-        code: "KT-RF-002",
-        name: "Reflektif Kumaş ve Şerit Çeşitleri",
-        kind: "reflektor",
-        tags: "6001 Gümüş 400CD | 6002 Gri 330CD | 1001 Gri 300CD | 1201 Gri 10CD | 1102 Gri 300CD Polyester | 1202 Gri 10CD Polyester | 1211 Gümüş 420CD | 1210 Gümüş 420CD | 2–5 cm"
-      }
-    ]
-  },
-
   /* ---------------- İŞ GÜVENLİĞİ (alt gruplu) ----------------
      Bu kategori 3 alt gruptan oluşur; her grubun kendi kod ön eki var.
      "kind" alanı lightbox'taki açıklama metnini seçer
@@ -543,6 +528,38 @@ window.KATALOG = [
       { img: "promosyon-polar-atki.png", name: "Promosyon Polar Atkı" },
       { img: "promosyon-polar-boyunluk.png", name: "Promosyon Polar Boyunluk" },
       { img: "promosyon-triko-eldiven.png", name: "Promosyon Triko Eldiven" }
+    ]
+  },
+
+  /* ---------------- REFLEKTÖR ÇEŞİTLERİ (yardımcı ürün) ---------------- */
+  {
+    id: "reflektor",
+    nav: "Reflektör",
+    eyebrow: "Reflektif kumaş · şerit · renk seçenekleri",
+    title: "Reflektör Çeşitlerimiz",
+    desc: "İş kıyafetlerinde kullanılabilen farklı parlaklık, renk ve en seçeneklerine sahip reflektif kumaş ve şerit çeşitleri.",
+    prefix: "KT-RF",
+    baseName: "Reflektör Kataloğu",
+    tags: "Reflektör | Reflektif Kumaş | Reflektif Şerit | İş Güvenliği",
+    keywords: "reflektör reflektif kumaş reflektif şerit 6001 6002 1001 1102 1201 1202 1210 1211 gümüş gri polyester cd 2 cm 2,5 cm 3 cm 5 cm sarı turuncu saks lacivert siyah kırmızı",
+    unit: "föy",
+    urunler: [
+      {
+        img: "kt-rf-001-reflektor-serit-cesitleri.png",
+        keepFormat: true,
+        code: "KT-RF-001",
+        name: "Renkli Reflektör Şerit Çeşitleri",
+        kind: "reflektor",
+        tags: "Sarı | Turuncu | Saks | Lacivert | Siyah | Kırmızı | 6002 Gümüş | 1001 Gri | 1201 Gri | 3x1–5x2 cm"
+      },
+      {
+        img: "reflektor-cesitleri-2-logo-duzeltilmis.png",
+        keepFormat: true,
+        code: "KT-RF-002",
+        name: "Reflektif Kumaş ve Şerit Çeşitleri",
+        kind: "reflektor",
+        tags: "6001 Gümüş 400CD | 6002 Gri 330CD | 1001 Gri 300CD | 1201 Gri 10CD | 1102 Gri 300CD Polyester | 1202 Gri 10CD Polyester | 1211 Gümüş 420CD | 1210 Gümüş 420CD | 2–5 cm"
+      }
     ]
   }
 ];
