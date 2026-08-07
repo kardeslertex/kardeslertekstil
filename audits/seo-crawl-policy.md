@@ -48,3 +48,19 @@ Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https:/
 - Google tarafından seçilen canonical: İncelenen URL
 
 Ana sayfada Google-selected canonical ile HTML'de bildirilen canonical aynıdır. Görüntüdeki harici “yönlendiren sayfa” keşif kaynağıdır; canonical kararını değiştirmemiştir ve tek başına site güvenlik ihlali kanıtı sayılmaz.
+
+### Ürün katalog canonical doğrulaması — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console URL Denetimi görüntüsü `https://kardeslertekstil.com.tr/urunlerimiz` için şunları doğruladı:
+
+- Dizin durumu: Sayfa dizine eklendi
+- Keşif kaynağı: `https://kardeslertekstil.com.tr/sitemap.xml`
+- Son tarama: 4 Ağustos 2026 21:41:14
+- Tarama aracı: Googlebot akıllı telefon
+- Taramaya izin: Evet
+- Sayfa getirme: Başarılı
+- Dizine eklenmesine izin: Evet
+- Kullanıcı tarafından bildirilen canonical: `https://kardeslertekstil.com.tr/urunlerimiz`
+- Google tarafından seçilen canonical: İncelenen URL
+
+Ürün katalog şablonunda Google-selected canonical ile HTML canonical aynıdır.
