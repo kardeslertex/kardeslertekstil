@@ -1,4 +1,4 @@
-param([string]$SiteRoot)
+﻿param([string]$SiteRoot)
 $ErrorActionPreference = 'Stop'
 $siteRoot = if ($SiteRoot) { (Resolve-Path $SiteRoot).Path } else { Split-Path $PSScriptRoot -Parent }
 $knowledgeRoot = Join-Path $siteRoot 'bilgi-merkezi'
