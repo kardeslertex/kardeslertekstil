@@ -10,6 +10,13 @@ const PRIVATE_PATH_PREFIXES = [
   "/scripts/",
 ];
 
+const LEGACY_PHP_PAGES = new Map([
+  ["hakkimizda", "/hakkimizda"],
+  ["iletisim", "/iletisim"],
+  ["haberler", "/bilgi-merkezi/"],
+  ["referanslar", "/referanslarimiz"],
+]);
+
 // Homepage runtime assets use release-specific paths. Some upstream/browser
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
@@ -54,6 +61,38 @@ export default {
       }
     }
     const legacyPath = url.pathname.replace(/\/$/, "") || "/";
+    if (legacyPath.toLowerCase() === "/page.php") {
+      const pageId = (url.searchParams.get("PageID") || "").toLowerCase();
+      const pageName = (url.searchParams.get("PageName") || "").toLowerCase();
+      const target = LEGACY_PHP_PAGES.get(pageId) ||
+        (pageName === "urunler" ? "/urunlerimiz" : "");
+      if (target) return Response.redirect(`https://kardeslertekstil.com.tr${target}`, 308);
+    }
+
+    if (legacyPath.toLowerCase() === "/referanslarimiz_tum_liste.htm") {
+      return Response.redirect("https://kardeslertekstil.com.tr/referanslarimiz", 308);
+    }
+
+    const obsoleteWordPressPath =
+      /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
+      /^\/urun-kategori\//i.test(url.pathname) ||
+      /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
+      /^\/wp-login\.php$/i.test(url.pathname) ||
+      /^\/\d+(?:-\d+)*\//.test(url.pathname) ||
+      url.pathname === "/ornek-sayfa/" ||
+      (url.pathname === "/" && url.searchParams.has("page_id"));
+    if (obsoleteWordPressPath) {
+      return new Response("Gone", {
+        status: 410,
+        headers: {
+          ...SECURITY_HEADERS,
+          "Cache-Control": "public, max-age=86400",
+          "Content-Type": "text/plain; charset=utf-8",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
+    }
+
     const canonicalPath = LEGACY_PATHS.get(legacyPath);
     const needsCanonicalHost =
       url.protocol !== "https:" || url.hostname === "www.kardeslertekstil.com.tr";
