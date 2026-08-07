@@ -76,10 +76,12 @@ export default {
     const obsoleteWordPressPath =
       /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
       /^\/urun-kategori\//i.test(url.pathname) ||
+      /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
       /^\/wp-login\.php$/i.test(url.pathname) ||
       /^\/\d+(?:-\d+)*\//.test(url.pathname) ||
       url.pathname === "/ornek-sayfa/" ||
+      (url.pathname === "/" && url.searchParams.has("wc-ajax")) ||
       (url.pathname === "/" && url.searchParams.has("page_id"));
     if (obsoleteWordPressPath) {
       return new Response("Gone", {
