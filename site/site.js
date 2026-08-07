@@ -665,13 +665,29 @@
     var logoSize = showcase.querySelector("[data-logo-size]");
     var logoSizeControl = showcase.querySelector("[data-logo-size-control]");
     var logoRemove = showcase.querySelector("[data-logo-remove]");
+    var reflectorPreview = showcase.querySelector("[data-reflector-preview]");
+    var reflectorToggle = showcase.querySelector("[data-reflector-toggle]");
+    var reflectorPanel = showcase.querySelector("[data-reflector-panel]");
+    var reflectorOptions = showcase.querySelector("[data-reflector-options]");
     var currentProduct = 0;
     var currentColor = 0;
+    var currentReflector = null;
     var transitionTimer = null;
     var imageRequest = 0;
     var imageCache = Object.create(null);
     var logoUrl = "";
     var logoPosition = { x: 42, y: 31 };
+    var reflectors = [
+      { id: "kt-5x2-sari", name: "KT 5x2 cm Sarı", position: "0% 0%" },
+      { id: "kt-5x2-turuncu", name: "KT 5x2 cm Turuncu", position: "50% 0%" },
+      { id: "kt-4x2-saks", name: "KT 4x2 Saks", position: "100% 0%" },
+      { id: "kt-4x2-lacivert", name: "KT 4x2 Lacivert", position: "0% 50%" },
+      { id: "kt-4x2-siyah", name: "KT 4x2 Siyah", position: "50% 50%" },
+      { id: "kt-4x2-kirmizi", name: "KT 4x2 Kırmızı", position: "100% 50%" },
+      { id: "6002-gumus", name: "6002 Gümüş", position: "0% 100%" },
+      { id: "1001-gri", name: "1001 Gri", position: "50% 100%" },
+      { id: "1201-gri", name: "1201 Gri", position: "100% 100%" }
+    ];
 
     function updateLogoVisibility() {
       logoTool.hidden = false;
@@ -753,6 +769,47 @@
       logoPreview.addEventListener("pointermove", move);
       logoPreview.addEventListener("pointerup", stop);
       logoPreview.addEventListener("pointercancel", stop);
+    });
+
+    function selectReflector(reflector) {
+      currentReflector = reflector;
+      reflectorPreview.hidden = !reflector;
+      reflectorToggle.textContent = reflector ? "Reflektörü Değiştir" : "Reflektör Ekle";
+      reflectorPreview.style.setProperty("--reflector-position", reflector ? reflector.position : "0% 0%");
+      reflectorOptions.querySelectorAll("button").forEach(function (button) {
+        button.setAttribute("aria-selected", button.dataset.reflectorId === (reflector ? reflector.id : "none") ? "true" : "false");
+      });
+    }
+
+    function createReflectorOption(reflector) {
+      var button = document.createElement("button");
+      var swatch = document.createElement("span");
+      var label = document.createElement("span");
+      button.type = "button";
+      button.className = "product-reflector-option" + (reflector ? "" : " product-reflector-none");
+      button.dataset.reflectorId = reflector ? reflector.id : "none";
+      button.setAttribute("role", "option");
+      button.setAttribute("aria-selected", reflector ? "false" : "true");
+      swatch.className = "product-reflector-swatch";
+      if (reflector) swatch.style.setProperty("--reflector-position", reflector.position);
+      else swatch.textContent = "×";
+      label.textContent = reflector ? reflector.name : "Reflektörsüz";
+      button.appendChild(swatch);
+      button.appendChild(label);
+      button.addEventListener("click", function () {
+        selectReflector(reflector);
+        reflectorPanel.hidden = true;
+        reflectorToggle.setAttribute("aria-expanded", "false");
+      });
+      return button;
+    }
+
+    reflectorOptions.appendChild(createReflectorOption(null));
+    reflectors.forEach(function (reflector) { reflectorOptions.appendChild(createReflectorOption(reflector)); });
+    reflectorToggle.addEventListener("click", function () {
+      var open = reflectorPanel.hidden;
+      reflectorPanel.hidden = !open;
+      reflectorToggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
 
     function primeImage(src) {
