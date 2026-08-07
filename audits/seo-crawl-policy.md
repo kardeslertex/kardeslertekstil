@@ -97,3 +97,16 @@ Aynı anda yapılan canlı ve yerel doğrulamalar şunları gösterdi:
 Kod veya crawl politikası kaynaklı bir engel bulunmadı. Bu durum Search Console keşif/işleme gecikmesi olarak sınıflandırıldı. URL için bir kez “Dizine eklenmesini iste” kullanılmalı; ardından yeniden istek göndermeden Google'ın tarama sonucu beklenmelidir.
 
 Kullanıcı aynı gün dizine ekleme isteğini başarıyla gönderdi. Search Console durumu “Keşfedildi — şu anda dizine eklenmiş değil” olarak güncellendi ve `https://kardeslertekstil.com.tr/sitemap.xml` keşif kaynağı olarak görünmeye başladı. Henüz tarama/canonical verisi oluşmadığından yeni istek gönderilmeyecek; Google'ın mevcut kuyruğu işlemesi beklenecektir.
+
+### Pendik lokasyon sayfası indeksleme durumu — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console URL Denetimi görüntüsünde `https://kardeslertekstil.com.tr/pendik-is-elbiseleri/` için “Tarandı — şu anda dizine eklenmiş değil” sonucu görüldü:
+
+- Keşif kaynağı: `https://kardeslertekstil.com.tr/sitemap.xml`
+- Son tarama: 3 Ağustos 2026 00:11:07
+- Tarama aracı: Googlebot masaüstü
+- Taramaya izin: Evet
+- Sayfa getirme: Başarılı
+- Canonical seçimi: Henüz veri yok
+
+Aynı anda masaüstü Googlebot user-agent ile yapılan production kontrolü HTTP 200, `index,follow,max-image-preview:large`, doğru self-canonical ve sitemap üyeliğini doğruladı. Search Console'daki “Yok” değerleri mevcut production yanıtında `noindex` bulunduğu anlamına gelmez; bu URL için henüz indeks/canonical kararı oluşmamıştır. Güncel sayfa için bir kez dizine ekleme isteği gönderilecek ve yeniden değerlendirme beklenecektir.
