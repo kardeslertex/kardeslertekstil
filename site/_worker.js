@@ -151,6 +151,16 @@ export default {
       headers.set("Content-Type", "text/plain; charset=utf-8");
     }
     if (response.status === 404) headers.set("X-Robots-Tag", "noindex, follow");
+    // Teklif formu ve katalog filtreleri kullanıcı deneyimi için query string
+    // taşır; bunlar ayrı arama sonucu sayfaları değildir. Google'ın robots.txt
+    // engeline takılmadan yanıtı görmesini ve temiz canonical'ı izlemesini sağla.
+    const nonIndexableQueryKeys = ["q", "tag", "kategori", "urun", "adet", "mesaj"];
+    if (
+      contentType.includes("text/html") &&
+      nonIndexableQueryKeys.some((key) => url.searchParams.has(key))
+    ) {
+      headers.set("X-Robots-Tag", "noindex, follow");
+    }
 
     return new Response(response.body, {
       status: response.status,

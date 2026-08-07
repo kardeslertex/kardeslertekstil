@@ -1,10 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /*?*q=
-Disallow: /*?*tag=
-Disallow: /*?*kategori=
-Disallow: /*?*urun=
-Disallow: /*?*adet=
-Disallow: /*?*mesaj=
 
 Sitemap: https://kardeslertekstil.com.tr/sitemap.xml
