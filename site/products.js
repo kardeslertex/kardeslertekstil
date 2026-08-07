@@ -415,6 +415,30 @@ window.KATALOG = [
     ]
   },
 
+  /* ---------------- REFLEKTÖR ÇEŞİTLERİ ---------------- */
+  {
+    id: "reflektor",
+    nav: "Reflektör",
+    eyebrow: "Reflektif kumaş · şerit · renk seçenekleri",
+    title: "Reflektör Çeşitlerimiz",
+    desc: "İş kıyafetlerinde kullanılabilen farklı parlaklık, renk ve en seçeneklerine sahip reflektif kumaş ve şerit çeşitleri.",
+    prefix: "KT-RF",
+    baseName: "Reflektör Kataloğu",
+    tags: "Reflektör | Reflektif Kumaş | Reflektif Şerit | İş Güvenliği",
+    keywords: "reflektör reflektif kumaş reflektif şerit 6001 6002 1001 1102 1201 1202 1210 1211 gümüş gri polyester cd 2 cm 2,5 cm 3 cm 5 cm",
+    unit: "föy",
+    urunler: [
+      {
+        img: "reflektor-cesitleri-2-logo-duzeltilmis.png",
+        keepFormat: true,
+        code: "KT-RF-002",
+        name: "Reflektif Kumaş ve Şerit Çeşitleri",
+        kind: "reflektor",
+        tags: "6001 Gümüş 400CD | 6002 Gri 330CD | 1001 Gri 300CD | 1201 Gri 10CD | 1102 Gri 300CD Polyester | 1202 Gri 10CD Polyester | 1211 Gümüş 420CD | 1210 Gümüş 420CD | 2–5 cm"
+      }
+    ]
+  },
+
   /* ---------------- İŞ GÜVENLİĞİ (alt gruplu) ----------------
      Bu kategori 3 alt gruptan oluşur; her grubun kendi kod ön eki var.
      "kind" alanı lightbox'taki açıklama metnini seçer

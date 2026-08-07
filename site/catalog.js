@@ -24,6 +24,7 @@
     polar: ["Servis, depo ve saha ekipleri", "Göğüs nakışı ve baskı", "Kurumsal renklerde mevsimlik üretim"],
     yelek: ["Teknik servis ve saha operasyonları", "Baskı, nakış ve reflektör", "Cep düzenine göre fonksiyonel üretim"],
     softshell: ["Dış saha ve mobil ekipler", "Göğüs ve kol logo uygulaması", "Rüzgâr ve hareket konforu odaklı üretim"],
+    reflektor: ["Üretim, şantiye ve gece çalışan ekipler", "Ürüne uygun renk ve en seçenekleri", "İhtiyaca göre reflektif malzeme uygulaması"],
     isg: ["Şantiye, üretim ve iş güvenliği", "Ürüne uygun kurumsal işaretleme", "İhtiyaca göre ürün ve beden tedariki"],
     promosyon: ["Etkinlik, saha ve kurumsal tanıtım", "Logo baskı seçenekleri", "Kampanya ve ekip ihtiyacına göre planlama"]
   };
@@ -69,6 +70,16 @@
         "Kurumsal toplu sipariş",
         "İş güvenliği ürünleriyle birlikte teklif",
         "Hızlı fiyat ve stok bilgisi"
+      ]
+    },
+    reflektor: {
+      title: "Reflektör uygulama seçenekleri",
+      text: "Reflektör türü, parlaklık değeri, renk ve şerit eni ürün modeline ve kullanım alanına göre birlikte belirlenir.",
+      features: [
+        "Farklı CD parlaklık değerleri",
+        "2 cm, 2,5 cm, 3 cm ve 5 cm en seçenekleri",
+        "Gümüş, gri ve renkli reflektör alternatifleri",
+        "İş kıyafetine özel uygulama planlaması"
       ]
     }
   };
@@ -534,6 +545,7 @@
     polar: "Polar ve Polar Mont",
     yelek: "İş Yeleği",
     softshell: "Softshell",
+    reflektor: "Reflektör Çeşitleri",
     isg: "İş Güvenliği Ekipmanları",
     promosyon: "Promosyon Ürünleri"
   };
