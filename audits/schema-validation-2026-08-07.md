@@ -36,3 +36,15 @@ Mevcut renk görselleri ve kategori seçenekleri, ayrı canonical URL'leri ve do
 ## Offers kararı
 
 Ürünler sipariş adedi, kumaş, uygulama ve proje kapsamına göre teklifleniyor; sayfalarda sabit ve görünür satış fiyatı bulunmuyor. Bu nedenle hiçbir Product nesnesine uydurma `offers`, fiyat, stok veya puan eklenmedi.
+
+## Search Console Product sonucu — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console ürün geliştirme görüntüsünde `KT-MK-019` için bir geçersiz rich-result öğesi raporlandı: `offers`, `review` veya `aggregateRating` belirtilmesi gerekiyor. Tarama 3 Ağustos 2026 17:44:19 tarihinde başarıyla tamamlanmış; `name`, `image`, `description`, `sku`, `brand`, `category`, `url` ve gerçek ürün özellikleri algılanmıştır.
+
+Bu hata sayfanın normal Google dizinine girmesini engellemez; yalnızca Product zengin sonucu uygunluğunu etkiler. İşletmede sabit, görünür ürün fiyatı ve doğrulanabilir müşteri yorum kaynağı bulunmadığı için şu aşamada:
+
+- Sahte `Offer`, fiyat veya stok eklenmeyecek.
+- Kurgu `Review`/`AggregateRating` üretilmeyecek.
+- Gerçek fiyat kataloğu veya görünür/doğrulanmış yorum sistemi oluştuğunda schema aynı görünür veriden üretilecek.
+
+Bu karar Google Product snippet gereksinimi ile schema içeriğinin görünür sayfayla uyuşması şartını birlikte korur.
