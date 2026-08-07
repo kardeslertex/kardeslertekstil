@@ -15,7 +15,7 @@ const PRIVATE_PATH_PREFIXES = [
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
   ["/home-styles-20260807-20.css", "/styles.css"],
-  ["/assets/runtime/home-hero-products-20260807-18.js", "/hero-products.js"],
+  ["/assets/runtime/home-hero-products-20260807-21.js", "/hero-products.js"],
   ["/assets/runtime/home-site-20260807-18.js", "/site.js"],
 ]);
 

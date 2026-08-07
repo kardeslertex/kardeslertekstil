@@ -29,6 +29,7 @@
   var softshellColors = colorsFor("softshell", "kt-ss-001");
   var tshirtAltColors = colorsFor("tshirt", "kt-ts-036", "20260807-2");
   var sweatAltColors = colorsFor("sweat", "kt-sw-028", "20260807-2");
+  sweatAltColors[0].image = "assets/products/hero/sweat/kt-sw-028-lacivert-v2.webp";
   var pantolonAltColors = colorsFor("pantolon", "kt-pt-015", "20260807-2");
   var tulumAltColors = colorsFor("tulum", "kt-tl-001", "20260807-2");
   var montkabanAltColors = colorsFor("montkaban", "kt-mk-023", "20260807-2");
