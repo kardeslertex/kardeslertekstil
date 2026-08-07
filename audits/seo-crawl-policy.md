@@ -21,4 +21,15 @@
 
 Gönderilecek tek adres `https://kardeslertekstil.com.tr/sitemap.xml` olmalıdır. Hesap erişimi olan yayın sorumlusu dağıtımdan sonra Sitemaps ekranında bu tam adresi, son okunma zamanını ve 747 keşfedilen URL'yi doğrular. URL sayısı 50.000 sınırından çok uzakta olduğu için bugün sitemap index gerekmiyor; içerik türleri operasyonel olarak ayrıştığında `pages`, `products`, `articles` ve `locations` sitemap'leri bir index altında üretilecektir.
 
-Search Console hesap/API yetkisi repoda bulunmadığından gönderilmiş sitemap durumu yerel kodla kanıtlanamaz; ekran doğrulaması yayın kontrol listesinin manuel kapısıdır.
+### Son manuel doğrulama — 7 Ağustos 2026
+
+Search Console Sitemaps ekranının kullanıcı tarafından sağlanan görüntüsü aşağıdaki production durumunu doğruladı:
+
+- Gönderilen adres: `https://kardeslertekstil.com.tr/sitemap.xml`
+- Gönderim tarihi: 2 Ağustos 2026
+- Son okunma tarihi: 6 Ağustos 2026
+- Durum: Başarılı
+- Keşfedilen sayfa: 747
+- Keşfedilen video: 0
+
+Bu kanıtla Search Console sitemap adresi ve okuma durumu doğrulanmıştır. Hesap/API yetkisi repoda tutulmaz; sonraki kontroller yine yetkili kullanıcının ekran görüntüsü veya dışa aktarımıyla kayda alınır.
