@@ -6,6 +6,16 @@ Production üzerindeki yedi temsilci URL, Lighthouse 13.4.1 ile birer kez mobil 
 
 PageSpeed Insights API çağrısı yapıldı ancak ortak Google API projesinin günlük kotası tükenmişti (`Quota exceeded`). Search Console API/hesap yetkisi repoda yoktur. Bu nedenle PSI ile Search Console/CrUX saha sonucu uydurulmamış, mevcut 27–31 Temmuz Search Console dışa aktarımının da CWV ve canonical karşılaştırması için yetersiz olduğu kaydedilmiştir. Saha başarısı ancak 28 günlük CrUX penceresi oluştuğunda kararlaştırılabilir.
 
+## Search Console/CrUX saha verisi — 7 Ağustos 2026
+
+Kullanıcının sağladığı Search Console “Önemli Web Verileri” ekranı aşağıdaki durumu doğruladı:
+
+- Mobil: Son 90 güne ait yeterli kullanım verisi yok.
+- Masaüstü: Son 90 güne ait yeterli kullanım verisi yok.
+- Kaynak: Chrome Kullanıcı Deneyimi Raporu (CrUX).
+
+Bu sonuç bir CWV başarısı veya başarısızlığı değildir. Google'ın LCP, INP ve CLS için güvenilir URL grubu oluşturmasına yetecek gerçek kullanıcı örneği henüz bulunmamaktadır. Saha verisi oluşana kadar Lighthouse yalnız laboratuvar regresyon aracı olarak kullanılacak; Search Console sonucu hakkında “iyi” ya da “zayıf” iddiası üretilmeyecektir.
+
 ## Lighthouse laboratuvar sonuçları
 
 Süreler milisaniye, transfer KB'dir. INP laboratuvarda güvenilir biçimde ölçülemediğinden TBT ve long-task kaynakları etkileşim riski için tanı sinyali olarak kullanılmıştır.
