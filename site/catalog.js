@@ -270,7 +270,18 @@
     }
 
     var visual = el("span", "gitem-visual");
-    if (item.kind === "esd") btn.classList.add("gitem-esd");
+    if (item.kind === "esd") {
+      var esdBadge = el("span", "gitem-esd-badge");
+      esdBadge.setAttribute("aria-label", "ESD ürünü");
+      var esdLabel = el("img");
+      esdLabel.src = "assets/esd-sewn-label.svg";
+      esdLabel.alt = "";
+      esdLabel.width = 36;
+      esdLabel.height = 44;
+      esdBadge.appendChild(esdLabel);
+      visual.appendChild(esdBadge);
+      btn.classList.add("gitem-esd");
+    }
     var overlay = el("span", "gitem-overlay");
     var purchase = el("span", "gitem-purchase-info");
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
