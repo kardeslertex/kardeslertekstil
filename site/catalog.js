@@ -30,6 +30,7 @@
     pantolon: ["Üretim, bakım ve teknik ekipler", "Cep üstü logo seçenekleri", "Göreve uygun cep ve kumaş planı"],
     tulum: ["Bakım, üretim ve ağır iş ekipleri", "Göğüs ve sırt logo uygulaması", "Hareket ve dayanıklılık odaklı üretim"],
     onluk: ["Gıda, mutfak ve laboratuvar", "Nakış ve transfer baskı", "Hijyen ve görev bazlı modelleme"],
+    esd: ["Elektronik montaj, test ve kontrollü alanlar", "ESD performansını koruyan uygulama", "Numune ve ölçümle doğrulanan üretim"],
     montkaban: ["Saha, lojistik ve dış ortam", "Nakış ve reflektif baskı", "İklim koşullarına uygun katmanlama"],
     polar: ["Servis, depo ve saha ekipleri", "Göğüs nakışı ve baskı", "Kurumsal renklerde mevsimlik üretim"],
     yelek: ["Teknik servis ve saha operasyonları", "Baskı, nakış ve reflektör", "Cep düzenine göre fonksiyonel üretim"],
@@ -181,9 +182,31 @@
 
   var CATEGORY_ORDER = [
     "tshirt", "pantolon", "sweat", "polar", "montkaban", "yelek",
-    "softshell", "tulum", "onluk", "isg", "promosyon", "reflektor"
+    "softshell", "tulum", "onluk", "esd", "isg", "promosyon", "reflektor"
   ];
-  var CATALOG = window.KATALOG.map(normalizeProducts).sort(function (a, b) {
+  var BASE_CATALOG = window.KATALOG.map(normalizeProducts);
+  var esdItems = [];
+  BASE_CATALOG.forEach(function (cat) {
+    cat.items.forEach(function (item) {
+      if (item.kind !== "esd") return;
+      esdItems.push(Object.assign({}, item, {
+        cat: "esd",
+        sourceCategory: cat.id,
+        i: esdItems.length
+      }));
+    });
+  });
+  var esdCategory = {
+    id: "esd",
+    nav: "ESD",
+    eyebrow: "Elektronik üretim · kontrollü alanlar",
+    title: "ESD Kıyafetleri",
+    desc: "ESD tişört, pantolon, sweatshirt, mont ve önlük modellerinin tamamını tek bölümde inceleyin.",
+    keywords: "esd antistatik elektronik üretim kontrollü alan iletken kumaş",
+    unit: "model",
+    items: esdItems
+  };
+  var CATALOG = BASE_CATALOG.concat(esdCategory).sort(function (a, b) {
     return CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id);
   });
   var galleries = {};
@@ -247,13 +270,7 @@
     }
 
     var visual = el("span", "gitem-visual");
-    if (item.kind === "esd") {
-      var esdBadge = el("span", "gitem-esd-badge");
-      esdBadge.setAttribute("aria-label", "ESD ürünü");
-      esdBadge.innerHTML = '<span aria-hidden="true">⌁</span> ESD';
-      visual.appendChild(esdBadge);
-      btn.classList.add("gitem-esd");
-    }
+    if (item.kind === "esd") btn.classList.add("gitem-esd");
     var overlay = el("span", "gitem-overlay");
     var purchase = el("span", "gitem-purchase-info");
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
@@ -462,7 +479,7 @@
       pantolon: "is-pantolonu/", tulum: "is-tulumu/",
       onluk: "asci-kiyafeti-is-onlugu/", montkaban: "is-montu-kaban/",
       polar: "polar-is-montu/", yelek: "reflektorlu-is-yelegi/",
-      softshell: "softshell-is-montu/", isg: "is-guvenligi-ekipmanlari/",
+      softshell: "softshell-is-montu/", esd: "esd-urunler/", isg: "is-guvenligi-ekipmanlari/",
       promosyon: "kurumsal-promosyon-urunleri/"
     };
     if (seoPages[cat.id]) {
@@ -544,7 +561,7 @@
     });
 
     /* Üst özet: toplam model ve kategori sayısı */
-    var total = CATALOG.reduce(function (sum, cat) { return sum + cat.items.length; }, 0);
+    var total = BASE_CATALOG.reduce(function (sum, cat) { return sum + cat.items.length; }, 0);
     var sumModels = document.getElementById("sumModels");
     var sumCats = document.getElementById("sumCats");
     if (sumModels) sumModels.textContent = total;
@@ -560,7 +577,7 @@
         "name": "Kardeşler Tekstil Ürün Kataloğu",
         "url": "https://kardeslertekstil.com.tr/urunlerimiz",
         "numberOfItems": total,
-        "itemListElement": CATALOG.reduce(function (items, cat) {
+        "itemListElement": BASE_CATALOG.reduce(function (items, cat) {
           cat.items.forEach(function (item) {
             items.push({
               "@type": "ListItem",
@@ -609,6 +626,7 @@
     pantolon: "İş Pantolonu",
     tulum: "İş Tulumu",
     onluk: "İş Önlüğü",
+    esd: "ESD Kıyafetleri",
     montkaban: "Mont ve Kaban",
     polar: "Polar ve Polar Mont",
     yelek: "İş Yeleği",
@@ -889,8 +907,8 @@
 
   var initialParams = new URLSearchParams(location.search);
   if (initialParams.get("esd") === "1") {
-    search.value = "ESD";
-    applySearch();
+    history.replaceState(null, "", "#esd");
+    scrollCategoryToStart("esd");
   }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
