@@ -116,6 +116,7 @@
 
   function onlukType(item) {
     var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("scrub") !== -1) return "scrub";
     if (text.indexOf("şef ceketi") !== -1) return "sef";
     if (text.indexOf("belden") !== -1 || text.indexOf("bel önlüğü") !== -1) return "belden";
     if (text.indexOf("askılı") !== -1 || text.indexOf("çapraz askı") !== -1) return "askili";
@@ -174,7 +175,7 @@
           if (aBahcivan !== bBahcivan) return aBahcivan ? -1 : 1;
         }
         if (cat.id === "onluk") {
-          var onlukOrder = { is: 0, askili: 1, belden: 2, sef: 3 };
+          var onlukOrder = { is: 0, askili: 1, belden: 2, sef: 3, scrub: 4 };
           var typeDifference = onlukOrder[onlukType(a)] - onlukOrder[onlukType(b)];
           if (typeDifference) return typeDifference;
         }
@@ -550,7 +551,8 @@
       { id: "is", label: "İş Önlükleri" },
       { id: "askili", label: "Askılı Önlükler" },
       { id: "belden", label: "Belden Bağlamalı Önlükler" },
-      { id: "sef", label: "Şef Önlükleri" }
+      { id: "sef", label: "Şef Önlükleri" },
+      { id: "scrub", label: "Scrub Takımlar" }
     ];
     var wrap = el("div", "catalog-subfilters");
     wrap.setAttribute("role", "group");
@@ -597,6 +599,11 @@
       var guide = el("a", "catalog-category-guide", "Kategori detaylarını inceleyin →");
       guide.href = seoPages[cat.id];
       left.appendChild(guide);
+    }
+    if (cat.id === "onluk") {
+      var scrubGuide = el("a", "catalog-category-guide", "Scrub takımı seçeneklerini inceleyin →");
+      scrubGuide.href = "scrub-takimi/";
+      left.appendChild(scrubGuide);
     }
     var insights = categoryInsights[cat.id];
     if (insights) {
@@ -1025,6 +1032,16 @@
   if (initialParams.get("esd") === "1") {
     history.replaceState(null, "", "#esd");
     scrollCategoryToStart("esd");
+  }
+  if (initialParams.get("onluk") === "scrub") {
+    onlukFilter = "scrub";
+    document.querySelectorAll("[data-onluk-filter]").forEach(function (control) {
+      var active = control.dataset.onlukFilter === onlukFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("onluk");
   }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */

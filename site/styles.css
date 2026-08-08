@@ -1679,11 +1679,20 @@ html{scroll-behavior:smooth;}
 .esd-product-grid span{padding:15px 16px 3px;color:#0c5f6d;font-size:11px;font-weight:800;letter-spacing:.08em;}
 .esd-product-grid h3{margin:0;padding:0 16px;font-size:17px;line-height:1.25;}
 .esd-product-grid strong{display:none;}
+.scrub-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.scrub-product-grid a{display:flex;min-width:0;padding:0 0 18px;flex-direction:column;border:1px solid var(--steel-200);border-radius:14px;overflow:hidden;background:#fff;color:var(--navy-800);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.scrub-product-grid a:hover{transform:translateY(-4px);border-color:#5b8f98;box-shadow:0 14px 30px rgba(8,76,87,.13);}
+.scrub-product-grid img{width:100%;aspect-ratio:1/1;object-fit:contain;padding:10px;background:var(--cream-50);}
+.scrub-product-grid span{padding:15px 16px 3px;color:#0c5f6d;font-size:11px;font-weight:800;letter-spacing:.08em;}
+.scrub-product-grid h3{margin:0;padding:0 16px;font-size:17px;line-height:1.25;}
+.scrub-product-grid p{margin:8px 0 0;padding:0 16px;color:var(--steel-600);font-size:14px;line-height:1.55;}
 .esd-info-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:72px;align-items:start;}
 .esd-info-grid p,.esd-info-grid li{color:var(--fg2);line-height:1.75;}
 .esd-info-grid h2{font-size:clamp(32px,4vw,52px);}
 @media(max-width:900px){.esd-hero-grid,.esd-info-grid{grid-template-columns:1fr;gap:32px}.esd-hero figure{max-width:520px}.esd-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:900px){.scrub-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:540px){.esd-hero{padding:44px 0}.esd-product-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.scrub-product-grid{grid-template-columns:1fr}}
 .gitem-purchase-info{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:6px;width:100%;padding:14px;background:#fff;pointer-events:none;text-align:left;}
 .gitem-purchase-badge{padding:6px 8px;border:1px solid var(--steel-200);border-radius:var(--radius-full);background:var(--cream-50);color:var(--navy-700);font-size:9px;font-weight:700;line-height:1;}
 .catalog-mini-quote{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;margin-top:30px;padding:26px 28px;border-radius:var(--radius-md);background:var(--navy-700);color:var(--cream-50);}
