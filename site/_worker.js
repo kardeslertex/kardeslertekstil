@@ -39,6 +39,8 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/catalog-ui-20260808-05.js", "/catalog.js"],
   ["/catalog-ui-20260809-esd4.js", "/catalog.js"],
   ["/catalog-styles-20260809-esd4.css", "/styles.css"],
+  ["/products-data-20260809-esd5.js", "/products.js"],
+  ["/catalog-ui-20260809-esd5.js", "/catalog.js"],
   ["/products-data-20260808-06.js", "/products.js"],
   ["/catalog-ui-20260808-07.js", "/catalog.js"],
   ["/assets/runtime/home-hero-products-20260808-08.js", "/hero-products.js"],

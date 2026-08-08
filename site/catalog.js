@@ -147,7 +147,7 @@
         var p = typeof raw === "string" ? { img: raw } : raw;
         var code = p.code || nextAvailableCode(group.prefix);
         var item = {
-          src: NEW_PRODUCT_IMAGES[code] || (GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img))),
+          src: NEW_PRODUCT_IMAGES[code] || (GALLERY_PATH + cat.id + "/" + (p.kind === "esd" ? webpSource(p.img) : (p.keepFormat ? p.img : webpSource(p.img)))),
           code: code,
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
