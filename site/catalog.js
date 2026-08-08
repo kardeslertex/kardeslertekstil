@@ -150,6 +150,13 @@
       group.items.sort(function (a, b) {
         return a.code.localeCompare(b.code, "tr", { numeric: true });
       });
+      var seenProductNames = {};
+      group.items = group.items.filter(function (item) {
+        var nameKey = item.name.trim().toLocaleLowerCase("tr-TR");
+        if (seenProductNames[nameKey]) return false;
+        seenProductNames[nameKey] = true;
+        return true;
+      });
       group.items.forEach(function (item) {
         item.i = flat.length;
         flat.push(item);
