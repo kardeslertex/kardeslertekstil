@@ -99,10 +99,32 @@
       ? cat.gruplar
       : [{ prefix: cat.prefix, baseName: cat.baseName, tags: cat.tags, kind: "", search: "", urunler: cat.urunler }];
 
+    // Explicit product codes may belong to items displayed later in the list.
+    // Reserve them first so automatically generated codes can never duplicate them.
+    var reservedCodes = {};
+    var nextCodeByPrefix = {};
+    groups.forEach(function (group) {
+      group.urunler.forEach(function (raw) {
+        if (typeof raw !== "string" && raw.code) reservedCodes[raw.code] = true;
+      });
+    });
+
+    function nextAvailableCode(prefix) {
+      var next = nextCodeByPrefix[prefix] || (cat.codeStart || 1);
+      var candidate = prefix + "-" + pad3(next);
+      while (reservedCodes[candidate]) {
+        next += 1;
+        candidate = prefix + "-" + pad3(next);
+      }
+      reservedCodes[candidate] = true;
+      nextCodeByPrefix[prefix] = next + 1;
+      return candidate;
+    }
+
     groups.forEach(function (group) {
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
-        var code = p.code || group.prefix + "-" + pad3((cat.codeStart || 1) + flat.length);
+        var code = p.code || nextAvailableCode(group.prefix);
         var item = {
           src: GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img)),
           code: code,
