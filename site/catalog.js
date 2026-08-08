@@ -579,6 +579,50 @@
     return wrap;
   }
 
+  var montKabanFilter = "all";
+
+  function montKabanType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("kaban") !== -1 || text.indexOf("parka") !== -1 || text.indexOf("yağmurluk") !== -1) return "kaban";
+    return "mont";
+  }
+
+  function matchesMontKabanFilter(item, filter) {
+    if (!item || item.cat !== "montkaban" || filter === "all") return true;
+    return montKabanType(item) === filter;
+  }
+
+  function buildMontKabanFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "mont", label: "Montlar" },
+      { id: "kaban", label: "Kabanlar" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Mont ve kabanları ürün tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesMontKabanFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.montKabanFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === montKabanFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === montKabanFilter);
+      button.addEventListener("click", function () {
+        montKabanFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.montKabanFilter === montKabanFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -662,6 +706,7 @@
       if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
       if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
       if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
+      if (cat.id === "montkaban") section.appendChild(buildMontKabanFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -998,7 +1043,8 @@
       var matchesSubtype =
         (btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter)) &&
         (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter)) &&
-        (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter));
+        (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter)) &&
+        (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
@@ -1042,6 +1088,16 @@
     });
     applySearch();
     scrollCategoryToStart("onluk");
+  }
+  if (initialParams.get("montkaban") === "mont" || initialParams.get("montkaban") === "kaban") {
+    montKabanFilter = initialParams.get("montkaban");
+    document.querySelectorAll("[data-mont-kaban-filter]").forEach(function (control) {
+      var active = control.dataset.montKabanFilter === montKabanFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("montkaban");
   }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
