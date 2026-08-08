@@ -14,6 +14,16 @@
 
   var WHATSAPP = "902163961988";
   var GALLERY_PATH = "assets/products/gallery/";
+  var NEW_PRODUCT_IMAGES = {
+    "KT-TS-040": "assets/products/hero/tshirt/kt-ts-040-lacivert.webp", "KT-TS-037": "assets/products/hero/tshirt/kt-ts-037-lacivert.webp",
+    "KT-SW-034": "assets/products/hero/sweat/kt-sw-034-lacivert.webp", "KT-SW-036": "assets/products/hero/sweat/kt-sw-036-lacivert.webp",
+    "KT-PT-001": "assets/products/hero/pantolon/kt-pt-001-lacivert.webp", "KT-PT-029": "assets/products/hero/pantolon/kt-pt-029-lacivert.webp",
+    "KT-TL-020": "assets/products/hero/tulum/kt-tl-020-lacivert.webp", "KT-TL-022": "assets/products/hero/tulum/kt-tl-022-lacivert.webp",
+    "KT-MK-001": "assets/products/hero/montkaban/kt-mk-001-lacivert.webp", "KT-MK-029": "assets/products/hero/montkaban/kt-mk-029-lacivert.webp",
+    "KT-PL-008": "assets/products/hero/polar/kt-pl-008-lacivert.webp", "KT-PL-028": "assets/products/hero/polar/kt-pl-028-lacivert.webp",
+    "KT-YL-005": "assets/products/hero/yelek/kt-yl-005-lacivert.webp", "KT-YL-010": "assets/products/hero/yelek/kt-yl-010-lacivert.webp",
+    "KT-SS-022": "assets/products/hero/softshell/kt-ss-022-lacivert.webp", "KT-SS-020": "assets/products/hero/softshell/kt-ss-020-lacivert.webp"
+  };
   var categoryInsights = {
     tshirt: ["Üretim, depo ve saha ekipleri", "Baskı veya nakış", "Kurumsal renge özel seri üretim"],
     sweat: ["Depo, servis ve saha ekipleri", "Göğüs ve sırt logo uygulaması", "Mevsimlik katmanlı üretim"],
@@ -122,11 +132,16 @@
     }
 
     groups.forEach(function (group) {
+      group.urunler = group.urunler.slice().sort(function (a, b) {
+        var aCode = typeof a === "string" ? "" : (a.code || "");
+        var bCode = typeof b === "string" ? "" : (b.code || "");
+        return (NEW_PRODUCT_IMAGES[bCode] ? 1 : 0) - (NEW_PRODUCT_IMAGES[aCode] ? 1 : 0);
+      });
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
         var code = p.code || nextAvailableCode(group.prefix);
         var item = {
-          src: GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img)),
+          src: NEW_PRODUCT_IMAGES[code] || (GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img))),
           code: code,
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
