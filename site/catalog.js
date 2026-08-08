@@ -132,11 +132,6 @@
     }
 
     groups.forEach(function (group) {
-      group.urunler = group.urunler.slice().sort(function (a, b) {
-        var aCode = typeof a === "string" ? "" : (a.code || "");
-        var bCode = typeof b === "string" ? "" : (b.code || "");
-        return (NEW_PRODUCT_IMAGES[bCode] ? 1 : 0) - (NEW_PRODUCT_IMAGES[aCode] ? 1 : 0);
-      });
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
         var code = p.code || nextAvailableCode(group.prefix);
@@ -148,10 +143,16 @@
           kind: p.kind || group.kind || "",
           search: [p.search, group.search].filter(Boolean).join(" "),
           cat: cat.id,
-          i: flat.length
+          i: 0
         };
-        flat.push(item);
         return item;
+      });
+      group.items.sort(function (a, b) {
+        return a.code.localeCompare(b.code, "tr", { numeric: true });
+      });
+      group.items.forEach(function (item) {
+        item.i = flat.length;
+        flat.push(item);
       });
     });
 
