@@ -123,6 +123,13 @@
     return "is";
   }
 
+  function pantolonType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("klasik model") !== -1 && text.indexOf("yalnız iki ön cep") !== -1) return "classic";
+    if (text.indexOf("kargo") !== -1 || text.indexOf("çok cepli") !== -1 || text.indexOf("çoklu cep") !== -1 || text.indexOf("yan cep") !== -1 || text.indexOf("alet cebi") !== -1 || text.indexOf("cetvel cebi") !== -1) return "cargo";
+    return "technical";
+  }
+
   function normalizeProducts(cat) {
     var flat = [];
     var groups = cat.gruplar
@@ -178,6 +185,11 @@
           var onlukOrder = { is: 0, askili: 1, belden: 2, sef: 3, scrub: 4 };
           var typeDifference = onlukOrder[onlukType(a)] - onlukOrder[onlukType(b)];
           if (typeDifference) return typeDifference;
+        }
+        if (cat.id === "pantolon") {
+          var pantolonOrder = { cargo: 0, technical: 1, classic: 2 };
+          var pantolonDifference = pantolonOrder[pantolonType(a)] - pantolonOrder[pantolonType(b)];
+          if (pantolonDifference) return pantolonDifference;
         }
         return a.code.localeCompare(b.code, "tr", { numeric: true });
       });
@@ -666,6 +678,45 @@
     return wrap;
   }
 
+  var pantolonFilter = "all";
+
+  function matchesPantolonFilter(item, filter) {
+    if (!item || item.cat !== "pantolon" || filter === "all") return true;
+    return pantolonType(item) === filter;
+  }
+
+  function buildPantolonFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "cargo", label: "Kargo Pantolonlar" },
+      { id: "technical", label: "Teknik Pantolonlar" },
+      { id: "classic", label: "Klasik Modeller" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "İş pantolonlarını model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesPantolonFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.pantolonFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === pantolonFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === pantolonFilter);
+      button.addEventListener("click", function () {
+        pantolonFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.pantolonFilter === pantolonFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -751,6 +802,7 @@
       if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
       if (cat.id === "montkaban") section.appendChild(buildMontKabanFilters(cat));
       if (cat.id === "polar") section.appendChild(buildPolarFilters(cat));
+      if (cat.id === "pantolon") section.appendChild(buildPantolonFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -1089,7 +1141,8 @@
         (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter)) &&
         (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter)) &&
         (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter)) &&
-        (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter));
+        (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter)) &&
+        (btn.dataset.cat !== "pantolon" || matchesPantolonFilter(item, pantolonFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
@@ -1153,6 +1206,16 @@
     });
     applySearch();
     scrollCategoryToStart("polar");
+  }
+  if (["cargo", "technical", "classic"].indexOf(initialParams.get("pantolon")) !== -1) {
+    pantolonFilter = initialParams.get("pantolon");
+    document.querySelectorAll("[data-pantolon-filter]").forEach(function (control) {
+      var active = control.dataset.pantolonFilter === pantolonFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("pantolon");
   }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
