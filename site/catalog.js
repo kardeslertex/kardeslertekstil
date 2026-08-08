@@ -168,7 +168,13 @@
     return cat;
   }
 
-  var CATALOG = window.KATALOG.map(normalizeProducts);
+  var CATEGORY_ORDER = [
+    "tshirt", "pantolon", "sweat", "polar", "montkaban", "yelek",
+    "softshell", "tulum", "onluk", "isg", "promosyon", "reflektor"
+  ];
+  var CATALOG = window.KATALOG.map(normalizeProducts).sort(function (a, b) {
+    return CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id);
+  });
   var galleries = {};
   CATALOG.forEach(function (cat) { galleries[cat.id] = cat.items; });
 
