@@ -623,6 +623,49 @@
     return wrap;
   }
 
+  var polarFilter = "all";
+
+  function polarType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    return text.indexOf("yarım fermuar") !== -1 ? "half" : "full";
+  }
+
+  function matchesPolarFilter(item, filter) {
+    if (!item || item.cat !== "polar" || filter === "all") return true;
+    return polarType(item) === filter;
+  }
+
+  function buildPolarFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "full", label: "Tam Fermuarlı" },
+      { id: "half", label: "Yarım Fermuarlı" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Polarları fermuar tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesPolarFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.polarFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === polarFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === polarFilter);
+      button.addEventListener("click", function () {
+        polarFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.polarFilter === polarFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -707,6 +750,7 @@
       if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
       if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
       if (cat.id === "montkaban") section.appendChild(buildMontKabanFilters(cat));
+      if (cat.id === "polar") section.appendChild(buildPolarFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -1044,7 +1088,8 @@
         (btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter)) &&
         (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter)) &&
         (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter)) &&
-        (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter));
+        (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter)) &&
+        (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
@@ -1098,6 +1143,16 @@
     });
     applySearch();
     scrollCategoryToStart("montkaban");
+  }
+  if (initialParams.get("polar") === "full" || initialParams.get("polar") === "half") {
+    polarFilter = initialParams.get("polar");
+    document.querySelectorAll("[data-polar-filter]").forEach(function (control) {
+      var active = control.dataset.polarFilter === polarFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("polar");
   }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
