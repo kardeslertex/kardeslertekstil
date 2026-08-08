@@ -160,6 +160,11 @@
         return item;
       });
       group.items.sort(function (a, b) {
+        if (cat.id === "tulum") {
+          var aBahcivan = (a.name + " " + a.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
+          var bBahcivan = (b.name + " " + b.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
+          if (aBahcivan !== bBahcivan) return aBahcivan ? -1 : 1;
+        }
         return a.code.localeCompare(b.code, "tr", { numeric: true });
       });
       var seenProductNames = {};
@@ -477,6 +482,48 @@
     return wrap;
   }
 
+  var tulumFilter = "all";
+
+  function matchesTulumFilter(item, filter) {
+    if (!item || item.cat !== "tulum" || filter === "all") return true;
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    var isBahcivan = text.indexOf("bahçıvan") !== -1;
+    if (filter === "bahcivan") return isBahcivan;
+    if (filter === "kollu") return !isBahcivan;
+    return true;
+  }
+
+  function buildTulumFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "bahcivan", label: "Bahçıvan Tulum" },
+      { id: "kollu", label: "Kollu Tulum" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "İş tulumlarını model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesTulumFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.tulumFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === tulumFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === tulumFilter);
+      button.addEventListener("click", function () {
+        tulumFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.tulumFilter === tulumFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -553,6 +600,7 @@
       });
     } else {
       if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
+      if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -886,7 +934,9 @@
         item.tags.join(" ") + " " + item.search
       ).toLowerCase();
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
-      var matchesSubtype = btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter);
+      var matchesSubtype =
+        (btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter)) &&
+        (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
