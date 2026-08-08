@@ -837,21 +837,27 @@
       return [category].concat(category.alternates || []);
     }
 
+    function modelValue(model, category, key) {
+      var value = model && model[key];
+      if (value !== undefined && value !== null && String(value).trim() !== "") return value;
+      return category[key] || "Bilgi için teklif ekibimizle görüşün.";
+    }
+
     function applyModel(category, model, modelIndex, animate) {
       var productImage = (model.colors[0] && model.colors[0].image) || model.image;
       currentModel = modelIndex;
       currentColor = 0;
       status.hidden = !model.placeholder;
-      infoName.textContent = model.productName;
+      infoName.textContent = modelValue(model, category, "productName");
       infoColors.textContent = model.colors.map(function (color) { return color.name; }).join(", ");
-      infoFabric.textContent = model.fabric;
-      infoWeight.textContent = model.weight;
-      infoComposition.textContent = model.composition;
-      infoUse.textContent = model.useArea;
-      infoLogo.textContent = model.logoOptions;
-      infoMinimum.textContent = model.minimumOrder;
-      infoWash.textContent = model.wash;
-      infoDescription.textContent = model.description;
+      infoFabric.textContent = modelValue(model, category, "fabric");
+      infoWeight.textContent = modelValue(model, category, "weight");
+      infoComposition.textContent = modelValue(model, category, "composition");
+      infoUse.textContent = modelValue(model, category, "useArea");
+      infoLogo.textContent = modelValue(model, category, "logoOptions");
+      infoMinimum.textContent = modelValue(model, category, "minimumOrder");
+      infoWash.textContent = modelValue(model, category, "wash");
+      infoDescription.textContent = modelValue(model, category, "description");
       updateLogoVisibility();
       renderColors(model, category);
       modelList.querySelectorAll("button").forEach(function (button, buttonIndex) {

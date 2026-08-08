@@ -56,7 +56,7 @@
     {
       id: "tshirt",
       name: "Tişört",
-      description: "V yaka, kontrast omuz robası, ince biye ve fermuarlı göğüs cebiyle teknik ekipler için hazırlanan iş tişörtü.",
+      description: "KT-TS-040; V yaka formu, kontrast omuz robası, ince biyeleri ve fermuarlı göğüs cebiyle üretim, servis ve saha ekipleri için tasarlanmıştır.",
       image: "assets/products/hero/tshirt/kt-ts-040-bej.webp",
       imageAlt: "KT-TS-040 V yaka teknik iş tişörtü",
       href: "urunlerimiz#tshirt",
@@ -75,7 +75,7 @@
     },
     {
       id: "sweat", name: "Sweatshirt & Hoodie",
-      description: "Serin çalışma ortamlarında ekip bütünlüğünü koruyan, baskı ve nakışa uygun kurumsal sweatshirt modelleri.",
+      description: "KT-SW-034; yarım fermuarlı yakası, kontrast panelleri ve cepli yapısıyla serin üretim, depo ve servis alanlarında katmanlı kullanım sunar.",
       image: "assets/products/hero/sweat/kt-sw-034-bej.webp", imageAlt: "KT-SW-034 yarım fermuarlı teknik sweatshirt", href: "urunlerimiz#sweat", colors: sweatColors,
       code: "KT-SW-034",
       alternates: [{ code:"KT-SW-036", productName:"Cepli Polo Sweatshirt", description:"Kontrast panelleri ve işlevsel göğüs cebiyle kurumsal ekip kullanımı için hazırlanan polo sweatshirt.", imageAlt:"KT-SW-036 cepli polo sweatshirt", colors:sweatAltColors, fabric:"Üç iplik sweatshirt kumaşı", weight:"310–330 g/m²", composition:"%65 pamuk, %35 polyester", useArea:"Bakım, üretim ve teknik servis ekipleri", logoOptions:"Nakış, serigrafi ve transfer baskı", minimumOrder:"50 adet", wash:"30 °C tersten yıkama; düşük ısıda ütüleyin." }, { code:"KT-SW-016", productName:"Reflektörlü Polo Yaka Sweatshirt", description:"Reflektif bantlarıyla kurumsal saha ekiplerine uygun sweatshirt.", imageAlt:"KT-SW-016 reflektörlü sweatshirt", colors:sweatLegacyColors }, { code:"KT-SW-028", productName:"Yarım Fermuarlı Teknik Sweatshirt", description:"Turuncu biyeler ve takviyelerle hazırlanan teknik sweatshirt.", imageAlt:"KT-SW-028 teknik sweatshirt", colors:sweatLegacyAltColors }],
@@ -83,7 +83,7 @@
     },
     {
       id: "pantolon", name: "Pantolon",
-      description: "Hareketli işlere uygun cep düzenleri, dayanıklı kumaşlar ve kurumsal renklerle hazırlanan iş pantolonları.",
+      description: "KT-PT-001; çok cepli yapısı ve diz takviyeleriyle bakım, üretim ve saha ekiplerinin yoğun günlük kullanımına uygun iş pantolonudur.",
       image: "assets/products/hero/pantolon/kt-pt-001-bej.webp", imageAlt: "KT-PT-001 çok cepli diz takviyeli iş pantolonu", href: "urunlerimiz#pantolon", colors: pantolonColors,
       code: "KT-PT-001",
       alternates: [{ code:"KT-PT-029", productName:"Panelli Teknik İş Pantolonu", description:"Kontrast panelleri, kargo cepleri ve takviyeli yapısıyla yoğun saha kullanımına uygun teknik pantolon.", imageAlt:"KT-PT-029 panelli teknik iş pantolonu", colors:pantolonAltColors, fabric:"Gabardin dokuma", weight:"245 (±%5) g/m²", composition:"%100 pamuk", useArea:"Montaj, bakım, üretim ve saha", logoOptions:"Nakış, arma ve transfer baskı", minimumOrder:"50 adet", wash:"40 °C yıkama; ağartıcı kullanmayın." }, { code:"KT-PT-020", productName:"Reflektörlü İş Pantolonu", description:"Kontrast detayları ve reflektörleriyle saha kullanımına uygun pantolon.", imageAlt:"KT-PT-020 reflektörlü iş pantolonu", colors:pantolonLegacyColors }, { code:"KT-PT-015", productName:"Diz Takviyeli Teknik İş Pantolonu", description:"Çoklu cepleri ve diz takviyeleriyle yoğun kullanıma uygun pantolon.", imageAlt:"KT-PT-015 teknik iş pantolonu", colors:pantolonLegacyAltColors }],
@@ -91,7 +91,7 @@
     },
     {
       id: "tulum", name: "İş Tulumu",
-      description: "Üretim, bakım ve saha ekipleri için hareket özgürlüğü ve işlevsel detayları bir araya getiren iş tulumları.",
+      description: "KT-TL-020; ayarlanabilir askıları, kontrast panelleri ve çoklu cepleriyle bakım, montaj ve üretim ekiplerine uygun bahçıvan tulumudur.",
       image: "assets/products/hero/tulum/kt-tl-020-bej.webp", imageAlt: "KT-TL-020 panelli bahçıvan tulumu", href: "urunlerimiz#tulum", colors: tulumColors,
       code: "KT-TL-020",
       alternates: [{ code:"KT-TL-022", productName:"Takviyeli Teknik İş Tulumu", description:"Kontrast takviyeleri, fermuarlı ön yapısı ve çoklu cepleriyle üretim ve bakım ekiplerine uygun iş tulumu.", imageAlt:"KT-TL-022 takviyeli teknik iş tulumu", colors:tulumAltColors, fabric:"Gabardin dokuma", weight:"245 (±%5) g/m²", composition:"%100 pamuk", useArea:"Bakım, montaj, otomotiv ve üretim", logoOptions:"Nakış, baskı ve arma", minimumOrder:"50 adet", wash:"40 °C yıkama; fermuarları kapatın ve ağartıcı kullanmayın." }, { code:"KT-TL-017", productName:"Panelli Teknik İş Tulumu", description:"Kontrast panelleriyle üretim ve bakım ekiplerine uygun iş tulumu.", imageAlt:"KT-TL-017 teknik iş tulumu", colors:tulumLegacyColors }, { code:"KT-TL-001", productName:"Diz Takviyeli Bahçıvan Tulumu", description:"Ayarlanabilir askıları, cepleri ve diz takviyeleriyle bahçıvan tulumu.", imageAlt:"KT-TL-001 bahçıvan tulumu", colors:tulumLegacyAltColors }],
@@ -99,7 +99,7 @@
     },
     {
       id: "montkaban", name: "Mont",
-      description: "Soğuk hava ve saha koşullarına yönelik, kurumsal görünüm ile koruyucu detayları buluşturan dış giyim ürünleri.",
+      description: "KT-MK-001; reflektif detayları, su itici dış yüzeyi ve işlevsel cepleriyle açık saha, sevkiyat ve teknik ekipler için hazırlanmıştır.",
       image: "assets/products/hero/montkaban/kt-mk-001-bej.webp", imageAlt: "KT-MK-001 reflektörlü iş montu", href: "urunlerimiz#montkaban", colors: montkabanColors,
       code: "KT-MK-001",
       alternates: [{ code:"KT-MK-029", productName:"Kapüşonlu Teknik İş Montu", description:"Kontrast panelleri, kapüşonu ve fermuarlı cepleriyle açık saha ekiplerine yönelik teknik iş montu.", imageAlt:"KT-MK-029 kapüşonlu teknik iş montu", colors:montkabanAltColors, fabric:"Su itici teknik dokuma", weight:"190 (±%5) g/m²", composition:"%100 polyester dış yüzey", useArea:"Açık saha, lojistik ve teknik ekipler", logoOptions:"Nakış, arma ve transfer baskı", minimumOrder:"50 adet", wash:"30 °C hassas yıkama; yumuşatıcı kullanmayın." }, { code:"KT-MK-022", productName:"Panelli Teknik İş Montu", description:"Koruyucu panellerle açık saha koşullarına uygun teknik mont.", imageAlt:"KT-MK-022 teknik iş montu", colors:montLegacyColors }, { code:"KT-MK-023", productName:"Fosfor Panelli Kapüşonlu İş Montu", description:"Fosfor paneller ve reflektörlerle görünürlüğü destekleyen mont.", imageAlt:"KT-MK-023 kapüşonlu iş montu", colors:montLegacyAltColors }],
@@ -107,7 +107,7 @@
     },
     {
       id: "polar", name: "Polar",
-      description: "Katmanlı giyime uygun, sıcak tutan ve firma logosuyla özelleştirilebilen hafif polar modelleri.",
+      description: "KT-PL-008; yarım fermuarlı yakası ve reflektif detaylarıyla depo, servis ve serin çalışma alanlarında ara katman olarak kullanılır.",
       image: "assets/products/hero/polar/kt-pl-008-bej.webp", imageAlt: "KT-PL-008 yarım fermuarlı reflektif iş poları", href: "urunlerimiz#polar", colors: polarColors,
       code: "KT-PL-008",
       alternates: [{ code:"KT-PL-028", productName:"Takviyeli Polar Mont", description:"Kontrast omuz takviyeleri ve fermuarlı cepleriyle katmanlı iş giyimine uygun polar mont.", imageAlt:"KT-PL-028 takviyeli polar mont", colors:polarAltColors, fabric:"Anti-pilling polar ve dokuma takviye", weight:"260–280 g/m²", composition:"%100 polyester", useArea:"Depo, lojistik, servis ve güvenlik", logoOptions:"Nakış ve arma uygulaması", minimumOrder:"50 adet", wash:"30 °C hassas yıkama; ütülemeyin." }, { code:"KT-PL-009", productName:"Reflektörlü Polar Mont", description:"Reflektör bantları ve cepleriyle katmanlı iş giyimine uygun polar.", imageAlt:"KT-PL-009 reflektörlü polar", colors:polarLegacyColors }, { code:"KT-PL-023", productName:"Kapüşonlu Polar Mont", description:"Dokuma kapüşonu, takviyeleri ve kanguru cebiyle iş poları.", imageAlt:"KT-PL-023 kapüşonlu polar", colors:polarLegacyAltColors }],
@@ -115,7 +115,7 @@
     },
     {
       id: "yelek", name: "Yelek",
-      description: "Depo, sevkiyat ve saha ekipleri için fonksiyonel ceplerle tasarlanan kurumsal iş yelekleri.",
+      description: "KT-YL-005; kapitone dolgusu, fermuarlı cepleri ve hafif yapısıyla depo, sevkiyat ve saha ekiplerinde sıcaklık desteği sağlar.",
       image: "assets/products/hero/yelek/kt-yl-005-bej.webp", imageAlt: "KT-YL-005 kapitone iş yeleği", href: "urunlerimiz#yelek", colors: yelekColors,
       code: "KT-YL-005",
       alternates: [{ code:"KT-YL-010", productName:"Kontrast Panelli Çok Cepli İş Yeleği", description:"Omuz ve yan kontrast panelleriyle, kapaklı göğüs cepleri bulunan işlevsel iş yeleği.", imageAlt:"KT-YL-010 kontrast panelli çok cepli iş yeleği", colors:yelekAltColors, fabric:"İnce gabardin dokuma", weight:"245 (±%5) g/m²", composition:"%100 pamuk", useArea:"Depo, bakım, sevkiyat ve saha", logoOptions:"Nakış ve transfer baskı", minimumOrder:"50 adet", wash:"40 °C yıkama; cepleri boşaltın." }, { code:"KT-YL-017", productName:"Teknik Yazlık İş Yeleği", description:"Kontrast detayları ve çoklu cepleriyle hafif iş yeleği.", imageAlt:"KT-YL-017 teknik iş yeleği", colors:yelekLegacyColors }, { code:"KT-YL-009", productName:"Fosfor Şeritli Çok Cepli İş Yeleği", description:"Fosfor şeritleri ve çoklu cepleriyle saha ekiplerine uygun yelek.", imageAlt:"KT-YL-009 iş yeleği", colors:yelekLegacyAltColors }],
@@ -123,7 +123,7 @@
     },
     {
       id: "softshell", name: "Softshell",
-      description: "Değişken hava koşullarında hareket özgürlüğü sağlayan, su itici ve nefes alabilen softshell ürünler.",
+      description: "KT-SS-022; iç dolgusuz, esnek ve su itici yapısıyla değişken hava koşullarında çalışan hareketli saha ekiplerine uygun softshell yelektir.",
       image: "assets/products/hero/softshell/kt-ss-022-bej.webp", imageAlt: "KT-SS-022 iç dolgusuz softshell yelek", href: "urunlerimiz#softshell", colors: softshellColors,
       code: "KT-SS-022",
       alternates: [{ code:"KT-SS-020", productName:"Diz Takviyeli Softshell Pantolon", description:"Kontrast diz takviyeleri ve işlevsel cepleriyle hareketli saha kullanımı için hazırlanan softshell pantolon.", imageAlt:"KT-SS-020 diz takviyeli softshell pantolon", colors:softshellAltColors, fabric:"Üç katmanlı softshell", weight:"300 (±%5) g/m²", composition:"%100 polyester streç", useArea:"Teknik servis, bakım ve açık saha", logoOptions:"Nakış ve transfer baskı", minimumOrder:"50 adet", wash:"30 °C hassas yıkama; yumuşatıcı kullanmayın." }, { code:"KT-SS-001", productName:"Çift Renk Kapüşonlu Softshell Kaban", description:"Çıkarılabilir kapüşonu ve cepleriyle koruyucu softshell kaban.", imageAlt:"KT-SS-001 softshell kaban", colors:softshellLegacyColors }, { code:"KT-SS-016", productName:"Asimetrik Panelli Softshell Mont", description:"Asimetrik paneli ve fermuarlı cepleriyle teknik softshell mont.", imageAlt:"KT-SS-016 softshell mont", colors:softshellLegacyAltColors }],
