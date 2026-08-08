@@ -40,3 +40,7 @@ jobs:
       - name: Run complete public-site integrity audit
         shell: pwsh
         run: ./site/scripts/audit_site_integrity.ps1
+
+      - name: Reject exact duplicate content and report intent overlap
+        shell: pwsh
+        run: ./site/scripts/audit_content_overlap.ps1

@@ -7,10 +7,27 @@
   var directGa4Active = false;
   window.dataLayer = window.dataLayer || [];
 
+  function campaignContext() {
+    var storageKey = "kt_campaign_context_v1";
+    var allowed = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+    var context = {};
+    try { context = JSON.parse(window.sessionStorage.getItem(storageKey) || "{}"); } catch (error) { context = {}; }
+    var params = new URLSearchParams(window.location.search);
+    allowed.forEach(function (key) {
+      var value = params.get(key);
+      if (value) context[key] = value.slice(0, 200);
+    });
+    if (!context.landing_page) context.landing_page = window.location.pathname;
+    if (!context.initial_referrer && document.referrer) context.initial_referrer = document.referrer.slice(0, 500);
+    try { window.sessionStorage.setItem(storageKey, JSON.stringify(context)); } catch (error) { /* Oturum depolaması kapalı olabilir. */ }
+    return context;
+  }
+
   function track(eventName, details) {
     if (!window.__ktAnalyticsAllowed) return;
-    if (directGa4Active && window.gtag) window.gtag("event", eventName, details || {});
-    else if (window.__ktGtmActive) window.dataLayer.push(Object.assign({ event: eventName }, details || {}));
+    var eventDetails = Object.assign({}, campaignContext(), details || {});
+    if (directGa4Active && window.gtag) window.gtag("event", eventName, eventDetails);
+    else if (window.__ktGtmActive) window.dataLayer.push(Object.assign({ event: eventName }, eventDetails));
   }
 
   function initAnalytics() {
@@ -281,6 +298,14 @@
 
     var form = document.querySelector("#teklif-formu");
     if (form) {
+      var attribution = campaignContext();
+      Object.keys(attribution).forEach(function (key) {
+        var hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = "kaynak_" + key;
+        hidden.value = attribution[key];
+        form.appendChild(hidden);
+      });
       var started = false;
       form.addEventListener("focusin", function () {
         if (started) return;

@@ -91,6 +91,16 @@
         "Gümüş, gri ve renkli reflektör alternatifleri",
         "İş kıyafetine özel uygulama planlaması"
       ]
+    },
+    esd: {
+      title: "ESD kontrollü üretim için özel seri",
+      text: "İletken kumaş, manşet, kapama ve aksesuar seçimi tesisinizin ESD kontrol planına göre numune ve ölçümle doğrulanır.",
+      features: [
+        "Ürün üzerinde görünür ESD etiketi",
+        "İletken ızgara dokulu kumaş seçeneği",
+        "Yıkama döngüsü ve performans takibi",
+        "Tişört, pantolon, sweatshirt, mont ve önlük seti"
+      ]
     }
   };
 
@@ -141,6 +151,7 @@
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
           kind: p.kind || group.kind || "",
+          description: p.description || "",
           search: [p.search, group.search].filter(Boolean).join(" "),
           cat: cat.id,
           i: 0
@@ -224,7 +235,9 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
-    img.addEventListener("load", function () { normalizeProductScale(img, item); });
+    // Ürün görselleri üretimde standart kare tuvale dönüştürülür. Çalışma
+    // zamanında her görselin piksellerini canvas ile tekrar taramak ana iş
+    // parçacığını gereksiz yere bloke eder; CSS object-fit yeterlidir.
     var isInitialCatalogImage = item.cat === "tshirt" && item.i < 6;
     if (isInitialCatalogImage || !catalogImageObserver) {
       img.src = item.src;
@@ -234,6 +247,13 @@
     }
 
     var visual = el("span", "gitem-visual");
+    if (item.kind === "esd") {
+      var esdBadge = el("span", "gitem-esd-badge");
+      esdBadge.setAttribute("aria-label", "ESD ürünü");
+      esdBadge.innerHTML = '<span aria-hidden="true">⌁</span> ESD';
+      visual.appendChild(esdBadge);
+      btn.classList.add("gitem-esd");
+    }
     var overlay = el("span", "gitem-overlay");
     var purchase = el("span", "gitem-purchase-info");
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
@@ -375,11 +395,7 @@
     img.style.setProperty("--product-y", (translateY * 100).toFixed(3) + "%");
   }
 
-  function normalizeProductScale(img, item) {
-    var bounds;
-    try { bounds = productBounds(img); } catch (e) { return; }
-    applyProductFit(img, item, bounds);
-  }
+  function normalizeProductScale() { /* Eski çağrılar için zararsız uyumluluk. */ }
 
   function buildGrid(items, extraClass) {
     var grid = el("div", "gallery-grid" + (extraClass ? " " + extraClass : ""));
@@ -583,6 +599,7 @@
   var lbCopy = document.getElementById("lbCopy");
   var lbNoteTitle = document.getElementById("lbNoteTitle");
   var lbNoteText = document.getElementById("lbNoteText");
+  var lbDescription = document.getElementById("lbDescription");
   var lbFeatures = document.getElementById("lbFeatures");
   var lastTrigger = null;
   var state = { cat: null, i: 0 };
@@ -626,6 +643,10 @@
     var set = featureSets[item.kind] || featureSets.default;
     lbNoteTitle.textContent = set.title;
     lbNoteText.textContent = set.text;
+    if (lbDescription) {
+      lbDescription.textContent = item.description || "";
+      lbDescription.hidden = !item.description;
+    }
     lbFeatures.innerHTML = "";
     set.features.forEach(function (f) { lbFeatures.appendChild(el("li", null, f)); });
 
@@ -865,6 +886,12 @@
     applySearch();
     search.focus();
   });
+
+  var initialParams = new URLSearchParams(location.search);
+  if (initialParams.get("esd") === "1") {
+    search.value = "ESD";
+    applySearch();
+  }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
   function scrollFromHash() {

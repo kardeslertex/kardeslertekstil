@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="tr"><head><meta charset="utf-8">
-<title>İletişim | Teklif ve Numune Talebi | Kardeşler Tekstil</title>
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Kardeşler Tekstil ile kurumsal iş kıyafeti teklif sürecini başlatın. Ürün, adet, logo ve teslimat ihtiyacınızı iletin; numune ve üretim desteği alın."><meta name="robots" content="index,follow,max-image-preview:large">
+<title>Pendik İş Kıyafeti Teklifi ve İletişim | Kardeşler Tekstil</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Pendik ve Kaynarca'da iş kıyafeti teklifi alın. Ürün, adet, beden, logo ve teslimat ihtiyacınızı Kardeşler Tekstil üretim ekibine iletin."><meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://kardeslertekstil.com.tr/iletisim">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="Kardeşler Tekstil">
-<meta property="og:title" content="İletişim | Teklif ve Numune Talebi | Kardeşler Tekstil">
-<meta property="og:description" content="Kurumsal iş kıyafeti teklif talebinizi iletin, ürün, adet ve logo detaylarını paylaşın.">
+<meta property="og:title" content="Pendik İş Kıyafeti Teklifi ve İletişim | Kardeşler Tekstil">
+<meta property="og:description" content="Pendik ve Kaynarca'da kurumsal iş kıyafeti teklifinizi üretim ekibimize iletin.">
 <meta property="og:url" content="https://kardeslertekstil.com.tr/iletisim">
 <meta property="og:image" content="https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="İletişim | Teklif ve Numune Talebi | Kardeşler Tekstil">
-<meta name="twitter:description" content="Kurumsal iş kıyafeti teklif talebinizi iletin, ürün, adet ve logo detaylarını paylaşın.">
+<meta name="twitter:title" content="Pendik İş Kıyafeti Teklifi ve İletişim | Kardeşler Tekstil">
+<meta name="twitter:description" content="Pendik ve Kaynarca'da kurumsal iş kıyafeti teklifinizi üretim ekibimize iletin.">
 <meta name="twitter:image" content="https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp">
 <link rel="stylesheet" href="styles.css?v=20260804-2"><script type="application/ld+json">
 {
@@ -63,6 +63,7 @@
 <link rel="manifest" href="/manifest.webmanifest?v=13">
 <meta name="theme-color" content="#f97316">
 <meta name="google-analytics-id" content="">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/site.js?v=20260804-2" defer></script>
 </head>
 <body data-screen-label="05 Contact">
@@ -124,7 +125,7 @@
         <iframe src="https://www.google.com/maps?q=Karde%C5%9Fler+Tekstil+Pendik+%C4%B0stanbul&output=embed" title="Kardeşler Tekstil Pendik konumu" width="100%" height="240" style="border:1px solid var(--navy-500);border-radius:4px;" loading="lazy"></iframe>
       </div>
     </div>
-    <form action="https://formspree.io/f/meeyqyyd" method="POST" id="teklif-formu" enctype="multipart/form-data">
+    <form action="/api/teklif" method="POST" id="teklif-formu" enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="Kardeşler Tekstil - Yeni Teklif Talebi">
       <input type="hidden" name="_next" value="https://kardeslertekstil.com.tr/tesekkur.html">
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
@@ -158,6 +159,7 @@
         <div class="field full"><label for="mesaj">Mesajınız</label><textarea id="mesaj" name="mesaj" rows="4" placeholder="Renk, logo, baskı türü, teslim tarihi..."></textarea></div>
       </div>
       <p class="form-privacy-note">Formu göndererek bilgilerinizin teklif talebinizi değerlendirmek ve sizinle iletişime geçmek amacıyla kullanılacağını kabul etmiş olursunuz. Ayrıntılar için <a href="gizlilik-ve-kvkk" target="_blank" rel="noopener">Gizlilik ve Kişisel Veriler bilgilendirmesini</a> ve <a href="cerez-politikasi" target="_blank" rel="noopener">Çerez Politikasını</a> inceleyin.</p>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEKmE3y_rmAH3ZDr" data-action="quote_form" data-theme="light"></div>
       <div class="form-foot">
         <span class="hint">Minimum sipariş 50 adet.</span>
         <button type="submit" class="btn btn-primary">Teklif Gönder
@@ -210,7 +212,7 @@
     var params = new URLSearchParams(window.location.search);
     if (!params.toString()) return;
 
-    var form = document.querySelector('form[action*="formspree.io"]');
+    var form = document.getElementById("teklif-formu");
     if (!form) return;
 
     var urun = params.get("urun");
