@@ -114,6 +114,14 @@
     return String(filename || "").replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
+  function onlukType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("şef ceketi") !== -1) return "sef";
+    if (text.indexOf("belden") !== -1 || text.indexOf("bel önlüğü") !== -1) return "belden";
+    if (text.indexOf("askılı") !== -1 || text.indexOf("çapraz askı") !== -1) return "askili";
+    return "is";
+  }
+
   function normalizeProducts(cat) {
     var flat = [];
     var groups = cat.gruplar
@@ -164,6 +172,11 @@
           var aBahcivan = (a.name + " " + a.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
           var bBahcivan = (b.name + " " + b.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
           if (aBahcivan !== bBahcivan) return aBahcivan ? -1 : 1;
+        }
+        if (cat.id === "onluk") {
+          var onlukOrder = { is: 0, askili: 1, belden: 2, sef: 3 };
+          var typeDifference = onlukOrder[onlukType(a)] - onlukOrder[onlukType(b)];
+          if (typeDifference) return typeDifference;
         }
         return a.code.localeCompare(b.code, "tr", { numeric: true });
       });
@@ -524,6 +537,46 @@
     return wrap;
   }
 
+  var onlukFilter = "all";
+
+  function matchesOnlukFilter(item, filter) {
+    if (!item || item.cat !== "onluk" || filter === "all") return true;
+    return onlukType(item) === filter;
+  }
+
+  function buildOnlukFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "is", label: "İş Önlükleri" },
+      { id: "askili", label: "Askılı Önlükler" },
+      { id: "belden", label: "Belden Bağlamalı Önlükler" },
+      { id: "sef", label: "Şef Önlükleri" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Önlükleri model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesOnlukFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.onlukFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === onlukFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === onlukFilter);
+      button.addEventListener("click", function () {
+        onlukFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.onlukFilter === onlukFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -601,6 +654,7 @@
     } else {
       if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
       if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
+      if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -936,7 +990,8 @@
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
       var matchesSubtype =
         (btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter)) &&
-        (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter));
+        (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter)) &&
+        (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
