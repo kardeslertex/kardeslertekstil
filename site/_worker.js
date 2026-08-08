@@ -61,6 +61,23 @@ export default {
       }
     }
     const legacyPath = url.pathname.replace(/\/$/, "") || "/";
+    // Search Console eski WordPress AJAX ucunu 4xx olarak raporluyor. Site artik
+    // WordPress kullanmadigi icin bos, indekslenemez bir basarili yanit dondur.
+    if (legacyPath.toLowerCase() === "/wp-admin/admin-ajax.php") {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          ...SECURITY_HEADERS,
+          "Cache-Control": "public, max-age=86400",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
+    }
+
+    if (legacyPath.toLowerCase() === "/index.php") {
+      return Response.redirect("https://kardeslertekstil.com.tr/", 308);
+    }
+
     if (legacyPath.toLowerCase() === "/page.php") {
       const pageId = (url.searchParams.get("PageID") || "").toLowerCase();
       const pageName = (url.searchParams.get("PageName") || "").toLowerCase();
@@ -77,9 +94,12 @@ export default {
       /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
       /^\/urun-kategori\//i.test(url.pathname) ||
       /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
+      /^\/store\/?$/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
-      /^\/wp-login\.php$/i.test(url.pathname) ||
+      /^\/wp-[^/]*\.php$/i.test(url.pathname) ||
       /^\/\d+(?:-\d+)*\//.test(url.pathname) ||
+      /^\/cdn-cgi\/l\/email-protection\/?$/i.test(url.pathname) ||
+      url.pathname === "/*" ||
       url.pathname === "/ornek-sayfa/" ||
       (url.pathname === "/" && url.searchParams.has("wc-ajax")) ||
       (url.pathname === "/" && url.searchParams.has("page_id"));
