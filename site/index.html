@@ -66,13 +66,14 @@
 <script>
 (function () {
   try {
-    var forceIntro = window.location.hash === "#intro";
+    var forceIntro = window.location.hash === "#intro" || sessionStorage.getItem("kt_home_intro_force_v1") === "1";
+    sessionStorage.removeItem("kt_home_intro_force_v1");
     var compactViewport = window.matchMedia("(max-width: 767px)").matches;
     window.__ktForceHomeIntro = forceIntro;
     if (forceIntro || (!compactViewport && sessionStorage.getItem("kt_home_intro_seen_v1") !== "1")) {
       document.documentElement.classList.add("intro-splash-pending");
     }
-    if (forceIntro && window.history && window.history.replaceState) {
+    if (window.location.hash === "#intro" && window.history && window.history.replaceState) {
       window.history.replaceState(null, "", window.location.pathname);
     }
   } catch (error) {
@@ -83,7 +84,7 @@
 })();
 </script>
 <script src="/assets/runtime/home-hero-products-20260809-10.js" defer></script>
-<script src="/assets/runtime/home-site-20260808-02.js" defer></script>
+<script src="/assets/runtime/home-site-20260809-intro1.js" defer></script>
 </head>
 <body class="home-v3" data-screen-label="01 Home">
 <section class="intro-splash" data-home-intro aria-label="Kardeşler Tekstil karşılama ekranı" aria-hidden="true">

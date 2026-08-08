@@ -655,8 +655,18 @@
 
   function initBrandIntroLinks() {
     document.querySelectorAll(".site-header a.brand").forEach(function (brand) {
-      brand.setAttribute("href", "/#intro");
+      brand.setAttribute("href", "/");
+      if (!document.querySelector("[data-home-intro]")) return;
       brand.setAttribute("aria-label", "Kardeşler Tekstil karşılama ekranını aç");
+      brand.addEventListener("click", function (event) {
+        event.preventDefault();
+        try {
+          window.sessionStorage.setItem("kt_home_intro_force_v1", "1");
+        } catch (error) {
+          // Depolama kapalıysa ana sayfayı temiz URL ile yeniden yükle.
+        }
+        window.location.replace("/");
+      });
     });
   }
 
