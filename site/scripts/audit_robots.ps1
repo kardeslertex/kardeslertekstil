@@ -23,14 +23,6 @@ if (-not (Test-Path -LiteralPath $robotsPath)) {
         $errors.Add('The canonical sitemap declaration is missing or duplicated.')
     }
 
-    $requiredParameters = @('q', 'tag', 'kategori', 'urun', 'adet', 'mesaj')
-    foreach ($parameter in $requiredParameters) {
-        $expectedRule = "Disallow: /*?*$parameter="
-        if ($lines -inotcontains $expectedRule) {
-            $errors.Add("Missing crawl rule for query parameter: $parameter")
-        }
-    }
-
     foreach ($line in $lines | Where-Object { $_ -imatch '^(Allow|Disallow):' }) {
         if ($line -imatch '\.(css|js|webp|avif|png|jpe?g|svg|woff2?)(\$|\?|/|$)') {
             $errors.Add("A render resource appears to be blocked: $line")
@@ -42,6 +34,12 @@ $workerPath = Join-Path $siteRoot '_worker.js'
 $worker = if (Test-Path $workerPath) { Get-Content -LiteralPath $workerPath -Raw } else { '' }
 if ($worker -notmatch '\.pages\.dev' -or $worker -notmatch 'PREVIEW_AUTH_TOKEN' -or $worker -notmatch 'status:\s*401') {
     $errors.Add('Preview deployments must fail closed behind authentication.')
+}
+$requiredParameters = @('q', 'tag', 'kategori', 'urun', 'adet', 'mesaj')
+foreach ($parameter in $requiredParameters) {
+    if ($worker -notmatch "[`"']$parameter[`"']" -or $worker -notmatch 'X-Robots-Tag[`"'']\s*,\s*[`"'']noindex, follow') {
+        $errors.Add("Query parameter must receive an edge noindex header: $parameter")
+    }
 }
 
 $parameterLinkCount = 0
@@ -71,7 +69,7 @@ if ($Live) {
 
 $result = [ordered]@{
     robotsFile = $robotsPath
-    blockedQueryParameters = 6
+    noindexQueryParameters = $requiredParameters.Count
     internalParameterLinks = $parameterLinkCount
     liveGooglebotChecks = $liveChecks
     errors = @($errors)

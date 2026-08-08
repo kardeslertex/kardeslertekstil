@@ -47,7 +47,7 @@ const RELEASE_ASSET_ALIASES = new Map([
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
-    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; connect-src 'self' https://formspree.io https:; frame-src 'self' https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https:; connect-src 'self' https://challenges.cloudflare.com https://formspree.io https:; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -55,6 +55,71 @@ const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "SAMEORIGIN",
 };
+
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const FORMSPREE_QUOTE_URL = "https://formspree.io/f/meeyqyyd";
+const MAX_FORM_BYTES = 12 * 1024 * 1024;
+const MAX_FILE_BYTES = 5 * 1024 * 1024;
+const ALLOWED_FILE_EXTENSIONS = new Set([
+  "png", "jpg", "jpeg", "svg", "pdf", "ai", "eps", "doc", "docx", "xls", "xlsx",
+]);
+
+function formError(message, status = 400) {
+  return new Response(message, { status, headers: { ...SECURITY_HEADERS, "Cache-Control": "no-store", "Content-Type": "text/plain; charset=utf-8", "X-Robots-Tag": "noindex, nofollow" } });
+}
+
+async function handleQuoteForm(request, env, url) {
+  if (request.method !== "POST") return formError("Yalnızca form gönderimi kabul edilir.", 405);
+  if (!env.TURNSTILE_SECRET_KEY) return formError("Form güvenlik yapılandırması tamamlanmamış.", 503);
+  const origin = request.headers.get("Origin");
+  if (origin && origin !== url.origin) return formError("Form gönderim kaynağı doğrulanamadı.", 403);
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  if (contentLength > MAX_FORM_BYTES) return formError("Eklenen dosyaların toplam boyutu çok büyük.", 413);
+
+  let formData;
+  try { formData = await request.formData(); } catch (error) { return formError("Form verisi okunamadı."); }
+  if (String(formData.get("_gotcha") || "").trim()) return formError("Form gönderimi reddedildi.");
+  const token = String(formData.get("cf-turnstile-response") || "");
+  if (!token || token.length > 2048) return formError("Lütfen güvenlik kontrolünü tamamlayın.");
+
+  const verifyBody = new FormData();
+  verifyBody.set("secret", env.TURNSTILE_SECRET_KEY);
+  verifyBody.set("response", token);
+  const visitorIp = request.headers.get("CF-Connecting-IP");
+  if (visitorIp) verifyBody.set("remoteip", visitorIp);
+  let verification;
+  try {
+    const verifyResponse = await fetch(TURNSTILE_VERIFY_URL, { method: "POST", body: verifyBody });
+    verification = await verifyResponse.json();
+  } catch (error) {
+    return formError("Güvenlik kontrolüne şu anda ulaşılamıyor. Lütfen tekrar deneyin.", 503);
+  }
+  const allowedHostnames = new Set(["kardeslertekstil.com.tr", "www.kardeslertekstil.com.tr"]);
+  if (!verification.success || verification.action !== "quote_form" || !allowedHostnames.has(verification.hostname)) {
+    return formError("Güvenlik doğrulaması başarısız oldu. Sayfayı yenileyip tekrar deneyin.", 403);
+  }
+
+  let uploadedBytes = 0;
+  for (const [name, value] of formData.entries()) {
+    if (!(value instanceof File) || !value.name || value.size === 0) continue;
+    uploadedBytes += value.size;
+    const extension = value.name.includes(".") ? value.name.split(".").pop().toLowerCase() : "";
+    if (value.size > MAX_FILE_BYTES) return formError(`${name} alanındaki dosya 5 MB sınırını aşıyor.`, 413);
+    if (!ALLOWED_FILE_EXTENSIONS.has(extension)) return formError(`${name} alanındaki dosya türüne izin verilmiyor.`);
+  }
+  if (uploadedBytes > MAX_FORM_BYTES) return formError("Eklenen dosyaların toplam boyutu çok büyük.", 413);
+
+  formData.delete("cf-turnstile-response");
+  formData.set("_subject", "Kardeşler Tekstil - Yeni Teklif Talebi");
+  let upstream;
+  try {
+    upstream = await fetch(FORMSPREE_QUOTE_URL, { method: "POST", headers: { Accept: "application/json" }, body: formData });
+  } catch (error) {
+    return formError("Teklif formu şu anda gönderilemedi. Lütfen tekrar deneyin.", 502);
+  }
+  if (!upstream.ok) return formError("Teklif formu gönderilemedi. Bilgileri kontrol edip tekrar deneyin.", 502);
+  return Response.redirect(`${url.origin}/tesekkur.html`, 303);
+}
 
 export default {
   async fetch(request, env) {
@@ -76,6 +141,7 @@ export default {
         });
       }
     }
+    if (url.pathname === "/api/teklif") return handleQuoteForm(request, env, url);
     const legacyPath = url.pathname.replace(/\/$/, "") || "/";
     // Search Console eski WordPress AJAX ucunu 4xx olarak raporluyor. Site artik
     // WordPress kullanmadigi icin bos, indekslenemez bir basarili yanit dondur.
@@ -213,7 +279,10 @@ export default {
     ]);
 
     const isCodeAsset = /\.(?:css|js)$/.test(url.pathname);
-    if (isCodeAsset && url.searchParams.has("v")) {
+    const isReleaseAsset = RELEASE_ASSET_ALIASES.has(url.pathname) ||
+      /(?:^|\/)(?:home-styles|products-data|catalog-ui|knowledge-data)-\d+\.(?:css|js)$/.test(url.pathname) ||
+      /\/assets\/runtime\/[^/]+-\d+\.js$/.test(url.pathname);
+    if ((isCodeAsset && url.searchParams.has("v")) || isReleaseAsset) {
       headers.set("Cache-Control", "public, max-age=31536000, immutable");
     } else if (isCodeAsset) {
       headers.set("Cache-Control", "public, max-age=0, must-revalidate");

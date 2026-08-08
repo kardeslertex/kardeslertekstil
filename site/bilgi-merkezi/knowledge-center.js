@@ -2,6 +2,7 @@
   "use strict";
 
   const posts = [
+    {"slug":"esd-kiyafetlerin-onemi-ve-yapilmasi-gereken-testler","title":"ESD Kıyafetlerin Önemi ve Yapılması Gereken Testler","summary":"ESD kıyafet seçiminde ürün etiketi, elektriksel direnç, dikiş sürekliliği, manşet, yıkama ve saha doğrulamasında yapılması gereken testleri inceleyin.","category":"Kalite ve Standartlar","tags":["Yeni Rehber","ESD"],"searchTerms":["ESD Kıyafetlerin Önemi ve Yapılması Gereken Testler","esd kiyafet testi","antistatik kiyafet testi","esd onluk testi"],"published":"2026-08-09","views":0},
     {"slug":"tamir-edilebilir-is-kiyafeti-tasarimi","title":"Tamir Edilebilir İş Kıyafeti Nasıl Tasarlanır?","summary":"İş kıyafetinde fermuar, cep, diz, dirsek ve reflektif parçaları onarılabilir tasarlayarak ürün ömrünü ve kurumsal görünümü birlikte yönetin.","category":"Sürdürülebilirlik","tags":["Yeni Rehber","Sürdürülebilirlik"],"searchTerms":["Tamir Edilebilir İş Kıyafeti Nasıl Tasarlanır?","tamir edilebilir is kiyafeti tasarimi"],"published":"2026-08-08","views":0},
     {"slug":"polar-is-kiyafetlerinde-lif-dokulmesi-kontrolu","title":"Polar İş Kıyafetlerinde Lif Dökülmesi Nasıl Kontrol Edilir?","summary":"Polar iş kıyafetlerinde lif dökülmesini kumaş seçimi, kesim, üretim temizliği, yıkama denemesi ve kullanım takibiyle değerlendirin.","category":"Kumaş ve Teknik Bilgi","tags":["Yeni Rehber","Kumaş ve Teknik Bilgi"],"searchTerms":["Polar İş Kıyafetlerinde Lif Dökülmesi Nasıl Kontrol Edilir?","polar is kiyafetlerinde lif dokulmesi kontrolu"],"published":"2026-08-08","views":0},
     {"slug":"duyusal-konfor-odakli-is-kiyafeti","title":"Duyusal Konfor Odaklı İş Kıyafeti Tasarımı","summary":"Etiket, dikiş, kumaş teması, kapama sesi ve sıkılık gibi duyusal ayrıntıları görev güvenliğinden ödün vermeden numunede değerlendirin.","category":"Çalışan Konforu","tags":["Yeni Rehber","Çalışan Konforu"],"searchTerms":["Duyusal Konfor Odaklı İş Kıyafeti Tasarımı","duyusal konfor odakli is kiyafeti"],"published":"2026-08-08","views":0},
@@ -892,6 +893,42 @@
       }
     });
 
+    // Her kategorinin yalnız ilk kartlarını aktif DOM'da tut. Kalan kartlar
+    // arama/filtre kullanıldığında veya kullanıcı "daha fazla" dediğinde
+    // küçük gruplar halinde eklenir. HTML kaynakta kaldığı için taranabilirlik
+    // korunurken stil/layout maliyeti yüzlerce karttan ilk gruba iner.
+    const deferredBySection = new Map();
+    document.querySelectorAll(".knowledge-category[data-category]:not([data-index-hidden])").forEach((section) => {
+      const grid = section.querySelector(".knowledge-grid");
+      if (!grid) return;
+      const sectionCards = Array.from(grid.querySelectorAll(".knowledge-card[data-post-slug]"));
+      const deferred = sectionCards.slice(12);
+      if (!deferred.length) return;
+      deferred.forEach((card) => card.remove());
+      deferredBySection.set(section, deferred);
+
+      const more = document.createElement("button");
+      more.type = "button";
+      more.className = "btn btn-secondary knowledge-load-more";
+      more.textContent = `Daha fazla göster (${deferred.length})`;
+      more.addEventListener("click", () => {
+        const next = deferred.splice(0, 12);
+        next.forEach((card) => grid.appendChild(card));
+        if (!deferred.length) more.remove();
+        else more.textContent = `Daha fazla göster (${deferred.length})`;
+      });
+      grid.after(more);
+    });
+
+    function mountAllDeferred() {
+      deferredBySection.forEach((deferred, section) => {
+        if (!deferred.length) return;
+        const grid = section.querySelector(".knowledge-grid");
+        deferred.splice(0).forEach((card) => grid.appendChild(card));
+        section.querySelector(".knowledge-load-more")?.remove();
+      });
+    }
+
     if (searchBox && !searchBox.querySelector(".knowledge-topic-filters")) {
       const filterBar = buildCategoryFilterBar(posts, activeGroup);
       searchBox.insertBefore(filterBar, searchBox.querySelector(".knowledge-search-feedback"));
@@ -908,6 +945,7 @@
 
     function filterPosts() {
       const term = normalize(search.value.trim());
+      if (term || activeTag || activeGroup) mountAllDeferred();
       let visibleCount = 0;
       cards.forEach((card) => {
         const post = postMap.get(card.dataset.postSlug);

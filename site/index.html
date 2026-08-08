@@ -704,7 +704,7 @@
     if (!imgs.length){ imgA.src = PLACEHOLDER; imgB.src = PLACEHOLDER; return; }
 
     var cur = 0;
-    setProductImage(imgA, imgs[cur]);
+    var activated = false;
 
     var timer = null; var showingA = true;
     function step(){
@@ -716,12 +716,42 @@
       showingA = !showingA; cur = next;
     }
 
-    function start(){ if (timer) return; timer = setInterval(step, INTERVAL); }
+    function activate(){
+      if (activated) return;
+      activated = true;
+      setProductImage(imgA, imgs[cur]);
+    }
+    function start(){
+      activate();
+      if (timer || document.hidden) return;
+      timer = setInterval(step, INTERVAL);
+    }
     function stop(){ if (timer){ clearInterval(timer); timer = null; } }
 
-    // staggered start
-    var delay = (idx % 8) * 600 + (Math.floor(idx/2)*200);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ setTimeout(start, delay); }
+    // Ekran dışındaki kartlar görsel indirmez ve rotasyon çalıştırmaz.
+    // Böylece mobil ilk yükte sekiz kategorinin bütün ürünleri ağ yarışına girmez.
+    var canRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window) {
+      var visibilityObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            activate();
+            if (canRotate) start();
+          } else {
+            stop();
+          }
+        });
+      }, { rootMargin: '300px 0px', threshold: 0.01 });
+      visibilityObserver.observe(a);
+    } else {
+      activate();
+      if (canRotate) start();
+    }
+
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) stop();
+      else if (activated && canRotate) start();
+    });
 
     ph.addEventListener('mouseenter', stop); ph.addEventListener('mouseleave', start);
     ph.addEventListener('focusin', stop); ph.addEventListener('focusout', start);
