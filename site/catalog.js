@@ -434,8 +434,9 @@
     var contentCenterX = (left + right) / 2;
     var contentCenterY = (top + bottom) / 2;
 
-    /* Alt yüzde 18 model kodu / İncele alanına ayrılır. */
-    var safe = { left: .075, top: .055, right: .925, bottom: .79 };
+    /* Ürünü kartta ortak bir görsel yüksekliğe getir. Alt bilgi katmanı
+       görselin üzerinde olduğu için ürünü erkenden kesmek/küçültmek gerekmez. */
+    var safe = { left: .075, top: .035, right: .925, bottom: .965 };
     var safeWidth = safe.right - safe.left;
     var safeHeight = safe.bottom - safe.top;
     var scale = Math.min(safeWidth / contentWidth, safeHeight / contentHeight);
