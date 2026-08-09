@@ -65,7 +65,7 @@ const RELEASE_ASSET_ALIASES = new Map([
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
-    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https:; connect-src 'self' https://challenges.cloudflare.com https://formspree.io https:; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
