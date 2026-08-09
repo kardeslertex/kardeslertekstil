@@ -75,6 +75,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/assets/runtime/home-hero-products-20260809-10.js", "/hero-products.js"],
   ["/assets/runtime/home-site-20260808-02.js", "/site.js"],
   ["/assets/runtime/home-site-20260809-intro1.js", "/site.js"],
+  ["/assets/runtime/home-site-20260809-intro2.js", "/site.js"],
   ["/knowledge-data-20260807-22.js", "/bilgi-merkezi/knowledge-center.js"],
 ]);
 

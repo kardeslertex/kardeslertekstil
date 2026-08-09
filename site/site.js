@@ -548,7 +548,7 @@
       if (fallbackTimer || leaving) return;
       fallbackTimer = window.setTimeout(function () {
         leaveIntro("/");
-      }, 14000);
+      }, 5000);
     }
 
     function finish(destination) {
