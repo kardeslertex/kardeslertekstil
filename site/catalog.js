@@ -19,7 +19,7 @@
     "KT-SW-034": "assets/products/hero/sweat/kt-sw-034-lacivert.webp", "KT-SW-036": "assets/products/hero/sweat/kt-sw-036-lacivert.webp",
     "KT-PT-001": "assets/products/hero/pantolon/kt-pt-001-lacivert.webp", "KT-PT-029": "assets/products/hero/pantolon/kt-pt-029-lacivert.webp",
     "KT-TL-020": "assets/products/hero/tulum/kt-tl-020-lacivert.webp", "KT-TL-022": "assets/products/hero/tulum/kt-tl-022-lacivert.webp",
-    "KT-MK-001": "assets/products/hero/montkaban/kt-mk-001-lacivert.webp", "KT-MK-029": "assets/products/hero/montkaban/kt-mk-029-lacivert.webp",
+    "KT-MK-001": "assets/products/hero/montkaban/kt-mk-001-mavi-v2.webp", "KT-MK-029": "assets/products/hero/montkaban/kt-mk-029-lacivert.webp",
     "KT-PL-008": "assets/products/hero/polar/kt-pl-008-lacivert.webp", "KT-PL-028": "assets/products/hero/polar/kt-pl-028-lacivert.webp",
     "KT-YL-005": "assets/products/hero/yelek/kt-yl-005-lacivert.webp", "KT-YL-010": "assets/products/hero/yelek/kt-yl-010-lacivert.webp",
     "KT-SS-022": "assets/products/hero/softshell/kt-ss-022-lacivert.webp", "KT-SS-020": "assets/products/hero/softshell/kt-ss-020-lacivert.webp"
