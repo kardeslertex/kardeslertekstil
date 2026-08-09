@@ -26,6 +26,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/products-data-20260809-kt-on-040-white1.js", "/products.js"],
   ["/catalog-ui-20260809-uniformfit3.js", "/catalog.js"],
   ["/catalog-styles-20260809-uniformfit3.css", "/styles.css"],
+  ["/home-styles-20260809-trust-icons2.css", "/styles.css"],
   ["/home-styles-20260809-trust8.css", "/styles.css"],
   ["/catalog-ui-20260809-technicalpants2.js", "/catalog.js"],
   ["/home-styles-20260807-20.css", "/styles.css"],

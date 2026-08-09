@@ -2621,6 +2621,15 @@ html{scroll-behavior:smooth;}
   font-size:12px;
   font-weight:700;
 }
+.trust-icon svg{
+  width:24px;
+  height:24px;
+  fill:none;
+  stroke:var(--orange-400);
+  stroke-width:2.25;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 .home-trust strong{
   display:block;
   color:var(--navy-700);
