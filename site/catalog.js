@@ -291,6 +291,7 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
+    img.addEventListener("load", function () { scheduleProductFit(img, item); }, { once: true });
     // Ürün görselleri üretimde standart kare tuvale dönüştürülür. Çalışma
     // zamanında her görselin piksellerini canvas ile tekrar taramak ana iş
     // parçacığını gereksiz yere bloke eder; CSS object-fit yeterlidir.
@@ -454,6 +455,18 @@
     img.style.setProperty("--product-scale", scale.toFixed(4));
     img.style.setProperty("--product-x", (translateX * 100).toFixed(3) + "%");
     img.style.setProperty("--product-y", (translateY * 100).toFixed(3) + "%");
+  }
+
+  function scheduleProductFit(img, item) {
+    function fit() {
+      if (!img.naturalWidth || !img.naturalHeight) return;
+      try { applyProductFit(img, item, productBounds(img)); } catch (error) { /* CSS contain remains the safe fallback. */ }
+    }
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(fit, { timeout: 700 });
+    } else {
+      window.setTimeout(fit, 24);
+    }
   }
 
   function normalizeProductScale() { /* Eski çağrılar için zararsız uyumluluk. */ }
