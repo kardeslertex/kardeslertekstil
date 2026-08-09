@@ -124,6 +124,8 @@
   }
 
   function pantolonType(item) {
+    var technicalCodes = ["KT-PT-013", "KT-PT-014", "KT-PT-015", "KT-PT-026", "KT-PT-029", "KT-PT-030"];
+    if (technicalCodes.indexOf(String(item.code || "").toUpperCase()) !== -1) return "technical";
     var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
     if (text.indexOf("klasik model") !== -1 && text.indexOf("yalnız iki ön cep") !== -1) return "classic";
     if (text.indexOf("kargo") !== -1 || text.indexOf("çok cepli") !== -1 || text.indexOf("çoklu cep") !== -1 || text.indexOf("yan cep") !== -1 || text.indexOf("alet cebi") !== -1 || text.indexOf("cetvel cebi") !== -1) return "cargo";
