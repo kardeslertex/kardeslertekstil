@@ -191,7 +191,7 @@ window.KATALOG = [
       { img: "13.jpeg", name: "Denim Kargo Pantolon — Koyu Mavi, Siyah Diz Takviyeli, Cep Kapaklı, Çoklu Cep", tags: "Koyu mavi | Siyah diz takviyeli | Cep kapaklı | Çoklu cep | Denim" },
       { img: "14.jpeg", name: "Reflektörlü Kargo Pantolon — Gri, Fosfor Detaylı, Diz Takviyeli", tags: "Gri | Fosfor detaylı | Diz takviyeli | Reflektörlü detay | İş güvenliği" },
       { img: "15.jpeg", name: "Reflektörlü Kargo Pantolon — Bej, Siyah Diz Takviyeli, Cep Kapaklı", tags: "Bej | Siyah diz takviyeli | Cep kapaklı | Reflektör: yok | İş/kurumsal" },
-      { img: "kt-pt-016-lacivert-kirmizi-reflektorlu-is-pantolonu.png", keepFormat: true, code: "KT-PT-016", name: "Lacivert Kırmızı Detaylı Reflektörlü İş Pantolonu", tags: "Lacivert | Kırmızı cep ve biye detayları | Tek sıra reflektif paça bandı | Elastik bel | İş güvenliği", description: "Lacivert gövdeyi kırmızı cep ve biye ayrıntılarıyla tamamlayan, iki paçada reflektif bant bulunan kurumsal iş pantolonudur. Üretim, saha, lojistik ve teknik servis ekipleri için firma renklerine göre uyarlanabilir." },
+      { img: "kt-pt-016-lacivert-kirmizi-reflektorlu-is-pantolonu.webp", code: "KT-PT-016", name: "Lacivert Kırmızı Detaylı Reflektörlü İş Pantolonu", tags: "Lacivert | Kırmızı cep ve biye detayları | Tek sıra reflektif paça bandı | Elastik bel | İş güvenliği", description: "Lacivert gövdeyi kırmızı cep ve biye ayrıntılarıyla tamamlayan, iki paçada reflektif bant bulunan kurumsal iş pantolonudur. Üretim, saha, lojistik ve teknik servis ekipleri için firma renklerine göre uyarlanabilir." },
       { img: "17.png",  name: "Reflektörlü İş Pantolonu — Lacivert, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Lacivert | Reflektörlü diz bandı | Yan cep kapaklı | Kurumsal/iş" },
       { img: "18.png",  name: "Reflektörlü Kot Pantolon — Koyu Mavi, Diz Reflektörlü Bantlı, Yan Cep Kapaklı", tags: "Koyu mavi | Reflektörlü diz bandı | Yan cep kapaklı | Denim" },
       { img: "kt-pt-019-antrasit-kargo-cepli-is-pantolonu.jpeg", code: "KT-PT-019", name: "Antrasit Kargo Cepli İş Pantolonu", tags: "Antrasit | Yan kargo cebi | Düz paça | Kurumsal iş modeli | Reflektör: yok" },
@@ -599,7 +599,7 @@ window.KATALOG = [
     unit: "föy",
     urunler: [
       {
-        img: "kt-rf-001-reflektor-serit-cesitleri.png",
+        img: "kt-rf-001-reflektor-serit-cesitleri.webp",
         keepFormat: true,
         code: "KT-RF-001",
         name: "Renkli Reflektör Şerit Çeşitleri",
@@ -607,7 +607,7 @@ window.KATALOG = [
         tags: "Sarı | Turuncu | Saks | Lacivert | Siyah | Kırmızı | 6002 Gümüş | 1001 Gri | 1201 Gri | 3x1–5x2 cm"
       },
       {
-        img: "reflektor-cesitleri-2-logo-duzeltilmis.png",
+        img: "reflektor-cesitleri-2-logo-duzeltilmis.webp",
         keepFormat: true,
         code: "KT-RF-002",
         name: "Reflektif Kumaş ve Şerit Çeşitleri",

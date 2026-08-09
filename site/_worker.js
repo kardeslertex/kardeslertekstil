@@ -49,6 +49,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/catalog-ui-20260809-polarfilter1.js", "/catalog.js"],
   ["/products-data-20260809-pantolonfilter1.js", "/products.js"],
   ["/products-data-20260809-vyaka1.js", "/products.js"],
+  ["/products-data-20260809-webp1.js", "/products.js"],
   ["/catalog-ui-20260809-pantolonfilter1.js", "/catalog.js"],
   ["/site-styles-20260809-scrub1.css", "/styles.css"],
   ["/catalog-styles-20260809-uniform1.css", "/styles.css"],
