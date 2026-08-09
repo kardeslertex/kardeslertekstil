@@ -44,6 +44,8 @@ html.intro-splash-pending .intro-splash,
   line-height:.98;letter-spacing:-.025em;text-transform:uppercase;color:var(--cream-50);
 }
 .intro-splash-lead{max-width:520px;margin:26px 0 0;color:var(--navy-100);font-size:18px;line-height:1.55;}
+.intro-splash-countdown{margin:16px 0 0;color:var(--navy-100);font-size:14px;line-height:1.5;}
+.intro-splash-countdown strong{display:inline-grid;place-items:center;min-width:28px;min-height:28px;margin-right:4px;border:1px solid rgba(255,255,255,.35);border-radius:50%;color:#fff;font-size:14px;}
 .intro-splash-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:38px;max-width:520px;}
 .intro-splash-button{
   min-height:50px;display:inline-flex;align-items:center;justify-content:center;
@@ -83,6 +85,7 @@ html.intro-splash-pending .intro-splash,
   .intro-splash-kicker{font-size:11px;margin-bottom:16px;}
   .intro-splash-title{font-size:clamp(30px,8.4vw,38px);line-height:1.02;}
   .intro-splash-lead{font-size:16px;margin-top:18px;}
+  .intro-splash-countdown{margin-top:12px;font-size:13px;}
   .intro-splash-actions{grid-template-columns:1fr;gap:10px;margin-top:24px;}
   .intro-splash-button-primary{grid-column:auto;}
   .intro-splash-button{width:100%;min-height:48px;}
