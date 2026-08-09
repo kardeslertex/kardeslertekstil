@@ -128,8 +128,20 @@ async function handleQuoteForm(request, env, url) {
     return formError("Güvenlik kontrolüne şu anda ulaşılamıyor. Lütfen tekrar deneyin.", 503);
   }
   const allowedHostnames = new Set(["kardeslertekstil.com.tr", "www.kardeslertekstil.com.tr"]);
-  if (!verification.success || verification.action !== "quote_form" || !allowedHostnames.has(verification.hostname)) {
-    return formError("Güvenlik doğrulaması başarısız oldu. Sayfayı yenileyip tekrar deneyin.", 403);
+  if (!verification.success) {
+    const errorCodes = Array.isArray(verification["error-codes"])
+      ? verification["error-codes"].join(",")
+      : "unknown";
+    console.error("Turnstile verification failed", { errorCodes });
+    return formError(`Güvenlik doğrulaması başarısız oldu (${errorCodes}). Sayfayı yenileyip tekrar deneyin.`, 403);
+  }
+  if (verification.action !== "quote_form") {
+    console.error("Turnstile action mismatch", { action: verification.action || "missing" });
+    return formError("Güvenlik doğrulaması form ile eşleşmedi (action-mismatch). Sayfayı yenileyip tekrar deneyin.", 403);
+  }
+  if (!allowedHostnames.has(verification.hostname)) {
+    console.error("Turnstile hostname mismatch", { hostname: verification.hostname || "missing" });
+    return formError("Güvenlik doğrulaması alan adıyla eşleşmedi (hostname-mismatch).", 403);
   }
 
   let uploadedBytes = 0;
