@@ -1661,7 +1661,7 @@ html{scroll-behavior:smooth;}
 .gitem[hidden]{display:none!important;}
 .gitem-visual{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--cream-50);}
 .gitem-esd{border-color:#5b8f98!important;box-shadow:inset 0 0 0 1px rgba(25,88,99,.08);}
-.gitem-esd-badge{position:absolute;z-index:5;top:10px;right:10px;display:block;width:36px;height:44px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2));pointer-events:none;}
+.gitem-esd-badge{position:absolute;z-index:5;top:10px;right:10px;display:block;width:44px;height:37px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2));pointer-events:none;}
 .gitem-esd-badge img{display:block;width:100%;height:100%;object-fit:contain;}
 .lb-description{margin:14px 0 0;color:var(--fg2);font-size:14px;line-height:1.65;}
 .esd-hero{padding:64px 0;background:linear-gradient(135deg,#072e38 0%,#0b5360 58%,#0c6674 100%);color:#fff;}
@@ -1673,7 +1673,7 @@ html{scroll-behavior:smooth;}
 .esd-symbol{display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid rgba(255,255,255,.4);border-radius:50%;background:#fff;color:#0c5f6d;font-size:34px;font-weight:900;}
 .esd-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
 .esd-product-grid a{position:relative;display:flex;min-width:0;padding:0 0 18px;flex-direction:column;border:1px solid var(--steel-200);border-radius:14px;overflow:hidden;background:#fff;color:var(--navy-800);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
-.esd-product-grid a::after{content:"";position:absolute;z-index:3;top:12px;right:12px;width:36px;height:44px;background:url("assets/esd-sewn-label.svg") center/contain no-repeat;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2));pointer-events:none;}
+.esd-product-grid a::after{content:"";position:absolute;z-index:3;top:12px;right:12px;width:44px;height:37px;background:url("assets/esd-susceptibility-symbol-v2.svg") center/contain no-repeat;filter:drop-shadow(0 3px 5px rgba(0,0,0,.2));pointer-events:none;}
 .esd-product-grid a:hover{transform:translateY(-4px);border-color:#5b8f98;box-shadow:0 14px 30px rgba(8,76,87,.13);}
 .esd-product-grid img{width:100%;aspect-ratio:4/5;object-fit:contain;padding:10px;background:var(--cream-50);}
 .esd-product-grid span{padding:15px 16px 3px;color:#0c5f6d;font-size:11px;font-weight:800;letter-spacing:.08em;}

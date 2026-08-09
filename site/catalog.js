@@ -308,10 +308,10 @@
       var esdBadge = el("span", "gitem-esd-badge");
       esdBadge.setAttribute("aria-label", "ESD ürünü");
       var esdLabel = el("img");
-      esdLabel.src = "assets/esd-sewn-label.svg";
+      esdLabel.src = "assets/esd-susceptibility-symbol-v2.svg";
       esdLabel.alt = "";
-      esdLabel.width = 36;
-      esdLabel.height = 44;
+      esdLabel.width = 44;
+      esdLabel.height = 37;
       esdBadge.appendChild(esdLabel);
       visual.appendChild(esdBadge);
       btn.classList.add("gitem-esd");
