@@ -33,6 +33,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/catalog-ui-20260809-uniformfit3.js", "/catalog.js"],
   ["/catalog-styles-20260809-uniformfit3.css", "/styles.css"],
   ["/home-styles-20260809-trust-icons3.css", "/styles.css"],
+  ["/home-styles-20260809-trust-icons4.css", "/styles.css"],
   ["/home-styles-20260809-trust-icons2.css", "/styles.css"],
   ["/home-styles-20260809-trust8.css", "/styles.css"],
   ["/catalog-ui-20260809-technicalpants2.js", "/catalog.js"],
