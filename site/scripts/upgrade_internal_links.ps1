@@ -1,4 +1,4 @@
-param([string]$SiteRoot)
+﻿param([string]$SiteRoot)
 $ErrorActionPreference = 'Stop'
 $siteRoot = if ($SiteRoot) { (Resolve-Path $SiteRoot).Path } else { Split-Path $PSScriptRoot -Parent }
 $knowledgeRoot = Join-Path $siteRoot 'bilgi-merkezi'
@@ -9,6 +9,7 @@ function Encode([string]$value) { [Net.WebUtility]::HtmlEncode($value) }
 function Plain([string]$value) { return (Decode ([regex]::Replace($value, '<[^>]+>', ' ')) -replace '\s+', ' ').Trim() }
 
 function Topic([string]$slug) {
+    if ($slug -match 'scrub|hastane|klinik|hemsire|saglik-personeli|laboratuvar|ilac-uretimi') { return @{ category='scrub-takimi'; prefixes=@('KT-ON'); term='scrub' } }
     if ($slug -match 'pantolon|paca|diz|bel-') { return @{ category='is-pantolonu'; prefixes=@('KT-PT','KT-SS'); term='pantolon' } }
     if ($slug -match 'tisort|polo|penye|suprem|lakost') { return @{ category='polo-yaka-is-tisortu'; prefixes=@('KT-TS'); term=('ti' + [char]0x015F + [char]0x00F6 + 'rt') } }
     if ($slug -match 'polar') { return @{ category='polar-is-montu'; prefixes=@('KT-PL'); term='polar' } }
@@ -21,7 +22,7 @@ function Topic([string]$slug) {
 }
 
 $categories = @{}
-foreach ($slug in @('is-pantolonu','polo-yaka-is-tisortu','polar-is-montu','kurumsal-is-sweatshirtu','is-tulumu','reflektorlu-is-yelegi','asci-kiyafeti-is-onlugu','is-montu-kaban')) {
+foreach ($slug in @('is-pantolonu','polo-yaka-is-tisortu','polar-is-montu','kurumsal-is-sweatshirtu','is-tulumu','reflektorlu-is-yelegi','asci-kiyafeti-is-onlugu','scrub-takimi','is-montu-kaban')) {
     $path = Join-Path $siteRoot "$slug\index.html"
     $source = [IO.File]::ReadAllText($path, [Text.Encoding]::UTF8)
     $categories[$slug] = Plain ([regex]::Match($source, '<h1[^>]*>(.*?)</h1>', 'IgnoreCase,Singleline').Groups[1].Value)

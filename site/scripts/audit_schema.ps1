@@ -91,6 +91,22 @@ foreach ($file in $htmlFiles) {
             else {
                 $listItems = @($schema.mainEntity.itemListElement)
                 if ([int]$schema.mainEntity.numberOfItems -ne $listItems.Count) { Add-Error $relativePath 'ItemList count is inconsistent' }
+                foreach ($listItem in $listItems) {
+                    $itemUrl = [string]$listItem.url
+                    if (!$itemUrl -and $listItem.item) { $itemUrl = [string]$listItem.item.url }
+                    if ($itemUrl -and -not $canonicalSet.ContainsKey($itemUrl)) {
+                        Add-Error $relativePath "ItemList URL is not canonical: $itemUrl"
+                        break
+                    }
+                    if ($itemUrl -and $itemUrl -eq $canonical) {
+                        Add-Error $relativePath "ItemList item points back to its collection page: $itemUrl"
+                        break
+                    }
+                    if ($relativePath -eq 'urunlerimiz.html' -and $itemUrl -and $itemUrl -notlike "$origin/urun/*") {
+                        Add-Error $relativePath "Catalog ItemList must point to a product detail page: $itemUrl"
+                        break
+                    }
+                }
             }
             continue
         }

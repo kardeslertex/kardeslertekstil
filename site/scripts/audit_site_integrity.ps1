@@ -56,7 +56,7 @@ foreach ($file in $htmlFiles) {
     if (![regex]::IsMatch($html, '<h1\b', 'IgnoreCase')) { $pageMetadataErrors.Add("$relativePath -> missing h1") }
   }
   if ($canonical -and !$noindex) { [void]$canonicals.Add($canonical) }
-  if (!$noindex -and ![regex]::IsMatch($html, '<script[^>]+src=["''][^"'']*site\.js(?:\?[^"'']*)?["'']', 'IgnoreCase')) {
+  if (!$noindex -and ![regex]::IsMatch($html, '<script[^>]+src=["''][^"'']*(?:site\.js|home-site-[^"'']+\.js)(?:\?[^"'']*)?["'']', 'IgnoreCase')) {
     $missingSiteJs.Add($relativePath)
   }
 

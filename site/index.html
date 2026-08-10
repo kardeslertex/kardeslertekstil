@@ -2,7 +2,7 @@
 
 <html lang="tr"><head><meta charset="utf-8"/>
 <title>Kurumsal İş Kıyafeti Üretimi — Kardeşler Tekstil</title>
-<meta content="width=device-width,initial-scale=1" name="viewport"/><link href="styles.css?v=20260807-2" rel="stylesheet"/><meta content="İstanbul Pendik'te kurumsal iş kıyafeti üretimi, firma logolu baskı ve nakış, numune desteği ve Türkiye geneli teslimat." name="description"/><meta name="robots" content="index,follow,max-image-preview:large"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/><link href="/home-styles-20260809-trust-icons4.css" rel="stylesheet"/><meta content="İstanbul Pendik'te kurumsal iş kıyafeti üretimi, firma logolu baskı ve nakış, numune desteği ve Türkiye geneli teslimat." name="description"/><meta name="robots" content="index,follow,max-image-preview:large"/>
 <link rel="canonical" href="https://kardeslertekstil.com.tr/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
@@ -66,14 +66,15 @@
 <script>
 (function () {
   try {
-    var forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
+    var forceIntro = window.location.hash === "#intro" || sessionStorage.getItem("kt_home_intro_force_v1") === "1";
+    sessionStorage.removeItem("kt_home_intro_force_v1");
     var compactViewport = window.matchMedia("(max-width: 767px)").matches;
     window.__ktForceHomeIntro = forceIntro;
     if (forceIntro || (!compactViewport && sessionStorage.getItem("kt_home_intro_seen_v1") !== "1")) {
       document.documentElement.classList.add("intro-splash-pending");
     }
-    if (forceIntro && window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", window.location.pathname + window.location.hash);
+    if (window.location.hash === "#intro" && window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", window.location.pathname);
     }
   } catch (error) {
     if (!window.matchMedia("(max-width: 767px)").matches) {
@@ -82,8 +83,8 @@
   }
 })();
 </script>
-<script src="hero-products.js?v=20260807-16" defer></script>
-<script src="site.js?v=20260807-14" defer></script>
+<script src="/assets/runtime/home-hero-products-20260809-kt-mk-001-blue1.js" defer></script>
+<script src="/assets/runtime/home-site-20260809-intro3.js" defer></script>
 </head>
 <body class="home-v3" data-screen-label="01 Home">
 <section class="intro-splash" data-home-intro aria-label="Kardeşler Tekstil karşılama ekranı" aria-hidden="true">
@@ -95,6 +96,7 @@
 <p class="intro-splash-kicker">KURUMSAL İŞ KIYAFETİ ÜRETİMİ</p>
 <p class="intro-splash-title">Firmanız için özel üretiyoruz.</p>
 <p class="intro-splash-lead">Tişörtten monta; kurumsal renk, baskı ve nakışla üretim.</p>
+<p class="intro-splash-countdown" aria-live="polite"><strong data-intro-countdown>5</strong> saniye sonra ana sayfaya yönlendirileceksiniz.</p>
 <nav class="intro-splash-actions" aria-label="Hızlı yönlendirmeler">
 <a class="intro-splash-button intro-splash-button-primary" href="/" data-intro-target="home">Siteye Gir</a>
 <a class="intro-splash-button" href="/urunlerimiz" data-intro-target="products">Ürünleri İncele</a>
@@ -141,12 +143,12 @@
 <div class="product-logo-preview" data-logo-preview hidden>
 <img data-logo-image alt=""/>
 </div>
-<img data-showcase-image src="assets/products/hero/tshirt/kt-ts-035-lacivert.webp" alt="KT-TS-035 lacivert teknik polo tişört" width="1254" height="1254" decoding="async" fetchpriority="high"/>
+<img data-showcase-image src="assets/products/hero/tshirt/kt-ts-040-bej.webp" alt="KT-TS-040 bej V yaka teknik iş tişörtü" width="1254" height="1254" decoding="async" fetchpriority="high"/>
 <a class="product-showcase-category-link" data-showcase-category-link href="urunlerimiz#tshirt">Tüm Tişört Ürünlerini Gör <span aria-hidden="true">→</span></a>
 <span class="product-showcase-status" data-showcase-status hidden>Görsel yakında</span>
 </div>
 <section class="product-showcase-info" aria-label="Seçili ürün bilgileri" aria-live="polite">
-<div class="product-showcase-info-head"><span>Öne çıkan ürün</span><h2 data-info-name>Petrol Mavisi Fermuarlı Cepli Teknik Polo Tişört</h2></div>
+<div class="product-showcase-info-head"><span>Öne çıkan ürün</span><h2 data-info-name>V Yaka Teknik İş Tişörtü</h2></div>
 <dl class="product-showcase-specs">
 <div><dt>Renkler</dt><dd data-info-colors></dd></div>
 <div><dt>Kumaş türü</dt><dd data-info-fabric></dd></div>
@@ -196,12 +198,14 @@
 <div class="home-trust-head">
 <h2>Neden Kardeşler Tekstil?</h2>
 </div>
-<article><div><strong>1982’den beri üretim tecrübesi</strong><p>Uzun yıllara dayanan üretim deneyimimizle kurumsal ihtiyaçlara uygun çözümler sunuyoruz.</p></div></article>
-<article><div><strong>İstanbul’da doğrudan üretim</strong><p>Pendik / İstanbul tesisimizde üretim sürecini doğrudan yönetiyoruz.</p></div></article>
-<article><div><strong>Kurumsal firmalara özel tasarım</strong><p>Model, cep, kalıp ve renk detaylarını kurumsal kullanım senaryosuna göre planlıyoruz.</p></div></article>
-<article><div><strong>Logo baskı ve nakış uygulaması</strong><p>Firma logonuzu ürün ve kullanım alanına göre uygun teknikle uyguluyoruz.</p></div></article>
-<article><div><strong>Numune ve üretim desteği</strong><p>Toplu sipariş öncesinde numune sürecini yönetiyor, üretimde sürdürülebilir kalite sağlıyoruz.</p></div></article>
-<article><div><strong>Türkiye geneli teslimat</strong><p>Kurumsal siparişlerinizi planlı sevkiyat ile Türkiye geneline ulaştırıyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M3 33V15l12 6V15l12 6V8h6v25Z"/><path d="M8 33v-6h6v6M22 33v-6h6v6"/></svg></span><div><strong>1982’den beri üretim tecrübesi</strong><p>Uzun yıllara dayanan üretim deneyimimizle kurumsal ihtiyaçlara uygun çözümler sunuyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 35s12-11 12-21a12 12 0 1 0-24 0c0 10 12 21 12 21Z"/><circle cx="18" cy="14" r="4"/></svg></span><div><strong>İstanbul’da doğrudan üretim</strong><p>Pendik / İstanbul tesisimizde üretim sürecini doğrudan yönetiyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><path d="m5 29 18-18 7 7-18 18H5Z"/><path d="m20 14 7 7M5 36l7-1M28 5v6M25 8h6"/></svg></span><div><strong>Kurumsal firmalara özel tasarım</strong><p>Model, cep, kalıp ve renk detaylarını kurumsal kullanım senaryosuna göre planlıyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><path d="M27 5 8 31l-3 6 6-3L30 8Z"/><path d="m25 7 3 3M8 31l3 3M16 28c6-2 12 0 15 5M13 33c5-1 9 0 12 3"/></svg></span><div><strong>Logo baskı ve nakış uygulaması</strong><p>Firma logonuzu ürün ve kullanım alanına göre uygun teknikle uyguluyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><rect x="6" y="7" width="24" height="29" rx="2"/><path d="M13 7V4h10v3M11 16l3 3 5-6M11 27h14M11 32h9"/></svg></span><div><strong>Numune ve üretim desteği</strong><p>Toplu sipariş öncesinde numune sürecini yönetiyor, üretimde sürdürülebilir kalite sağlıyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><path d="M29 11a14 14 0 0 0-23 5M6 8v8h8M7 27a14 14 0 0 0 23-5M30 30v-8h-8"/></svg></span><div><strong>Tekrar sipariş standardı</strong><p>Onaylanan model, kumaş, renk ve logo bilgilerini sonraki siparişler için kayıt altında tutuyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><path d="M18 4 7 8v9c0 9 4 15 11 19 7-4 11-10 11-19V8Z"/><path d="m12 20 4 4 8-9"/></svg></span><div><strong>Kontrollü kalite süreci</strong><p>Kumaştan dikime, logo uygulamasından paketlemeye kadar üretim adımlarını kontrol ediyoruz.</p></div></article>
+<article><span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 38 38"><path d="M3 9h20v18H3ZM23 15h7l5 6v6H23Z"/><circle cx="10" cy="30" r="4"/><circle cx="29" cy="30" r="4"/></svg></span><div><strong>Türkiye geneli teslimat</strong><p>Kurumsal siparişlerinizi planlı sevkiyat ile Türkiye geneline ulaştırıyoruz.</p></div></article>
 </div>
 </section>
 <section class="products reveal-section home-products-premium" style="padding:96px 0;">
@@ -286,7 +290,7 @@
 <div class="section-head" style="margin-bottom:28px;">
 <div>
 <div class="eyebrow eyebrow-accent">REHBERLER</div>
-<h2>En Kritik Konu Kümeleri</h2>
+<h2>İş Kıyafeti İçin Kritik Konular</h2>
 </div>
 <p>Satın alma, kumaş, logo uygulaması ve beden planlaması için en çok aranan rehberleri bir arada inceleyin.</p>
 </div>
@@ -373,13 +377,13 @@
 </div>
 <div class="product-film-grid">
 <article class="product-film-card"><div class="product-film-media">
-<video data-deferred-video muted playsinline preload="none" poster="assets/products/gallery/montkaban/kt-mk-023-grafit-fosfor-panelli-kapusonlu-is-montu.webp" aria-label="Grafit fosfor panelli kapüşonlu iş montu ürün videosu"><source data-src="assets/videos/urun-vitrini-grafit-fosfor-mont-v2.mp4" type="video/mp4"></video>
+<a class="product-film-preview" href="video/grafit-fosfor-panelli-is-montu/" aria-label="Grafit fosfor panelli iş montu videosunu izleyin"><img loading="lazy" width="800" height="800" src="assets/products/gallery/montkaban/kt-mk-023-grafit-fosfor-panelli-kapusonlu-is-montu.webp" alt="Grafit fosfor panelli kapüşonlu iş montu"><span aria-hidden="true">Videoyu izle</span></a>
 </div><div class="product-film-copy"><div><span>KIŞLIK SAHA MODELİ</span><h3>Grafit Fosfor Panelli İş Montu</h3><p>Kapüşon, görünürlüğü destekleyen paneller ve reflektif kol detayları.</p></div><a href="is-montu-kaban/">Mont ve kabanları inceleyin →</a></div></article>
 <article class="product-film-card"><div class="product-film-media">
-<video data-deferred-video muted playsinline preload="none" poster="assets/products/gallery/tshirt/kt-ts-032-antrasit-turuncu-garnili-polo-yaka-is-tisortu.webp" aria-label="Antrasit turuncu garnili polo yaka iş tişörtü ürün videosu"><source data-src="assets/videos/urun-vitrini-antrasit-turuncu-polo.mp4" type="video/mp4"></video>
+<a class="product-film-preview" href="video/antrasit-turuncu-polo-yaka-is-tisortu/" aria-label="Antrasit turuncu polo yaka iş tişörtü videosunu izleyin"><img loading="lazy" width="800" height="800" src="assets/products/gallery/tshirt/kt-ts-032-antrasit-turuncu-garnili-polo-yaka-is-tisortu.webp" alt="Antrasit turuncu garnili polo yaka iş tişörtü"><span aria-hidden="true">Videoyu izle</span></a>
 </div><div class="product-film-copy"><div><span>KURUMSAL EKİP MODELİ</span><h3>Antrasit Turuncu Polo Yaka Tişört</h3><p>Kontrast yan paneller, düzenli yaka formu ve kurumsal renk uygulaması.</p></div><a href="polo-yaka-is-tisortu/">Polo tişörtleri inceleyin →</a></div></article>
 </div>
-<p class="product-films-note">Veri tasarrufu veya hareketi azaltma tercihi açık cihazlarda videolar otomatik yüklenmez.</p>
+<p class="product-films-note">Ürün videolarını ilgili model sayfasında ses ve oynatma kontrolleriyle izleyebilirsiniz.</p>
 </div>
 </section>
 <section class="location reveal-section">
@@ -459,7 +463,7 @@
 <a aria-label="WhatsApp" class="fab-wa" href="https://wa.me/902163961988" rel="noopener" target="_blank">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
 </a>
-<script src="products.js?v=20260804-3"></script>
+<script src="/products-data-20260808-02.js"></script>
 <script>
 (function(){
   var INTERVAL = 4000;
@@ -704,7 +708,7 @@
     if (!imgs.length){ imgA.src = PLACEHOLDER; imgB.src = PLACEHOLDER; return; }
 
     var cur = 0;
-    setProductImage(imgA, imgs[cur]);
+    var activated = false;
 
     var timer = null; var showingA = true;
     function step(){
@@ -716,12 +720,42 @@
       showingA = !showingA; cur = next;
     }
 
-    function start(){ if (timer) return; timer = setInterval(step, INTERVAL); }
+    function activate(){
+      if (activated) return;
+      activated = true;
+      setProductImage(imgA, imgs[cur]);
+    }
+    function start(){
+      activate();
+      if (timer || document.hidden) return;
+      timer = setInterval(step, INTERVAL);
+    }
     function stop(){ if (timer){ clearInterval(timer); timer = null; } }
 
-    // staggered start
-    var delay = (idx % 8) * 600 + (Math.floor(idx/2)*200);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ setTimeout(start, delay); }
+    // Ekran dışındaki kartlar görsel indirmez ve rotasyon çalıştırmaz.
+    // Böylece mobil ilk yükte sekiz kategorinin bütün ürünleri ağ yarışına girmez.
+    var canRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window) {
+      var visibilityObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            activate();
+            if (canRotate) start();
+          } else {
+            stop();
+          }
+        });
+      }, { rootMargin: '300px 0px', threshold: 0.01 });
+      visibilityObserver.observe(a);
+    } else {
+      activate();
+      if (canRotate) start();
+    }
+
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) stop();
+      else if (activated && canRotate) start();
+    });
 
     ph.addEventListener('mouseenter', stop); ph.addEventListener('mouseleave', start);
     ph.addEventListener('focusin', stop); ph.addEventListener('focusout', start);

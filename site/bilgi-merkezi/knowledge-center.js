@@ -2,6 +2,27 @@
   "use strict";
 
   const posts = [
+    {"slug":"esd-kiyafetlerin-onemi-ve-yapilmasi-gereken-testler","title":"ESD Kıyafetlerin Önemi ve Yapılması Gereken Testler","summary":"ESD kıyafet seçiminde ürün etiketi, elektriksel direnç, dikiş sürekliliği, manşet, yıkama ve saha doğrulamasında yapılması gereken testleri inceleyin.","category":"Kalite ve Standartlar","tags":["Yeni Rehber","ESD"],"searchTerms":["ESD Kıyafetlerin Önemi ve Yapılması Gereken Testler","esd kiyafet testi","antistatik kiyafet testi","esd onluk testi"],"published":"2026-08-09","views":0},
+    {"slug":"tamir-edilebilir-is-kiyafeti-tasarimi","title":"Tamir Edilebilir İş Kıyafeti Nasıl Tasarlanır?","summary":"İş kıyafetinde fermuar, cep, diz, dirsek ve reflektif parçaları onarılabilir tasarlayarak ürün ömrünü ve kurumsal görünümü birlikte yönetin.","category":"Sürdürülebilirlik","tags":["Yeni Rehber","Sürdürülebilirlik"],"searchTerms":["Tamir Edilebilir İş Kıyafeti Nasıl Tasarlanır?","tamir edilebilir is kiyafeti tasarimi"],"published":"2026-08-08","views":0},
+    {"slug":"polar-is-kiyafetlerinde-lif-dokulmesi-kontrolu","title":"Polar İş Kıyafetlerinde Lif Dökülmesi Nasıl Kontrol Edilir?","summary":"Polar iş kıyafetlerinde lif dökülmesini kumaş seçimi, kesim, üretim temizliği, yıkama denemesi ve kullanım takibiyle değerlendirin.","category":"Kumaş ve Teknik Bilgi","tags":["Yeni Rehber","Kumaş ve Teknik Bilgi"],"searchTerms":["Polar İş Kıyafetlerinde Lif Dökülmesi Nasıl Kontrol Edilir?","polar is kiyafetlerinde lif dokulmesi kontrolu"],"published":"2026-08-08","views":0},
+    {"slug":"duyusal-konfor-odakli-is-kiyafeti","title":"Duyusal Konfor Odaklı İş Kıyafeti Tasarımı","summary":"Etiket, dikiş, kumaş teması, kapama sesi ve sıkılık gibi duyusal ayrıntıları görev güvenliğinden ödün vermeden numunede değerlendirin.","category":"Çalışan Konforu","tags":["Yeni Rehber","Çalışan Konforu"],"searchTerms":["Duyusal Konfor Odaklı İş Kıyafeti Tasarımı","duyusal konfor odakli is kiyafeti"],"published":"2026-08-08","views":0},
+    {"slug":"is-kiyafeti-pilot-giyim-testi","title":"İş Kıyafeti Pilot Giyim Testi Nasıl Yapılır?","summary":"Toplu sipariş öncesinde kullanıcı, görev, süre, kayıt ve kabul ölçütlerini belirleyerek karşılaştırılabilir bir pilot giyim testi yürütün.","category":"Satın Alma Rehberi","tags":["Yeni Rehber","Satın Alma Rehberi"],"searchTerms":["İş Kıyafeti Pilot Giyim Testi Nasıl Yapılır?","is kiyafeti pilot giyim testi"],"published":"2026-08-08","views":0},
+    {"slug":"is-kiyafeti-kullanim-sonu-ayristirma-rehberi","title":"İş Kıyafetinde Kullanım Sonu Ayırma Rehberi","summary":"Kullanım dışı iş kıyafetlerini yeniden kullanım, onarım, malzeme değerlendirme ve kontrollü imha akışlarına güvenli biçimde ayırın.","category":"Sürdürülebilirlik","tags":["Yeni Rehber","Sürdürülebilirlik"],"searchTerms":["İş Kıyafetinde Kullanım Sonu Ayırma Rehberi","is kiyafeti kullanim sonu ayristirma rehberi"],"published":"2026-08-08","views":0},
+    {"slug":"kapsul-is-gardirobu-planlama","title":"Kapsül İş Gardırobu Nasıl Planlanır?","summary":"Az sayıda uyumlu üst, alt ve dış katmanla mevsim, görev ve kurumsal görünümü karşılayan kapsül iş kıyafeti sistemi kurun.","category":"Kurumsal Kimlik","tags":["Yeni Rehber","Kurumsal Kimlik"],"searchTerms":["Kapsül İş Gardırobu Nasıl Planlanır?","kapsul is gardirobu planlama"],"published":"2026-08-08","views":0},
+    {"slug":"is-kiyafeti-iade-lojistigi","title":"İş Kıyafeti İade Lojistiği Nasıl Kurulur?","summary":"Beden değişimi, işten ayrılma, kalite incelemesi ve onarım iadelerini kod, hijyen, taşıma ve kapanış kurallarıyla yönetin.","category":"Operasyon ve Lojistik","tags":["Yeni Rehber","Operasyon ve Lojistik"],"searchTerms":["İş Kıyafeti İade Lojistiği Nasıl Kurulur?","is kiyafeti iade lojistigi"],"published":"2026-08-08","views":0},
+    {"slug":"vardiya-dolabi-is-kiyafeti-standardi","title":"Vardiya Dolabında İş Kıyafeti Düzeni Nasıl Kurulur?","summary":"Temiz-kirli ayrımı, kişisel koruyucu donanım alanı, havalandırma, etiketleme ve stok kontrolüyle vardiya dolabı standardı oluşturun.","category":"Operasyon ve Lojistik","tags":["Yeni Rehber","Operasyon ve Lojistik"],"searchTerms":["Vardiya Dolabında İş Kıyafeti Düzeni Nasıl Kurulur?","vardiya dolabi is kiyafeti standardi"],"published":"2026-08-08","views":0},
+    {"slug":"moduler-is-kiyafeti-sistemi","title":"Modüler İş Kıyafeti Sistemi Nasıl Tasarlanır?","summary":"Çıkarılabilir katman, kapüşon, kol, cep ve kimlik parçalarını güvenli bağlantı, bakım ve ürün kodu kurallarıyla modüler planlayın.","category":"Ürün Rehberleri","tags":["Yeni Rehber","Ürün Rehberleri"],"searchTerms":["Modüler İş Kıyafeti Sistemi Nasıl Tasarlanır?","moduler is kiyafeti sistemi"],"published":"2026-08-08","views":0},
+    {"slug":"isi-yukunu-azaltan-is-kiyafeti-tasarimi","title":"Isı Yükünü Azaltan İş Kıyafeti Tasarımı","summary":"Sıcak çalışma alanlarında kumaş, kalıp, havalandırma, renk ve katman kararlarını işyeri risk önlemleriyle birlikte değerlendirin.","category":"Çalışan Konforu","tags":["Yeni Rehber","Çalışan Konforu"],"searchTerms":["Isı Yükünü Azaltan İş Kıyafeti Tasarımı","isi yukunu azaltan is kiyafeti tasarimi"],"published":"2026-08-08","views":0},
+{"slug":"fermuar-cepli-polo-is-tisortu-secim-rehberi","title":"Fermuar Cepli Polo İş Tişörtü Seçim Rehberi","summary":"Fermuarlı göğüs cepli polo iş tişörtünde kumaş, cep konumu, kurumsal renk ve logo uygulamasını görev ihtiyaçlarına göre planlayın.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["Fermuar Cepli Polo İş Tişörtü Seçim Rehberi","fermuar cepli polo is tisortu secim rehberi"],"published":"2026-08-07","views":0},
+{"slug":"teknik-sweatshirt-katmanlama-ve-cep-secimi","title":"Teknik Sweatshirt Katmanlama ve Cep Seçimi","summary":"Teknik sweatshirt seçiminde yarım fermuar, kapüşon, dirsek takviyesi ve cep düzenini çalışma sıcaklığı ile hareket yoğunluğuna göre karşılaştırın.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["Teknik Sweatshirt Katmanlama ve Cep Seçimi","teknik sweatshirt katmanlama ve cep secimi"],"published":"2026-08-07","views":0},
+{"slug":"diz-takviyeli-is-pantolonu-cep-ve-kalip-rehberi","title":"Diz Takviyeli İş Pantolonu: Cep ve Kalıp Rehberi","summary":"Diz takviyeli iş pantolonunda panel konumu, kargo cep, cetvel cebi, esneklik ve beden kalıbını gerçek görev hareketleriyle doğrulayın.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["Diz Takviyeli İş Pantolonu: Cep ve Kalıp Rehberi","diz takviyeli is pantolonu cep ve kalip rehberi"],"published":"2026-08-07","views":0},
+{"slug":"is-tulumu-mu-bahcivan-tulumu-mu","title":"İş Tulumu mu Bahçıvan Tulumu mu?","summary":"Tam boy iş tulumu ile bahçıvan tulumunu koruma kapsamı, katmanlama, cep düzeni, giyip çıkarma ve görev hareketleri açısından karşılaştırın.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["İş Tulumu mu Bahçıvan Tulumu mu?","is tulumu mu bahcivan tulumu mu"],"published":"2026-08-07","views":0},
+{"slug":"sef-ceketi-ve-capraz-askili-onluk-seti","title":"Şef Ceketi ve Çapraz Askılı Önlük Seti Nasıl Planlanır?","summary":"Mutfak ve servis ekipleri için şef ceketi ile çapraz askılı önlüğü kumaş, hareket, cep, renk ve logo standardı içinde birlikte planlayın.","category":"Sektörel Çözümler","tags":["Yeni Rehber"],"searchTerms":["Şef Ceketi ve Çapraz Askılı Önlük Seti Nasıl Planlanır?","sef ceketi ve capraz askili onluk seti"],"published":"2026-08-07","views":0},
+{"slug":"uzun-kislik-is-kabani-katmanlama-rehberi","title":"Uzun Kışlık İş Kabanı Katmanlama Rehberi","summary":"Uzun iş kabanında dolgu, fırtına patı, kapüşon, cep ve reflektif ayrıntıları açık saha sıcaklığı ve vardiya süresine göre değerlendirin.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["Uzun Kışlık İş Kabanı Katmanlama Rehberi","uzun kislik is kabani katmanlama rehberi"],"published":"2026-08-07","views":0},
+{"slug":"polar-mi-softshell-mi-hangi-kosulda","title":"Polar mı Softshell mi? Hangi Koşulda Hangisi Seçilir?","summary":"Polar ve softshell iş montlarını ısı yalıtımı, rüzgâr, hafif yağış, nefes alma, hareket ve katmanlama ölçütleriyle karşılaştırın.","category":"Kumaş ve Teknik Bilgi","tags":["Yeni Rehber"],"searchTerms":["Polar mı Softshell mi? Hangi Koşulda Hangisi Seçilir?","polar mi softshell mi hangi kosulda"],"published":"2026-08-07","views":0},
+{"slug":"yazlik-ve-kislik-is-yelegi-farki","title":"Yazlık ve Kışlık İş Yeleği Arasındaki Farklar","summary":"İç dolgusuz yazlık iş yeleği ile silikon dolgulu kışlık yeleği cep düzeni, ısı, hareket, katman ve kullanım alanına göre karşılaştırın.","category":"Ürün Rehberleri","tags":["Yeni Rehber"],"searchTerms":["Yazlık ve Kışlık İş Yeleği Arasındaki Farklar","yazlik ve kislik is yelegi farki"],"published":"2026-08-07","views":0},
+{"slug":"ikaz-yeleginde-reflektif-bant-ve-cep-duzeni","title":"İkaz Yeleğinde Reflektif Bant ve Cep Düzeni","summary":"İkaz yeleğinde zemin rengi, reflektif bant yerleşimi, cep, kimlik bölmesi, telsiz askısı ve logo alanını görev riskine göre planlayın.","category":"İş Güvenliği","tags":["Yeni Rehber"],"searchTerms":["İkaz Yeleğinde Reflektif Bant ve Cep Düzeni","ikaz yeleginde reflektif bant ve cep duzeni"],"published":"2026-08-07","views":0},
+{"slug":"urun-kodundan-teknik-sartnameye-katalog-yonetimi","title":"Ürün Kodundan Teknik Şartnameye Katalog Yönetimi","summary":"Katalogdaki ürün kodunu kumaş, renk, cep, beden, logo ve numune kayıtlarıyla eşleştirerek tekrar siparişlerde yorum farkını azaltın.","category":"Satın Alma Rehberi","tags":["Yeni Rehber"],"searchTerms":["Ürün Kodundan Teknik Şartnameye Katalog Yönetimi","urun kodundan teknik sartnameye katalog yonetimi"],"published":"2026-08-07","views":0},
 {"slug":"is-kiyafeti-aykiri-kullanim-politikasi","title":"İş Kıyafetinde Aykırı Kullanım Politikası Nasıl Yazılır?","summary":"İş kıyafeti aykırı kullanım politikası ile yanlış kullanım, yüksek hasar ve tekrar eden iade sorunlarını azaltın. Kural, denetim ve eğitim adımları.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Aykırı Kullanım Politikası Nasıl Yazılır?","is kiyafeti aykiri kullanim politikasi"],"published":"2026-08-01","views":0},
 {"slug":"is-kiyafeti-bolge-bazli-renk-kodlama-sistemi","title":"İş Kıyafetinde Bölge Bazlı Renk Kodlama Sistemi","summary":"Bölge bazlı renk kodlama sistemi ile çok lokasyonlu iş kıyafeti yönetiminde hız ve görünürlük kazanın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Bölge Bazlı Renk Kodlama Sistemi","is kiyafeti bolge bazli renk kodlama sistemi"],"published":"2026-08-02","views":0},
 {"slug":"is-kiyafeti-deneme-gunu-pilotu-nasil-kurulur","title":"İş Kıyafetinde Deneme Günü Pilotu Nasıl Kurulur?","summary":"Toplu siparişten önce deneme günü pilotu ile beden, kalıp ve görev uyumunu doğrulayın.","category":"İş Kıyafeti Rehberi","tags":["Yeni Rehber"],"searchTerms":["İş Kıyafetinde Deneme Günü Pilotu Nasıl Kurulur?","is kiyafeti deneme gunu pilotu nasil kurulur"],"published":"2026-08-02","views":0},
@@ -872,6 +893,42 @@
       }
     });
 
+    // Her kategorinin yalnız ilk kartlarını aktif DOM'da tut. Kalan kartlar
+    // arama/filtre kullanıldığında veya kullanıcı "daha fazla" dediğinde
+    // küçük gruplar halinde eklenir. HTML kaynakta kaldığı için taranabilirlik
+    // korunurken stil/layout maliyeti yüzlerce karttan ilk gruba iner.
+    const deferredBySection = new Map();
+    document.querySelectorAll(".knowledge-category[data-category]:not([data-index-hidden])").forEach((section) => {
+      const grid = section.querySelector(".knowledge-grid");
+      if (!grid) return;
+      const sectionCards = Array.from(grid.querySelectorAll(".knowledge-card[data-post-slug]"));
+      const deferred = sectionCards.slice(12);
+      if (!deferred.length) return;
+      deferred.forEach((card) => card.remove());
+      deferredBySection.set(section, deferred);
+
+      const more = document.createElement("button");
+      more.type = "button";
+      more.className = "btn btn-secondary knowledge-load-more";
+      more.textContent = `Daha fazla göster (${deferred.length})`;
+      more.addEventListener("click", () => {
+        const next = deferred.splice(0, 12);
+        next.forEach((card) => grid.appendChild(card));
+        if (!deferred.length) more.remove();
+        else more.textContent = `Daha fazla göster (${deferred.length})`;
+      });
+      grid.after(more);
+    });
+
+    function mountAllDeferred() {
+      deferredBySection.forEach((deferred, section) => {
+        if (!deferred.length) return;
+        const grid = section.querySelector(".knowledge-grid");
+        deferred.splice(0).forEach((card) => grid.appendChild(card));
+        section.querySelector(".knowledge-load-more")?.remove();
+      });
+    }
+
     if (searchBox && !searchBox.querySelector(".knowledge-topic-filters")) {
       const filterBar = buildCategoryFilterBar(posts, activeGroup);
       searchBox.insertBefore(filterBar, searchBox.querySelector(".knowledge-search-feedback"));
@@ -888,6 +945,7 @@
 
     function filterPosts() {
       const term = normalize(search.value.trim());
+      if (term || activeTag || activeGroup) mountAllDeferred();
       let visibleCount = 0;
       cards.forEach((card) => {
         const post = postMap.get(card.dataset.postSlug);

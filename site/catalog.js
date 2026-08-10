@@ -14,12 +14,23 @@
 
   var WHATSAPP = "902163961988";
   var GALLERY_PATH = "assets/products/gallery/";
+  var NEW_PRODUCT_IMAGES = {
+    "KT-TS-040": "assets/products/hero/tshirt/kt-ts-040-lacivert.webp", "KT-TS-037": "assets/products/hero/tshirt/kt-ts-037-lacivert.webp",
+    "KT-SW-034": "assets/products/hero/sweat/kt-sw-034-lacivert.webp", "KT-SW-036": "assets/products/hero/sweat/kt-sw-036-lacivert.webp",
+    "KT-PT-001": "assets/products/hero/pantolon/kt-pt-001-lacivert.webp", "KT-PT-029": "assets/products/hero/pantolon/kt-pt-029-lacivert.webp",
+    "KT-TL-020": "assets/products/hero/tulum/kt-tl-020-lacivert.webp", "KT-TL-022": "assets/products/hero/tulum/kt-tl-022-lacivert.webp",
+    "KT-MK-001": "assets/products/hero/montkaban/kt-mk-001-mavi-v2.webp", "KT-MK-029": "assets/products/hero/montkaban/kt-mk-029-lacivert.webp",
+    "KT-PL-008": "assets/products/hero/polar/kt-pl-008-lacivert.webp", "KT-PL-028": "assets/products/hero/polar/kt-pl-028-lacivert.webp",
+    "KT-YL-005": "assets/products/hero/yelek/kt-yl-005-lacivert.webp", "KT-YL-010": "assets/products/hero/yelek/kt-yl-010-lacivert.webp",
+    "KT-SS-022": "assets/products/hero/softshell/kt-ss-022-lacivert.webp", "KT-SS-020": "assets/products/hero/softshell/kt-ss-020-lacivert.webp"
+  };
   var categoryInsights = {
     tshirt: ["Üretim, depo ve saha ekipleri", "Baskı veya nakış", "Kurumsal renge özel seri üretim"],
     sweat: ["Depo, servis ve saha ekipleri", "Göğüs ve sırt logo uygulaması", "Mevsimlik katmanlı üretim"],
     pantolon: ["Üretim, bakım ve teknik ekipler", "Cep üstü logo seçenekleri", "Göreve uygun cep ve kumaş planı"],
     tulum: ["Bakım, üretim ve ağır iş ekipleri", "Göğüs ve sırt logo uygulaması", "Hareket ve dayanıklılık odaklı üretim"],
     onluk: ["Gıda, mutfak ve laboratuvar", "Nakış ve transfer baskı", "Hijyen ve görev bazlı modelleme"],
+    esd: ["Elektronik montaj, test ve kontrollü alanlar", "ESD performansını koruyan uygulama", "Numune ve ölçümle doğrulanan üretim"],
     montkaban: ["Saha, lojistik ve dış ortam", "Nakış ve reflektif baskı", "İklim koşullarına uygun katmanlama"],
     polar: ["Servis, depo ve saha ekipleri", "Göğüs nakışı ve baskı", "Kurumsal renklerde mevsimlik üretim"],
     yelek: ["Teknik servis ve saha operasyonları", "Baskı, nakış ve reflektör", "Cep düzenine göre fonksiyonel üretim"],
@@ -81,6 +92,16 @@
         "Gümüş, gri ve renkli reflektör alternatifleri",
         "İş kıyafetine özel uygulama planlaması"
       ]
+    },
+    esd: {
+      title: "ESD kontrollü üretim için özel seri",
+      text: "İletken kumaş, manşet, kapama ve aksesuar seçimi tesisinizin ESD kontrol planına göre numune ve ölçümle doğrulanır.",
+      features: [
+        "Ürün üzerinde görünür ESD etiketi",
+        "İletken ızgara dokulu kumaş seçeneği",
+        "Yıkama döngüsü ve performans takibi",
+        "Tişört, pantolon, sweatshirt, mont ve önlük seti"
+      ]
     }
   };
 
@@ -93,28 +114,97 @@
     return String(filename || "").replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
+  function onlukType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("scrub") !== -1) return "scrub";
+    if (text.indexOf("şef ceketi") !== -1) return "sef";
+    if (text.indexOf("belden") !== -1 || text.indexOf("bel önlüğü") !== -1) return "belden";
+    if (text.indexOf("askılı") !== -1 || text.indexOf("çapraz askı") !== -1) return "askili";
+    return "is";
+  }
+
+  function pantolonType(item) {
+    var technicalCodes = ["KT-PT-013", "KT-PT-014", "KT-PT-015", "KT-PT-026", "KT-PT-029", "KT-PT-030"];
+    if (technicalCodes.indexOf(String(item.code || "").toUpperCase()) !== -1) return "technical";
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("klasik model") !== -1 && text.indexOf("yalnız iki ön cep") !== -1) return "classic";
+    if (text.indexOf("kargo") !== -1 || text.indexOf("çok cepli") !== -1 || text.indexOf("çoklu cep") !== -1 || text.indexOf("yan cep") !== -1 || text.indexOf("alet cebi") !== -1 || text.indexOf("cetvel cebi") !== -1) return "cargo";
+    return "technical";
+  }
+
   function normalizeProducts(cat) {
     var flat = [];
     var groups = cat.gruplar
       ? cat.gruplar
       : [{ prefix: cat.prefix, baseName: cat.baseName, tags: cat.tags, kind: "", search: "", urunler: cat.urunler }];
 
+    // Explicit product codes may belong to items displayed later in the list.
+    // Reserve them first so automatically generated codes can never duplicate them.
+    var reservedCodes = {};
+    var nextCodeByPrefix = {};
+    groups.forEach(function (group) {
+      group.urunler.forEach(function (raw) {
+        if (typeof raw !== "string" && raw.code) reservedCodes[raw.code] = true;
+      });
+    });
+
+    function nextAvailableCode(prefix) {
+      var next = nextCodeByPrefix[prefix] || (cat.codeStart || 1);
+      var candidate = prefix + "-" + pad3(next);
+      while (reservedCodes[candidate]) {
+        next += 1;
+        candidate = prefix + "-" + pad3(next);
+      }
+      reservedCodes[candidate] = true;
+      nextCodeByPrefix[prefix] = next + 1;
+      return candidate;
+    }
+
     groups.forEach(function (group) {
       group.items = group.urunler.map(function (raw, idx) {
         var p = typeof raw === "string" ? { img: raw } : raw;
-        var code = p.code || group.prefix + "-" + pad3((cat.codeStart || 1) + flat.length);
+        var code = p.code || nextAvailableCode(group.prefix);
         var item = {
-          src: GALLERY_PATH + cat.id + "/" + (p.keepFormat ? p.img : webpSource(p.img)),
+          src: NEW_PRODUCT_IMAGES[code] || (GALLERY_PATH + cat.id + "/" + (p.kind === "esd" ? webpSource(p.img) : (p.keepFormat ? p.img : webpSource(p.img)))),
           code: code,
           name: p.name || group.baseName + " " + (idx + 1),
           tags: (p.tags || group.tags || "").split("|").map(function (t) { return t.trim(); }).filter(Boolean),
           kind: p.kind || group.kind || "",
+          description: p.description || "",
           search: [p.search, group.search].filter(Boolean).join(" "),
           cat: cat.id,
-          i: flat.length
+          i: 0
         };
-        flat.push(item);
         return item;
+      });
+      group.items.sort(function (a, b) {
+        if (cat.id === "tulum") {
+          var aBahcivan = (a.name + " " + a.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
+          var bBahcivan = (b.name + " " + b.tags.join(" ")).toLocaleLowerCase("tr-TR").indexOf("bahçıvan") !== -1;
+          if (aBahcivan !== bBahcivan) return aBahcivan ? -1 : 1;
+        }
+        if (cat.id === "onluk") {
+          var onlukOrder = { is: 0, askili: 1, belden: 2, sef: 3, scrub: 4 };
+          var typeDifference = onlukOrder[onlukType(a)] - onlukOrder[onlukType(b)];
+          if (typeDifference) return typeDifference;
+        }
+        if (cat.id === "pantolon") {
+          var pantolonOrder = { cargo: 0, technical: 1, classic: 2 };
+          var pantolonDifference = pantolonOrder[pantolonType(a)] - pantolonOrder[pantolonType(b)];
+          if (pantolonDifference) return pantolonDifference;
+        }
+        return a.code.localeCompare(b.code, "tr", { numeric: true });
+      });
+      var seenProductNames = {};
+      group.items = group.items.filter(function (item) {
+        var nameKey = item.name.trim().toLocaleLowerCase("tr-TR");
+        if (seenProductNames[nameKey]) return false;
+        seenProductNames[nameKey] = true;
+        return true;
+      });
+      group.items.forEach(function (item) {
+        item.i = flat.length;
+        flat.push(item);
       });
     });
 
@@ -123,7 +213,35 @@
     return cat;
   }
 
-  var CATALOG = window.KATALOG.map(normalizeProducts);
+  var CATEGORY_ORDER = [
+    "tshirt", "pantolon", "sweat", "polar", "montkaban", "yelek",
+    "softshell", "tulum", "onluk", "esd", "isg", "promosyon", "reflektor"
+  ];
+  var BASE_CATALOG = window.KATALOG.map(normalizeProducts);
+  var esdItems = [];
+  BASE_CATALOG.forEach(function (cat) {
+    cat.items.forEach(function (item) {
+      if (item.kind !== "esd") return;
+      esdItems.push(Object.assign({}, item, {
+        cat: "esd",
+        sourceCategory: cat.id,
+        i: esdItems.length
+      }));
+    });
+  });
+  var esdCategory = {
+    id: "esd",
+    nav: "ESD",
+    eyebrow: "Elektronik üretim · kontrollü alanlar",
+    title: "ESD Kıyafetleri",
+    desc: "ESD tişört, pantolon, sweatshirt, mont ve önlük modellerinin tamamını tek bölümde inceleyin.",
+    keywords: "esd antistatik elektronik üretim kontrollü alan iletken kumaş",
+    unit: "model",
+    items: esdItems
+  };
+  var CATALOG = BASE_CATALOG.concat(esdCategory).sort(function (a, b) {
+    return CATEGORY_ORDER.indexOf(a.id) - CATEGORY_ORDER.indexOf(b.id);
+  });
   var galleries = {};
   CATALOG.forEach(function (cat) { galleries[cat.id] = cat.items; });
 
@@ -173,7 +291,10 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
-    img.addEventListener("load", function () { normalizeProductScale(img, item); });
+    img.addEventListener("load", function () { scheduleProductFit(img, item); }, { once: true });
+    // Ürün görselleri üretimde standart kare tuvale dönüştürülür. Çalışma
+    // zamanında her görselin piksellerini canvas ile tekrar taramak ana iş
+    // parçacığını gereksiz yere bloke eder; CSS object-fit yeterlidir.
     var isInitialCatalogImage = item.cat === "tshirt" && item.i < 6;
     if (isInitialCatalogImage || !catalogImageObserver) {
       img.src = item.src;
@@ -183,6 +304,18 @@
     }
 
     var visual = el("span", "gitem-visual");
+    if (item.kind === "esd") {
+      var esdBadge = el("span", "gitem-esd-badge");
+      esdBadge.setAttribute("aria-label", "ESD ürünü");
+      var esdLabel = el("img");
+      esdLabel.src = "assets/esd-protected-symbol-original.svg";
+      esdLabel.alt = "";
+      esdLabel.width = 44;
+      esdLabel.height = 37;
+      esdBadge.appendChild(esdLabel);
+      visual.appendChild(esdBadge);
+      btn.classList.add("gitem-esd");
+    }
     var overlay = el("span", "gitem-overlay");
     var purchase = el("span", "gitem-purchase-info");
     ["Min. Sipariş: 50 Adet", "Baskıya Uygun", "Nakışa Uygun"].forEach(function (text) {
@@ -301,8 +434,9 @@
     var contentCenterX = (left + right) / 2;
     var contentCenterY = (top + bottom) / 2;
 
-    /* Alt yüzde 18 model kodu / İncele alanına ayrılır. */
-    var safe = { left: .075, top: .055, right: .925, bottom: .79 };
+    /* Ürünü kartta ortak bir görsel yüksekliğe getir. Alt bilgi katmanı
+       görselin üzerinde olduğu için ürünü erkenden kesmek/küçültmek gerekmez. */
+    var safe = { left: .075, top: .035, right: .925, bottom: .965 };
     var safeWidth = safe.right - safe.left;
     var safeHeight = safe.bottom - safe.top;
     var scale = Math.min(safeWidth / contentWidth, safeHeight / contentHeight);
@@ -324,11 +458,19 @@
     img.style.setProperty("--product-y", (translateY * 100).toFixed(3) + "%");
   }
 
-  function normalizeProductScale(img, item) {
-    var bounds;
-    try { bounds = productBounds(img); } catch (e) { return; }
-    applyProductFit(img, item, bounds);
+  function scheduleProductFit(img, item) {
+    function fit() {
+      if (!img.naturalWidth || !img.naturalHeight) return;
+      try { applyProductFit(img, item, productBounds(img)); } catch (error) { /* CSS contain remains the safe fallback. */ }
+    }
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(fit, { timeout: 700 });
+    } else {
+      window.setTimeout(fit, 24);
+    }
   }
+
+  function normalizeProductScale() { /* Eski çağrılar için zararsız uyumluluk. */ }
 
   function buildGrid(items, extraClass) {
     var grid = el("div", "gallery-grid" + (extraClass ? " " + extraClass : ""));
@@ -382,6 +524,215 @@
     return wrap;
   }
 
+  var tulumFilter = "all";
+
+  function matchesTulumFilter(item, filter) {
+    if (!item || item.cat !== "tulum" || filter === "all") return true;
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    var isBahcivan = text.indexOf("bahçıvan") !== -1;
+    if (filter === "bahcivan") return isBahcivan;
+    if (filter === "kollu") return !isBahcivan;
+    return true;
+  }
+
+  function buildTulumFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "bahcivan", label: "Bahçıvan Tulum" },
+      { id: "kollu", label: "Kollu Tulum" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "İş tulumlarını model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesTulumFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.tulumFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === tulumFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === tulumFilter);
+      button.addEventListener("click", function () {
+        tulumFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.tulumFilter === tulumFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
+  var onlukFilter = "all";
+
+  function matchesOnlukFilter(item, filter) {
+    if (!item || item.cat !== "onluk" || filter === "all") return true;
+    return onlukType(item) === filter;
+  }
+
+  function buildOnlukFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "is", label: "İş Önlükleri" },
+      { id: "askili", label: "Askılı Önlükler" },
+      { id: "belden", label: "Belden Bağlamalı Önlükler" },
+      { id: "sef", label: "Şef Önlükleri" },
+      { id: "scrub", label: "Scrub Takımlar" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Önlükleri model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesOnlukFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.onlukFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === onlukFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === onlukFilter);
+      button.addEventListener("click", function () {
+        onlukFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.onlukFilter === onlukFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
+  var montKabanFilter = "all";
+
+  function montKabanType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("kaban") !== -1 || text.indexOf("parka") !== -1 || text.indexOf("yağmurluk") !== -1) return "kaban";
+    return "mont";
+  }
+
+  function matchesMontKabanFilter(item, filter) {
+    if (!item || item.cat !== "montkaban" || filter === "all") return true;
+    return montKabanType(item) === filter;
+  }
+
+  function buildMontKabanFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "mont", label: "Montlar" },
+      { id: "kaban", label: "Kabanlar" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Mont ve kabanları ürün tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesMontKabanFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.montKabanFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === montKabanFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === montKabanFilter);
+      button.addEventListener("click", function () {
+        montKabanFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.montKabanFilter === montKabanFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
+  var polarFilter = "all";
+
+  function polarType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    return text.indexOf("yarım fermuar") !== -1 ? "half" : "full";
+  }
+
+  function matchesPolarFilter(item, filter) {
+    if (!item || item.cat !== "polar" || filter === "all") return true;
+    return polarType(item) === filter;
+  }
+
+  function buildPolarFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "full", label: "Tam Fermuarlı" },
+      { id: "half", label: "Yarım Fermuarlı" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Polarları fermuar tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesPolarFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.polarFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === polarFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === polarFilter);
+      button.addEventListener("click", function () {
+        polarFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.polarFilter === polarFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
+  var pantolonFilter = "all";
+
+  function matchesPantolonFilter(item, filter) {
+    if (!item || item.cat !== "pantolon" || filter === "all") return true;
+    return pantolonType(item) === filter;
+  }
+
+  function buildPantolonFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "cargo", label: "Kargo Pantolonlar" },
+      { id: "technical", label: "Teknik Pantolonlar" },
+      { id: "classic", label: "Klasik Modeller" }
+    ];
+    var wrap = el("div", "catalog-subfilters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "İş pantolonlarını model tipine göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesPantolonFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.pantolonFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === pantolonFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === pantolonFilter);
+      button.addEventListener("click", function () {
+        pantolonFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.pantolonFilter === pantolonFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   function buildSectionHead(cat) {
     var head = el("div", "catalog-section-head");
     var left = el("div");
@@ -395,13 +746,18 @@
       pantolon: "is-pantolonu/", tulum: "is-tulumu/",
       onluk: "asci-kiyafeti-is-onlugu/", montkaban: "is-montu-kaban/",
       polar: "polar-is-montu/", yelek: "reflektorlu-is-yelegi/",
-      softshell: "softshell-is-montu/", isg: "is-guvenligi-ekipmanlari/",
+      softshell: "softshell-is-montu/", esd: "esd-urunler/", isg: "is-guvenligi-ekipmanlari/",
       promosyon: "kurumsal-promosyon-urunleri/"
     };
     if (seoPages[cat.id]) {
       var guide = el("a", "catalog-category-guide", "Kategori detaylarını inceleyin →");
       guide.href = seoPages[cat.id];
       left.appendChild(guide);
+    }
+    if (cat.id === "onluk") {
+      var scrubGuide = el("a", "catalog-category-guide", "Scrub takımı seçeneklerini inceleyin →");
+      scrubGuide.href = "scrub-takimi/";
+      left.appendChild(scrubGuide);
     }
     var insights = categoryInsights[cat.id];
     if (insights) {
@@ -458,6 +814,11 @@
       });
     } else {
       if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
+      if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
+      if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
+      if (cat.id === "montkaban") section.appendChild(buildMontKabanFilters(cat));
+      if (cat.id === "polar") section.appendChild(buildPolarFilters(cat));
+      if (cat.id === "pantolon") section.appendChild(buildPantolonFilters(cat));
       section.appendChild(buildGrid(cat.items));
     }
     section.appendChild(buildCategoryQuote(cat));
@@ -477,7 +838,7 @@
     });
 
     /* Üst özet: toplam model ve kategori sayısı */
-    var total = CATALOG.reduce(function (sum, cat) { return sum + cat.items.length; }, 0);
+    var total = BASE_CATALOG.reduce(function (sum, cat) { return sum + cat.items.length; }, 0);
     var sumModels = document.getElementById("sumModels");
     var sumCats = document.getElementById("sumCats");
     if (sumModels) sumModels.textContent = total;
@@ -493,7 +854,7 @@
         "name": "Kardeşler Tekstil Ürün Kataloğu",
         "url": "https://kardeslertekstil.com.tr/urunlerimiz",
         "numberOfItems": total,
-        "itemListElement": CATALOG.reduce(function (items, cat) {
+        "itemListElement": BASE_CATALOG.reduce(function (items, cat) {
           cat.items.forEach(function (item) {
             items.push({
               "@type": "ListItem",
@@ -532,6 +893,7 @@
   var lbCopy = document.getElementById("lbCopy");
   var lbNoteTitle = document.getElementById("lbNoteTitle");
   var lbNoteText = document.getElementById("lbNoteText");
+  var lbDescription = document.getElementById("lbDescription");
   var lbFeatures = document.getElementById("lbFeatures");
   var lastTrigger = null;
   var state = { cat: null, i: 0 };
@@ -541,6 +903,7 @@
     pantolon: "İş Pantolonu",
     tulum: "İş Tulumu",
     onluk: "İş Önlüğü",
+    esd: "ESD Kıyafetleri",
     montkaban: "Mont ve Kaban",
     polar: "Polar ve Polar Mont",
     yelek: "İş Yeleği",
@@ -575,6 +938,10 @@
     var set = featureSets[item.kind] || featureSets.default;
     lbNoteTitle.textContent = set.title;
     lbNoteText.textContent = set.text;
+    if (lbDescription) {
+      lbDescription.textContent = item.description || "";
+      lbDescription.hidden = !item.description;
+    }
     lbFeatures.innerHTML = "";
     set.features.forEach(function (f) { lbFeatures.appendChild(el("li", null, f)); });
 
@@ -785,7 +1152,13 @@
         item.tags.join(" ") + " " + item.search
       ).toLowerCase();
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
-      var matchesSubtype = btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter);
+      var matchesSubtype =
+        (btn.dataset.cat !== "tshirt" || matchesTshirtFilter(item, tshirtFilter)) &&
+        (btn.dataset.cat !== "tulum" || matchesTulumFilter(item, tulumFilter)) &&
+        (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter)) &&
+        (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter)) &&
+        (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter)) &&
+        (btn.dataset.cat !== "pantolon" || matchesPantolonFilter(item, pantolonFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
@@ -814,6 +1187,52 @@
     applySearch();
     search.focus();
   });
+
+  var initialParams = new URLSearchParams(location.search);
+  if (initialParams.get("esd") === "1") {
+    history.replaceState(null, "", "#esd");
+    scrollCategoryToStart("esd");
+  }
+  if (initialParams.get("onluk") === "scrub") {
+    onlukFilter = "scrub";
+    document.querySelectorAll("[data-onluk-filter]").forEach(function (control) {
+      var active = control.dataset.onlukFilter === onlukFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("onluk");
+  }
+  if (initialParams.get("montkaban") === "mont" || initialParams.get("montkaban") === "kaban") {
+    montKabanFilter = initialParams.get("montkaban");
+    document.querySelectorAll("[data-mont-kaban-filter]").forEach(function (control) {
+      var active = control.dataset.montKabanFilter === montKabanFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("montkaban");
+  }
+  if (initialParams.get("polar") === "full" || initialParams.get("polar") === "half") {
+    polarFilter = initialParams.get("polar");
+    document.querySelectorAll("[data-polar-filter]").forEach(function (control) {
+      var active = control.dataset.polarFilter === polarFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("polar");
+  }
+  if (["cargo", "technical", "classic"].indexOf(initialParams.get("pantolon")) !== -1) {
+    pantolonFilter = initialParams.get("pantolon");
+    document.querySelectorAll("[data-pantolon-filter]").forEach(function (control) {
+      var active = control.dataset.pantolonFilter === pantolonFilter;
+      control.classList.toggle("is-active", active);
+      control.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    applySearch();
+    scrollCategoryToStart("pantolon");
+  }
 
   /* Sayfa #kategori linkiyle açıldıysa o sekmeyi aktif et */
   function scrollFromHash() {

@@ -7,10 +7,27 @@
   var directGa4Active = false;
   window.dataLayer = window.dataLayer || [];
 
+  function campaignContext() {
+    var storageKey = "kt_campaign_context_v1";
+    var allowed = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+    var context = {};
+    try { context = JSON.parse(window.sessionStorage.getItem(storageKey) || "{}"); } catch (error) { context = {}; }
+    var params = new URLSearchParams(window.location.search);
+    allowed.forEach(function (key) {
+      var value = params.get(key);
+      if (value) context[key] = value.slice(0, 200);
+    });
+    if (!context.landing_page) context.landing_page = window.location.pathname;
+    if (!context.initial_referrer && document.referrer) context.initial_referrer = document.referrer.slice(0, 500);
+    try { window.sessionStorage.setItem(storageKey, JSON.stringify(context)); } catch (error) { /* Oturum depolaması kapalı olabilir. */ }
+    return context;
+  }
+
   function track(eventName, details) {
     if (!window.__ktAnalyticsAllowed) return;
-    if (directGa4Active && window.gtag) window.gtag("event", eventName, details || {});
-    else if (window.__ktGtmActive) window.dataLayer.push(Object.assign({ event: eventName }, details || {}));
+    var eventDetails = Object.assign({}, campaignContext(), details || {});
+    if (directGa4Active && window.gtag) window.gtag("event", eventName, eventDetails);
+    else if (window.__ktGtmActive) window.dataLayer.push(Object.assign({ event: eventName }, eventDetails));
   }
 
   function initAnalytics() {
@@ -281,6 +298,14 @@
 
     var form = document.querySelector("#teklif-formu");
     if (form) {
+      var attribution = campaignContext();
+      Object.keys(attribution).forEach(function (key) {
+        var hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = "kaynak_" + key;
+        hidden.value = attribution[key];
+        form.appendChild(hidden);
+      });
       var started = false;
       form.addEventListener("focusin", function () {
         if (started) return;
@@ -476,7 +501,9 @@
     var storageKey = "kt_home_intro_seen_v1";
     var video = intro.querySelector("video");
     var links = Array.prototype.slice.call(intro.querySelectorAll("[data-intro-target]"));
+    var countdown = intro.querySelector("[data-intro-countdown]");
     var fallbackTimer = null;
+    var countdownTimer = null;
     var leaving = false;
     var hasSeenIntro = false;
 
@@ -510,6 +537,8 @@
     function clearFallback() {
       if (fallbackTimer) window.clearTimeout(fallbackTimer);
       fallbackTimer = null;
+      if (countdownTimer) window.clearInterval(countdownTimer);
+      countdownTimer = null;
     }
 
     function resetHomeScroll() {
@@ -521,9 +550,19 @@
 
     function startFallback() {
       if (fallbackTimer || leaving) return;
+      var secondsLeft = 5;
+      if (countdown) countdown.textContent = String(secondsLeft);
+      countdownTimer = window.setInterval(function () {
+        secondsLeft -= 1;
+        if (countdown && secondsLeft > 0) countdown.textContent = String(secondsLeft);
+        if (secondsLeft <= 0 && countdownTimer) {
+          window.clearInterval(countdownTimer);
+          countdownTimer = null;
+        }
+      }, 1000);
       fallbackTimer = window.setTimeout(function () {
         leaveIntro("/");
-      }, 14000);
+      }, 5000);
     }
 
     function finish(destination) {
@@ -630,8 +669,18 @@
 
   function initBrandIntroLinks() {
     document.querySelectorAll(".site-header a.brand").forEach(function (brand) {
-      brand.setAttribute("href", "/?intro=1");
+      brand.setAttribute("href", "/");
+      if (!document.querySelector("[data-home-intro]")) return;
       brand.setAttribute("aria-label", "Kardeşler Tekstil karşılama ekranını aç");
+      brand.addEventListener("click", function (event) {
+        event.preventDefault();
+        try {
+          window.sessionStorage.setItem("kt_home_intro_force_v1", "1");
+        } catch (error) {
+          // Depolama kapalıysa ana sayfayı temiz URL ile yeniden yükle.
+        }
+        window.location.replace("/");
+      });
     });
   }
 
@@ -837,21 +886,27 @@
       return [category].concat(category.alternates || []);
     }
 
+    function modelValue(model, category, key) {
+      var value = model && model[key];
+      if (value !== undefined && value !== null && String(value).trim() !== "") return value;
+      return category[key] || "Bilgi için teklif ekibimizle görüşün.";
+    }
+
     function applyModel(category, model, modelIndex, animate) {
       var productImage = (model.colors[0] && model.colors[0].image) || model.image;
       currentModel = modelIndex;
       currentColor = 0;
       status.hidden = !model.placeholder;
-      infoName.textContent = model.productName;
+      infoName.textContent = modelValue(model, category, "productName");
       infoColors.textContent = model.colors.map(function (color) { return color.name; }).join(", ");
-      infoFabric.textContent = model.fabric;
-      infoWeight.textContent = model.weight;
-      infoComposition.textContent = model.composition;
-      infoUse.textContent = model.useArea;
-      infoLogo.textContent = model.logoOptions;
-      infoMinimum.textContent = model.minimumOrder;
-      infoWash.textContent = model.wash;
-      infoDescription.textContent = model.description;
+      infoFabric.textContent = modelValue(model, category, "fabric");
+      infoWeight.textContent = modelValue(model, category, "weight");
+      infoComposition.textContent = modelValue(model, category, "composition");
+      infoUse.textContent = modelValue(model, category, "useArea");
+      infoLogo.textContent = modelValue(model, category, "logoOptions");
+      infoMinimum.textContent = modelValue(model, category, "minimumOrder");
+      infoWash.textContent = modelValue(model, category, "wash");
+      infoDescription.textContent = modelValue(model, category, "description");
       updateLogoVisibility();
       renderColors(model, category);
       modelList.querySelectorAll("button").forEach(function (button, buttonIndex) {
