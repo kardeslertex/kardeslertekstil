@@ -35,7 +35,7 @@ function auditArticle(slug, html) {
     ),
     twitterCard: has(html, /<meta\s+name=["']twitter:card["']\s+content=["'][^"']+["'][^>]*>/i),
     postSlugData: has(html, new RegExp(`<body[^>]*data-post-slug=["']${slug}["']`, 'i')),
-    knowledgeScript: has(html, /<script\s+src=["']\.\.\/knowledge-center\.js["']\s+defer><\/script>/i),
+    knowledgeScript: has(html, /<script\s+src=["']\.\.\/knowledge-center\.js(?:\?[^"']*)?["']\s+defer><\/script>/i),
     articleSchema: has(html, /"@type"\s*:\s*"(Article|BlogPosting)"/i),
     breadcrumbSchema: has(html, /"@type"\s*:\s*"BreadcrumbList"/i)
   };

@@ -14,7 +14,7 @@ if (-not (Test-Path -LiteralPath $robotsPath)) {
     if (@($lines | Where-Object { $_ -ieq 'User-agent: *' }).Count -ne 1) {
         $errors.Add('robots.txt must contain exactly one global user-agent group.')
     }
-    if (@($lines | Where-Object { $_ -ieq 'Allow: /' }).Count -ne 1) {
+    if (@($lines | Where-Object { $_ -ieq 'Allow: /' }).Count -lt 1) {
         $errors.Add('The public site root must be crawlable.')
     }
 

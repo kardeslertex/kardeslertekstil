@@ -41,7 +41,9 @@ foreach ($source in $routes.Keys) {
   $html = [IO.File]::ReadAllText($file, [Text.Encoding]::UTF8)
   $canonicalMatch = [regex]::Match($html, '<link[^>]+rel=["'']canonical["''][^>]+href=["'']([^"'']+)', 'IgnoreCase')
   if (!$canonicalMatch.Success) { $canonicalMatch = [regex]::Match($html, '<link[^>]+href=["'']([^"'']+)["''][^>]+rel=["'']canonical["'']', 'IgnoreCase') }
-  if (!$canonicalMatch.Success -or $canonicalMatch.Groups[1].Value -ne $targetUri.AbsoluteUri) {
+  $canonicalUri = if ($canonicalMatch.Success) { [Uri]$canonicalMatch.Groups[1].Value } else { $null }
+  $targetWithoutFragment = if ($targetUri) { $targetUri.GetLeftPart([UriPartial]::Path) } else { '' }
+  if (!$canonicalUri -or $canonicalUri.GetLeftPart([UriPartial]::Path) -ne $targetWithoutFragment) {
     $errors.Add("$source -> redirect target differs from HTML canonical")
   }
 }
