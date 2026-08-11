@@ -15,6 +15,10 @@ Bu dosya, yapay zekâ destekli araçların Kardeşler Tekstil'in resmî ve önce
 ## Ürün ve Hizmetler
 
 - [Ürün Kataloğu](https://kardeslertekstil.com.tr/urunlerimiz): Model kodlarıyla tişört, sweatshirt, pantolon, tulum, önlük, mont, polar, yelek ve softshell ürünleri.
+- [İş Kıyafeti Modelleri](https://kardeslertekstil.com.tr/is-kiyafeti/): Görev, ortam, mevsim, kumaş ve kurumsal kimliğe göre ürün seçimi.
+- [İş Kıyafeti Üreticisi](https://kardeslertekstil.com.tr/is-kiyafeti-ureticisi/): İhtiyaç analizinden numune, seri üretim ve kalite kontrole üretim süreci.
+- [Personel Kıyafeti Modelleri](https://kardeslertekstil.com.tr/personel-kiyafeti/): Departmanlara göre planlanan kurumsal ekip giyimi seçenekleri.
+- [Personel Kıyafeti Üreticisi](https://kardeslertekstil.com.tr/personel-kiyafeti-ureticisi/): Departman bazlı koleksiyon, beden ve paketleme planlaması.
 - [Polo Yaka İş Tişörtü](https://kardeslertekstil.com.tr/polo-yaka-is-tisortu/): Kurumsal polo tişört seçenekleri ve özel üretim bilgileri.
 - [İş Pantolonu](https://kardeslertekstil.com.tr/is-pantolonu/): Farklı görev ve kullanım koşullarına yönelik iş pantolonu çözümleri.
 - [İş Tulumu](https://kardeslertekstil.com.tr/is-tulumu/): Kurumsal ve teknik kullanım için iş tulumu seçenekleri.
@@ -39,6 +43,17 @@ Bu dosya, yapay zekâ destekli araçların Kardeşler Tekstil'in resmî ve önce
 - [Antistatik İş Kıyafeti](https://kardeslertekstil.com.tr/bilgi-merkezi/antistatik-is-kiyafeti-rehberi-2026/): Antistatik ürün seçimi, kullanım sınırları ve standartlara giriş.
 - [Alev Geciktirici İş Kıyafetleri](https://kardeslertekstil.com.tr/bilgi-merkezi/alev-geciktirici-is-kiyafetleri-rehberi-2026/): Isı ve alev risklerine yönelik koruyucu kıyafet seçiminin temel noktaları.
 - [Reflektörlü İş Kıyafeti](https://kardeslertekstil.com.tr/bilgi-merkezi/reflektorlu-is-kiyafeti-nedir/): Düşük ışık ve araç trafiği bulunan sahalarda görünürlük odaklı kıyafet bilgileri.
+
+## Doğrulanabilir Temel Bilgiler
+
+- Marka ve üretici: Kardeşler Tekstil.
+- Faaliyet başlangıcı: 1982.
+- Merkez ve üretim konumu: Pendik, İstanbul, Türkiye.
+- Hizmet modeli: Kurumsal müşteriler için sipariş üzerine özel ve toplu üretim.
+- Üretim kapsamı: Model, kumaş, renk, beden dağılımı, logo baskı veya nakış, numune ve kalite kontrol.
+- Minimum özel üretim siparişi: 50 adet; ürün grubu ve proje kapsamı teklif aşamasında değerlendirilir.
+- Teslimat alanı: Türkiye geneli.
+- Fiyat, termin ve teknik uygunluk: Proje bilgileri incelendikten sonra yazılı teklifle kesinleşir.
 
 ## İletişim
 
