@@ -3628,6 +3628,21 @@ html{scroll-behavior:smooth;}
    Location SEO landing pages
    ============================================================ */
 .local-page{background:var(--cream-100);}
+.workwear-hero{padding:82px 0;overflow:hidden;}
+.workwear-hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr);gap:64px;align-items:center;}
+.workwear-hero-visual{position:relative;margin:0;min-height:500px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow-2);}
+.workwear-hero-visual:before{content:"";position:absolute;inset:22px;border:1px solid rgba(230,102,42,.35);pointer-events:none;}
+.workwear-hero-visual img{position:relative;width:auto;max-width:82%;height:450px;object-fit:contain;mix-blend-mode:multiply;}
+.workwear-hero-visual figcaption{position:absolute;right:20px;bottom:18px;left:20px;padding:10px 12px;background:rgba(8,25,43,.86);color:var(--navy-100);font-size:12px;text-align:center;}
+.workwear-hero-points{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px;}
+.workwear-hero-points span{padding:8px 11px;border:1px solid rgba(255,255,255,.2);color:var(--cream-100);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+.workwear-jump{position:relative;z-index:3;background:#fff;border-bottom:1px solid var(--steel-200);box-shadow:0 8px 24px rgba(8,25,43,.06);}
+.workwear-jump .container{display:flex;gap:0;overflow-x:auto;scrollbar-width:thin;}
+.workwear-jump a{flex:0 0 auto;padding:18px 22px;border-right:1px solid var(--steel-200);color:var(--navy-700);font-size:13px;font-weight:800;text-decoration:none;}
+.workwear-jump a:hover{color:var(--orange-600);background:var(--cream-50);}
+.workwear-product-grid .local-product-card span{display:block;margin-bottom:20px;color:var(--orange-400);font-family:var(--font-display);font-size:24px;}
+.workwear-hub .local-benefit-grid article>strong{display:block;margin-bottom:18px;color:var(--orange-600);font-family:var(--font-display);font-size:23px;}
+.workwear-hub section[id]{scroll-margin-top:90px;}
 .local-hero{background:radial-gradient(circle at 82% 22%,rgba(230,102,42,.18),transparent 26%),var(--navy-700);}
 .local-hero h1{max-width:950px;font-size:68px;}
 .local-hero p{max-width:760px;}
@@ -3763,6 +3778,9 @@ html{scroll-behavior:smooth;}
   .local-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media(max-width:800px){
+  .workwear-hero-grid{grid-template-columns:1fr;gap:36px;}
+  .workwear-hero-visual{min-height:390px;}
+  .workwear-hero-visual img{height:350px;}
   .local-hero h1{font-size:46px;}
   .local-section{padding:62px 0;}
   .local-two-col,.local-final-cta .container{grid-template-columns:1fr;gap:36px;}
@@ -3770,6 +3788,10 @@ html{scroll-behavior:smooth;}
   .local-cta-actions{justify-content:flex-start;}
 }
 @media(max-width:560px){
+  .workwear-hero{padding:58px 0;}
+  .workwear-hero-visual{min-height:330px;}
+  .workwear-hero-visual img{height:295px;}
+  .workwear-jump a{padding:15px 17px;}
   .local-hero h1{font-size:37px;}
   .local-hero .cta-row,.local-hero .btn,.local-cta-actions,.local-cta-actions .btn{width:100%;}
   .local-hero .btn,.local-cta-actions .btn{justify-content:center;}
