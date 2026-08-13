@@ -47,7 +47,7 @@ fs.writeFileSync(retiredFile, redirectHtml, 'utf8');
 
 const redirectsFile = path.join(root, '_redirects');
 let redirects = fs.readFileSync(redirectsFile, 'utf8');
-const redirectRule = `${oldPath} ${newPath} 301`;
+const redirectRule = `${oldPath} ${newPath} 308`;
 if (!redirects.includes(redirectRule)) redirects = `${redirectRule}\n${redirects}`;
 fs.writeFileSync(redirectsFile, redirects, 'utf8');
 

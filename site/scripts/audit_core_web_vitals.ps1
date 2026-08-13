@@ -29,7 +29,10 @@ if ($siteJs -notmatch 'compactViewport\s*&&\s*!window\.__ktForceHomeIntro') {
 }
 if ($homeHtml -match 'knowledge-center\.js') { $errors.Add('The article catalog bundle must not load on the home page.') }
 
-foreach ($file in Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse | Where-Object { $_.FullName -notlike "$(Join-Path $siteRoot 'hero-archive')*" }) {
+foreach ($file in Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse | Where-Object {
+    $_.FullName -notlike "$(Join-Path $siteRoot 'hero-archive')*" -and
+    $_.FullName -notlike "$(Join-Path $siteRoot '_inceleme_v14')*"
+}) {
     $html = Get-Content -LiteralPath $file.FullName -Raw
     foreach ($image in [regex]::Matches($html, '<img\b[^>]*>', 'IgnoreCase')) {
         if ($image.Value -notmatch '\b(?:src|data-src)=["''][^"'']+') { continue }

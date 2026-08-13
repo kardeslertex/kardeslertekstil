@@ -6,7 +6,10 @@ $knowledgeRoot = Join-Path $siteRoot 'bilgi-merkezi'
 $errors = [System.Collections.Generic.List[string]]::new()
 $thinPages = [System.Collections.Generic.List[string]]::new()
 $articles = Get-ChildItem -LiteralPath $knowledgeRoot -Filter 'index.html' -File -Recurse | Where-Object {
-    $_.DirectoryName -ne $knowledgeRoot
+    if ($_.DirectoryName -eq $knowledgeRoot) { return $false }
+    $html = [IO.File]::ReadAllText($_.FullName, [Text.Encoding]::UTF8)
+    return $html -notmatch '(?is)<meta[^>]+name=["'']robots["''][^>]+content=["''][^"'']*noindex' -and
+           $html -notmatch '(?is)<meta[^>]+http-equiv=["'']refresh'
 }
 
 foreach ($file in $articles) {

@@ -9,9 +9,13 @@ $incoming = @{}
 $contextualized = 0
 $anchorMap = @{}
 
-$htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse | Where-Object { $_.FullName -notlike '*\hero-archive\*' }
+$htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse | Where-Object {
+    $_.FullName -notlike '*\hero-archive\*' -and $_.FullName -notlike '*\_inceleme_v14\*'
+}
 foreach ($file in $htmlFiles) {
     $html = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
+    if ($html -match '(?is)<meta[^>]+name=["'']robots["''][^>]+content=["''][^"'']*noindex' -or
+        $html -match '(?is)<meta[^>]+http-equiv=["'']refresh') { continue }
     $canonicalMatch = [regex]::Match($html, '<link[^>]+rel=["'']canonical["''][^>]+href=["'']([^"'']+)', 'IgnoreCase')
     if (!$canonicalMatch.Success) { continue }
     $baseUrl = [uri][Net.WebUtility]::HtmlDecode($canonicalMatch.Groups[1].Value)
@@ -26,7 +30,12 @@ foreach ($file in $htmlFiles) {
     }
 }
 
-$articles = Get-ChildItem -LiteralPath $knowledgeRoot -Filter 'index.html' -File -Recurse | Where-Object { $_.DirectoryName -ne $knowledgeRoot }
+$articles = Get-ChildItem -LiteralPath $knowledgeRoot -Filter 'index.html' -File -Recurse | Where-Object {
+    if ($_.DirectoryName -eq $knowledgeRoot) { return $false }
+    $html = [IO.File]::ReadAllText($_.FullName, [Text.Encoding]::UTF8)
+    return $html -notmatch '(?is)<meta[^>]+name=["'']robots["''][^>]+content=["''][^"'']*noindex' -and
+           $html -notmatch '(?is)<meta[^>]+http-equiv=["'']refresh'
+}
 foreach ($file in $articles) {
     $slug = Split-Path $file.DirectoryName -Leaf
     $html = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)

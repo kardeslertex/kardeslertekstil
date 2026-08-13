@@ -16,7 +16,12 @@ function listArticleFiles() {
       slug: entry.name,
       filePath: path.join(KNOWLEDGE_DIR, entry.name, 'index.html')
     }))
-    .filter((item) => fs.existsSync(item.filePath));
+    .filter((item) => fs.existsSync(item.filePath))
+    .filter((item) => {
+      const html = fs.readFileSync(item.filePath, 'utf8');
+      return !/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)
+        && !/<meta[^>]+http-equiv=["']refresh/i.test(html);
+    });
 }
 
 function auditArticle(slug, html) {
