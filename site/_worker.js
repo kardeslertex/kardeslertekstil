@@ -1,4 +1,5 @@
 const LEGACY_PATHS = new Map([
+  ["/bilgi-merkezi/is-kiyafeti-teknik-sartnamesi-nasil-hazirlanir", "/bilgi-merkezi/is-kiyafeti-sartname-hazirlama-rehberi/"],
   ["/about", "/hakkimizda"],
   ["/products", "/urunlerimiz"],
   ["/contact", "/iletisim"],
