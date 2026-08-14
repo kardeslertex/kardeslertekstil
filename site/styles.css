@@ -3640,6 +3640,20 @@ html{scroll-behavior:smooth;}
 .workwear-jump .container{display:flex;gap:0;overflow-x:auto;scrollbar-width:thin;}
 .workwear-jump a{flex:0 0 auto;padding:18px 22px;border-right:1px solid var(--steel-200);color:var(--navy-700);font-size:13px;font-weight:800;text-decoration:none;}
 .workwear-jump a:hover{color:var(--orange-600);background:var(--cream-50);}
+.workwear-proof{background:#fff;}
+.workwear-proof-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:64px;align-items:center;}
+.workwear-proof-grid h2{max-width:720px;}
+.workwear-proof-grid figure{margin:0;border:1px solid var(--steel-200);background:var(--navy-700);box-shadow:var(--shadow-2);}
+.workwear-proof-grid figure img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;}
+.workwear-proof-grid figcaption{padding:11px 14px;color:var(--navy-100);font-size:12px;text-align:center;}
+.workwear-proof-actions{display:flex;flex-wrap:wrap;gap:22px;margin-top:28px;}
+.workwear-proof-actions a{color:var(--orange-700);font-weight:800;text-decoration-thickness:2px;text-underline-offset:5px;}
+.workwear-proof-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px;border:1px solid var(--steel-200);}
+.workwear-proof-stats article{padding:24px;border-right:1px solid var(--steel-200);background:var(--cream-50);}
+.workwear-proof-stats article:last-child{border-right:0;}
+.workwear-proof-stats strong,.workwear-proof-stats span{display:block;}
+.workwear-proof-stats strong{color:var(--navy-700);font-family:var(--font-display);font-size:25px;}
+.workwear-proof-stats span{margin-top:6px;color:var(--steel-700);font-size:13px;}
 .workwear-product-grid .local-product-card span{display:block;margin-bottom:20px;color:var(--orange-400);font-family:var(--font-display);font-size:24px;}
 .workwear-hub .local-benefit-grid article>strong{display:block;margin-bottom:18px;color:var(--orange-600);font-family:var(--font-display);font-size:23px;}
 .workwear-hub section[id]{scroll-margin-top:90px;}
@@ -3779,6 +3793,10 @@ html{scroll-behavior:smooth;}
 }
 @media(max-width:800px){
   .workwear-hero-grid{grid-template-columns:1fr;gap:36px;}
+  .workwear-proof-grid{grid-template-columns:1fr;gap:36px;}
+  .workwear-proof-stats{grid-template-columns:repeat(2,1fr);}
+  .workwear-proof-stats article:nth-child(2){border-right:0;}
+  .workwear-proof-stats article:nth-child(-n+2){border-bottom:1px solid var(--steel-200);}
   .workwear-hero-visual{min-height:390px;}
   .workwear-hero-visual img{height:350px;}
   .local-hero h1{font-size:46px;}
@@ -3792,6 +3810,9 @@ html{scroll-behavior:smooth;}
   .workwear-hero-visual{min-height:330px;}
   .workwear-hero-visual img{height:295px;}
   .workwear-jump a{padding:15px 17px;}
+  .workwear-proof-stats{grid-template-columns:1fr;}
+  .workwear-proof-stats article,.workwear-proof-stats article:nth-child(2){border-right:0;border-bottom:1px solid var(--steel-200);}
+  .workwear-proof-stats article:last-child{border-bottom:0;}
   .local-hero h1{font-size:37px;}
   .local-hero .cta-row,.local-hero .btn,.local-cta-actions,.local-cta-actions .btn{width:100%;}
   .local-hero .btn,.local-cta-actions .btn{justify-content:center;}
