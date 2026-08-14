@@ -12,6 +12,13 @@
     radial-gradient(circle at 82% 16%,rgba(230,102,42,.16),transparent 28%),
     var(--navy-700);
 }
+.about-page-v2 .about-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);
+  gap:72px;
+  align-items:center;
+}
+.about-page-v2 .about-hero-copy{min-width:0;}
 .about-page-v2 .about-hero h1{
   max-width:900px;
   font-size:76px;
@@ -19,6 +26,41 @@
 .about-page-v2 .about-hero p{
   max-width:760px;
   font-size:19px;
+}
+.about-page-v2 .about-hero-facility{
+  position:relative;
+  justify-self:end;
+  width:min(100%,390px);
+  margin:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 24px 60px rgba(0,0,0,.28);
+}
+.about-page-v2 .about-hero-facility:before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:16px;
+  border:1px solid rgba(230,102,42,.55);
+  pointer-events:none;
+}
+.about-page-v2 .about-hero-facility img{
+  display:block;
+  width:100%;
+  height:470px;
+  object-fit:cover;
+}
+.about-page-v2 .about-hero-facility figcaption{
+  position:absolute;
+  z-index:2;
+  right:0;
+  bottom:0;
+  left:0;
+  padding:12px 14px;
+  background:rgba(8,25,43,.92);
+  color:var(--navy-100);
+  font-size:12px;
+  text-align:center;
 }
 
 .about-story{
@@ -257,6 +299,9 @@
 }
 
 @media (max-width:1000px){
+  .about-page-v2 .about-hero-grid{grid-template-columns:1fr;gap:38px;}
+  .about-page-v2 .about-hero-facility{justify-self:start;width:min(100%,520px);}
+  .about-page-v2 .about-hero-facility img{height:auto;}
   .about-page-v2 .about-hero h1{font-size:56px;}
   .about-story-grid,
   .about-sectors-grid,
@@ -382,10 +427,13 @@
     </a>
 </div>
 </header><section class="page-head about-hero">
-<div class="container">
+<div class="container about-hero-grid">
+<div class="about-hero-copy">
 <div class="eyebrow eyebrow-accent">HAKKIMIZDA</div>
 <h1>1982’den Beri Kurumsal İş Kıyafeti Üretiyoruz</h1>
 <p>Pendik / İstanbul’daki üretim tesisimizde kurumsal firmalara özel iş kıyafetleri tasarlıyor ve üretiyoruz.</p>
+</div>
+<figure class="about-hero-facility"><img src="assets/locations/kardesler-tekstil-uretim-tesisi.webp" alt="Kardeşler Tekstil Pendik üretim tesisi dış görünümü" width="382" height="510" fetchpriority="high" decoding="async"><figcaption>Pendik / İstanbul üretim tesisimiz</figcaption></figure>
 </div>
 </section><section class="about-story reveal-section">
 <div class="container about-story-grid">
@@ -399,6 +447,7 @@
 <video class="about-production-video" data-deferred-video muted loop playsinline preload="none" aria-label="Ütü ve son işlem"><source data-src="assets/videos/uretim-utu.mp4" type="video/mp4"/></video>
 </div>
 <video class="about-production-feature" data-deferred-video muted loop playsinline preload="none" poster="assets/videos/kardesler-tekstil-uretim-intro-poster.webp" aria-label="Kardeşler Tekstil kurumsal iş kıyafetleri üretim ve kullanım videosu"><source data-src="assets/videos/kardesler-tekstil-uretim-intro.mp4" type="video/mp4"/></video>
+<div class="about-location-gallery" aria-label="Kardeşler Tekstil ofis ve satış mağazası"><figure><img src="assets/locations/kardesler-tekstil-ofis.webp" alt="Kardeşler Tekstil ofisi dış görünümü" width="680" height="510" loading="lazy" decoding="async"><figcaption>Ofisimiz</figcaption></figure><figure><img src="assets/locations/kardesler-tekstil-satis-magazasi.webp" alt="Kardeşler Tekstil satış mağazası iç görünümü" width="680" height="510" loading="lazy" decoding="async"><figcaption>Satış mağazamız</figcaption></figure></div>
 </div>
 <div class="about-story-copy">
 <p>Kardeşler Tekstil’in üretim yolculuğu 1982 yılında terzilikle başladı. Bugün kurumsal iş kıyafeti üretiminde bu tecrübeyi değişen sektör ihtiyaçlarıyla birleştiren yerli bir tekstil firması olarak faaliyet gösteriyoruz. Pendik / İstanbul’daki üretim tesisimizde farklı çalışma ortamlarına uygun ürünleri tasarım, kumaş seçimi, kalıp, kesim, dikim, baskı, nakış ve kalite kontrol aşamalarıyla birlikte planlıyoruz. Kurulduğumuz günden bu yana temel hedefimiz; çalışanların konforunu ve güvenliğini destekleyen, firmaların kurumsal kimliğini doğru biçimde yansıtan, uzun ömürlü ürünler sunmaktır.</p>
