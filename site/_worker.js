@@ -33,6 +33,8 @@ const LEGACY_PHP_PAGES = new Map([
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
+  ["/assets/runtime/home-hero-products-20260814-default-035.js", "/hero-products.js"],
+  ["/assets/runtime/home-site-20260814-default-model.js", "/site.js"],
   ["/catalog-ui-20260809-kt-mk-001-blue1.js", "/catalog.js"],
   ["/products-data-20260809-kt-mk-001-blue1.js", "/products.js"],
   ["/assets/runtime/home-hero-products-20260809-kt-mk-001-blue1.js", "/hero-products.js"],

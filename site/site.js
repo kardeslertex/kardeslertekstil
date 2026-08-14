@@ -943,6 +943,9 @@
     function applyProduct(index, animate) {
       var product = products[index];
       var productImage = (product.colors[0] && product.colors[0].image) || product.image;
+      var models = categoryModels(product);
+      var defaultModelIndex = product.defaultModelCode ? models.findIndex(function (model) { return model.code === product.defaultModelCode; }) : 0;
+      if (defaultModelIndex < 0) defaultModelIndex = 0;
       currentProduct = index;
       currentModel = 0;
       currentColor = 0;
@@ -974,7 +977,11 @@
 
       window.clearTimeout(transitionTimer);
       update();
-      swapShowcaseImage(productImage, product.imageAlt, animate, product.id);
+      if (defaultModelIndex > 0) {
+        applyModel(product, models[defaultModelIndex], defaultModelIndex, animate);
+      } else {
+        swapShowcaseImage(productImage, product.imageAlt, animate, product.id);
+      }
     }
 
     products.forEach(function (product, index) {
