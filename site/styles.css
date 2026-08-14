@@ -3360,7 +3360,7 @@ html{scroll-behavior:smooth;}
 .about-location-gallery img{
   display:block;
   width:100%;
-  aspect-ratio:4/3;
+  height:170px;
   object-fit:cover;
 }
 .about-location-gallery figcaption{
