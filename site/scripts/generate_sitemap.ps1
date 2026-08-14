@@ -53,7 +53,7 @@ foreach ($file in $htmlFiles) {
 }
 
 foreach ($url in $current.Keys) {
-  if (!$generated.Contains($url)) { $errors.Add("$url -> exists in sitemap but not in indexable canonical page source") }
+  if (!$generated.Contains($url) -and !$Write) { $errors.Add("$url -> exists in sitemap but not in indexable canonical page source") }
 }
 foreach ($url in $generated.Keys) {
   if (!$current.Contains($url) -and !$Write) { $errors.Add("$url -> missing from sitemap") }
