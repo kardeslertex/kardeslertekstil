@@ -1847,6 +1847,13 @@ html{scroll-behavior:smooth;}
   letter-spacing:.05em;
 }
 
+/* Keep footer headings readable even when the footer follows heading-rich home sections. */
+.site-footer .grid h2{
+  color:var(--cream-50);
+  font-size:14px;
+  line-height:1.2;
+}
+
 .lb-share-row{
   display:flex;
   gap:10px;
