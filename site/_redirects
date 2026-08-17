@@ -1,3 +1,7 @@
+# Preserve shareable product URLs while serving the catalog directory index.
+/urunlerimiz/:code/ /urunlerimiz/ 200
+/urunlerimiz/:code /urunlerimiz/ 200
+
 /bilgi-merkezi/is-kiyafeti-teknik-sartnamesi-nasil-hazirlanir/ /bilgi-merkezi/is-kiyafeti-sartname-hazirlama-rehberi/ 308
 # Existing localized route redirects.
 /about/ /hakkimizda 308
