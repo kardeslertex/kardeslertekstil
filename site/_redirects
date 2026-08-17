@@ -1,3 +1,8 @@
+# Shareable catalog product routes. Keep the clean URL in the address bar while
+# serving the catalog document; catalog.js opens the matching product by code.
+/urunlerimiz/:code/ /urunlerimiz.html 200
+/urunlerimiz/:code /urunlerimiz.html 200
+
 /bilgi-merkezi/is-kiyafeti-teknik-sartnamesi-nasil-hazirlanir/ /bilgi-merkezi/is-kiyafeti-sartname-hazirlama-rehberi/ 308
 # Existing localized route redirects.
 /about/ /hakkimizda 308
