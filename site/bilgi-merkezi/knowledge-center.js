@@ -658,7 +658,7 @@
 
   const normalize = (value) => value.toLocaleLowerCase("tr-TR").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   const postUrl = (post, onIndex) => onIndex ? `${post.slug}/` : `../${post.slug}/`;
-  const tagUrl = (tag, onIndex) => onIndex ? `?tag=${encodeURIComponent(tag)}` : `../?tag=${encodeURIComponent(tag)}`;
+  const tagUrl = (tag, onIndex) => onIndex ? `#filtre?tag=${encodeURIComponent(tag)}` : `../#filtre?tag=${encodeURIComponent(tag)}`;
 
   const CATEGORY_GROUPS = [
     "Ürün Rehberleri",
@@ -854,8 +854,11 @@
     const tagHeading = document.querySelector("#knowledge-active-filter");
     const searchBox = document.querySelector(".knowledge-search");
     const indexRoot = document.querySelector(".knowledge-index");
-    const query = new URLSearchParams(window.location.search);
-    let activeTag = new URLSearchParams(window.location.search).get("tag") || "";
+    const fragmentQuery = window.location.hash.includes("?")
+      ? window.location.hash.slice(window.location.hash.indexOf("?") + 1)
+      : "";
+    const query = new URLSearchParams(fragmentQuery || window.location.search);
+    let activeTag = query.get("tag") || "";
     let activeGroup = query.get("kategori") || "";
 
     if (!CATEGORY_GROUPS.includes(activeGroup)) activeGroup = "";
@@ -939,7 +942,7 @@
       if (activeTag) params.set("tag", activeTag);
       if (activeGroup) params.set("kategori", activeGroup);
       const qs = params.toString();
-      window.history.replaceState({}, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
+      window.history.replaceState({}, "", qs ? `${window.location.pathname}#filtre?${qs}` : window.location.pathname);
     }
 
     function filterPosts() {
@@ -1376,5 +1379,4 @@
     if (article) initArticle(article);
   });
 })();
-
 

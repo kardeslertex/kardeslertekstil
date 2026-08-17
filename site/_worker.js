@@ -247,11 +247,46 @@ export default {
       return Response.redirect("https://kardeslertekstil.com.tr/referanslarimiz", 308);
     }
 
+    // Form prefills and knowledge-center filters are UI state, not separate
+    // documents. Move that state into the fragment so crawlers see only the
+    // canonical page while visitors keep the same prefilled/filtered view.
+    const isContactPage = legacyPath === "/iletisim" || legacyPath === "/iletisim.html";
+    const contactStateKeys = ["urun", "adet", "mesaj"];
+    if (
+      request.method === "GET" &&
+      isContactPage &&
+      contactStateKeys.some((key) => url.searchParams.has(key))
+    ) {
+      const state = new URLSearchParams();
+      contactStateKeys.forEach((key) => {
+        if (url.searchParams.has(key)) state.set(key, url.searchParams.get(key));
+      });
+      url.search = "";
+      url.hash = `teklif-formu?${state.toString()}`;
+      return Response.redirect(url.toString(), 308);
+    }
+
+    const knowledgeStateKeys = ["q", "tag", "kategori"];
+    if (
+      request.method === "GET" &&
+      legacyPath === "/bilgi-merkezi" &&
+      knowledgeStateKeys.some((key) => url.searchParams.has(key))
+    ) {
+      const state = new URLSearchParams();
+      knowledgeStateKeys.forEach((key) => {
+        if (url.searchParams.has(key)) state.set(key, url.searchParams.get(key));
+      });
+      url.search = "";
+      url.hash = `filtre?${state.toString()}`;
+      return Response.redirect(url.toString(), 308);
+    }
+
     const obsoleteWordPressPath =
       /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
       /^\/urun-kategori\//i.test(url.pathname) ||
       /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
       /^\/store\/?$/i.test(url.pathname) ||
+      /^\/(?:cart|my-account)(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
       /^\/wp-[^/]*\.php$/i.test(url.pathname) ||
       /^\/\d+(?:-\d+)*\//.test(url.pathname) ||

@@ -213,7 +213,10 @@
 </a>
 <script>
   (function () {
-    var params = new URLSearchParams(window.location.search);
+    var fragmentQuery = window.location.hash.indexOf("?") >= 0
+      ? window.location.hash.slice(window.location.hash.indexOf("?") + 1)
+      : "";
+    var params = new URLSearchParams(fragmentQuery || window.location.search);
     if (!params.toString()) return;
 
     var form = document.getElementById("teklif-formu");
