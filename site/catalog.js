@@ -891,6 +891,8 @@
   var lbFormDetail = document.getElementById("lbFormDetail");
   var lbTags = document.getElementById("lbTags");
   var lbCopy = document.getElementById("lbCopy");
+  var lbLinkCopy = document.getElementById("lbLinkCopy");
+  var lbNativeShare = document.getElementById("lbNativeShare");
   var lbNoteTitle = document.getElementById("lbNoteTitle");
   var lbNoteText = document.getElementById("lbNoteText");
   var lbDescription = document.getElementById("lbDescription");
@@ -916,6 +918,20 @@
   function catById(id) {
     for (var k = 0; k < CATALOG.length; k++) if (CATALOG[k].id === id) return CATALOG[k];
     return null;
+  }
+
+  function productPath(code) {
+    return "/urunlerimiz/" + String(code || "").trim().toLowerCase() + "/";
+  }
+
+  function selectedItem() {
+    var list = galleries[state.cat];
+    return list && list[state.i];
+  }
+
+  function updateProductUrl(item, mode) {
+    if (!item || !window.history || !window.history[mode + "State"]) return;
+    window.history[mode + "State"]({ catalogProduct: item.code }, "", productPath(item.code));
   }
 
   function renderLightbox() {
@@ -961,7 +977,7 @@
     }
   }
 
-  function openLightbox(cat, i, trigger) {
+  function openLightbox(cat, i, trigger, urlMode) {
     state.cat = cat;
     state.i = i;
     lastTrigger = trigger || null;
@@ -970,6 +986,7 @@
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     document.getElementById("lbClose").focus();
+    if (urlMode !== "none") updateProductUrl(selectedItem(), urlMode || "push");
   }
 
   function closeLightbox() {
@@ -977,6 +994,9 @@
     lb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     if (lastTrigger) lastTrigger.focus();
+    if (/^\/urunlerimiz\/kt-[a-z]{2}-\d{3}\/?$/i.test(window.location.pathname)) {
+      window.history.pushState({ catalogProduct: null }, "", "/urunlerimiz");
+    }
   }
 
   function step(dir) {
@@ -984,6 +1004,7 @@
     if (!list) return;
     state.i = (state.i + dir + list.length) % list.length;
     renderLightbox();
+    updateProductUrl(selectedItem(), "replace");
   }
 
   document.getElementById("lbClose").addEventListener("click", closeLightbox);
@@ -1026,6 +1047,70 @@
         lbCopy.textContent = "Kopyalandı";
         setTimeout(function () { lbCopy.textContent = "Kodu Kopyala"; }, 1400);
       });
+    }
+  });
+
+  function copyProductLink() {
+    var item = selectedItem();
+    if (!item) return;
+    var link = window.location.origin + productPath(item.code);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(function () {
+        lbLinkCopy.textContent = "Link Kopyalandı ✓";
+        setTimeout(function () { lbLinkCopy.textContent = "Ürün Linkini Kopyala"; }, 1600);
+      });
+    }
+  }
+
+  if (lbLinkCopy) lbLinkCopy.addEventListener("click", copyProductLink);
+  if (lbNativeShare && navigator.share) {
+    lbNativeShare.hidden = false;
+    lbNativeShare.addEventListener("click", function () {
+      var item = selectedItem();
+      if (!item) return;
+      navigator.share({
+        title: item.code + " " + item.name,
+        text: item.code + " kodlu ürünü inceleyin.",
+        url: window.location.origin + productPath(item.code)
+      }).catch(function () { /* Kullanıcının paylaşımı iptal etmesi hata değildir. */ });
+    });
+  }
+
+  function productFromPath() {
+    var match = window.location.pathname.match(/^\/urunlerimiz\/(kt-[a-z]{2}-\d{3})\/?$/i);
+    if (!match) return null;
+    var wanted = match[1].toUpperCase();
+    for (var categoryIndex = 0; categoryIndex < CATALOG.length; categoryIndex += 1) {
+      var category = CATALOG[categoryIndex];
+      for (var itemIndex = 0; itemIndex < category.items.length; itemIndex += 1) {
+        if (category.items[itemIndex].code.toUpperCase() === wanted) {
+          return { cat: category.id, i: itemIndex };
+        }
+      }
+    }
+    return null;
+  }
+
+  function openProductFromAddress() {
+    var target = productFromPath();
+    if (!target) return false;
+    var trigger = document.querySelector('.gitem[data-code="' + selectedCodeFor(target) + '"]');
+    openLightbox(target.cat, target.i, trigger, "none");
+    if (trigger) setTimeout(function () { trigger.scrollIntoView({ block: "center" }); }, 0);
+    return true;
+  }
+
+  function selectedCodeFor(target) {
+    return galleries[target.cat][target.i].code;
+  }
+
+  openProductFromAddress();
+  window.addEventListener("popstate", function () {
+    if (openProductFromAddress()) return;
+    if (lb.classList.contains("is-open")) {
+      lb.classList.remove("is-open");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
   });
 

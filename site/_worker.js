@@ -334,9 +334,26 @@ export default {
       });
     }
 
+    // Katalogdaki her urun, urun koduyla paylasilabilen sade bir adrese sahip:
+    // /urunlerimiz/kt-ts-002/. Icerik tek katalog belgesinden sunulur; secili
+    // urunu tarayici tarafinda catalog.js acar.
+    const catalogProductMatch = url.pathname.match(/^\/urunlerimiz\/(kt-[a-z]{2}-\d{3})\/?$/i);
+    if (catalogProductMatch) {
+      const canonicalCatalogProductPath = `/urunlerimiz/${catalogProductMatch[1].toLowerCase()}/`;
+      if (url.pathname !== canonicalCatalogProductPath) {
+        url.pathname = canonicalCatalogProductPath;
+        return Response.redirect(url.toString(), 308);
+      }
+    }
+
     const releaseAssetPath = RELEASE_ASSET_ALIASES.get(url.pathname);
     let assetRequest = request;
-    if (releaseAssetPath) {
+    if (catalogProductMatch) {
+      const assetUrl = new URL(request.url);
+      assetUrl.pathname = "/urunlerimiz.html";
+      assetUrl.search = "";
+      assetRequest = new Request(assetUrl.toString(), request);
+    } else if (releaseAssetPath) {
       const assetUrl = new URL(request.url);
       assetUrl.pathname = releaseAssetPath;
       assetUrl.search = "";

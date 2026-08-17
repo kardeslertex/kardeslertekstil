@@ -1846,6 +1846,18 @@ html{scroll-behavior:smooth;}
   text-transform:uppercase;
   letter-spacing:.05em;
 }
+
+.lb-share-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:4px 0 14px;
+}
+.lb-share-row .btn{
+  flex:1 1 150px;
+  min-height:44px;
+  padding:10px 14px;
+}
 .lb-tags{
   display:flex;
   flex-wrap:wrap;
