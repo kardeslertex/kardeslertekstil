@@ -3,9 +3,9 @@ $ErrorActionPreference = 'Stop'
 $root = if ($SiteRoot) { (Resolve-Path $SiteRoot).Path } else { Split-Path $PSScriptRoot -Parent }
 $utf8 = [Text.UTF8Encoding]::new($false)
 $replacements = @(
-  @{ file='urunlerimiz.html'; old='/products-data-20260809-webp1.js'; new='/products-data-20260809-kt-on-040-white1.js' },
-  @{ file='urunlerimiz.html'; old='/catalog-ui-20260809-uniformfit3.js'; new='/catalog-ui-20260809-esd-symbol2.js' },
-  @{ file='urunlerimiz.html'; old='/catalog-styles-20260809-uniformfit3.css'; new='/catalog-styles-20260809-esd-symbol2.css' }
+  @{ file='urunlerimiz/index.html'; old='/products-data-20260809-webp1.js'; new='/products-data-20260809-kt-on-040-white1.js' },
+  @{ file='urunlerimiz/index.html'; old='/catalog-ui-20260809-uniformfit3.js'; new='/catalog-ui-20260809-esd-symbol2.js' },
+  @{ file='urunlerimiz/index.html'; old='/catalog-styles-20260809-uniformfit3.css'; new='/catalog-styles-20260809-esd-symbol2.css' }
 )
 foreach ($entry in $replacements) {
   $path = Join-Path $root $entry.file

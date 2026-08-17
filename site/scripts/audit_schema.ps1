@@ -102,7 +102,7 @@ foreach ($file in $htmlFiles) {
                         Add-Error $relativePath "ItemList item points back to its collection page: $itemUrl"
                         break
                     }
-                    if ($relativePath -eq 'urunlerimiz.html' -and $itemUrl -and $itemUrl -notlike "$origin/urun/*") {
+                    if ($relativePath.Replace('\', '/') -eq 'urunlerimiz/index.html' -and $itemUrl -and $itemUrl -notlike "$origin/urun/*") {
                         Add-Error $relativePath "Catalog ItemList must point to a product detail page: $itemUrl"
                         break
                     }

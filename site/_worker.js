@@ -350,7 +350,7 @@ export default {
     let assetRequest = request;
     if (catalogProductMatch) {
       const assetUrl = new URL(request.url);
-      assetUrl.pathname = "/urunlerimiz.html";
+      assetUrl.pathname = "/urunlerimiz/index.html";
       assetUrl.search = "";
       assetRequest = new Request(assetUrl.toString(), request);
     } else if (releaseAssetPath) {
