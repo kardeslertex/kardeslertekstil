@@ -61,12 +61,6 @@
   function initPrivacyControls() {
     var storageKey = "kt_cookie_consent_v1";
     var analyticsStarted = false;
-    if (!document.querySelector('link[href^="/privacy.css"]')) {
-      var privacyStyles = document.createElement("link");
-      privacyStyles.rel = "stylesheet";
-      privacyStyles.href = "/privacy.css?v=20260807-3";
-      document.head.appendChild(privacyStyles);
-    }
 
     function startAnalyticsOnce() {
       if (analyticsStarted) return;
