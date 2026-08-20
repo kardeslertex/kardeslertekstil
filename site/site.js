@@ -400,7 +400,7 @@
       actions.className = "quote-list-actions";
       var submit = document.createElement("a");
       submit.className = "btn btn-primary";
-      submit.href = "/iletisim?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage()) + "#teklif-formu";
+      submit.href = "/iletisim#teklif-formu?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage());
       submit.textContent = "Liste İçin Yazılı Teklif İsteyin";
       submit.addEventListener("click", function () {
         track("quote_list_submit", { item_count: items.length, product_codes: items.map(function (item) { return item.code; }).join(",") });
