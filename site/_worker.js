@@ -106,6 +106,11 @@ const SECURITY_HEADERS = {
   "X-Frame-Options": "SAMEORIGIN",
 };
 
+// Cache only the final, rewritten HTML response. The deployment identifier is
+// part of the key so a new release can never serve HTML from an older release.
+const HTML_EDGE_CACHE_FALLBACK_VERSION = "20260820-slow-page-1";
+const HTML_EDGE_CACHE_SECONDS = 86400;
+
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const FORMSPREE_QUOTE_URL = "https://formspree.io/f/meeyqyyd";
 const MAX_FORM_BYTES = 12 * 1024 * 1024;
@@ -184,7 +189,7 @@ async function handleQuoteForm(request, env, url) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const isPreviewHost = url.hostname.endsWith(".pages.dev");
     if (isPreviewHost) {
@@ -395,6 +400,30 @@ export default {
       assetRequest = new Request(assetUrl.toString(), request);
     }
 
+    const shouldCacheHtml =
+      request.method === "GET" &&
+      url.search === "" &&
+      !url.pathname.split("/").pop().includes(".");
+    let htmlCache;
+    let htmlCacheKey;
+    if (shouldCacheHtml) {
+      const cacheVersion = env.CF_PAGES_COMMIT_SHA || HTML_EDGE_CACHE_FALLBACK_VERSION;
+      const cacheUrl = new URL(request.url);
+      cacheUrl.searchParams.set("__kt_html_release", cacheVersion);
+      htmlCacheKey = new Request(cacheUrl.toString(), { method: "GET" });
+      htmlCache = caches.default;
+      const cachedResponse = await htmlCache.match(htmlCacheKey);
+      if (cachedResponse) {
+        const cachedHeaders = new Headers(cachedResponse.headers);
+        cachedHeaders.set("X-KT-Edge-Cache", "HIT");
+        return new Response(cachedResponse.body, {
+          status: cachedResponse.status,
+          statusText: cachedResponse.statusText,
+          headers: cachedHeaders,
+        });
+      }
+    }
+
     let response = await env.ASSETS.fetch(assetRequest);
 
     // Eski, bozuk Turkce karakterli urun adreslerini HTML meta-refresh yerine
@@ -464,10 +493,23 @@ export default {
       headers.set("X-Robots-Tag", "noindex, follow");
     }
 
-    return new Response(response.body, {
+    const finalResponse = new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
       headers,
     });
+    if (shouldCacheHtml && response.ok && contentType.includes("text/html")) {
+      const cacheHeaders = new Headers(finalResponse.headers);
+      cacheHeaders.set("Cache-Control", `public, max-age=300, s-maxage=${HTML_EDGE_CACHE_SECONDS}`);
+      cacheHeaders.set("X-KT-Edge-Cache", "MISS");
+      const cacheableResponse = new Response(finalResponse.body, {
+        status: finalResponse.status,
+        statusText: finalResponse.statusText,
+        headers: cacheHeaders,
+      });
+      ctx.waitUntil(htmlCache.put(htmlCacheKey, cacheableResponse.clone()));
+      return cacheableResponse;
+    }
+    return finalResponse;
   },
 };
