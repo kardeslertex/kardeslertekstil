@@ -424,13 +424,6 @@ export default {
       headers.set(name, value);
     }
     const contentType = headers.get("Content-Type") || "";
-    if (contentType.includes("text/html")) {
-      const cacheControl = headers.get("Cache-Control");
-      headers.set(
-        "Cache-Control",
-        cacheControl ? `${cacheControl}, no-transform` : "no-transform",
-      );
-    }
     const faviconAssets = new Set([
       "/favicon.ico",
       "/favicon-16x16.png",
