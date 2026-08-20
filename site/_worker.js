@@ -12,7 +12,7 @@ const LEGACY_PATHS = new Map([
   ["/bilgi-merkezi/is-kiyafeti-sozlesmelerinde-sla-maddeleri", "/bilgi-merkezi/is-kiyafeti-tedarik-hizmet-seviyesi-sla/"],
   ["/bilgi-merkezi/is-kiyafeti-satin-almada-teknik-karsilastirma-cizelgesi", "/bilgi-merkezi/is-kiyafeti-satin-alirken-teklifler-nasil-karsilastirilir/"],
   ["/bilgi-merkezi/is-kiyafeti-tedarikci-karsilastirma-matrisi", "/bilgi-merkezi/is-kiyafeti-satin-alirken-teklifler-nasil-karsilastirilir/"],
-  ["/products", "/urunlerimiz"],
+  ["/products", "/urunlerimiz/"],
   ["/contact", "/iletisim"],
   ["/references", "/referanslarimiz"],
 ]);
@@ -97,26 +97,13 @@ const RELEASE_ASSET_ALIASES = new Map([
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy":
-    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://cdn.kaf.simur.org; connect-src 'self' https://challenges.cloudflare.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://kaf.simur.org https://cdn.kaf.simur.org; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https:; style-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://www.google.com.tr; upgrade-insecure-requests",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "SAMEORIGIN",
-};
-
-const KAF_PROJECT_ID = "6a7d6b19d5e2297faab29ac5";
-const KAF_LOADER_URL = "https://cdn.kaf.simur.org/apply_kaf_seo_mutations.js";
-const KAF_API_URL = "https://kaf.simur.org";
-const KAF_PIXEL_URL = "https://kaf.simur.org/api/geo/pixel?p=kgp_e0efb49f773c57524e49b53a3d6a0943";
-
-const kafHeadMarkup = `<script src="${KAF_LOADER_URL}" data-project-id="${KAF_PROJECT_ID}" data-api-url="${KAF_API_URL}" data-no-optimize="1" data-cfasync="false" nowprocket nitro-exclude defer></script><noscript><img src="${KAF_PIXEL_URL}" width="1" height="1" alt="" style="position:absolute;left:-9999px"></noscript>`;
-
-const kafHeadInjector = {
-  element(element) {
-    element.append(kafHeadMarkup, { html: true });
-  },
 };
 
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -239,12 +226,22 @@ export default {
       const pageId = (url.searchParams.get("PageID") || "").toLowerCase();
       const pageName = (url.searchParams.get("PageName") || "").toLowerCase();
       const target = LEGACY_PHP_PAGES.get(pageId) ||
-        (pageName === "urunler" ? "/urunlerimiz" : "");
+        (pageName === "urunler" ? "/urunlerimiz/" : "");
       if (target) return Response.redirect(`https://kardeslertekstil.com.tr${target}`, 308);
     }
 
     if (legacyPath.toLowerCase() === "/referanslarimiz_tum_liste.htm") {
       return Response.redirect("https://kardeslertekstil.com.tr/referanslarimiz", 308);
+    }
+
+    if (
+      request.method === "GET" &&
+      legacyPath === "/" &&
+      url.searchParams.get("intro") === "1"
+    ) {
+      url.search = "";
+      url.hash = "intro";
+      return Response.redirect(url.toString(), 308);
     }
 
     // Form prefills and knowledge-center filters are UI state, not separate
@@ -279,6 +276,44 @@ export default {
       url.search = "";
       url.hash = `filtre?${state.toString()}`;
       return Response.redirect(url.toString(), 308);
+    }
+
+    const catalogStateKeys = ["kategori", "esd", "onluk", "montkaban", "polar", "pantolon"];
+    if (
+      request.method === "GET" &&
+      legacyPath === "/urunlerimiz" &&
+      catalogStateKeys.some((key) => url.searchParams.has(key))
+    ) {
+      const state = new URLSearchParams();
+      catalogStateKeys.forEach((key) => {
+        if (url.searchParams.has(key)) state.set(key, url.searchParams.get(key));
+      });
+      url.pathname = "/urunlerimiz/";
+      url.search = "";
+      url.hash = `filtre?${state.toString()}`;
+      return Response.redirect(url.toString(), 308);
+    }
+
+    // Old WordPress pages emitted relative navigation links. Preserve only
+    // destinations with an unambiguous modern equivalent.
+    const nestedLegacyDestination = [
+      [/(?:^|\/)hakkimizda\.html$/i, "/hakkimizda"],
+      [/(?:^|\/)iletisim\.html$/i, "/iletisim"],
+      [/(?:^|\/)urunlerimiz\.html$/i, "/urunlerimiz/"],
+      [/(?:^|\/)referanslarimiz\.html$/i, "/referanslarimiz"],
+    ].find(([pattern]) => pattern.test(legacyPath));
+    if (nestedLegacyDestination) {
+      return Response.redirect(
+        `https://kardeslertekstil.com.tr${nestedLegacyDestination[1]}`,
+        308
+      );
+    }
+
+    if (/^\/contact-us(?:\/|$)/i.test(url.pathname)) {
+      return Response.redirect("https://kardeslertekstil.com.tr/iletisim", 308);
+    }
+    if (/^\/store(?:\/index\.html)?\/?$/i.test(url.pathname)) {
+      return Response.redirect("https://kardeslertekstil.com.tr/urunlerimiz/", 308);
     }
 
     const obsoleteWordPressPath =
@@ -384,14 +419,6 @@ export default {
         .transform(response);
     }
 
-    // KAF SEO Repair'i tum gercek HTML sayfalarina edge seviyesinde ekle.
-    // Boylece entegrasyon tek noktadan yonetilir ve kolayca geri alinabilir.
-    const upstreamContentType = response.headers.get("Content-Type") || "";
-    if (response.ok && upstreamContentType.includes("text/html")) {
-      response = new HTMLRewriter()
-        .on("head", kafHeadInjector)
-        .transform(response);
-    }
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
       headers.set(name, value);
