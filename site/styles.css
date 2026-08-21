@@ -2322,6 +2322,9 @@ html{scroll-behavior:smooth;}
 
 .catalog-premium .lb-stage img{
   border-radius:var(--radius-lg);
+  object-fit:contain;
+  object-position:center;
+  transform:none!important;
 }
 
 .catalog-premium .lb-info{

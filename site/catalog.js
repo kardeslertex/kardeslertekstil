@@ -946,12 +946,9 @@
     lbImg.style.setProperty("--product-scale", "1");
     lbImg.style.setProperty("--product-x", "0%");
     lbImg.style.setProperty("--product-y", "0%");
-    lbImg.onload = function () {
-      if (selectedItem() !== item) return;
-      scheduleProductFit(lbImg, item);
-    };
+    /* Modalda otomatik kadraj kullanma: ürünün tamamı görünür kalmalıdır. */
+    lbImg.onload = null;
     lbImg.src = item.src;
-    if (lbImg.complete && lbImg.naturalWidth) lbImg.onload();
     lbImg.alt = item.code + " " + item.name;
     if (window.ktSetLanguageAwareText) window.ktSetLanguageAwareText(lbTitle, item.name);
     else lbTitle.textContent = item.name;
