@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const root = path.resolve(__dirname, '..');
+const root = process.env.SEO_SITE_ROOT ? path.resolve(process.env.SEO_SITE_ROOT) : path.resolve(__dirname, '..');
 const origin = 'https://kardeslertekstil.com.tr';
 const today = '2026-08-21';
 const generic = new Set([`${origin}/assets/logo-kit-badge.webp`, `${origin}/assets/products/gallery/tshirt/siyah-polo-yaka-tisort.webp`]);
@@ -45,6 +45,7 @@ for(const file of walk(root)) {
     const current=getMeta(h,'og:image',true),next=generic.has(current)?productImage(h,canonical):'';if(next&&!generic.has(next)){h=setMeta(h,'og:image',next,true);h=setMeta(h,'twitter:image',next);h=schemas(h,'BlogPosting',d=>{d.image=[next]});counts.socialImages++;}
     const slug=path.basename(path.dirname(file));let c;[h,c]=addSources(h,sources(slug));if(c){counts.sources++;contentChanged=true}[h,c]=addContext(h,slug);if(c){counts.contextualLinks++;contentChanged=true}if(contentChanged){h=markModified(h);counts.modifiedDates++;changedUrls.add(canonical)}
   }
+  h=h.replace(/href="\.\.\/\?tag=(Nak%C4%B1%C5%9F%20m%C4%B1%20Bask%C4%B1%20m%C4%B1|%C4%B0%C5%9F%20G%C3%BCvenli%C4%9Fi)"/g,'href="../#filtre?tag=$1"');
   if(h!==original)fs.writeFileSync(file,h,'utf8');
 }
 let sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');for(const url of changedUrls){const e=url.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');sitemap=sitemap.replace(new RegExp(`(<loc>${e}<\\/loc>[\\s\\S]*?<lastmod>)[^<]+`,'i'),`$1${today}`)}fs.writeFileSync(path.join(root,'sitemap.xml'),sitemap,'utf8');
