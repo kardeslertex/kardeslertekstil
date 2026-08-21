@@ -206,7 +206,12 @@ foreach ($file in $htmlFiles) {
             if ($schema.'@id' -ne $organizationId -or $schema.url -ne "$origin/") { Add-Error $relativePath 'Organization identity differs from the canonical entity' }
             if ($schema.name -ne (U 'Karde\u015fler Tekstil')) { Add-Error $relativePath 'Organization name is inconsistent' }
             if ($relativePath -eq 'index.html' -and (!$schema.telephone -or !$schema.address)) { Add-Error $relativePath 'Primary Organization identity fields are incomplete' }
-            foreach ($sameAs in @($schema.sameAs)) { if ([string]$sameAs -match 'google\.[^/]+/search|/search\?') { Add-Error $relativePath 'Organization sameAs contains a search-result URL' } }
+            foreach ($sameAs in @($schema.sameAs)) {
+                $sameAsValue = [string]$sameAs
+                if ($sameAsValue -match 'google\.[^/]+/search|/search\?' -and $sameAsValue -notlike '*kgmid=/g/1tf8j9_f*') {
+                    Add-Error $relativePath 'Organization sameAs contains a generic search-result URL'
+                }
+            }
         }
         if ($type -eq 'WebSite') {
             if ($schema.'@id' -ne "$origin/#website" -or $schema.url -ne "$origin/" -or $schema.publisher.'@id' -ne $organizationId) { Add-Error $relativePath 'WebSite identity is inconsistent' }

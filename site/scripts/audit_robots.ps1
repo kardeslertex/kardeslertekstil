@@ -43,9 +43,17 @@ foreach ($parameter in $requiredParameters) {
 }
 
 $parameterLinkCount = 0
+$fragmentStateLinkCount = 0
 foreach ($file in Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse) {
     $html = Get-Content -LiteralPath $file.FullName -Raw
-    $parameterLinkCount += [regex]::Matches($html, 'href=["''][^"'']*\?(?:q|tag|kategori|urun|adet|mesaj)=', 'IgnoreCase').Count
+    foreach ($match in [regex]::Matches($html, 'href=["''](?<href>[^"'']+)["'']', 'IgnoreCase')) {
+        $href = [Net.WebUtility]::HtmlDecode($match.Groups['href'].Value)
+        $question = $href.IndexOf('?')
+        if ($question -lt 0 -or $href -notmatch '\?(?:q|tag|kategori|urun|adet|mesaj)=') { continue }
+        $fragment = $href.IndexOf('#')
+        if ($fragment -ge 0 -and $fragment -lt $question) { $fragmentStateLinkCount++ }
+        else { $parameterLinkCount++ }
+    }
 }
 
 $liveChecks = 0
@@ -70,7 +78,8 @@ if ($Live) {
 $result = [ordered]@{
     robotsFile = $robotsPath
     noindexQueryParameters = $requiredParameters.Count
-    internalParameterLinks = $parameterLinkCount
+    crawlableParameterLinks = $parameterLinkCount
+    fragmentStateLinks = $fragmentStateLinkCount
     liveGooglebotChecks = $liveChecks
     errors = @($errors)
 }
