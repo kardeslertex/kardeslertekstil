@@ -495,26 +495,10 @@
     var storageKey = "kt_home_intro_seen_v1";
     var video = intro.querySelector("video");
     var links = Array.prototype.slice.call(intro.querySelectorAll("[data-intro-target]"));
-    var countdown = intro.querySelector("[data-intro-countdown]");
     var fallbackTimer = null;
-    var countdownTimer = null;
     var leaving = false;
-    var hasSeenIntro = false;
 
-    try {
-      hasSeenIntro = window.sessionStorage.getItem(storageKey) === "1";
-    } catch (error) {
-      hasSeenIntro = false;
-    }
-
-    if (hasSeenIntro && !window.__ktForceHomeIntro) {
-      document.documentElement.classList.remove("intro-splash-pending");
-      intro.hidden = true;
-      return;
-    }
-
-    var compactViewport = window.matchMedia("(max-width: 767px)").matches;
-    if (compactViewport && !window.__ktForceHomeIntro) {
+    if (!window.__ktForceHomeIntro) {
       document.documentElement.classList.remove("intro-splash-pending");
       intro.hidden = true;
       return;
@@ -531,8 +515,6 @@
     function clearFallback() {
       if (fallbackTimer) window.clearTimeout(fallbackTimer);
       fallbackTimer = null;
-      if (countdownTimer) window.clearInterval(countdownTimer);
-      countdownTimer = null;
     }
 
     function resetHomeScroll() {
@@ -544,16 +526,6 @@
 
     function startFallback() {
       if (fallbackTimer || leaving) return;
-      var secondsLeft = 5;
-      if (countdown) countdown.textContent = String(secondsLeft);
-      countdownTimer = window.setInterval(function () {
-        secondsLeft -= 1;
-        if (countdown && secondsLeft > 0) countdown.textContent = String(secondsLeft);
-        if (secondsLeft <= 0 && countdownTimer) {
-          window.clearInterval(countdownTimer);
-          countdownTimer = null;
-        }
-      }, 1000);
       fallbackTimer = window.setTimeout(function () {
         leaveIntro("/");
       }, 5000);
@@ -998,8 +970,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    initHomeIntro();
-    initBrandIntroLinks();
     initPrivacyControls();
     initMobileNavigation();
     initConversionTracking();

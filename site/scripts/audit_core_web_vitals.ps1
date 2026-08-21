@@ -21,11 +21,8 @@ $videoSources = [regex]::Matches($homeHtml, '<source\s+[^>]*type=["'']video/mp4[
 foreach ($source in $videoSources) {
     if ($source.Value -notmatch '\bdata-src=') { $errors.Add('A home video source loads eagerly.') }
 }
-if ($homeHtml -notmatch 'compactViewport\s*=\s*window\.matchMedia\("\(max-width: 767px\)"\)\.matches') {
-    $errors.Add('The inline mobile intro guard is missing.')
-}
-if ($siteJs -notmatch 'compactViewport\s*&&\s*!window\.__ktForceHomeIntro') {
-    $errors.Add('The runtime mobile intro guard is missing.')
+if ($homeHtml -match 'data-home-intro|intro-splash-pending' -or $siteJs -match '(?m)^\s+init(?:HomeIntro|BrandIntroLinks)\(\);') {
+    $errors.Add('The removed home intro is still active.')
 }
 if ($homeHtml -match 'knowledge-center\.js') { $errors.Add('The article catalog bundle must not load on the home page.') }
 
@@ -53,7 +50,7 @@ $result = [ordered]@{
     lcpDimensionsReserved = $errors -notcontains 'The home LCP candidate must reserve width and height.'
     lcpFetchPriorityHigh = $errors -notcontains 'The home LCP candidate must use high fetch priority.'
     deferredVideoSources = $videoSources.Count
-    mobileIntroBypassed = ($errors -notcontains 'The inline mobile intro guard is missing.') -and ($errors -notcontains 'The runtime mobile intro guard is missing.')
+    introRemoved = $errors -notcontains 'The removed home intro is still active.'
     staticImagesChecked = $staticImages
     imagesMissingDimensions = $imagesMissingDimensions
     catalogViewportLoading = ($errors -notcontains 'Catalog images must use viewport-proximity loading.')

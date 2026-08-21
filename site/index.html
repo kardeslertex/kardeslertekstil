@@ -18,12 +18,12 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   "@id": "https://kardeslertekstil.com.tr/#organization",
   "name": "Kardeşler Tekstil",
   "legalName": "Kardeşler Tekstil Ürn. İml. San. ve Tic Ltd Şti.",
   "foundingDate": "1982",
-  "description": "1982 yılında terzilikle başlayan Kardeşler Tekstil, kurumsal iş kıyafeti üretimi yapar.",
+  "description": "1982'den beri İstanbul Pendik'te kurumsal firmalara özel iş kıyafeti ve personel kıyafeti üretimi yapan tekstil üreticisi.",
   "url": "https://kardeslertekstil.com.tr/",
   "logo": "https://kardeslertekstil.com.tr/assets/logo-kit-badge.webp",
   "telephone": "+90 216 396 19 88",
@@ -33,12 +33,26 @@
     "streetAddress": "Fevzi Çakmak, Ulukapı Sk. 11-12/A",
     "addressLocality": "Pendik",
     "addressRegion": "İstanbul",
+    "postalCode": "34899",
     "addressCountry": "TR"
   },
-  "areaServed": "TR",
-  "sameAs": [
-    "https://www.google.com/search?q=Karde%C5%9Fler+Tekstil&si=APenkKllX05q7xl66dAosm6nb1iuMgV7Bv8meTZS-zIzIS3OM0-bTyzqq-QsroS18nrEcKwLET5AlPD4-SisonfIc9piy09mYLGSYKQ0ct428fJLmk7ZG1I7y0K7okvBFoy7wxOj0rpu"
-  ]
+  "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+  },
+  "knowsAbout": [
+    "İş kıyafeti üretimi",
+    "Personel kıyafeti üretimi",
+    "Kurumsal iş kıyafetleri",
+    "İş tişörtü",
+    "İş pantolonu",
+    "İş tulumu",
+    "İş montu",
+    "İş yeleği",
+    "Nakış",
+    "Tekstil baskı"
+  ],
+  "slogan": "Firmanız için özel üretiyoruz"
 }
 </script>
 
@@ -66,53 +80,10 @@
 <link rel="manifest" href="/manifest.webmanifest?v=13">
 <meta name="theme-color" content="#f97316">
 <meta name="google-analytics-id" content="">
-<script>
-(function () {
-  try {
-    var forceIntro = window.location.hash === "#intro" || sessionStorage.getItem("kt_home_intro_force_v1") === "1";
-    sessionStorage.removeItem("kt_home_intro_force_v1");
-    var compactViewport = window.matchMedia("(max-width: 767px)").matches;
-    window.__ktForceHomeIntro = forceIntro;
-    if (forceIntro || (!compactViewport && sessionStorage.getItem("kt_home_intro_seen_v1") !== "1")) {
-      document.documentElement.classList.add("intro-splash-pending");
-    }
-    if (window.location.hash === "#intro" && window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-  } catch (error) {
-    if (!window.matchMedia("(max-width: 767px)").matches) {
-      document.documentElement.classList.add("intro-splash-pending");
-    }
-  }
-})();
-</script>
 <script src="/assets/runtime/home-hero-products-20260814-default-035.js" defer></script>
 <script src="/assets/runtime/home-site-20260814-default-model.js" defer></script>
 </head>
 <body class="home-v3" data-screen-label="01 Home">
-<section class="intro-splash" data-home-intro aria-label="Kardeşler Tekstil karşılama ekranı" aria-hidden="true">
-<div class="intro-splash-brand">
-<img src="assets/logo-kit-badge.webp" width="1424" height="940" alt="Kardeşler Tekstil"/>
-</div>
-<div class="intro-splash-copy">
-<div class="intro-splash-copy-inner">
-<p class="intro-splash-kicker">KURUMSAL İŞ KIYAFETİ ÜRETİMİ</p>
-<p class="intro-splash-title">Firmanız için özel üretiyoruz.</p>
-<p class="intro-splash-lead">Tişörtten monta; kurumsal renk, baskı ve nakışla üretim.</p>
-<p class="intro-splash-countdown" aria-live="polite"><strong data-intro-countdown>5</strong> saniye sonra ana sayfaya yönlendirileceksiniz.</p>
-<nav class="intro-splash-actions" aria-label="Hızlı yönlendirmeler">
-<a class="intro-splash-button intro-splash-button-primary" href="/" data-intro-target="home">Siteye Gir</a>
-<a class="intro-splash-button" href="/urunlerimiz/" data-intro-target="products">Ürünleri İncele</a>
-<a class="intro-splash-button" href="/iletisim#teklif-formu" data-intro-target="quote">Teklif Al</a>
-</nav>
-</div>
-</div>
-<div class="intro-splash-media">
-<video data-intro-video autoplay muted playsinline disablepictureinpicture preload="metadata" poster="assets/videos/kardesler-tekstil-uretim-intro-poster.webp" aria-hidden="true" tabindex="-1">
-<source data-src="assets/videos/kardesler-tekstil-uretim-intro.mp4" type="video/mp4"/>
-</video>
-</div>
-</section>
 <header class="site-header">
 <div class="container">
 <a class="brand" href="./"><img decoding="async" width="1424" height="940" alt="Kardeşler Tekstil" src="assets/logo-kit-badge.webp"/></a>
@@ -130,6 +101,7 @@
     </a>
 </div>
 </header>
+<main id="main-content">
 <section class="hero product-showcase-hero" data-product-showcase>
 <div class="container product-showcase-layout">
 <div class="product-showcase-copy" data-showcase-copy>
@@ -262,11 +234,11 @@
 <p>Farklı çalışma koşullarına uygun ürün önerileri için sektörel rehberlerimizi inceleyin.</p>
 </div>
 <div class="home-sector-grid">
-<a class="home-sector-card" href="bilgi-merkezi/fabrika-uretim-tesisleri-is-kiyafeti-rehberi/"><h3>Fabrika ve üretim tesisleri</h3><p>Üretim hatları için dayanıklı ve kurumsal görünüme uygun kıyafet çözümleri.</p></a>
-<a class="home-sector-card" href="bilgi-merkezi/lojistik-depo-personeli-is-kiyafeti-rehberi/"><h3>Lojistik ve depo</h3><p>Hareketli çalışma temposuna uygun, fonksiyonel cep yapılarıyla desteklenen ürünler.</p></a>
+<a class="home-sector-card" href="fabrika-personel-kiyafetleri/"><h3>Fabrika ve üretim tesisleri</h3><p>Üretim, bakım, kalite ve sevkiyat ekipleri için ürün, kumaş, numune ve üretim seçenekleri.</p></a>
+<a class="home-sector-card" href="lojistik-personel-kiyafetleri/"><h3>Lojistik ve depo</h3><p>Depo, sevkiyat ve saha ekipleri için görev, mevsim ve görünürlük odaklı üretim.</p></a>
 <a class="home-sector-card" href="bilgi-merkezi/insaat-santiye-is-kiyafeti-rehberi/"><h3>İnşaat</h3><p>Saha koşullarına dayanıklı kumaş, görünürlük ve mevsimsel katmanlama önerileri.</p></a>
 <a class="home-sector-card" href="bilgi-merkezi/teknik-servis-montaj-is-kiyafeti-rehberi/"><h3>Teknik servis</h3><p>Montaj ve servis ekipleri için hareket özgürlüğünü koruyan model alternatifleri.</p></a>
-<a class="home-sector-card" href="bilgi-merkezi/restoran-kafe-mutfak-personeli-kiyafet-rehberi/"><h3>Otel ve restoran</h3><p>Mutfak ve servis operasyonları için kurumsal çizgiye uyumlu personel kıyafetleri.</p></a>
+<a class="home-sector-card" href="otel-personel-kiyafetleri/"><h3>Otel personel kıyafetleri</h3><p>Resepsiyon, kat hizmetleri, mutfak, servis ve teknik ekipler için ortak koleksiyon.</p></a>
 <a class="home-sector-card" href="bilgi-merkezi/saglik-personeli-is-kiyafetleri-rehberi/"><h3>Sağlık ve temizlik</h3><p>Sık yıkamaya uygun, konforlu ve iş akışına uyum sağlayan ürün kombinasyonları.</p></a>
 <a class="home-sector-card" href="bilgi-merkezi/ozel-guvenlik-personeli-uniforma-rehberi/"><h3>Güvenlik</h3><p>Vardiyalı çalışma düzenine uygun, profesyonel görünüm odaklı üniforma önerileri.</p></a>
 <a class="home-sector-card" href="bilgi-merkezi/kurumsal-personel-tisortu-rehberi/"><h3>Promosyon ve organizasyon</h3><p>Etkinlik, lansman ve saha tanıtımları için firma logolu personel ürün seçenekleri.</p></a>
@@ -449,6 +421,7 @@
 </div>
 </div>
 </section>
+</main>
 <footer class="site-footer">
 <div class="container grid">
 <div>

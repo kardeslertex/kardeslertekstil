@@ -480,8 +480,10 @@ export default {
     } else if (url.pathname === "/manifest.webmanifest") {
       headers.set("Cache-Control", "public, max-age=3600, must-revalidate");
     }
-    if (url.pathname === "/llms.txt") {
+    if (url.pathname === "/llms.txt" || url.pathname === "/robots.txt") {
       headers.set("Content-Type", "text/plain; charset=utf-8");
+    } else if (url.pathname === "/sitemap.xml") {
+      headers.set("Content-Type", "application/xml; charset=utf-8");
     }
     if (response.status === 404) headers.set("X-Robots-Tag", "noindex, follow");
     // Teklif formu ve katalog filtreleri kullanıcı deneyimi için query string

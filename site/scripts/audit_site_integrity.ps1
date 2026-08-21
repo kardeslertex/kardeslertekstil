@@ -60,7 +60,14 @@ foreach ($file in $htmlFiles) {
     $missingSiteJs.Add($relativePath)
   }
 
-  $baseUrl = if ($canonical) { [Uri]$canonical } else { [Uri]"$origin/" }
+  $baseTagMatch = [regex]::Match($html, '<base[^>]+href=["'']([^"'']+)', 'IgnoreCase')
+  $baseUrl = if ($baseTagMatch.Success) {
+    [Uri]::new([Uri]"$origin/", $baseTagMatch.Groups[1].Value)
+  } elseif ($canonical) {
+    [Uri]$canonical
+  } else {
+    [Uri]"$origin/"
+  }
   foreach ($match in [regex]::Matches($html, '<a\b[^>]*href=["'']([^"'']+)["'']', 'IgnoreCase')) {
     $href = $match.Groups[1].Value.Trim()
     if (!$href -or $href -match '^(#|mailto:|tel:|javascript:)') { continue }

@@ -40,13 +40,14 @@ foreach ($file in $htmlFiles) {
     foreach ($match in [regex]::Matches($html, '<script(?<attrs>[^>]*)type=["'']application/ld\+json["''](?<after>[^>]*)>(?<json>.*?)</script>', 'IgnoreCase,Singleline')) {
         $counts.jsonLdBlocks++
         try { $schema = $match.Groups['json'].Value | ConvertFrom-Json } catch { Add-Error $relativePath 'invalid JSON-LD'; continue }
-        $type = [string]$schema.'@type'
-        if (!$type) {
+        $schemaTypes = @($schema.'@type')
+        if (!$schemaTypes.Count) {
             $attributes = $match.Groups['attrs'].Value + $match.Groups['after'].Value
             if ($attributes -notmatch 'id=["'']productCatalogJsonLd["'']') { Add-Error $relativePath 'schema type missing' }
             continue
         }
-        $pageTypes.Add($type)
+        foreach ($schemaType in $schemaTypes) { $pageTypes.Add([string]$schemaType) }
+        $type = [string]$schemaTypes[0]
 
         if ($type -eq 'Article') { Add-Error $relativePath 'legacy Article duplicates BlogPosting'; continue }
         if ($type -eq 'BlogPosting') {
@@ -61,7 +62,9 @@ foreach ($file in $htmlFiles) {
         }
         if ($type -eq 'Product') {
             $counts.products++
-            foreach ($field in @('name','description','image','sku','brand','url','@id')) { if (!$schema.$field) { Add-Error $relativePath "Product missing $field" } }
+            foreach ($field in @('name','description','image','sku','brand','manufacturer','material','category','url','@id')) { if (!$schema.$field) { Add-Error $relativePath "Product missing $field" } }
+            $material = ([string]$schema.material -replace '\s+', ' ').Trim()
+            if ($material.Length -gt 80 -or $material -match '[{}<>]') { Add-Error $relativePath 'Product material is malformed or overly long' }
             if ($schema.url -ne $canonical -or $schema.'@id' -ne "$canonical#product") { Add-Error $relativePath 'Product identity differs from canonical' }
             foreach ($field in @('name','description','sku')) { if ($schema.$field -and $visibleText -notlike "*$($schema.$field)*") { Add-Error $relativePath "Product $field is not visible" } }
             foreach ($image in @($schema.image)) { $leaf = Split-Path ([uri]$image).AbsolutePath -Leaf; if ($html -notlike "*$leaf*") { Add-Error $relativePath 'Product image is not visible' } }
@@ -127,7 +130,7 @@ foreach ($file in $htmlFiles) {
     }
 
     if ($html -match '<body[^>]+data-post-slug=' -and $blogPostingCount -ne 1) { Add-Error $relativePath "expected one BlogPosting, found $blogPostingCount" }
-    if ($relativePath -eq 'index.html' -and (($pageTypes -notcontains 'Organization') -or ($pageTypes -notcontains 'WebSite'))) { Add-Error $relativePath 'home requires Organization and WebSite' }
+    if ($relativePath -eq 'index.html' -and (($pageTypes -notcontains 'Organization') -or ($pageTypes -notcontains 'LocalBusiness') -or ($pageTypes -notcontains 'WebSite'))) { Add-Error $relativePath 'home requires Organization, LocalBusiness and WebSite' }
     if ($relativePath -eq 'iletisim.html' -and $pageTypes -notcontains 'ContactPage') { Add-Error $relativePath 'contact page requires ContactPage' }
     if ($relativePath -eq 'hakkimizda.html' -and $pageTypes -notcontains 'AboutPage') { Add-Error $relativePath 'about page requires AboutPage' }
 }
