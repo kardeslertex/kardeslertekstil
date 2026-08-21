@@ -60,6 +60,14 @@ foreach ($file in Get-ChildItem -LiteralPath $productRoot -Recurse -File -Filter
         return '<script type="application/ld+json">' + $json + '</script>'
     }, 'IgnoreCase,Singleline')
 
+    # Structured product facts must also be available to visitors, not only to crawlers.
+    $materialText = [Net.WebUtility]::HtmlEncode($material)
+    $materialMarkup = '<p class="product-schema-material"><strong>Malzeme:</strong> ' + $materialText + '</p>'
+    $next = [regex]::Replace($next, '<p class="product-schema-material">.*?</p>', $materialMarkup, 'IgnoreCase,Singleline')
+    if ($next -notmatch '<p class="product-schema-material">') {
+        $next = [regex]::Replace($next, '<div class="cta-row">', $materialMarkup + '<div class="cta-row">', 'IgnoreCase', [timespan]::FromSeconds(2))
+    }
+
     if ($next -ne $html) {
         [IO.File]::WriteAllText($file.FullName, $next, $utf8)
         $updated++

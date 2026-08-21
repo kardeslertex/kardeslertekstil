@@ -12,6 +12,61 @@ function Plain-Text([string]$value) {
     $withoutMarkup = [regex]::Replace($value, '<[^>]+>', ' ')
     return ([Net.WebUtility]::HtmlDecode($withoutMarkup) -replace '\s+', ' ').Trim()
 }
+function Normalized-Text([string]$value) {
+    return ((Plain-Text $value).ToLowerInvariant() -replace '[^\p{L}\p{N}]+', ' ').Trim()
+}
+function Test-Visible([string]$visibleText, [string]$value) {
+    $needle = Normalized-Text $value
+    if (!$needle) { return $false }
+    return (Normalized-Text $visibleText).Contains($needle)
+}
+function Test-SiteUrl([string]$value) {
+    if (!$value) { return $false }
+    try {
+        $uri = [uri]$value
+        return $uri.Scheme -eq 'https' -and $uri.Host -eq 'kardeslertekstil.com.tr'
+    } catch { return $false }
+}
+function Test-LocalAsset([string]$value) {
+    if (!(Test-SiteUrl $value)) { return $true }
+    $uri = [uri]$value
+    $relative = [Net.WebUtility]::UrlDecode($uri.AbsolutePath.TrimStart('/')).Replace('/', [IO.Path]::DirectorySeparatorChar)
+    if (!$relative) { return $true }
+    return Test-Path -LiteralPath (Join-Path $siteRoot $relative) -PathType Leaf
+}
+function Test-DateValue([string]$value, [ref]$parsed) {
+    $date = [datetime]::MinValue
+    $valid = $value -match '^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})?)?$' -and [datetime]::TryParse($value, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::RoundtripKind, [ref]$date)
+    $parsed.Value = $date
+    return $valid
+}
+function Test-StringQuality([object]$node, [string]$path, [string]$location) {
+    if ($null -eq $node) { return }
+    if ($node -is [string]) {
+        $value = [string]$node
+        $hasReplacement = $value.IndexOf([char]0xFFFD) -ge 0
+        $hasMojibakeLead = $value.IndexOf([char]0x00C3) -ge 0 -or $value.IndexOf([char]0x00C5) -ge 0
+        if ($hasReplacement -or $hasMojibakeLead -or $value -match '<\/?[a-z][^>]*>') { Add-Error $location "suspicious or marked-up schema value at $path" }
+        return
+    }
+    if ($node -is [Collections.IEnumerable] -and $node -isnot [Management.Automation.PSCustomObject]) {
+        $index = 0
+        foreach ($item in $node) { Test-StringQuality $item "$path[$index]" $location; $index++ }
+        return
+    }
+    if ($node -is [Management.Automation.PSCustomObject]) {
+        foreach ($property in $node.PSObject.Properties) { Test-StringQuality $property.Value "$path.$($property.Name)" $location }
+    }
+}
+
+function U([string]$value) { return [regex]::Unescape($value) }
+$allowedProductMaterials = @(
+    (U 'lakost \u00f6rme kuma\u015f'), (U 'penye \u00f6rme kuma\u015f'), (U 'iki veya \u00fc\u00e7 iplik sweatshirt kuma\u015f\u0131'),
+    (U 'polar kuma\u015f'), (U 'lamineli softshell kuma\u015f'), (U 'i\u015f giysilik dokuma kuma\u015f'),
+    (U 'denim dokuma kuma\u015f'), (U '\u00f6nl\u00fck ve a\u015f\u00e7\u0131 giyimine uygun dokuma kuma\u015f'),
+    (U 'montluk d\u0131\u015f kuma\u015f, astar ve \u0131s\u0131 yal\u0131t\u0131m dolgusu'),
+    (U 'd\u0131\u015f kuma\u015f ve \u0131s\u0131 yal\u0131t\u0131m dolgusu')
+)
 
 $htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Recurse -File -Filter '*.html' | Where-Object {
     $_.FullName -notlike '*\hero-archive\*'
@@ -40,6 +95,7 @@ foreach ($file in $htmlFiles) {
     foreach ($match in [regex]::Matches($html, '<script(?<attrs>[^>]*)type=["'']application/ld\+json["''](?<after>[^>]*)>(?<json>.*?)</script>', 'IgnoreCase,Singleline')) {
         $counts.jsonLdBlocks++
         try { $schema = $match.Groups['json'].Value | ConvertFrom-Json } catch { Add-Error $relativePath 'invalid JSON-LD'; continue }
+        Test-StringQuality $schema '$' $relativePath
         $schemaTypes = @($schema.'@type')
         if (!$schemaTypes.Count) {
             $attributes = $match.Groups['attrs'].Value + $match.Groups['after'].Value
@@ -57,7 +113,13 @@ foreach ($file in $htmlFiles) {
             }
             if ($schema.url -ne $canonical -or $schema.mainEntityOfPage.'@id' -ne $canonical) { Add-Error $relativePath 'BlogPosting URL differs from canonical' }
             if ($schema.publisher.'@id' -ne $organizationId -or $schema.author.'@id' -ne $organizationId) { Add-Error $relativePath 'BlogPosting organization identity is inconsistent' }
-            if ($visibleText -notlike "*$($schema.headline)*") { Add-Error $relativePath 'BlogPosting headline is not visible' }
+            if (!(Test-Visible $visibleText ([string]$schema.headline))) { Add-Error $relativePath 'BlogPosting headline is not visible' }
+            $published = [datetime]::MinValue; $modified = [datetime]::MinValue
+            $publishedValid = Test-DateValue ([string]$schema.datePublished) ([ref]$published)
+            $modifiedValid = Test-DateValue ([string]$schema.dateModified) ([ref]$modified)
+            if (!$publishedValid -or !$modifiedValid) { Add-Error $relativePath 'BlogPosting date format is invalid' }
+            elseif ($modified -lt $published) { Add-Error $relativePath 'BlogPosting dateModified precedes datePublished' }
+            foreach ($image in @($schema.image)) { if (!(Test-LocalAsset ([string]$image))) { Add-Error $relativePath "BlogPosting image file is missing: $image" } }
             continue
         }
         if ($type -eq 'Product') {
@@ -65,10 +127,18 @@ foreach ($file in $htmlFiles) {
             foreach ($field in @('name','description','image','sku','brand','manufacturer','material','category','url','@id')) { if (!$schema.$field) { Add-Error $relativePath "Product missing $field" } }
             $material = ([string]$schema.material -replace '\s+', ' ').Trim()
             if ($material.Length -gt 80 -or $material -match '[{}<>]') { Add-Error $relativePath 'Product material is malformed or overly long' }
+            if ($material -and $allowedProductMaterials -notcontains $material) { Add-Error $relativePath "Product material is outside the verified vocabulary: $material" }
             if ($schema.url -ne $canonical -or $schema.'@id' -ne "$canonical#product") { Add-Error $relativePath 'Product identity differs from canonical' }
-            foreach ($field in @('name','description','sku')) { if ($schema.$field -and $visibleText -notlike "*$($schema.$field)*") { Add-Error $relativePath "Product $field is not visible" } }
-            foreach ($image in @($schema.image)) { $leaf = Split-Path ([uri]$image).AbsolutePath -Leaf; if ($html -notlike "*$leaf*") { Add-Error $relativePath 'Product image is not visible' } }
-            if ($schema.brand.name -and $visibleText -notlike "*$($schema.brand.name)*") { Add-Error $relativePath 'Product brand is not visible' }
+            foreach ($field in @('name','description','sku','material')) { if ($schema.$field -and !(Test-Visible $visibleText ([string]$schema.$field))) { Add-Error $relativePath "Product $field is not visible" } }
+            foreach ($image in @($schema.image)) {
+                $leaf = Split-Path ([uri]$image).AbsolutePath -Leaf
+                if ($html -notlike "*$leaf*") { Add-Error $relativePath 'Product image is not visible' }
+                if (!(Test-LocalAsset ([string]$image))) { Add-Error $relativePath "Product image file is missing: $image" }
+            }
+            if ($schema.brand.name -and !(Test-Visible $visibleText ([string]$schema.brand.name))) { Add-Error $relativePath 'Product brand is not visible' }
+            if ($schema.brand.name -ne (U 'Karde\u015fler Tekstil') -or $schema.manufacturer.'@id' -ne $organizationId) { Add-Error $relativePath 'Product brand or manufacturer identity is inconsistent' }
+            $folderSku = [IO.Path]::GetFileName([IO.Path]::GetDirectoryName($file.FullName)).Split('-')[0..2] -join '-'
+            if ($folderSku -and ([string]$schema.sku).ToLowerInvariant() -ne $folderSku.ToLowerInvariant()) { Add-Error $relativePath "Product SKU differs from its URL: $($schema.sku)" }
             if ($schema.offers) {
                 if (!$schema.offers.price -or !$schema.offers.priceCurrency) { Add-Error $relativePath 'Offer lacks a real price or currency' }
                 if ($visibleText -notlike "*$($schema.offers.price)*") { Add-Error $relativePath 'Offer price is not visible' }
@@ -121,11 +191,25 @@ foreach ($file in $htmlFiles) {
         }
         if ($type -eq 'FAQPage') {
             $counts.faqPages++
+            $seenQuestions = @{}
             foreach ($question in @($schema.mainEntity)) {
                 $questionText = Plain-Text ([string]$question.name)
                 $answerText = Plain-Text ([string]$question.acceptedAnswer.text)
-                if (-not $visibleText.Contains($questionText) -or -not $visibleText.Contains($answerText)) { Add-Error $relativePath 'FAQ schema differs from visible content'; break }
+                $questionKey = Normalized-Text $questionText
+                if (!$questionText -or !$answerText -or $answerText.Length -lt 20) { Add-Error $relativePath 'FAQ contains an empty or trivial question/answer'; break }
+                if ($seenQuestions.ContainsKey($questionKey)) { Add-Error $relativePath 'FAQ contains a duplicate question'; break }
+                $seenQuestions[$questionKey] = $true
+                if (!(Test-Visible $visibleText $questionText) -or !(Test-Visible $visibleText $answerText)) { Add-Error $relativePath 'FAQ schema differs from visible content'; break }
             }
+        }
+        if ($type -eq 'Organization' -or $schemaTypes -contains 'LocalBusiness') {
+            if ($schema.'@id' -ne $organizationId -or $schema.url -ne "$origin/") { Add-Error $relativePath 'Organization identity differs from the canonical entity' }
+            if ($schema.name -ne (U 'Karde\u015fler Tekstil')) { Add-Error $relativePath 'Organization name is inconsistent' }
+            if ($relativePath -eq 'index.html' -and (!$schema.telephone -or !$schema.address)) { Add-Error $relativePath 'Primary Organization identity fields are incomplete' }
+            foreach ($sameAs in @($schema.sameAs)) { if ([string]$sameAs -match 'google\.[^/]+/search|/search\?') { Add-Error $relativePath 'Organization sameAs contains a search-result URL' } }
+        }
+        if ($type -eq 'WebSite') {
+            if ($schema.'@id' -ne "$origin/#website" -or $schema.url -ne "$origin/" -or $schema.publisher.'@id' -ne $organizationId) { Add-Error $relativePath 'WebSite identity is inconsistent' }
         }
     }
 
