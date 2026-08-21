@@ -2315,6 +2315,19 @@ html{scroll-behavior:smooth;}
   border-radius:var(--radius-xl);
 }
 
+@media (min-width:1101px){
+  .catalog-premium .lb-card{
+    height:min(90vh,860px);
+    max-height:min(90vh,860px);
+    grid-template-rows:minmax(0,1fr);
+  }
+  .catalog-premium .lb-stage,
+  .catalog-premium .lb-info{
+    height:100%;
+    min-height:0;
+  }
+}
+
 .catalog-premium .lb-stage{
   background:#fff;
   padding:32px;
@@ -2328,13 +2341,13 @@ html{scroll-behavior:smooth;}
   max-height:100%;
   object-fit:contain;
   object-position:center;
-  transform:scale(.88)!important;
+  transform:scale(.92)!important;
   transform-origin:center!important;
 }
 
 @media (max-width:640px){
   .catalog-premium .lb-stage img{
-    transform:scale(.92)!important;
+    transform:scale(.94)!important;
   }
 }
 
