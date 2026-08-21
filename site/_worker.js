@@ -27,6 +27,7 @@ const LEGACY_PHP_PAGES = new Map([
   ["iletisim", "/iletisim"],
   ["haberler", "/bilgi-merkezi/"],
   ["referanslar", "/referanslarimiz"],
+  ["urunler", "/urunlerimiz/"],
 ]);
 
 // Homepage runtime assets use release-specific paths. Some upstream/browser
@@ -325,6 +326,7 @@ export default {
       /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
       /^\/urun-kategori\//i.test(url.pathname) ||
       /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
+      /^\/comments\/feed\/?$/i.test(url.pathname) ||
       /^\/store\/?$/i.test(url.pathname) ||
       /^\/(?:cart|my-account)(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
