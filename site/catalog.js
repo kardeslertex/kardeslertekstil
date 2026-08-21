@@ -1273,7 +1273,14 @@
     search.focus();
   });
 
-  var initialParams = new URLSearchParams(location.search);
+  var filterHashPrefix = "#filtre?";
+  var initialParams = location.hash.indexOf(filterHashPrefix) === 0
+    ? new URLSearchParams(location.hash.substring(filterHashPrefix.length))
+    : new URLSearchParams(location.search);
+  var initialCategory = initialParams.get("kategori");
+  if (categoryOrder.indexOf(initialCategory) !== -1) {
+    scrollCategoryToStart(initialCategory);
+  }
   if (initialParams.get("esd") === "1") {
     history.replaceState(null, "", "#esd");
     scrollCategoryToStart("esd");

@@ -15,7 +15,7 @@
    id / nav / title / prefix / baseName alanlarını değiştir.
 
    ALANLAR:
-   - id       : bölümün linki (urunlerimiz#id) — değiştirme, diğer sayfalar link veriyor
+   - id       : bölümün linki (urunlerimiz/#id) — değiştirme, diğer sayfalar link veriyor
    - nav      : üstteki yapışkan menüde görünen kısa ad
    - eyebrow  : başlığın üstündeki küçük turuncu yazı
    - title    : bölüm başlığı

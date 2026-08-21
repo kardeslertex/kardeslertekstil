@@ -1,16 +1,16 @@
 {
     "summary":  {
-                    "exportedAt":  "2026-08-17T12:56:29.3267116+00:00",
+                    "exportedAt":  "2026-08-17T14:47:38.2169024+00:00",
                     "project":  "kardeslertekstil.com.tr",
-                    "mutationCount":  66,
-                    "ruleCount":  312,
-                    "candidateRules":  104,
-                    "reviewRules":  127,
-                    "rejectedRules":  81,
+                    "mutationCount":  102,
+                    "ruleCount":  504,
+                    "candidateRules":  165,
+                    "reviewRules":  231,
+                    "rejectedRules":  108,
                     "removedIds":  [
 
                                    ],
-                    "cursor":  "2026-08-17T12:47:12.195Z",
+                    "cursor":  "2026-08-17T14:47:20.964Z",
                     "hasMore":  false
                 },
     "mutations":  [
@@ -2577,6 +2577,1610 @@
                                             "action":  "set_attribute",
                                             "attribute":  "content",
                                             "value":  "Doğru iş montunu nasıl seçersiniz? Kumaş, model ve kullanım alanına göre teknik seçim kriterlerini uzmanından öğrenin. Hemen inceleyin!"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a81ca1110da530fb7604c9a",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/alev-korumali-kiyafete-logo-uygulamasi",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Alev Korumalı Kıyafette Logo Uygulama Rehberi\",\"description\":\"Alev korumalı kıyafetlerde logo, arma ve transfer yöntemlerinin risklerini inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi/alev-korumali-kiyafete-logo-uygulamasi"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Alev Korumalı Kıyafette Logo Uygulama | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Alev korumalı kıyafetlerde logo, arma ve transfer yöntemlerinin risklerini inceleyin. Sertifikalı uygulama detayları için tıklayın."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a8200f1f40c7e392673525f",
+                          "url":  "https://kardeslertekstil.com.tr/urun/kt-pl-016-petrol-antrasit-panelli-teknik-polar-mont",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Teknik Polar Mont KT-PL-016\",\"description\":\"Petrol renk anti-pilling polar ve antrasit panelli teknik mont.\",\"brand\":{\"@type\":\"Brand\",\"name\":\"Kardeşler Tekstil\"},\"sku\":\"KT-PL-016\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"viewport\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "viewport",
+                                                                                    "content":  "width=device-width, initial-scale=1"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Teknik Polar Mont: Petrol Antrasit | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Petrol renk anti-pilling polar ve antrasit panelli teknik mont. Saha ekipleri için dayanıklı tasarım. Hemen inceleyin!"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82a78a7f9d8d736423198d",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/tedarikci-performans-puan-karti-kalite-termin-maliyet",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafeti Tedarikçi Puan Kartı Nasıl Oluşturulur?\",\"description\":\"İş kıyafeti tedarikçilerini kalite, zamanında teslimat, numune hızı ve maliyet kriterlerine göre puanlama rehberi.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Tedarikçi puan kartı uygulaması, iş kıyafeti tedarik süreçlerinizde kararların sadece son teslimat izlenimine değil, somut ve dönemsel verilere dayandırılmasını sağlar. Bu sistemle tedarikçi performansını kalite, numune hızı ve maliyet gibi kritik metriklerle objektif olarak ölçebilirsiniz."
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Tedarikçi Puan Kartı Oluşturma Rehberi | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafeti tedarikçi performansını kalite, teslimat ve maliyet kriterleriyle profesyonelce ölçün. Veriye dayalı yönetim için hemen rehberimizi inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82ad9a7f9d8d7364237ce4",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-pantolonunda-formlu-diz-kalibi",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Pantolonunda Formlu Diz Kalıbı: Ergonomi Rehberi\",\"description\":\"İş pantolonunda formlu diz kalıbının avantajlarını keşfedin. Pens, dikiş ve hareket kabiliyeti üzerine teknik detaylar için hemen tıklayın.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-08-01\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "İş pantolonunda formlu diz kalıbı, iş güvenliği kıyafetlerinde hareket özgürlüğü sağlamak için kritik bir teknik detaydır. Bu yazımızda, diz kalıbının ergonomik yapısını ve üretimdeki önemini inceliyoruz."
+                                        },
+                                        {
+                                            "selector":  "div.container, article, .post-content",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Pantolonunda Formlu Diz Kalıbı | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş pantolonunda formlu diz kalıbının avantajlarını keşfedin. Pens, dikiş ve hareket kabiliyeti üzerine teknik detaylar için hemen tıklayın."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82ae1d7f9d8d7364238279",
+                          "url":  "https://kardeslertekstil.com.tr/iletisim?urun=lacivert%20petrol%20fermuar%20cepli%20polo%20%c4%b0%c5%9f%20ti%c5%9f%c3%b6rt%c3%bc",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h3",
+                                            "action":  "change_tag",
+                                            "value":  "h2",
+                                            "matchText":  "WHATSAPP İLE HIZLI GÖRÜŞÜN",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/iletisim?urun=lacivert%20petrol%20fermuar%20cepli%20polo%20%c4%b0%c5%9f%20ti%c5%9f%c3%b6rt%c3%bc"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/iletisim?urun=lacivert%20petrol%20fermuar%20cepli%20polo%20%c4%b0%c5%9f%20ti%c5%9f%c3%xb6rt%c3%bc"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px;overflow-x:hidden}img,table{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Teklif Al ve İletişim | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Pendik ve Kaynarca\u0027da kurumsal iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifi hazırlayalım."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82af1d7f9d8d7364238ad8",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/kaynakci-kiyafetleri-secim-rehberi-2026",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Kaynakçı Kıyafetleri Seçim Rehberi 2026\",\"description\":\"Kaynakçı kıyafetlerinde EN ISO 11611 sınıfları, kumaş, model, kıvılcım, sıçrama, bakım ve doğru ürün seçimini inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Kaynak ve benzeri yüksek riskli işlemlerde, kıvılcım, metal sıçraması ve radyan ısı gibi tehlikelere karşı doğru koruyucu kıyafet seçimi hayati önem taşır. Bu rehberde, EN ISO 11611 standartlarına uygun, iş güvenliğini en üst düzeye çıkaran kumaş ve model özelliklerini detaylandırıyoruz."
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Kaynakçı Kıyafetleri Seçimi: EN ISO | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Kaynakçı kıyafetlerinde EN ISO 11611 standartlarını, doğru kumaş ve model seçimini uzmanından öğrenin. Güvenliğinizi riske atmayın, hemen inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82b6a67f9d8d73642415ca",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/tekstil-uretim-personeli-is-kiyafetleri",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Tekstil Üretim Personeli İş Kıyafetleri: 2026 Rehberi\",\"description\":\"İplik, dokuma, örme, boya-terbiye, kesim ve dikim ekipleri için tüy, statik, kimyasal, makine, sıcaklık, model ve renk bazlı kıyafet planlayın.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Tekstil fabrikasında hammaddeden konfeksiyona uzanan her bölüm; toz, makine, kimyasal ve kalite gereksinimleri açısından farklılık gösterir. Tekstil üretim personeli kıyafetleri, hem çalışan güvenliğini sağlamalı hem de ürünün lif, kir ve yabancı maddeyle kontamine olmasını engellemelidir."
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"robots\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "robots",
+                                                                                    "content":  "index, follow"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi/tekstil-uretim-personeli-is-kiyafetleri"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Tekstil Üretim Personeli İş Kıyafetleri: 2026 Rehberi"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Tekstil üretim personeli kıyafetleri seçiminde kritik standartlar! İplik, boya ve dikim ekipleri için güvenli ve verimli kıyafet planını keşfedin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82b7217f9d8d7364241c2a",
+                          "url":  "https://kardeslertekstil.com.tr/iletisim?urun=polar%20%c4%b0%c5%9f%20montu\u0026mesaj=polar%20%c4%b0%c5%9f%20montu%20i%c3%a7in%20adet%2c%20beden%2c%20logo%20ve%20teslimat%20bilgilerini%20i%c3%a7eren%20yaz%c4%b1l%c4%b1%20teklif%20almak%20istiyorum.",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h3",
+                                            "action":  "change_tag",
+                                            "value":  "h2",
+                                            "matchText":  "WHATSAPP İLE HIZLI GÖRÜŞÜN",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/iletisim?urun=polar%20%c4%b0%c5%9f%20montu\u0026mesaj=polar%20%c4%b0%c5%9f%20montu%20i%c3%a7in%20adet%2c%20beden%2c%20logo%20ve%20teslimat%20bilgilerini%20i%c3%a7eren%20yaz%c4%b1l%c4%b1%20teklif%20almak%20istiyorum."
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Teklif Al \u0026 İletişim | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafeti teklifi almak için hemen formu doldurun. Pendik merkezli üretim tesisimizle hızlı ve kaliteli çözümler sunuyoruz."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82b74c7f9d8d7364241e45",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-sezon-oncesi-hazirlik-kontrolu",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Sezon Öncesi Hazırlık | Kardeşler Tekstil"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82b80f7f9d8d736424254d",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/pantolonda-ag-korugu-nedir",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Pantolonunda Ağ Körüğü Nedir? 5 Kritik Avantajı İnceleyin\",\"description\":\"İş pantolonunda ağ körüğü kullanımının hareket konforu, dikiş dayanımı ve kumaş ömrü üzerindeki etkilerini uzmanından öğrenin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "İş pantolonunda ağ körüğü, konstrüksiyonun en kritik detaylarından biridir. Bu teknik parçanın doğru kullanımı, pantolonun hareket kabiliyetini artırırken dikişlerin patlama riskini minimize eder."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "speakable"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Speakable\",\"cssSelector\":[\"h1\",\"p:first-of-type\"]}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "img[src*=\u0027bilgi-merkezi/pantolonda-ag-korugu-nedir\u0027]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "alt",
+                                            "value":  "İş pantolonu ağ körüğü dikiş yapısı ve hareket konforu detayı"
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Pantolonunda Ağ Körüğü Nedir? 5 | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "description",
+                                                                                    "content":  "İş pantolonunda ağ körüğü kullanımının hareket konforu, dikiş dayanımı ve kumaş ömrü üzerindeki etkilerini uzmanından öğrenin. Detaylar için tıklayın."
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82ba757f9d8d7364243c37",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-nakis-uretim-sureci",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafetlerinde Nakış Üretim Süreci\",\"description\":\"İş kıyafetlerinde nakış üretim aşamalarını, logo dijitalleştirme ve kalite kontrol süreçlerini teknik detaylarıyla inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Nakış Üretim Süreci: 5 Adımda Kalite | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafetlerinde nakış üretim aşamalarını keşfedin. Logo dijitalleştirme, iplik seçimi ve kalite kontrol süreçlerini inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82bdb67f9d8d7364248934",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/polar-is-kiyafetlerinde-lif-dokulmesi-kontrolu",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Polar İş Kıyafetlerinde Lif Dökülmesi | Kardeşler Tekstil"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a82be1e7f9d8d7364248d7b",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetleri%20rehberi%202026",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetleri%20rehberi%202026"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetleri%20rehberi%202026"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Rehberi ve Bilgi Merkezi | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafetleri seçimi, kumaş özellikleri ve iş güvenliği standartları hakkında uzman rehberini keşfedin. Verimliliği artıracak detaylar burada."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a830c96caa62c476b4a8b9d",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=y%c3%bcksek%20g%c3%b6r%c3%bcn%c3%bcrl%c3%bckl%c3%bc%20%c4%b0%c5%9f%20k%c4%b1yafetleri%20s%c4%b1n%c4%b1flar%c4%b1",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=y%c3%bcksek%20g%c3%b6r%c3%bcn%c3%bcrl%c3%bckl%c3%bc%20%c4%b0%c5%9f%20k%c4%b1yafetleri%20s%c4%b1n%c4%b1flar%c4%b1"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=y%c3%bcksek%20g%c3%b6r%c3%bcnl%c3%bckl%c3%bc%20%c4%b0%5f%20k%c4%b1yafetleri%20s%c4%b1n%c4%b1flar%c4%b1"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafetleri Bilgi Merkezi: Kumaş ve | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafetleri, kumaş seçimi, kurumsal tekstil üretimi ve iş güvenliği standartları hakkında teknik detayları keşfedin. Uzman rehberimizi hemen inceleyin."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a8310b2caa62c476b4aa670",
+                          "url":  "https://kardeslertekstil.com.tr/iletisim?urun=personel%20k%c4%b1yafeti",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h3",
+                                            "action":  "change_tag",
+                                            "value":  "h2",
+                                            "matchText":  "WHATSAPP İLE HIZLI GÖRÜŞÜN",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/iletisim?urun=personel%20k%c4%b1yafeti"
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "Kurumsal İş Kıyafeti Teklif ve İletişim Merkezi"
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Teklif Al ve İletişim | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Pendik ve Kaynarca\u0027da kurumsal iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifimizi keşfedin."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a83121ecaa62c476b4ac49e",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/cam-seramik-sektoru-is-kiyafetleri",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cam ve Seramik Sektörü İş Kıyafetleri Rehberi\",\"description\":\"Cam ve seramik üretiminde ısı, kesilme ve kimyasal risklerine karşı koruyucu iş kıyafetleri hakkında teknik bilgiler.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "Cam ve Seramik Sektörü İçin Profesyonel İş Kıyafetleri"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Cam ve Seramik Sektörü İş Kıyafetleri | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Cam ve seramik üretiminde ısı, kesilme ve kimyasal risklerine karşı koruyucu iş kıyafetlerini keşfedin. Profesyonel çözümler için hemen inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a83123acaa62c476b4ac5d9",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/yazlik-is-kiyafetleri-rehberi",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Yazlık İş Kıyafetleri Rehberi: Teknik Seçim Kriterleri\",\"description\":\"Sıcak çalışma ortamları için kumaş, model ve kullanım alanı bazlı yazlık iş kıyafeti seçim rehberi.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"viewport\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "viewport",
+                                                                                    "content":  "width=device-width, initial-scale=1"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Yazlık İş Kıyafetleri Rehberi: Teknik | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Yazlık iş kıyafetleri seçiminde kumaş, model ve dayanıklılık kriterlerini keşfedin. Personel konforu ve iş güvenliği için teknik rehberimizi inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831546caa62c476b4ae89a",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/buyuk-beden-is-kiyafeti-secim-rehberi",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Büyük Beden İş Kıyafeti Seçim Rehberi: 5 Kritik İpucu\",\"description\":\"Büyük beden iş kıyafetinde yalnız çevreyi büyütmek yerine oran, hareket, cep erişimi, ürün boyu ve güçlendirme noktalarını değerlendirin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Büyük beden iş kıyafeti seçiminde doğru kalıbı bulmak, sadece çevreyi büyütmekten çok daha fazlasını gerektirir. İş güvenliği ve konfor için oran, hareket alanı, cep erişimi ve güçlendirilmiş dikiş noktaları gibi teknik detaylar hayati önem taşır."
+                                        },
+                                        {
+                                            "selector":  "html",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}img,table{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Büyük Beden İş Kıyafeti Seçim Rehberi | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Büyük beden iş kıyafeti seçiminde uzman teknik detayları keşfedin. Hareket kabiliyeti ve dayanıklılık için en iyi yöntemler bu rehberde."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831ad2caa62c476b4b1a6a",
+                          "url":  "https://kardeslertekstil.com.tr/urun/kt-on-019-antrasit-kruvaze-sef-ceketi",
+                          "updatedAt":  "2026-08-17T14:32:06.017Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Antrasit Kruvaze Şef Ceketi KT-ON-019\",\"description\":\"Antrasit kruvaze şef ceketi. Hakim yaka, kruvaze düğme detaylı profesyonel mutfak kıyafeti.\",\"brand\":{\"@type\":\"Brand\",\"name\":\"Kardeşler Tekstil\"},\"sku\":\"KT-ON-019\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "div.product-description-container",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "div",
+                                                                 "attributes":  {
+                                                                                    "class":  "product-description-container"
+                                                                                },
+                                                                 "text":  "\u003cp\u003eKT-ON-019 model antrasit kruvaze şef ceketi, profesyonel mutfaklarda yüksek performans ve estetik sunar.\u003c/p\u003e"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Antrasit Kruvaze Şef Ceketi KT-ON-019 | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Antrasit kruvaze şef ceketi (KT-ON-019) ile profesyonel mutfaklara şıklık katın. Hakim yaka ve dayanıklı kumaş. Hemen inceleyin!"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831c60caa62c476b4b2906",
+                          "url":  "https://kardeslertekstil.com.tr/uzun-is-kabani",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "img[src=\"https://kardeslertekstil.com.tr/wp-content/uploads/2024/01/is-kabani-uretim.jpg\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "alt",
+                                            "value":  "Dolgulu ve kapüşonlu uzun iş kabanı üretim detayı"
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{overflow-x:hidden}img,table{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Uzun İş Kabanı Üretimi: %100 Dayanıklı | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Yüksek dayanımlı uzun iş kabanı üretimi. Dolgulu, kapüşonlu ve kurumsal logolu kışlık personel kabanları için hemen teklif alın."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831c7ccaa62c476b4b2a96",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-rol-bazli-urun-seti-mimarisi",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafeti Rol Bazlı Ürün Seti Mimarisi Nasıl Kurulur?\",\"description\":\"Departman ve görev bazlı ürün seti mimarisi ile iş kıyafeti yönetimini standartlaştırın.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-08-02\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "İş kıyafeti tedarik süreçlerinde verimliliği artırmak için aynı kıyafeti tüm personele dağıtmak yerine, rol bazlı bir ürün seti mimarisi kurmak kritik bir adımdır. Bu stratejik yaklaşım; maliyet kontrolü, personel konforu ve operasyonel hızın optimize edilmesini sağlar."
+                                        },
+                                        {
+                                            "selector":  "div.entry-content",
+                                            "action":  "add_class",
+                                            "value":  "mobile-responsive-fix"
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{overflow-x:hidden}table{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Rol Bazlı Ürün Seti | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafeti yönetimini standartlaştırın! Rol bazlı ürün seti mimarisi ile maliyet ve konforu artıracak stratejik kurulum rehberini keşfedin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831cbdcaa62c476b4b2de6",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/kumas-gramaji-nedir-gsm",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "Kumaş Gramajı (GSM) Nedir? Doğru Değer Nasıl Seçilir?"
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Kumaş Gramajı (GSM) Nedir? Doğru Değer Nasıl Seçilir?\",\"description\":\"Kumaş gramajı (GSM) nedir? İş kıyafetlerinde doğru kumaş ağırlığı nasıl seçilir? Dayanıklılık ve konfor için teknik detayları keşfedin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "2"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Kumaş gramajı (GSM) nedir?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Gramaj, kumaşın bir metrekaredeki ağırlığını gram cinsinden ifade eder ve g/m² ya da GSM olarak yazılır.\"}},{\"@type\":\"Question\",\"name\":\"GSM değeri kumaş kalitesini belirler mi?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Gramaj tek başına kaliteyi belirlemez; lif, iplik, yapı ve terbiye işlemleriyle birlikte değerlendirilmelidir.\"}}]}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Kumaş gramajı (GSM) nedir? İş kıyafetlerinde kumaş seçimi; ürünün görünümünü, hareket konforunu, bakım ihtiyacını ve kullanım ömrünü doğrudan etkiler. Kumaş adı tek başına kaliteyi açıklamaz; lif, iplik, yapı, gramaj, boya ve terbiye birlikte değerlendirilmelidir."
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"rwbt\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "speakable",
+                                                                                    "content":  "Kumaş Gramajı Nedir? GSM Değeri Nasıl Seçilir?"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "div.container",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}img{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Kumaş Gramajı (GSM) Nedir? Seçim | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Kumaş gramajı (GSM) nedir? İş kıyafetlerinde doğru kumaş ağırlığı nasıl seçilir? Dayanıklılık ve konfor için teknik detayları hemen keşfedin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831cd0caa62c476b4b2f0e",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/en-iso-11611-kaynak-koruyucu-kiyafet-standardi",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "EN ISO 11611 Kaynak ve Benzeri İşlemler | Kardeşler Tekstil"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831cfccaa62c476b4b321e",
+                          "url":  "https://kardeslertekstil.com.tr/iletisim?urun=siyah%20gri%20omuz%20garnili%20sweatshirt",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h3",
+                                            "action":  "change_tag",
+                                            "value":  "h2",
+                                            "matchText":  "WHATSAPP İLE HIZLI GÖRÜŞÜN",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/iletisim?urun=siyah%20gri%20omuz%20garnili%20sweatshirt"
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "Kurumsal İş Kıyafeti Teklif ve İletişim Merkezi"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/iletisim?urun=siyah%20gri%20omuz%20garnili%20sweatshirt"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Pendik İş Kıyafeti Teklifi Alın | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Pendik ve Kaynarca\u0027da profesyonel iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifinizi hazırlayalım."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831d10caa62c476b4b33cb",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretim-sureci",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafeti Üretim Süreci Rehberi\",\"description\":\"Profesyonel iş kıyafeti üretim aşamalarını keşfedin. Kumaş seçiminden teslimata kadar tüm süreci detaylıca inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-01-01\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "div",
+                                                                 "attributes":  {
+                                                                                    "class":  "tldr-box"
+                                                                                },
+                                                                 "text":  "\u003cdiv class=\u0027tldr-box\u0027\u003e\u003cstrong\u003eÖzet:\u003c/strong\u003e İş kıyafeti üretimi; kumaş seçimi, kalıp hazırlama, dikim ve kalite kontrol aşamalarından oluşan titiz bir süreçtir.\u003c/div\u003e"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Üretim Süreci Rehberi — Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Profesyonel iş kıyafeti üretim aşamalarını keşfedin. Kumaş seçiminden teslimata kadar tüm süreci detaylıca inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831d2ccaa62c476b4b35d7",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20k%c4%b1yafeti%20fiyatlar%c4%b1%202026%3a%20fiyatlar%c4%b1%20neler%20belirler%3f",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20k%c4%b1yafeti%20fiyatlar%c4%b1%202026%3a%20fiyatlar%c4%b1%20neler%20belirler%3f"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"robots\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "robots",
+                                                                                    "content":  "index, follow"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Rehberi ve Bilgi Merkezi | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafetleri seçimi, kumaş özellikleri ve iş güvenliği standartları hakkında uzman rehberleri keşfedin. Üretim detayları için hemen inceleyin."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831d60caa62c476b4b4152",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/veteriner-klinigi-personel-kiyafetleri",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Veteriner Kliniği Personel Kıyafetleri: 5 Kritik Kriter\",\"description\":\"Veteriner kliniği kıyafetlerini hayvan teması, sıvı ve tüy, çizilme, hareket, cep, renk, çapraz bulaşma, yıkama ve bölüm ayrımına göre seçin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "p:first-of-type",
+                                            "action":  "replace_text",
+                                            "value":  "Veteriner kliniği personel kıyafetleri seçimi, klinik hijyeni ve personel güvenliği açısından kritik bir teknik süreçtir. Bu rehberde, sıvı teması, tüy tutmama ve çapraz bulaşmayı önleme gibi hayati özellikleri nasıl değerlendireceğinizi inceleyeceğiz."
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Veteriner Kliniği Personel Kıyafetleri | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Veteriner kliniği kıyafetlerini hayvan teması, sıvı ve tüy, çizilme, hareket, cep, renk, çapraz bulaşma, yıkama ve bölüm ayrımına göre seçin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831d96caa62c476b4b4545",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-bom-malzeme-listesi",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafeti BOM Malzeme Listesi Rehberi\",\"description\":\"BOM dosyasında kumaş, aksesuar ve ambalaj kalemlerini doğru yönetin. Maliyet ve fire kontrolü için detaylı rehberimizi inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-29\"}",
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti BOM Malzeme Listesi Rehberi | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "BOM dosyasında kumaş, aksesuar ve ambalaj kalemlerini doğru yönetin. Maliyet ve fire kontrolü için detaylı rehberimizi inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831d9ecaa62c476b4b45ee",
+                          "url":  "https://kardeslertekstil.com.tr/urun/kt-pl-029-lacivert-bordo-takviyeli-polar-mont",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Lacivert Bordo Takviyeli Polar Mont KT-PL-029\",\"description\":\"Lacivert polar gövdeyi bordo omuz panelleri, grafit dirsek takviyeleri ve ince reflektif biyelerle tamamlayan tam fermuarlı polar monttur.\",\"sku\":\"KT-PL-029\",\"brand\":{\"@type\":\"Brand\",\"name\":\"Kardeşler Tekstil\"}}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:1024px){body{overflow-x:hidden}img{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Lacivert Bordo Takviyeli Polar Mont | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Dayanıklı lacivert polar gövde ve bordo omuz panelleriyle üretilen takviyeli polar mont modelini keşfedin. Hemen teklif almak için tıklayın."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831daacaa62c476b4b46f0",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/yuksek-gorunurluklu-is-kiyafetleri-siniflari",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"EN ISO 20471 İş Kıyafeti Sınıfları Rehberi\",\"description\":\"EN ISO 20471 Sınıf 1, 2 ve 3 arasındaki farklar, floresan ve reflektif alan kullanımı hakkında teknik rehber.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"EN ISO 20471 İş Kıyafeti Sınıfları Rehberi\",\"description\":\"EN ISO 20471 Sınıf 1, 2 ve 3 arasındaki farklar, floresan ve reflektif alan kullanımı hakkında teknik rehber.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}",
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "EN ISO 20471 İş Kıyafeti Sınıfları | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "EN ISO 20471 iş kıyafeti sınıflarını (1, 2, 3) keşfedin. Doğru reflektif ve floresan seçimini öğrenmek için rehberimizi inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831de1caa62c476b4b4a5d",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/muze-sergi-kurulum-ekibi-is-kiyafetleri",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Müze ve Sergi Kurulum Ekibi İş Kıyafetleri Rehberi\",\"description\":\"Müze ve sergi kurulum ekibi için hassas eser yüzeyi, kaldırma işi ve ziyaretçi alanı koşullarına uygun teknik iş kıyafeti standartları.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-01-01\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Müze ve Sergi Kurulum Ekibi İş | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Müze ve sergi kurulum ekibi için dayanıklı iş kıyafetleri çözümleri. Hassas eser koruması ve saha güvenliği için teknik detayları hemen keşfedin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831dfacaa62c476b4b4c31",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/mikro-pike-kumas-nedir",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "SİTE",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "Mikro Pike Kumaş Nedir? Teknik Özellikler ve Kullanım Rehberi"
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Mikro Pike Kumaş Nedir? Teknik Özellikler ve Kullanım Rehberi\",\"description\":\"Mikro pike kumaşın teknik özellikleri, avantajları ve iş kıyafetlerindeki kullanım alanlarını keşfedin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi/mikro-pike-kumas-nedir"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "replace_text",
+                                            "value":  "Mikro pike kumaş, klasik pike dokusuna kıyasla daha sık ve küçük bir yüzey yapısına sahip olan özel bir örme kumaş türüdür. Özellikle iş kıyafetleri üretiminde dayanıklılığı ve konforu bir arada sunması nedeniyle tercih edilmektedir."
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Mikro Pike Kumaş Nedir? Özellikleri ve | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "description",
+                                                                                    "content":  "Mikro pike kumaşın teknik özellikleri, avantajları ve iş kıyafetlerindeki kullanım alanlarını keşfedin. Doğru kumaş seçimi için uzman rehberi."
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831e12caa62c476b4b4d9e",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=kuma%c5%9f%20gramaj%c4%b1%20nedir%3f%20gsm%20de%c4%9feri%20nas%c4%b1l%20se%c3%a7ilir%3f",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=kuma%c5%9f%20gramaj%c4%b1%20nedir%3f%20gsm%20de%c4%9feri%20nas%c4%b1l%20se%c3%a7ilir%3f"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=kuma%c5%9f%20gramaj%c4%b1%20nedir%3f%20gsm%20de%c4%9feri%20nas%c4%b1l%20se%c3%a7ilir%3f"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Bilgi Merkezi: Kumaş ve | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafetleri, kumaş seçimi ve iş güvenliği hakkında teknik rehberler. Detaylı bilgi için hemen inceleyin."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831e23caa62c476b4b4f0f",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetlerinde%20beden%20ve%20ergonomi",
+                          "updatedAt":  "2026-08-17T14:47:10.143Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty",
+                                            "action":  "remove_element",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "href",
+                                            "value":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetlerinde%20beden%20ve%20ergonomi"
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetlerinde%20beden%20ve%20ergonomi"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px}img,video,table{max-width:100%;height:auto}body{overflow-x:hidden}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Rehberi: Kumaş ve Üretim | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş güvenliği kıyafetleri, kumaş seçimi ve kurumsal tekstil üretimi hakkında teknik bilgiler. Uzman rehberimizi hemen keşfedin."
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "remove_element"
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831c18caa62c476b4b260e",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/seramik-uretim-tesisi-is-kiyafetleri",
+                          "updatedAt":  "2026-08-17T14:47:20.964Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Seramik Üretim Tesisi İş Kıyafetleri: 5 Kritik Kriter\",\"description\":\"Seramik üretiminde toz, sır ve boya riskine karşı en doğru iş kıyafetlerini seçin. Dayanıklı ve konforlu ürün setleri için rehberimizi inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-08-01\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi/seramik-uretim-tesisi-is-kiyafetleri"
+                                                                                },
+                                                                 "appendTo":  "head"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "body",
+                                            "action":  "inject_css",
+                                            "css":  "@media (max-width:768px){body{font-size:16px;overflow-x:hidden}img,table{max-width:100%;height:auto}}"
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "Seramik Üretim Tesisi İş Kıyafetleri: 5 | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "Seramik üretiminde toz, sır ve boya riskine karşı en doğru iş kıyafetlerini seçin. Dayanıklı ve konforlu ürün setleri için rehberimizi inceleyin."
+                                        }
+                                    ]
+                      },
+                      {
+                          "id":  "6a831c21caa62c476b4b26a7",
+                          "url":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretiminde-kumas-kesim-sureci",
+                          "updatedAt":  "2026-08-17T14:47:20.964Z",
+                          "rules":  [
+                                        {
+                                            "selector":  "h4",
+                                            "action":  "change_tag",
+                                            "value":  "h3",
+                                            "matchText":  "Site",
+                                            "selectAll":  true
+                                        },
+                                        {
+                                            "selector":  "h1",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Üretiminde Kumaş Kesim Süreci ve Teknik Detaylar"
+                                        },
+                                        {
+                                            "selector":  "script[type=\"application/ld+json\"][data-kaf-schema]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "script",
+                                                                 "attributes":  {
+                                                                                    "type":  "application/ld+json",
+                                                                                    "data-kaf-schema":  "1"
+                                                                                },
+                                                                 "text":  "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"İş Kıyafeti Üretiminde Kumaş Kesim Süreci\",\"description\":\"İş kıyafeti üretiminde kumaş kesim sürecini, pastal hazırlama ve parça takibi aşamalarını teknik detaylarıyla inceleyin.\",\"author\":{\"@type\":\"Organization\",\"name\":\"Kardeşler Tekstil\"},\"datePublished\":\"2026-07-28\"}"
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"robots\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "robots",
+                                                                                    "content":  "index, follow"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "link[rel=\"canonical\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "link",
+                                                                 "attributes":  {
+                                                                                    "rel":  "canonical",
+                                                                                    "href":  "https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretiminde-kumas-kesim-sureci"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"viewport\"]",
+                                            "action":  "create_if_missing",
+                                            "createObject":  {
+                                                                 "tag":  "meta",
+                                                                 "attributes":  {
+                                                                                    "name":  "viewport",
+                                                                                    "content":  "width=device-width, initial-scale=1"
+                                                                                }
+                                                             }
+                                        },
+                                        {
+                                            "selector":  "title",
+                                            "action":  "replace_text",
+                                            "value":  "İş Kıyafeti Kumaş Kesim Süreci | Kardeşler Tekstil"
+                                        },
+                                        {
+                                            "selector":  "meta[name=\"description\"]",
+                                            "action":  "set_attribute",
+                                            "attribute":  "content",
+                                            "value":  "İş kıyafeti üretiminde kumaş kesim sürecini uzmanından öğrenin. Pastal hazırlama, kalıp yerleşimi ve parça takibi ile hatasız üretim teknikleri burada."
                                         }
                                     ]
                       }

@@ -36,7 +36,7 @@ $payload = @{
     method = 'tools/call'
     params = @{
         name = 'get_seo_fixes'
-        arguments = @{}
+        arguments = @{ limit = 500 }
     }
 } | ConvertTo-Json -Depth 10 -Compress
 

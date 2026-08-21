@@ -61,12 +61,6 @@
   function initPrivacyControls() {
     var storageKey = "kt_cookie_consent_v1";
     var analyticsStarted = false;
-    if (!document.querySelector('link[href^="/privacy.css"]')) {
-      var privacyStyles = document.createElement("link");
-      privacyStyles.rel = "stylesheet";
-      privacyStyles.href = "/privacy.css?v=20260807-3";
-      document.head.appendChild(privacyStyles);
-    }
 
     function startAnalyticsOnce() {
       if (analyticsStarted) return;
@@ -406,7 +400,7 @@
       actions.className = "quote-list-actions";
       var submit = document.createElement("a");
       submit.className = "btn btn-primary";
-      submit.href = "/iletisim?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage()) + "#teklif-formu";
+      submit.href = "/iletisim#teklif-formu?urun=" + encodeURIComponent("Özel Tasarım") + "&mesaj=" + encodeURIComponent(quoteMessage());
       submit.textContent = "Liste İçin Yazılı Teklif İsteyin";
       submit.addEventListener("click", function () {
         track("quote_list_submit", { item_count: items.length, product_codes: items.map(function (item) { return item.code; }).join(",") });

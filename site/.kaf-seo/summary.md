@@ -1,11 +1,11 @@
 # KAF SEO aktarım özeti
 
-- Aktarım zamanı: 2026-08-17T12:56:29.3267116+00:00
-- Mutasyon: 66
-- Toplam kural: 312
-- Meta içerik adayı: 104
-- Manuel inceleme: 127
-- Reddedilen: 81
+- Aktarım zamanı: 2026-08-17T14:47:38.2169024+00:00
+- Mutasyon: 102
+- Toplam kural: 504
+- Meta içerik adayı: 165
+- Manuel inceleme: 231
+- Reddedilen: 108
 
 ## Meta içerik adayları
 
@@ -113,10 +113,71 @@
 - https://kardeslertekstil.com.tr/bilgi-merkezi/madencilik-sektoru-is-kiyafetleri - meta[name="description"]: Madencilikte güvenlik için en doğru kıyafetleri keşfedin. Yer altı ve açık ocak şartlarına uygun, yüksek görünürlüklü iş kıyafetleri rehberi.
 - https://kardeslertekstil.com.tr/bilgi-merkezi/is-montu-secim-rehberi - title: İş Montu Seçim Rehberi: 5 Kritik Kriter | Kardeşler Tekstil
 - https://kardeslertekstil.com.tr/bilgi-merkezi/is-montu-secim-rehberi - meta[name="description"]: Doğru iş montunu nasıl seçersiniz? Kumaş, model ve kullanım alanına göre teknik seçim kriterlerini uzmanından öğrenin. Hemen inceleyin!
+- https://kardeslertekstil.com.tr/bilgi-merkezi/alev-korumali-kiyafete-logo-uygulamasi - title: Alev Korumalı Kıyafette Logo Uygulama | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/alev-korumali-kiyafete-logo-uygulamasi - meta[name="description"]: Alev korumalı kıyafetlerde logo, arma ve transfer yöntemlerinin risklerini inceleyin. Sertifikalı uygulama detayları için tıklayın.
+- https://kardeslertekstil.com.tr/urun/kt-pl-016-petrol-antrasit-panelli-teknik-polar-mont - title: Teknik Polar Mont: Petrol Antrasit | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/urun/kt-pl-016-petrol-antrasit-panelli-teknik-polar-mont - meta[name="description"]: Petrol renk anti-pilling polar ve antrasit panelli teknik mont. Saha ekipleri için dayanıklı tasarım. Hemen inceleyin!
+- https://kardeslertekstil.com.tr/bilgi-merkezi/tedarikci-performans-puan-karti-kalite-termin-maliyet - title: Tedarikçi Puan Kartı Oluşturma Rehberi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/tedarikci-performans-puan-karti-kalite-termin-maliyet - meta[name="description"]: İş kıyafeti tedarikçi performansını kalite, teslimat ve maliyet kriterleriyle profesyonelce ölçün. Veriye dayalı yönetim için hemen rehberimizi inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-pantolonunda-formlu-diz-kalibi - title: İş Pantolonunda Formlu Diz Kalıbı | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-pantolonunda-formlu-diz-kalibi - meta[name="description"]: İş pantolonunda formlu diz kalıbının avantajlarını keşfedin. Pens, dikiş ve hareket kabiliyeti üzerine teknik detaylar için hemen tıklayın.
+- https://kardeslertekstil.com.tr/iletisim?urun=lacivert%20petrol%20fermuar%20cepli%20polo%20%c4%b0%c5%9f%20ti%c5%9f%c3%b6rt%c3%bc - title: İş Kıyafeti Teklif Al ve İletişim | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/iletisim?urun=lacivert%20petrol%20fermuar%20cepli%20polo%20%c4%b0%c5%9f%20ti%c5%9f%c3%b6rt%c3%bc - meta[name="description"]: Pendik ve Kaynarca'da kurumsal iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifi hazırlayalım.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/kaynakci-kiyafetleri-secim-rehberi-2026 - title: Kaynakçı Kıyafetleri Seçimi: EN ISO | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/kaynakci-kiyafetleri-secim-rehberi-2026 - meta[name="description"]: Kaynakçı kıyafetlerinde EN ISO 11611 standartlarını, doğru kumaş ve model seçimini uzmanından öğrenin. Güvenliğinizi riske atmayın, hemen inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/tekstil-uretim-personeli-is-kiyafetleri - title: Tekstil Üretim Personeli İş Kıyafetleri: 2026 Rehberi
+- https://kardeslertekstil.com.tr/bilgi-merkezi/tekstil-uretim-personeli-is-kiyafetleri - meta[name="description"]: Tekstil üretim personeli kıyafetleri seçiminde kritik standartlar! İplik, boya ve dikim ekipleri için güvenli ve verimli kıyafet planını keşfedin.
+- https://kardeslertekstil.com.tr/iletisim?urun=polar%20%c4%b0%c5%9f%20montu&mesaj=polar%20%c4%b0%c5%9f%20montu%20i%c3%a7in%20adet%2c%20beden%2c%20logo%20ve%20teslimat%20bilgilerini%20i%c3%a7eren%20yaz%c4%b1l%c4%b1%20teklif%20almak%20istiyorum. - title: İş Kıyafeti Teklif Al & İletişim | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/iletisim?urun=polar%20%c4%b0%c5%9f%20montu&mesaj=polar%20%c4%b0%c5%9f%20montu%20i%c3%a7in%20adet%2c%20beden%2c%20logo%20ve%20teslimat%20bilgilerini%20i%c3%a7eren%20yaz%c4%b1l%c4%b1%20teklif%20almak%20istiyorum. - meta[name="description"]: İş kıyafeti teklifi almak için hemen formu doldurun. Pendik merkezli üretim tesisimizle hızlı ve kaliteli çözümler sunuyoruz.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-sezon-oncesi-hazirlik-kontrolu - title: İş Kıyafeti Sezon Öncesi Hazırlık | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-nakis-uretim-sureci - title: Nakış Üretim Süreci: 5 Adımda Kalite | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetlerinde-nakis-uretim-sureci - meta[name="description"]: İş kıyafetlerinde nakış üretim aşamalarını keşfedin. Logo dijitalleştirme, iplik seçimi ve kalite kontrol süreçlerini inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/polar-is-kiyafetlerinde-lif-dokulmesi-kontrolu - title: Polar İş Kıyafetlerinde Lif Dökülmesi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetleri%20rehberi%202026 - title: İş Kıyafeti Rehberi ve Bilgi Merkezi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetleri%20rehberi%202026 - meta[name="description"]: İş kıyafetleri seçimi, kumaş özellikleri ve iş güvenliği standartları hakkında uzman rehberini keşfedin. Verimliliği artıracak detaylar burada.
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=y%c3%bcksek%20g%c3%b6r%c3%bcn%c3%bcrl%c3%bckl%c3%bc%20%c4%b0%c5%9f%20k%c4%b1yafetleri%20s%c4%b1n%c4%b1flar%c4%b1 - meta[name="description"]: İş kıyafetleri, kumaş seçimi, kurumsal tekstil üretimi ve iş güvenliği standartları hakkında teknik detayları keşfedin. Uzman rehberimizi hemen inceleyin.
+- https://kardeslertekstil.com.tr/iletisim?urun=personel%20k%c4%b1yafeti - title: İş Kıyafeti Teklif Al ve İletişim | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/iletisim?urun=personel%20k%c4%b1yafeti - meta[name="description"]: Pendik ve Kaynarca'da kurumsal iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifimizi keşfedin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/cam-seramik-sektoru-is-kiyafetleri - title: Cam ve Seramik Sektörü İş Kıyafetleri | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/cam-seramik-sektoru-is-kiyafetleri - meta[name="description"]: Cam ve seramik üretiminde ısı, kesilme ve kimyasal risklerine karşı koruyucu iş kıyafetlerini keşfedin. Profesyonel çözümler için hemen inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/yazlik-is-kiyafetleri-rehberi - title: Yazlık İş Kıyafetleri Rehberi: Teknik | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/yazlik-is-kiyafetleri-rehberi - meta[name="description"]: Yazlık iş kıyafetleri seçiminde kumaş, model ve dayanıklılık kriterlerini keşfedin. Personel konforu ve iş güvenliği için teknik rehberimizi inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/buyuk-beden-is-kiyafeti-secim-rehberi - title: Büyük Beden İş Kıyafeti Seçim Rehberi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/buyuk-beden-is-kiyafeti-secim-rehberi - meta[name="description"]: Büyük beden iş kıyafeti seçiminde uzman teknik detayları keşfedin. Hareket kabiliyeti ve dayanıklılık için en iyi yöntemler bu rehberde.
+- https://kardeslertekstil.com.tr/urun/kt-on-019-antrasit-kruvaze-sef-ceketi - title: Antrasit Kruvaze Şef Ceketi KT-ON-019 | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/urun/kt-on-019-antrasit-kruvaze-sef-ceketi - meta[name="description"]: Antrasit kruvaze şef ceketi (KT-ON-019) ile profesyonel mutfaklara şıklık katın. Hakim yaka ve dayanıklı kumaş. Hemen inceleyin!
+- https://kardeslertekstil.com.tr/uzun-is-kabani - title: Uzun İş Kabanı Üretimi: %100 Dayanıklı | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/uzun-is-kabani - meta[name="description"]: Yüksek dayanımlı uzun iş kabanı üretimi. Dolgulu, kapüşonlu ve kurumsal logolu kışlık personel kabanları için hemen teklif alın.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-rol-bazli-urun-seti-mimarisi - title: İş Kıyafeti Rol Bazlı Ürün Seti | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-rol-bazli-urun-seti-mimarisi - meta[name="description"]: İş kıyafeti yönetimini standartlaştırın! Rol bazlı ürün seti mimarisi ile maliyet ve konforu artıracak stratejik kurulum rehberini keşfedin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/kumas-gramaji-nedir-gsm - title: Kumaş Gramajı (GSM) Nedir? Seçim | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/kumas-gramaji-nedir-gsm - meta[name="description"]: Kumaş gramajı (GSM) nedir? İş kıyafetlerinde doğru kumaş ağırlığı nasıl seçilir? Dayanıklılık ve konfor için teknik detayları hemen keşfedin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/en-iso-11611-kaynak-koruyucu-kiyafet-standardi - title: EN ISO 11611 Kaynak ve Benzeri İşlemler | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/iletisim?urun=siyah%20gri%20omuz%20garnili%20sweatshirt - title: Pendik İş Kıyafeti Teklifi Alın | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/iletisim?urun=siyah%20gri%20omuz%20garnili%20sweatshirt - meta[name="description"]: Pendik ve Kaynarca'da profesyonel iş kıyafeti teklifi alın. Ürün, adet ve logo detaylarınızı iletin, hızlıca fiyat teklifinizi hazırlayalım.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretim-sureci - title: İş Kıyafeti Üretim Süreci Rehberi — Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretim-sureci - meta[name="description"]: Profesyonel iş kıyafeti üretim aşamalarını keşfedin. Kumaş seçiminden teslimata kadar tüm süreci detaylıca inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20k%c4%b1yafeti%20fiyatlar%c4%b1%202026%3a%20fiyatlar%c4%b1%20neler%20belirler%3f - title: İş Kıyafeti Rehberi ve Bilgi Merkezi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20k%c4%b1yafeti%20fiyatlar%c4%b1%202026%3a%20fiyatlar%c4%b1%20neler%20belirler%3f - meta[name="description"]: İş kıyafetleri seçimi, kumaş özellikleri ve iş güvenliği standartları hakkında uzman rehberleri keşfedin. Üretim detayları için hemen inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/veteriner-klinigi-personel-kiyafetleri - title: Veteriner Kliniği Personel Kıyafetleri | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/veteriner-klinigi-personel-kiyafetleri - meta[name="description"]: Veteriner kliniği kıyafetlerini hayvan teması, sıvı ve tüy, çizilme, hareket, cep, renk, çapraz bulaşma, yıkama ve bölüm ayrımına göre seçin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-bom-malzeme-listesi - title: İş Kıyafeti BOM Malzeme Listesi Rehberi | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-bom-malzeme-listesi - meta[name="description"]: BOM dosyasında kumaş, aksesuar ve ambalaj kalemlerini doğru yönetin. Maliyet ve fire kontrolü için detaylı rehberimizi inceleyin.
+- https://kardeslertekstil.com.tr/urun/kt-pl-029-lacivert-bordo-takviyeli-polar-mont - title: Lacivert Bordo Takviyeli Polar Mont | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/urun/kt-pl-029-lacivert-bordo-takviyeli-polar-mont - meta[name="description"]: Dayanıklı lacivert polar gövde ve bordo omuz panelleriyle üretilen takviyeli polar mont modelini keşfedin. Hemen teklif almak için tıklayın.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/yuksek-gorunurluklu-is-kiyafetleri-siniflari - title: EN ISO 20471 İş Kıyafeti Sınıfları | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/yuksek-gorunurluklu-is-kiyafetleri-siniflari - meta[name="description"]: EN ISO 20471 iş kıyafeti sınıflarını (1, 2, 3) keşfedin. Doğru reflektif ve floresan seçimini öğrenmek için rehberimizi inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/muze-sergi-kurulum-ekibi-is-kiyafetleri - meta[name="description"]: Müze ve sergi kurulum ekibi için dayanıklı iş kıyafetleri çözümleri. Hassas eser koruması ve saha güvenliği için teknik detayları hemen keşfedin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=kuma%c5%9f%20gramaj%c4%b1%20nedir%3f%20gsm%20de%c4%9feri%20nas%c4%b1l%20se%c3%a7ilir%3f - meta[name="description"]: İş kıyafetleri, kumaş seçimi ve iş güvenliği hakkında teknik rehberler. Detaylı bilgi için hemen inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetlerinde%20beden%20ve%20ergonomi - title: İş Kıyafeti Rehberi: Kumaş ve Üretim | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi?tag=%c4%b0%c5%9f%20g%c3%bcvenli%c4%9fi%20k%c4%b1yafetlerinde%20beden%20ve%20ergonomi - meta[name="description"]: İş güvenliği kıyafetleri, kumaş seçimi ve kurumsal tekstil üretimi hakkında teknik bilgiler. Uzman rehberimizi hemen keşfedin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/seramik-uretim-tesisi-is-kiyafetleri - meta[name="description"]: Seramik üretiminde toz, sır ve boya riskine karşı en doğru iş kıyafetlerini seçin. Dayanıklı ve konforlu ürün setleri için rehberimizi inceleyin.
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretiminde-kumas-kesim-sureci - title: İş Kıyafeti Kumaş Kesim Süreci | Kardeşler Tekstil
+- https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafeti-uretiminde-kumas-kesim-sureci - meta[name="description"]: İş kıyafeti üretiminde kumaş kesim sürecini uzmanından öğrenin. Pastal hazırlama, kalıp yerleşimi ve parça takibi ile hatasız üretim teknikleri burada.
 
 ## Reddedilen kurallar
 
-- Sayfa içine CSS yaması; merkezi CSS tercih edilmeli: 54
-- Bozuk, kesilmiş veya şüpheli metin: 17
+- Sayfa içine CSS yaması; merkezi CSS tercih edilmeli: 73
+- Bozuk, kesilmiş veya şüpheli metin: 23
+- Boş title veya meta description değeri: 6
 - Standart olmayan CSS seçicisi: 6
-- Boş title veya meta description değeri: 4
