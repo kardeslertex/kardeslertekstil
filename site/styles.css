@@ -1777,6 +1777,7 @@ html{scroll-behavior:smooth;}
   align-items:center;
   justify-content:center;
   background:linear-gradient(145deg,var(--cream-50),#fff);
+  overflow:hidden;
 }
 .lb-stage img{
   width:100%;
@@ -1787,6 +1788,11 @@ html{scroll-behavior:smooth;}
   border-radius:var(--radius-md);
   box-shadow:none;
   background:#fff;
+  --product-scale:1;
+  --product-x:0%;
+  --product-y:0%;
+  transform:translate(var(--product-x),var(--product-y)) scale(var(--product-scale));
+  transform-origin:center;
 }
 .lb-info{
   padding:38px 34px 34px;
