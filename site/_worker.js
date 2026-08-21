@@ -486,6 +486,10 @@ export default {
       headers.set("Content-Type", "application/xml; charset=utf-8");
     }
     if (response.status === 404) headers.set("X-Robots-Tag", "noindex, follow");
+    // Paylasilabilir modal adresleri katalog deneyimini korur, ancak ayni
+    // katalog belgesini tekrar indeksletmez. Gercek SEO urun sayfalari /urun/
+    // altindadir.
+    if (catalogProductMatch) headers.set("X-Robots-Tag", "noindex, follow");
     // Teklif formu ve katalog filtreleri kullanıcı deneyimi için query string
     // taşır; bunlar ayrı arama sonucu sayfaları değildir. Google'ın robots.txt
     // engeline takılmadan yanıtı görmesini ve temiz canonical'ı izlemesini sağla.
