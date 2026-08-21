@@ -55,6 +55,9 @@ foreach ($file in Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -R
         else { $parameterLinkCount++ }
     }
 }
+if ($worker -notmatch 'if\s*\(catalogProductMatch\)\s*headers\.set\(["'']X-Robots-Tag["''],\s*["'']noindex, follow["'']\)') {
+    $errors.Add('Catalog modal routes must receive an edge noindex header.')
+}
 
 $liveChecks = 0
 if ($Live) {
