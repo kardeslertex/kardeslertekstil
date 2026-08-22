@@ -6,8 +6,6 @@
 # Existing localized route redirects.
 /about/ /hakkimizda 308
 /about /hakkimizda 308
-/19-2/ / 301
-/19-2 / 301
 /is-kiyafeti-ureticisi/ /is-kiyafeti/ 301
 /is-kiyafeti-ureticisi /is-kiyafeti/ 301
 /kurumsal-is-kiyafeti/ /is-kiyafeti/ 301

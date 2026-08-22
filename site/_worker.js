@@ -1,7 +1,6 @@
 const LEGACY_PATHS = new Map([
   ["/bilgi-merkezi/is-kiyafeti-teknik-sartnamesi-nasil-hazirlanir", "/bilgi-merkezi/is-kiyafeti-sartname-hazirlama-rehberi/"],
   ["/about", "/hakkimizda"],
-  ["/19-2", "/"],
   ["/is-kiyafeti-ureticisi", "/is-kiyafeti/"],
   ["/kurumsal-is-kiyafeti", "/is-kiyafeti/"],
   ["/bilgi-merkezi/is-kiyafeti-tco-maliyet-analizi", "/bilgi-merkezi/is-kiyafetinde-toplam-sahip-olma-maliyeti/"],
@@ -34,6 +33,7 @@ const LEGACY_PHP_PAGES = new Map([
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
+  ["/site-styles-20260822-footer-headings.css", "/styles.css"],
   ["/catalog-ui-20260821-modal-fit5.js", "/catalog.js"],
   ["/catalog-styles-20260821-modal-fit5.css", "/styles.css"],
   ["/catalog-ui-20260821-modal-fit4.js", "/catalog.js"],
@@ -219,6 +219,37 @@ export default {
     }
     if (url.pathname === "/api/teklif") return handleQuoteForm(request, env, url);
     const legacyPath = url.pathname.replace(/\/$/, "") || "/";
+
+    // Search Console'da gorunen, eski WordPress/WooCommerce kurulumundan kalan
+    // ve artik hicbir karsiligi olmayan adresler. Bunlari baska sayfalara
+    // yonlendirmek yerine kalici olarak kaldirilmis olarak bildir.
+    const removedLegacyPath =
+      /^\/urun\/(?:anchor-bracelet|black-hoodie|boho-bangle-bracelet|bright-red-bag|dnk-(?:black|blue|red)-shoes)(?:\/|$)/i.test(url.pathname) ||
+      /^\/urun-kategori\/(?:men|women)(?:\/|$)/i.test(url.pathname) ||
+      /^\/(?:19-2|20-2)(?:\/|$)/i.test(url.pathname) ||
+      /^\/about\/urunlerimiz\.html\/?$/i.test(url.pathname) ||
+      /^\/(?:contact-us|my-account|ornek-sayfa|store)(?:\/|$)/i.test(url.pathname) ||
+      /^\/comments\/feed\/?$/i.test(url.pathname) ||
+      /^\/cdn-cgi\/l\/email-protection\/?$/i.test(url.pathname) ||
+      url.pathname === "/*" ||
+      (legacyPath.toLowerCase() === "/page.php" &&
+        ["haberler", "hakkimizda", "iletisim", "urunler"].includes(
+          (url.searchParams.get("PageID") || "").toLowerCase()
+        )) ||
+      (legacyPath === "/" && url.searchParams.has("page_id"));
+
+    if (removedLegacyPath) {
+      return new Response("Gone", {
+        status: 410,
+        headers: {
+          ...SECURITY_HEADERS,
+          "Cache-Control": "public, max-age=86400",
+          "Content-Type": "text/plain; charset=utf-8",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      });
+    }
+
     // Search Console eski WordPress AJAX ucunu 4xx olarak raporluyor. Site artik
     // WordPress kullanmadigi icin bos, indekslenemez bir basarili yanit dondur.
     if (legacyPath.toLowerCase() === "/wp-admin/admin-ajax.php") {
