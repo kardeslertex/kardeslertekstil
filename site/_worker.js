@@ -229,7 +229,7 @@ export default {
       /^\/(?:19-2|20-2)(?:\/|$)/i.test(url.pathname) ||
       /^\/about\/urunlerimiz\.html\/?$/i.test(url.pathname) ||
       /^\/(?:contact-us|my-account|ornek-sayfa|store)(?:\/|$)/i.test(url.pathname) ||
-      /^\/comments\/feed\/?$/i.test(url.pathname) ||
+      /^\/comments\/feed(?:\/|$)/i.test(url.pathname) ||
       /^\/cdn-cgi\/l\/email-protection\/?$/i.test(url.pathname) ||
       url.pathname === "/*" ||
       (legacyPath.toLowerCase() === "/page.php" &&
@@ -365,7 +365,7 @@ export default {
       /^\/urun\/(?!kt-)[^/]+(?:\/|$)/i.test(url.pathname) ||
       /^\/urun-kategori\//i.test(url.pathname) ||
       /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
-      /^\/comments\/feed\/?$/i.test(url.pathname) ||
+      /^\/comments\/feed(?:\/|$)/i.test(url.pathname) ||
       /^\/store\/?$/i.test(url.pathname) ||
       /^\/(?:cart|my-account)(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
