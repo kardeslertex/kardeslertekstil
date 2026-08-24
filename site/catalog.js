@@ -524,6 +524,48 @@
     return wrap;
   }
 
+  var isgVestFilter = "all";
+  var ENGINEER_VEST_CODES = ["KT-IY-001", "KT-IY-003", "KT-IY-007", "KT-IY-010", "KT-IY-011", "KT-IY-012"];
+
+  function matchesIsgVestFilter(item, filter) {
+    if (!item || item.cat !== "isg" || item.kind !== "ikaz" || filter === "all") return true;
+    var isEngineerVest = ENGINEER_VEST_CODES.indexOf(String(item.code || "").toUpperCase()) !== -1;
+    if (filter === "engineer") return isEngineerVest;
+    if (filter === "standard") return !isEngineerVest;
+    return true;
+  }
+
+  function buildIsgVestFilters(group) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "engineer", label: "Mühendis İkaz Yeleği" },
+      { id: "standard", label: "İkaz Yeleği" }
+    ];
+    var wrap = el("div", "catalog-subfilters isg-vest-filters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "İkaz yeleği türüne göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = group.items.filter(function (item) { return matchesIsgVestFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.isgVestFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === isgVestFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === isgVestFilter);
+      button.addEventListener("click", function () {
+        isgVestFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.isgVestFilter === isgVestFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   var tulumFilter = "all";
 
   function matchesTulumFilter(item, filter) {
@@ -807,8 +849,9 @@
         info.appendChild(el("h3", null, group.title));
         info.appendChild(el("p", null, group.desc));
         subhead.appendChild(info);
-        subhead.appendChild(el("span", null, group.items.length + " ürün"));
+        subhead.appendChild(el("span", "isg-group-count", group.items.length + " ürün"));
         wrap.appendChild(subhead);
+        if (group.kind === "ikaz") wrap.appendChild(buildIsgVestFilters(group));
         wrap.appendChild(buildGrid(group.items, "isg-grid"));
         section.appendChild(wrap);
       });
@@ -1251,13 +1294,16 @@
         (btn.dataset.cat !== "onluk" || matchesOnlukFilter(item, onlukFilter)) &&
         (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter)) &&
         (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter)) &&
-        (btn.dataset.cat !== "pantolon" || matchesPantolonFilter(item, pantolonFilter));
+        (btn.dataset.cat !== "pantolon" || matchesPantolonFilter(item, pantolonFilter)) &&
+        (btn.dataset.cat !== "isg" || matchesIsgVestFilter(item, isgVestFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
 
     document.querySelectorAll(".isg-group").forEach(function (group) {
-      var hasVisible = Array.from(group.querySelectorAll(".gitem")).some(function (btn) { return !btn.hidden; });
-      group.classList.toggle("is-filtered-out", !hasVisible);
+      var visibleItems = Array.from(group.querySelectorAll(".gitem")).filter(function (btn) { return !btn.hidden; });
+      group.classList.toggle("is-filtered-out", !visibleItems.length);
+      var groupCount = group.querySelector(".isg-group-count");
+      if (groupCount) groupCount.textContent = visibleItems.length + " ürün";
     });
 
     document.querySelectorAll(".catalog-section").forEach(function (section) {
