@@ -33,6 +33,7 @@ const LEGACY_PHP_PAGES = new Map([
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
+  ["/catalog-ui-20260824-isg-vest-filter1.js", "/catalog.js"],
   ["/catalog-ui-20260824-mobile-nav2.js", "/catalog.js"],
   ["/catalog-ui-20260824-mobile-nav1.js", "/catalog.js"],
   ["/site-styles-20260822-footer-headings.css", "/styles.css"],
