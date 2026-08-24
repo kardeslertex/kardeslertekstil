@@ -524,6 +524,95 @@
     return wrap;
   }
 
+  var sweatFilter = "all";
+
+  function matchesSweatFilter(item, filter) {
+    if (!item || item.cat !== "sweat" || filter === "all") return true;
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (filter === "polo") return text.indexOf("polo yaka") !== -1;
+    if (filter === "crew") return text.indexOf("bisiklet yaka") !== -1;
+    if (filter === "hooded") return /kapüşon|kapşon|hoodie/.test(text);
+    return true;
+  }
+
+  function buildSweatFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "polo", label: "Polo Yaka Sweat" },
+      { id: "crew", label: "Bisiklet Yaka Sweat" },
+      { id: "hooded", label: "Kapüşonlu Sweat" }
+    ];
+    var wrap = el("div", "catalog-subfilters sweat-filters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Sweatshirt modelini yaka ve kapüşon türüne göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesSweatFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.sweatFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === sweatFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === sweatFilter);
+      button.addEventListener("click", function () {
+        sweatFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.sweatFilter === sweatFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
+  var softshellFilter = "all";
+
+  function softshellType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (text.indexOf("pantolon") !== -1) return "pants";
+    if (text.indexOf("yelek") !== -1) return "vest";
+    return "jacket";
+  }
+
+  function matchesSoftshellFilter(item, filter) {
+    if (!item || item.cat !== "softshell" || filter === "all") return true;
+    return softshellType(item) === filter;
+  }
+
+  function buildSoftshellFilters(cat) {
+    var filters = [
+      { id: "all", label: "Tümü" },
+      { id: "jacket", label: "Softshell Mont" },
+      { id: "vest", label: "Softshell Yelek" },
+      { id: "pants", label: "Softshell Pantolon" }
+    ];
+    var wrap = el("div", "catalog-subfilters softshell-filters");
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Softshell ürününü model türüne göre filtrele");
+
+    filters.forEach(function (filter) {
+      var count = cat.items.filter(function (item) { return matchesSoftshellFilter(item, filter.id); }).length;
+      var button = el("button", "catalog-subfilter", filter.label + " (" + count + ")");
+      button.type = "button";
+      button.dataset.softshellFilter = filter.id;
+      button.setAttribute("aria-pressed", filter.id === softshellFilter ? "true" : "false");
+      button.classList.toggle("is-active", filter.id === softshellFilter);
+      button.addEventListener("click", function () {
+        softshellFilter = filter.id;
+        wrap.querySelectorAll(".catalog-subfilter").forEach(function (control) {
+          var active = control.dataset.softshellFilter === softshellFilter;
+          control.classList.toggle("is-active", active);
+          control.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applySearch();
+      });
+      wrap.appendChild(button);
+    });
+    return wrap;
+  }
+
   var isgVestFilter = "all";
   var ENGINEER_VEST_CODES = ["KT-IY-001", "KT-IY-003", "KT-IY-007", "KT-IY-010", "KT-IY-011", "KT-IY-012"];
 
@@ -857,6 +946,8 @@
       });
     } else {
       if (cat.id === "tshirt") section.appendChild(buildTshirtFilters(cat));
+      if (cat.id === "sweat") section.appendChild(buildSweatFilters(cat));
+      if (cat.id === "softshell") section.appendChild(buildSoftshellFilters(cat));
       if (cat.id === "tulum") section.appendChild(buildTulumFilters(cat));
       if (cat.id === "onluk") section.appendChild(buildOnlukFilters(cat));
       if (cat.id === "montkaban") section.appendChild(buildMontKabanFilters(cat));
@@ -1295,6 +1386,8 @@
         (btn.dataset.cat !== "montkaban" || matchesMontKabanFilter(item, montKabanFilter)) &&
         (btn.dataset.cat !== "polar" || matchesPolarFilter(item, polarFilter)) &&
         (btn.dataset.cat !== "pantolon" || matchesPantolonFilter(item, pantolonFilter)) &&
+        (btn.dataset.cat !== "sweat" || matchesSweatFilter(item, sweatFilter)) &&
+        (btn.dataset.cat !== "softshell" || matchesSoftshellFilter(item, softshellFilter)) &&
         (btn.dataset.cat !== "isg" || matchesIsgVestFilter(item, isgVestFilter));
       btn.hidden = !(matchesSearch && matchesSubtype);
     });
