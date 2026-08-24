@@ -526,13 +526,17 @@
 
   var sweatFilter = "all";
 
+  function sweatType(item) {
+    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
+    if (/kapüşon|kapşon|hoodie/.test(text)) return "hooded";
+    if (text.indexOf("polo yaka") !== -1) return "polo";
+    if (text.indexOf("bisiklet yaka") !== -1) return "crew";
+    return "technical";
+  }
+
   function matchesSweatFilter(item, filter) {
     if (!item || item.cat !== "sweat" || filter === "all") return true;
-    var text = (item.name + " " + item.tags.join(" ")).toLocaleLowerCase("tr-TR");
-    if (filter === "polo") return text.indexOf("polo yaka") !== -1;
-    if (filter === "crew") return text.indexOf("bisiklet yaka") !== -1;
-    if (filter === "hooded") return /kapüşon|kapşon|hoodie/.test(text);
-    return true;
+    return sweatType(item) === filter;
   }
 
   function buildSweatFilters(cat) {
@@ -540,7 +544,8 @@
       { id: "all", label: "Tümü" },
       { id: "polo", label: "Polo Yaka Sweat" },
       { id: "crew", label: "Bisiklet Yaka Sweat" },
-      { id: "hooded", label: "Kapüşonlu Sweat" }
+      { id: "hooded", label: "Kapüşonlu Sweat" },
+      { id: "technical", label: "Teknik Sweat" }
     ];
     var wrap = el("div", "catalog-subfilters sweat-filters");
     wrap.setAttribute("role", "group");
