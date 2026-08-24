@@ -544,7 +544,7 @@
       { id: "all", label: "Tümü" },
       { id: "polo", label: "Polo Yaka Sweat" },
       { id: "crew", label: "Bisiklet Yaka Sweat" },
-      { id: "hooded", label: "Kapüşonlu Sweat" },
+      { id: "hooded", label: "Hoodie" },
       { id: "technical", label: "Teknik Sweat" }
     ];
     var wrap = el("div", "catalog-subfilters sweat-filters");
