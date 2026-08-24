@@ -1208,7 +1208,7 @@
       }
 
       if (location.hash !== "#" + id) {
-        history.pushState(null, "", "#" + id);
+        history.pushState(null, "", "/urunlerimiz/#" + id);
       }
       scrollCategoryToStart(id);
     });
