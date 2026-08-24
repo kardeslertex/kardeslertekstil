@@ -751,7 +751,7 @@
     };
     if (seoPages[cat.id]) {
       var guide = el("a", "catalog-category-guide", "Kategori detaylarını inceleyin →");
-      guide.href = seoPages[cat.id];
+      guide.href = "/" + seoPages[cat.id];
       left.appendChild(guide);
     }
     if (cat.id === "onluk") {
