@@ -831,7 +831,7 @@
 
     CATALOG.forEach(function (cat) {
       var link = el("a", null, cat.nav);
-      link.href = "#" + cat.id;
+      link.href = "/urunlerimiz/#" + cat.id;
       link.dataset.target = cat.id;
       nav.appendChild(link);
       host.appendChild(buildSection(cat));
