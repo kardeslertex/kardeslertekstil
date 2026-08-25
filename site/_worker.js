@@ -396,14 +396,19 @@ export default {
     }
 
     const canonicalPath = LEGACY_PATHS.get(legacyPath);
+    const needsCatalogTrailingSlash = legacyPath === "/urunlerimiz";
     const needsCanonicalHost =
       url.protocol !== "https:" || url.hostname === "www.kardeslertekstil.com.tr";
 
-    if (canonicalPath || needsCanonicalHost) {
+    if (canonicalPath || needsCatalogTrailingSlash || needsCanonicalHost) {
       url.protocol = "https:";
       url.hostname = "kardeslertekstil.com.tr";
       url.port = "";
-      if (canonicalPath) url.pathname = canonicalPath;
+      if (canonicalPath) {
+        url.pathname = canonicalPath;
+      } else if (needsCatalogTrailingSlash) {
+        url.pathname = "/urunlerimiz/";
+      }
       return Response.redirect(url.toString(), 308);
     }
 
