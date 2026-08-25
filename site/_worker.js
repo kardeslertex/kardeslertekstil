@@ -396,7 +396,7 @@ export default {
     }
 
     const canonicalPath = LEGACY_PATHS.get(legacyPath);
-    const needsCatalogTrailingSlash = legacyPath === "/urunlerimiz";
+    const needsCatalogTrailingSlash = url.pathname === "/urunlerimiz";
     const needsCanonicalHost =
       url.protocol !== "https:" || url.hostname === "www.kardeslertekstil.com.tr";
 
