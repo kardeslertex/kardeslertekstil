@@ -272,9 +272,17 @@
       }, { rootMargin: "500px 0px", threshold: 0.01 })
     : null;
 
+  var modelDetailUrls = {};
+  document.querySelectorAll('.catalog-model-pages a[href]').forEach(function (link) {
+    var code = (link.textContent || "").match(/KT-[A-Z]{2}-\d{3}/);
+    if (code) modelDetailUrls[code[0]] = link.href;
+  });
+
   function buildItemButton(item) {
-    var btn = el("button", "gitem");
-    btn.type = "button";
+    var detailUrl = modelDetailUrls[item.code];
+    var btn = el(detailUrl ? "a" : "button", "gitem");
+    if (detailUrl) btn.href = detailUrl;
+    else btn.type = "button";
     btn.setAttribute("aria-label", item.code + " " + item.name + " ürününü incele");
     btn.dataset.cat = item.cat;
     btn.dataset.code = item.code;
@@ -330,7 +338,11 @@
     visual.appendChild(overlay);
     btn.appendChild(visual);
     btn.appendChild(purchase);
-    btn.addEventListener("click", function () { openLightbox(item.cat, item.i, btn); });
+    btn.addEventListener("click", function (event) {
+      if (detailUrl && (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button)) return;
+      event.preventDefault();
+      openLightbox(item.cat, item.i, btn);
+    });
     return btn;
   }
 
@@ -983,34 +995,8 @@
     if (sumModels) sumModels.textContent = total;
     if (sumCats) sumCats.textContent = CATALOG.length;
 
-    var jsonLd = document.getElementById("productCatalogJsonLd");
-    if (jsonLd) {
-      var position = 0;
-      jsonLd.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "@id": "https://kardeslertekstil.com.tr/urunlerimiz#product-list",
-        "name": "Kardeşler Tekstil Ürün Kataloğu",
-        "url": "https://kardeslertekstil.com.tr/urunlerimiz",
-        "numberOfItems": total,
-        "itemListElement": BASE_CATALOG.reduce(function (items, cat) {
-          cat.items.forEach(function (item) {
-            items.push({
-              "@type": "ListItem",
-              "position": ++position,
-              "item": {
-                "@type": "Product",
-                "name": item.name,
-                "sku": item.code,
-                "category": cat.title,
-                "image": "https://kardeslertekstil.com.tr/" + item.src
-              }
-            });
-          });
-          return items;
-        }, [])
-      });
-    }
+    // The static ItemList is synchronized with detailed model links by sync_seo_catalog.py.
+
   }
 
   renderCatalog();
@@ -1117,6 +1103,11 @@
       lbQuote.href = "mailto:kardesler@kardeslertekstil.com.tr?subject=" + encodeURIComponent(item.code + " Kodlu Ürün İçin Fiyat Talebi") + "&body=" + encodeURIComponent(message);
     }
     if (lbFormDetail) lbFormDetail.href = formLink;
+    var detailLink = document.getElementById("lbModelDetail");
+    if (detailLink) {
+      detailLink.hidden = !modelDetailUrls[item.code];
+      if (modelDetailUrls[item.code]) detailLink.href = modelDetailUrls[item.code];
+    }
     if (lbAddToQuote) {
       lbAddToQuote.dataset.code = item.code;
       lbAddToQuote.dataset.name = item.name;

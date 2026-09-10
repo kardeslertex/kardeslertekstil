@@ -4324,3 +4324,9 @@ html{scroll-behavior:smooth;}
   .cookie-consent__actions{flex-direction:column-reverse;}
   .cookie-consent__actions .btn{width:100%;}
 }
+
+/* SEO model cards reuse the existing category grid. */
+.seo-model-card img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;margin-bottom:16px;background:#fff}
+a.gitem{color:inherit;text-decoration:none}
+.knowledge-quick-answer{padding:24px;margin:24px 0;border:1px solid #ccd3da;border-radius:4px;background:#f6f7f8}
+.knowledge-quick-answer h2{margin-top:0}
