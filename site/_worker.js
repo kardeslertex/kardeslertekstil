@@ -38,6 +38,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/catalog-ui-20260911-fix.js", "/catalog.js"],
   ["/site-styles-20260910-seo.css", "/styles.css"],
   ["/knowledge-data-20260910-seo.js", "/bilgi-merkezi/knowledge-center.js"],
+  ["/knowledge-data-20260911-planning.js", "/bilgi-merkezi/knowledge-center.js"],
   ["/products-data-20260824-hoodie-models1.js", "/products.js"],
   ["/catalog-ui-20260824-sweat-hoodie4.js", "/catalog.js"],
   ["/catalog-ui-20260824-sweat-technical3.js", "/catalog.js"],
@@ -511,7 +512,7 @@ export default {
             const path = RELEASE_ASSET_ALIASES.get(source.pathname) || source.pathname;
             if (path === "/site.js") element.setAttribute("src", "/home-site-20260910-seo.js");
             else if (path === "/catalog.js") element.setAttribute("src", "/catalog-ui-20260911-fix.js");
-            else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20260910-seo.js");
+            else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20260911-planning.js");
           },
         })
         .on('link[rel="stylesheet"]', {
