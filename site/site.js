@@ -313,8 +313,14 @@
     }
 
     if (document.body.dataset.conversion === "quote-success") {
-      track("quote_form_success", { form_id: "teklif-formu" });
-      track("generate_lead", { currency: "TRY", value: 1, lead_source: "quote_form" });
+      // Only a successful server submission sets this short-lived receipt.
+      // Consume it before tracking so refresh/back/direct visits do not add leads.
+      var receipt = document.cookie.match(/(?:^|;\s*)kt_quote_receipt=([^;]+)/);
+      if (receipt) {
+        document.cookie = "kt_quote_receipt=; Path=/; Max-Age=0; Secure; SameSite=Lax";
+        track("quote_form_success", { form_id: "teklif-formu" });
+        track("generate_lead", { lead_source: "quote_form" });
+      }
     }
   }
 
@@ -472,7 +478,7 @@
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         var parent = node.parentElement;
-        if (!parent || parent.closest("script,style,textarea,code,[lang='en']")) return NodeFilter.FILTER_REJECT;
+        if (!parent || parent.closest("script,style,textarea,select,option,optgroup,code,[lang='en']")) return NodeFilter.FILTER_REJECT;
         return /\b(?:sweatshirt|hoodie|t-?shirt|ripstop|hi-vis|high visibility|slim fit|regular fit|unisex|size set|reflective)\b/i.test(node.nodeValue || "")
           ? NodeFilter.FILTER_ACCEPT
           : NodeFilter.FILTER_REJECT;

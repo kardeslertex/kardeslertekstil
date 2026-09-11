@@ -19,7 +19,7 @@ function Get-MetaContent([string]$html, [string]$attribute, [string]$key) {
   return ''
 }
 
-foreach ($file in Get-ChildItem $site -Recurse -File -Filter '*.html' | Where-Object { $_.FullName -notlike '*\hero-archive\*' }) {
+foreach ($file in Get-ChildItem $site -Recurse -File -Filter '*.html' | Where-Object { $_.FullName.Replace('\', '/') -notlike '*/hero-archive/*' }) {
   $html = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
   if ((Get-MetaContent $html 'name' 'robots') -match 'noindex') { continue }
   if ($html -match '(?is)<meta[^>]+http-equiv=["'']refresh') { continue }

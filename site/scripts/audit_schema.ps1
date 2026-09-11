@@ -69,7 +69,7 @@ $allowedProductMaterials = @(
 )
 
 $htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Recurse -File -Filter '*.html' | Where-Object {
-    $_.FullName -notlike '*\hero-archive\*'
+    $_.FullName.Replace('\', '/') -notlike '*/hero-archive/*'
 }
 $canonicalSet = @{}
 foreach ($file in $htmlFiles) {
@@ -124,7 +124,8 @@ foreach ($file in $htmlFiles) {
         }
         if ($type -eq 'Product') {
             $counts.products++
-            foreach ($field in @('name','description','image','sku','brand','manufacturer','material','category','url','@id')) { if (!$schema.$field) { Add-Error $relativePath "Product missing $field" } }
+            foreach ($field in @('name','description','image','sku','brand','manufacturer','category','url','@id')) { if (!$schema.$field) { Add-Error $relativePath "Product missing $field" } }
+            # Material is optional: validate it when stated; do not invent unverified specifications.
             $material = ([string]$schema.material -replace '\s+', ' ').Trim()
             if ($material.Length -gt 80 -or $material -match '[{}<>]') { Add-Error $relativePath 'Product material is malformed or overly long' }
             if ($material -and $allowedProductMaterials -notcontains $material) { Add-Error $relativePath "Product material is outside the verified vocabulary: $material" }
