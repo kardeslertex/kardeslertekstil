@@ -61,6 +61,8 @@ for ($articleIndex = 0; $articleIndex -lt $articles.Count; $articleIndex++) {
     if ($matchingProducts.Count -lt 2) { $matchingProducts = $products }
     $productStart = $articleIndex % $matchingProducts.Count
     $selectedProducts = @($matchingProducts[$productStart], $matchingProducts[($productStart + 1) % $matchingProducts.Count])
+    # General catalog models do not establish protective certification.
+    if ($article.slug -notmatch 'dis-kaynak' -and $article.slug -match '(^|-)kaynak(ci)?-|alev-|elektrik-ark|(^|-)en-|antistatik|(^|-)esd-|kimyasal|kontamine|(^|-)asit-|atex') { $selectedProducts = @() }
 
     $clusterArticles = @($byCluster[$article.cluster] | Sort-Object slug)
     $clusterIndex = [array]::IndexOf($clusterArticles.slug, $article.slug)
