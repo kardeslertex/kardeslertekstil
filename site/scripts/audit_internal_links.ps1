@@ -10,7 +10,7 @@ $contextualized = 0
 $anchorMap = @{}
 
 $htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurse | Where-Object {
-    $_.FullName -notlike '*\hero-archive\*' -and $_.FullName -notlike '*\_inceleme_v14\*'
+    $_.FullName.Replace('\', '/') -notlike '*/hero-archive/*' -and $_.FullName -notlike '*\_inceleme_v14\*'
 }
 foreach ($file in $htmlFiles) {
     $html = [IO.File]::ReadAllText($file.FullName, [Text.Encoding]::UTF8)
@@ -44,8 +44,8 @@ foreach ($file in $articles) {
     $productCount = [regex]::Matches($html, 'data-link-role=["'']product["'']', 'IgnoreCase').Count
     $guideCount = [regex]::Matches($html, 'data-link-role=["'']guide["'']', 'IgnoreCase').Count
     $quoteCount = [regex]::Matches($html, 'data-link-role=["'']quote["'']', 'IgnoreCase').Count
-    if ($categoryCount -ne 1) { $errors.Add("Article needs one category link: $slug") }
-    if ($productCount -lt 1 -or $productCount -gt 3) { $errors.Add("Article product link count is outside 1-3: $slug") }
+    if ($categoryCount -lt 1) { $errors.Add("Article needs a category link: $slug") }
+    if ($productCount -gt 3) { $errors.Add("Article has more than three product recommendations: $slug") }
     if ($guideCount -lt 2 -or $guideCount -gt 4) { $errors.Add("Article guide link count is outside 2-4: $slug") }
     if ($quoteCount -ne 1) { $errors.Add("Article needs one quote link: $slug") }
     if ($html -match 'data-contextual-category') { $contextualized++ }

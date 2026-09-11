@@ -23,7 +23,7 @@ $incomingLinks = @{}
 $allHtmlFiles = Get-ChildItem $site -Recurse -File -Filter '*.html'
 $htmlFiles = @($allHtmlFiles | Where-Object {
   $relativePath = $_.FullName.Substring($site.Length + 1)
-  !$relativePath.StartsWith('hero-archive\', [StringComparison]::OrdinalIgnoreCase)
+  !$relativePath.Replace('\', '/').StartsWith('hero-archive/', [StringComparison]::OrdinalIgnoreCase)
 })
 
 foreach ($file in $htmlFiles) {
@@ -137,26 +137,34 @@ $result = [ordered]@{
 $result | ConvertTo-Json -Depth 4
 if ($missingInSitemap.Count -or $invalidSitemapUrls.Count -or $invalidLegacyRedirects.Count -or $pageMetadataErrors.Count -or $brokenLinks.Count -or $orphanCanonicals.Count -or $missingSiteJs.Count -or $failedAnalyticsChecks.Count) { exit 1 }
 
-& (Join-Path $PSScriptRoot 'audit_schema.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_schema.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_meta.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_meta.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_sitemap.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_sitemap.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_robots.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_robots.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_canonical.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_canonical.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_core_web_vitals.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_core_web_vitals.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_content_quality.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_content_quality.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& (Join-Path $PSScriptRoot 'audit_internal_links.ps1') -Quiet
+$global:LASTEXITCODE = 0
+& (Join-Path $PSScriptRoot 'audit_internal_links.ps1')
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

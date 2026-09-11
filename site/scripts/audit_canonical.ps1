@@ -18,7 +18,7 @@ $htmlFiles = Get-ChildItem -LiteralPath $siteRoot -Filter '*.html' -File -Recurs
 
 foreach ($file in $htmlFiles) {
     $html = Get-Content -LiteralPath $file.FullName -Raw
-    $relative = $file.FullName.Substring($siteRoot.Length).TrimStart('\').Replace('\', '/')
+    $relative = $file.FullName.Substring($siteRoot.Length).Replace('\', '/').TrimStart('/')
     $canonicalMatches = [regex]::Matches($html, '<link\s+[^>]*rel=["'']canonical["''][^>]*href=["'']([^"'']+)["''][^>]*>', 'IgnoreCase')
     $isNoIndex = $html -match '<meta\s+[^>]*name=["'']robots["''][^>]*content=["''][^"'']*noindex'
     $refreshMatch = [regex]::Match($html, '<meta\s+[^>]*http-equiv=["'']refresh["''][^>]*content=["''][^"'']*url=([^"'']+)', 'IgnoreCase')

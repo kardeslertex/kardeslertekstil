@@ -98,9 +98,13 @@ def sync():
     source=re.sub(r'<script id="productCatalogJsonLd" type="application/ld\+json">.*?</script>',lambda _: '<script id="productCatalogJsonLd" type="application/ld+json">'+encode(catalog)+'</script>',source,flags=re.S)
     def remove_old(match):
         obj=json.loads(match[2])
-        if obj.get('@type')=='ItemList' and 'id="productCatalogJsonLd"' not in match[1]: return ''
+        if obj.get('@type')=='ItemList': return ''
+        if obj.get('@type')=='CollectionPage':
+            obj['mainEntity']=catalog
+            return match[1]+encode(obj)+match[3]
         return match[0]
     source=SCHEMA.sub(remove_old,source)
+    source=re.sub(r'(?m)^[ \t]+$', '', source)
     path.write_text(source)
     print(f'Synchronized {count} category pages and {len(models)} detailed catalog entries.')
 
