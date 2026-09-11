@@ -1421,7 +1421,7 @@
     ? new URLSearchParams(location.hash.substring(filterHashPrefix.length))
     : new URLSearchParams(location.search);
   var initialCategory = initialParams.get("kategori");
-  if (categoryOrder.indexOf(initialCategory) !== -1) {
+  if (catById(initialCategory)) {
     scrollCategoryToStart(initialCategory);
   }
   if (initialParams.get("esd") === "1") {

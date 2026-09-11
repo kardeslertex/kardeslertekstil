@@ -4,12 +4,14 @@ on:
   pull_request:
     paths:
       - "site/**"
+      - "tests/**"
       - ".github/workflows/seo-integrity.yml"
   push:
     branches:
       - main
     paths:
       - "site/**"
+      - "tests/**"
       - ".github/workflows/seo-integrity.yml"
 
 permissions:
@@ -28,6 +30,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Verify catalog routing and quote conversions
+        run: node --test tests/*.test.mjs
 
       - name: Verify sitemap uses the canonical page source
         shell: pwsh
