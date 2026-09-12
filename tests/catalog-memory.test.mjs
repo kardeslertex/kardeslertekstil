@@ -3,9 +3,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-const source = fs.readFileSync(new URL('../site/catalog.js', import.meta.url), 'utf8');
+const source = fs.readFileSync(new URL('../site/catalog.js', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 function block(start, end) {
-  return source.slice(source.indexOf(start), source.indexOf(end));
+  const first = source.indexOf(start);
+  const last = source.indexOf(end, first);
+  assert.ok(first >= 0 && last > first, `missing source boundaries: ${start}`);
+  return source.slice(first, last);
 }
 function image() {
   const attrs = new Map();
