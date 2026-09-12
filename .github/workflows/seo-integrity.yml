@@ -34,6 +34,9 @@ jobs:
       - name: Verify catalog routing and quote conversions
         run: node --test tests/*.test.mjs
 
+      - name: Verify owner-confirmed business address
+        run: python site/scripts/sync_business_address.py --check
+
       - name: Verify sitemap uses the canonical page source
         shell: pwsh
         run: ./site/scripts/generate_sitemap.ps1
