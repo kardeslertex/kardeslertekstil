@@ -257,19 +257,23 @@
 
   function loadCatalogImage(img) {
     var source = img.dataset.src;
-    if (!source) return;
-    delete img.dataset.src;
+    if (!source || img.getAttribute("src") === source) return;
     img.src = source;
   }
 
+  function releaseCatalogImage(img) {
+    // Keep the source and card dimensions so revisiting a category can reload
+    // from the browser cache without retaining every decoded product image.
+    if (img.hasAttribute("src")) img.removeAttribute("src");
+  }
+
   var catalogImageObserver = "IntersectionObserver" in window
-    ? new IntersectionObserver(function (entries, observer) {
+    ? new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          observer.unobserve(entry.target);
-          loadCatalogImage(entry.target);
+          if (entry.isIntersecting) loadCatalogImage(entry.target);
+          else releaseCatalogImage(entry.target);
         });
-      }, { rootMargin: "500px 0px", threshold: 0.01 })
+      }, { rootMargin: "800px 0px", threshold: 0 })
     : null;
 
   var modelDetailUrls = {};
@@ -299,17 +303,10 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", "low");
-    img.addEventListener("load", function () { scheduleProductFit(img, item); }, { once: true });
-    // Ürün görselleri üretimde standart kare tuvale dönüştürülür. Çalışma
-    // zamanında her görselin piksellerini canvas ile tekrar taramak ana iş
-    // parçacığını gereksiz yere bloke eder; CSS object-fit yeterlidir.
-    var isInitialCatalogImage = item.cat === "tshirt" && item.i < 6;
-    if (isInitialCatalogImage || !catalogImageObserver) {
-      img.src = item.src;
-    } else {
-      img.dataset.src = item.src;
-      catalogImageObserver.observe(img);
-    }
+    img.addEventListener("load", function () { scheduleProductFit(img, item); });
+    img.dataset.src = item.src;
+    if (catalogImageObserver) catalogImageObserver.observe(img);
+    else loadCatalogImage(img);
 
     var visual = el("span", "gitem-visual");
     if (item.kind === "esd") {
@@ -364,6 +361,7 @@
     if (!ctx) return null;
     ctx.drawImage(img, 0, 0, width, height);
     var px = ctx.getImageData(0, 0, width, height).data;
+    canvas.width = canvas.height = 0;
     var samples = [];
     var patch = Math.max(6, Math.round(Math.min(width, height) * .07));
 
@@ -425,10 +423,9 @@
     if (!bounds) return;
     var elementWidth = img.clientWidth;
     var elementHeight = img.clientHeight;
-    if (!elementWidth || !elementHeight) {
-      requestAnimationFrame(function () { applyProductFit(img, item, bounds); });
-      return;
-    }
+    // A filter may hide this card before its image finishes loading. Do not
+    // schedule an endless animation-frame loop while the card stays hidden.
+    if (!elementWidth || !elementHeight) return;
 
     /* object-fit:contain ile oluşan gerçek görsel dikdörtgeni */
     var objectScale = Math.min(elementWidth / img.naturalWidth, elementHeight / img.naturalHeight);
@@ -470,10 +467,20 @@
     img.style.setProperty("--product-y", (translateY * 100).toFixed(3) + "%");
   }
 
+  var productBoundsCache = Object.create(null);
+
   function scheduleProductFit(img, item) {
+    if (img.catalogFitPending) return;
+    img.catalogFitPending = true;
     function fit() {
-      if (!img.naturalWidth || !img.naturalHeight) return;
-      try { applyProductFit(img, item, productBounds(img)); } catch (error) { /* CSS contain remains the safe fallback. */ }
+      img.catalogFitPending = false;
+      if (!img.hasAttribute("src") || !img.naturalWidth || !img.naturalHeight) return;
+      try {
+        if (!Object.prototype.hasOwnProperty.call(productBoundsCache, item.src)) {
+          productBoundsCache[item.src] = productBounds(img);
+        }
+        applyProductFit(img, item, productBoundsCache[item.src]);
+      } catch (error) { /* CSS contain remains the safe fallback. */ }
     }
     if ("requestIdleCallback" in window) {
       window.requestIdleCallback(fit, { timeout: 700 });
@@ -1130,6 +1137,7 @@
   function closeLightbox() {
     lb.classList.remove("is-open");
     lb.setAttribute("aria-hidden", "true");
+    lbImg.removeAttribute("src");
     document.body.style.overflow = "";
     if (lastTrigger) lastTrigger.focus();
     if (/^\/urunlerimiz\/kt-[a-z]{2}-\d{3}\/?$/i.test(window.location.pathname)) {
@@ -1234,7 +1242,7 @@
     if (!target) return false;
     var trigger = document.querySelector('.gitem[data-code="' + selectedCodeFor(target) + '"]');
     openLightbox(target.cat, target.i, trigger, "none");
-    if (trigger) setTimeout(function () { trigger.scrollIntoView({ block: "center" }); }, 0);
+    if (trigger) setTimeout(function () { trigger.scrollIntoView({ behavior: "instant", block: "center" }); }, 0);
     return true;
   }
 
@@ -1248,6 +1256,7 @@
     if (lb.classList.contains("is-open")) {
       lb.classList.remove("is-open");
       lb.setAttribute("aria-hidden", "true");
+      lbImg.removeAttribute("src");
       document.body.style.overflow = "";
     }
   });
@@ -1318,12 +1327,10 @@
     resetCatalogScrollContainers(section);
     setActive(id);
 
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        section.scrollIntoView({ behavior: "auto", block: "start" });
-        setActive(id);
-      });
-    });
+    // "auto" inherits the site's smooth scrolling and loads images in all
+    // intervening categories. Jump before the image observer's first frame.
+    section.scrollIntoView({ behavior: "instant", block: "start" });
+    setActive(id);
     return true;
   }
 
@@ -1480,8 +1487,8 @@
         scrollCategoryToStart(id);
       } else if (elTarget && id.indexOf("product-") === 0) {
         setTimeout(function () {
-          elTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          elTarget.focus && elTarget.focus();
+          elTarget.scrollIntoView({ behavior: 'instant', block: 'center' });
+          elTarget.focus && elTarget.focus({ preventScroll: true });
         }, 80);
       }
     } catch (e) { /* ignore */ }
