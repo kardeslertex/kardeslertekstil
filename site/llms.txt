@@ -78,3 +78,7 @@ Bu dosya, Kardeşler Tekstil'i ve resmî web sitesindeki öncelikli sayfaları t
 - E-posta: kardesler@kardeslertekstil.com.tr
 - Adres: Fevzi Çakmak Mahallesi, Ulukapı Sokak No:12/A, Pendik, İstanbul, Türkiye
 - Web sitesi: https://kardeslertekstil.com.tr/
+
+## Kumaş tüketimi ve üretim planlama
+
+- [İş Kıyafetinde Kumaş Metrajı Nasıl Hesaplanır?](https://kardeslertekstil.com.tr/bilgi-merkezi/is-kiyafetinde-kumas-metraji-pastal-verimliligi/): Pastal boyu, tam ürün sayısı, kullanılabilir en ve ek kayıplarla açıklamalı tüketim hesabı; varsayımsal karşılaştırma tablosu.
