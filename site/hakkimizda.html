@@ -437,6 +437,8 @@
 <meta name="theme-color" content="#f97316">
 <meta name="google-analytics-id" content="">
 <script src="/site.js?v=20260804-2" defer></script>
+<link rel="stylesheet" href="/facility-carousel.css?v=20261029">
+<script src="/facility-carousel.js?v=20261029" defer></script>
 </head>
 <body class="about-page-v2" data-screen-label="04 About">
 <header class="site-header">
@@ -462,7 +464,19 @@
 <h1>1982’den Beri Kurumsal İş Kıyafeti Üretiyoruz</h1>
 <p>Pendik / İstanbul’daki üretim tesisimizde kurumsal firmalara özel iş kıyafetleri tasarlıyor ve üretiyoruz.</p>
 </div>
-<figure class="about-hero-facility"><img src="assets/locations/kardesler-tekstil-uretim-tesisi-yeni.jpg" alt="Kardeşler Tekstil Pendik üretim tesisi dış görünümü" width="900" height="1208" fetchpriority="high" decoding="async"><figcaption>Pendik / İstanbul üretim tesisimiz</figcaption></figure>
+<div class="about-hero-facility facility-carousel" role="region" aria-roledescription="slayt gösterisi" aria-label="Üretim tesisimiz" tabindex="0">
+<!-- Yeni atölye fotoğrafları aynı facility-slide yapısıyla eklenebilir. -->
+<div class="facility-slides"><figure class="facility-slide"><img src="assets/locations/kardesler-tekstil-uretim-tesisi-yeni.jpg" alt="Kardeşler Tekstil Pendik üretim tesisi dış görünümü" width="900" height="1208" fetchpriority="high" decoding="async"><figcaption>Pendik / İstanbul üretim tesisimiz</figcaption></figure>
+<figure class="facility-slide" hidden><img src="assets/locations/kesimhane-1.webp" alt="Kardeşler Tekstil kesimhane bölümü — 1" width="1448" height="1086" loading="lazy" decoding="async"><figcaption>Kesimhane bölümümüz</figcaption></figure>
+<figure class="facility-slide" hidden><img src="assets/locations/kesimhane-2.webp" alt="Kardeşler Tekstil kesimhane bölümü — 2" width="1448" height="1086" loading="lazy" decoding="async"><figcaption>Kesimhane bölümümüz</figcaption></figure>
+<figure class="facility-slide" hidden><img src="assets/locations/kesimhane-3.webp" alt="Kardeşler Tekstil kesimhane bölümü — 3" width="1448" height="1086" loading="lazy" decoding="async"><figcaption>Kesimhane bölümümüz</figcaption></figure></div>
+<div class="facility-controls" hidden>
+<button type="button" data-step="-1" aria-label="Önceki fotoğraf">&#10094;</button>
+<span class="facility-counter" aria-live="off">1 / 4</span>
+<button type="button" data-step="1" aria-label="Sonraki fotoğraf">&#10095;</button>
+<button type="button" class="facility-pause" aria-label="Otomatik geçişi duraklat">Duraklat</button>
+</div>
+</div>
 </div>
 </section><section class="about-story reveal-section">
 <div class="container about-story-grid">
