@@ -1,0 +1,14 @@
+.about-page-v2 .facility-carousel:before{display:none}
+.about-page-v2 .facility-carousel .facility-slide{margin:0;background:#0e2a44}
+.about-page-v2 .facility-carousel .facility-slide[hidden]{display:none}
+.about-page-v2 .facility-carousel .facility-slide img{width:100%;height:470px;object-fit:contain;background:#0b2238}
+.about-page-v2 .facility-carousel .facility-slide figcaption{position:static;min-height:44px;padding:12px 14px;background:rgba(8,25,43,.92)}
+.facility-controls{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px;background:#08192b;color:#fff}
+.facility-controls[hidden]{display:none}
+.facility-controls button{min-width:44px;min-height:44px;padding:8px 12px;border:1px solid #718396;border-radius:3px;background:transparent;color:#fff;cursor:pointer;font:inherit;font-size:13px}
+.facility-controls button:hover{background:#a84217}
+.facility-controls button:focus-visible,.facility-carousel:focus-visible{outline:3px solid #e6662a;outline-offset:3px}
+.facility-counter{font-size:13px;font-variant-numeric:tabular-nums}
+.facility-slides{touch-action:pan-y}
+@media(max-width:1000px){.about-page-v2 .facility-carousel .facility-slide img{height:auto;aspect-ratio:4/3;object-fit:contain}}
+@media(prefers-reduced-motion:no-preference){.facility-slide{animation:facility-appear .45s ease-out}@keyframes facility-appear{from{opacity:.45}to{opacity:1}}}
