@@ -47,6 +47,7 @@ const RELEASE_ASSET_ALIASES = new Map([
   ["/knowledge-data-20260910-seo.js", "/bilgi-merkezi/knowledge-center.js"],
   ["/knowledge-data-20260911-planning.js", "/bilgi-merkezi/knowledge-center.js"],
   ["/knowledge-data-20261029-metraj.js", "/bilgi-merkezi/knowledge-center.js"],
+  ["/knowledge-data-20261113-export.js", "/bilgi-merkezi/knowledge-center.js"],
   ["/products-data-20260824-hoodie-models1.js", "/products.js"],
   ["/catalog-ui-20260824-sweat-hoodie4.js", "/catalog.js"],
   ["/catalog-ui-20260824-sweat-technical3.js", "/catalog.js"],
@@ -532,7 +533,7 @@ export default {
             if (path === "/hero-products.js") element.setAttribute("src", "/home-hero-products-20261113-mont-colors.js");
             else if (path === "/site.js") element.setAttribute("src", "/home-site-20261113-product-info-fix.js");
             else if (path === "/catalog.js") element.setAttribute("src", "/catalog-ui-20260912-memory.js");
-            else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20261029-metraj.js");
+            else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20261113-export.js");
           },
         })
         .on('link[rel="stylesheet"]', {
