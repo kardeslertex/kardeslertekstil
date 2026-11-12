@@ -764,8 +764,8 @@
     logoPreview.addEventListener("pointerdown", function (event) {
       if (!logoUrl) return;
       logoPreview.setPointerCapture(event.pointerId);
+      var bounds = stage.getBoundingClientRect();
       function move(moveEvent) {
-        var bounds = stage.getBoundingClientRect();
         setLogoPosition(((moveEvent.clientX - bounds.left) / bounds.width) * 100, ((moveEvent.clientY - bounds.top) / bounds.height) * 100);
       }
       function stop() {

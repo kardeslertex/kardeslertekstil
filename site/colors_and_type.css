@@ -3,9 +3,6 @@
    Industrial, warm, utilitarian. Cream ground, navy architecture.
    ============================================================ */
 
-/* Fonts ------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter+Tight:wght@400;500;600;700&display=swap');
-
 :root {
   /* --- Brand palette ---------------------------------------- */
   --navy-50:  #E7ECF2;
@@ -20,8 +17,8 @@
   --orange-50:  #FCEEE4;
   --orange-100: #F7D3B6;
   --orange-300: #EE9A5F;
-  --orange-500: #E6662A;   /* ACCENT — Hi-Vis Orange */
-  --orange-600: #C4531D;
+  --orange-500: #C94F16;   /* ACCENT — accessible Hi-Vis Orange */
+  --orange-600: #A83F0E;
   --orange-700: #9B4014;
 
   --red-500: #B92133;      /* SUPPORT — Bolt Red, from the flag */

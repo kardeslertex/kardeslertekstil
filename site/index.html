@@ -118,7 +118,7 @@
 <div class="product-showcase-main">
 <div class="product-showcase-stage" data-showcase-stage>
 <div class="product-logo-preview" data-logo-preview hidden>
-<img data-logo-image alt=""/>
+<img data-logo-image alt="" width="160" height="64"/>
 </div>
 <img data-showcase-image src="assets/products/hero/tshirt/kt-ts-035-bej.webp" alt="KT-TS-035 bej fermuarlı cepli teknik polo tişört" width="1254" height="1254" decoding="async" fetchpriority="high"/>
 <a class="product-showcase-category-link" data-showcase-category-link href="urunlerimiz/#tshirt">Tüm Tişört Ürünlerini Gör <span aria-hidden="true">→</span></a>
@@ -142,11 +142,11 @@
 <aside class="product-showcase-controls" aria-label="Ürün vitrini seçenekleri">
 <div class="product-model-picker">
 <span class="product-control-label">Model seçimi</span>
-<div class="product-model-options" data-showcase-models aria-label="Ürün modeli"></div>
+<div class="product-model-options" data-showcase-models role="group" aria-label="Ürün modeli"></div>
 </div>
 <div class="product-color-picker">
 <span class="product-control-label">Renk seçimi</span>
-<div class="product-color-options" data-showcase-colors aria-label="Ürün rengi"></div>
+<div class="product-color-options" data-showcase-colors role="group" aria-label="Ürün rengi"></div>
 </div>
 <div class="product-logo-tool" data-logo-tool>
 <input data-logo-input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden/>
@@ -791,12 +791,13 @@
     a.className = 'logo-item';
     a.href = 'referanslarimiz';
     a.title = title || '';
-    a.setAttribute('role','listitem');
     var img = document.createElement('img');
     img.src = src;
     img.alt = title || '';
     img.loading = 'lazy';
     img.decoding = 'async';
+    img.width = 180;
+    img.height = 64;
     img.addEventListener('error', function(){ a.remove(); });
     a.appendChild(img);
     return a;

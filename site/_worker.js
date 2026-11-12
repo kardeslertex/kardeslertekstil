@@ -33,6 +33,9 @@ const LEGACY_PHP_PAGES = new Map([
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
+  ["/home-site-20261113-perf.js", "/site.js"],
+  ["/site-styles-20261113-perf.css", "/styles.css"],
+  ["/colors-type-20261113-perf.css", "/colors_and_type.css"],
   ["/home-site-20260910-seo.js", "/site.js"],
   ["/catalog-ui-20260910-seo.js", "/catalog.js"],
   ["/catalog-ui-20260911-fix.js", "/catalog.js"],
@@ -507,12 +510,23 @@ export default {
     // avoid stale immutable assets and keep existing source URLs compatible.
     if (response.ok && (response.headers.get("Content-Type") || "").includes("text/html")) {
       response = new HTMLRewriter()
+        .on("head", {
+          element(element) {
+            element.append(
+              '<link rel="preload" href="/colors-type-20261113-perf.css" as="style">' +
+              '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
+              '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' +
+              '<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap"></noscript>',
+              { html: true }
+            );
+          },
+        })
         .on("script[src]", {
           element(element) {
             const source = new URL(element.getAttribute("src"), url);
             if (source.origin !== url.origin) return;
             const path = RELEASE_ASSET_ALIASES.get(source.pathname) || source.pathname;
-            if (path === "/site.js") element.setAttribute("src", "/home-site-20260910-seo.js");
+            if (path === "/site.js") element.setAttribute("src", "/home-site-20261113-perf.js");
             else if (path === "/catalog.js") element.setAttribute("src", "/catalog-ui-20260912-memory.js");
             else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20261029-metraj.js");
           },
@@ -522,7 +536,7 @@ export default {
             const source = new URL(element.getAttribute("href"), url);
             if (source.origin !== url.origin) return;
             if ((RELEASE_ASSET_ALIASES.get(source.pathname) || source.pathname) === "/styles.css") {
-              element.setAttribute("href", "/site-styles-20260910-seo.css");
+              element.setAttribute("href", "/site-styles-20261113-perf.css");
             }
           },
         })
