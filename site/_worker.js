@@ -33,6 +33,7 @@ const LEGACY_PHP_PAGES = new Map([
 // caches ignore query strings, so a new pathname is required for a reliable
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
+  ["/workwear-hero-20261113-2.js", "/workwear-hero.js"],
   ["/home-site-20261113-perf.js", "/site.js"],
   ["/site-styles-20261113-perf.css", "/styles.css"],
   ["/colors-type-20261113-perf.css", "/colors_and_type.css"],

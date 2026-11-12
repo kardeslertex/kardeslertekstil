@@ -28,9 +28,9 @@
     },
     {
       code: "KT-MK-005",
-      name: "Reflektörlü Yüksek Görünürlüklü İş Montu",
-      image: "/assets/products/gallery/montkaban/05.jpg",
-      alt: "KT-MK-005 reflektörlü yüksek görünürlüklü iş montu",
+      name: "Siyah Gri Reflektör Şeritli İş Montu",
+      image: "/assets/products/gallery/montkaban/09.webp",
+      alt: "KT-MK-005 siyah gri reflektör şeritli iş montu",
       href: "/urunlerimiz/#montkaban"
     }
   ];
@@ -68,7 +68,7 @@
       });
       index = nextIndex;
       root.classList.remove("is-changing");
-    }, 220);
+    }, 520);
   }
 
   function schedule() {
@@ -76,15 +76,8 @@
     window.clearInterval(timer);
     timer = window.setInterval(function () {
       show((index + 1) % slides.length);
-    }, 4200);
+    }, 7500);
   }
-
-  dots.forEach(function (dot) {
-    dot.addEventListener("click", function () {
-      show(Number(dot.getAttribute("data-workwear-dot")) || 0);
-      schedule();
-    });
-  });
 
   document.addEventListener("visibilitychange", schedule);
   window.addEventListener("load", function () {
