@@ -925,7 +925,7 @@
 
       function update() {
         status.hidden = !product.placeholder;
-        productLink.href = product.href;
+        if (productLink) productLink.href = product.href;
         categoryLink.href = product.href;
         categoryLink.firstChild.nodeValue = "Tüm " + product.name + " Ürünlerini Gör ";
         infoName.textContent = product.productName;
