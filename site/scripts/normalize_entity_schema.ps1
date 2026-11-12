@@ -67,11 +67,9 @@ foreach ($file in $files) {
                 }
                 return '<script type="application/ld+json">' + (Compact-Json $collection) + '</script>'
             }
-            $schema | Add-Member -NotePropertyName '@id' -NotePropertyValue "$canonical#product" -Force
-            if ($schema.manufacturer) {
-                $schema.manufacturer = [ordered]@{ '@id' = $organizationId }
-            }
-            return '<script type="application/ld+json">' + (Compact-Json $schema) + '</script>'
+            # These are quote-only B2B catalogue pages, not purchasable products.
+            # Product rich-result markup would require real offers or review data.
+            return ''
         }
         if ($schema.'@type' -eq 'CollectionPage' -and $schema.mainEntity.'@type' -ne 'ItemList') {
             $position = 0
