@@ -34,6 +34,7 @@ const LEGACY_PHP_PAGES = new Map([
 // cache break when the hero markup and its JavaScript change together.
 const RELEASE_ASSET_ALIASES = new Map([
   ["/workwear-hero-20261113-2.js", "/workwear-hero.js"],
+  ["/home-site-20261113-product-info-fix.js", "/site.js"],
   ["/home-site-20261113-perf.js", "/site.js"],
   ["/site-styles-20261113-perf.css", "/styles.css"],
   ["/colors-type-20261113-perf.css", "/colors_and_type.css"],
@@ -529,7 +530,7 @@ export default {
             if (source.origin !== url.origin) return;
             const path = RELEASE_ASSET_ALIASES.get(source.pathname) || source.pathname;
             if (path === "/hero-products.js") element.setAttribute("src", "/home-hero-products-20261113-mont-colors.js");
-            else if (path === "/site.js") element.setAttribute("src", "/home-site-20261113-perf.js");
+            else if (path === "/site.js") element.setAttribute("src", "/home-site-20261113-product-info-fix.js");
             else if (path === "/catalog.js") element.setAttribute("src", "/catalog-ui-20260912-memory.js");
             else if (path === "/bilgi-merkezi/knowledge-center.js" && url.pathname === "/bilgi-merkezi/") element.setAttribute("src", "/knowledge-data-20261029-metraj.js");
           },
