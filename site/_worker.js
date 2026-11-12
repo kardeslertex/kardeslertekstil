@@ -543,6 +543,13 @@ export default {
             }
           },
         })
+        .on(".site-footer h4", {
+          element(element) {
+            // Footer columns follow page-level h2 sections. Keeping them at h3
+            // removes the h2 -> h4 accessibility skip without changing styles.
+            element.tagName = "h3";
+          },
+        })
         .transform(response);
     }
 

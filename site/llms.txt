@@ -2,7 +2,7 @@
 
 > Kardeşler Tekstil, 1982'den beri İstanbul Pendik'te faaliyet gösteren kurumsal iş kıyafeti üreticisidir.
 
-Kardeşler Tekstil, şirketlere ve kurumlara özel iş kıyafeti ve personel kıyafeti üretmektedir. Üretim; model, kumaş, kurumsal renk, beden dağılımı ve logo uygulaması gibi proje gereksinimlerine göre planlanır. Firma, İstanbul Pendik'teki üretim tesisinden Türkiye genelindeki kurumsal müşterilere hizmet verir.
+Kardeşler Tekstil, şirketlere ve kurumlara özel iş kıyafeti ve personel kıyafeti üretmektedir. Üretim; model, kumaş, kurumsal renk, beden dağılımı ve logo uygulaması gibi proje gereksinimlerine göre planlanır. Firma, İstanbul Pendik'teki üretim tesisinden Türkiye genelindeki kurumsal müşterilere hizmet verir ve dünya genelindeki ihracat projeleri için üretim planlar.
 
 Bu dosya, Kardeşler Tekstil'i ve resmî web sitesindeki öncelikli sayfaları tanımlayan destekleyici bir rehberdir. Güncel ürün, fiyat, termin, numune ve teknik uygunluk bilgileri için ilgili web sayfaları ile Kardeşler Tekstil'den alınan yazılı teklif esas alınmalıdır.
 
@@ -16,6 +16,7 @@ Bu dosya, Kardeşler Tekstil'i ve resmî web sitesindeki öncelikli sayfaları t
 - Kurumsal renklere özel üretim
 - Özel model ve numune üretimi
 - Türkiye geneli toplu üretim ve sevkiyat
+- Dünya genelindeki ihracat projelerine üretim
 
 ## Ürünler
 
@@ -38,8 +39,9 @@ Bu dosya, Kardeşler Tekstil'i ve resmî web sitesindeki öncelikli sayfaları t
 - Konum: Pendik, İstanbul, Türkiye
 - Faaliyet türü: Kurumsal iş kıyafeti ve personel kıyafeti üretimi
 - Müşteri grubu: Şirketler, kurumlar, fabrikalar ve saha ekipleri
-- Hizmet alanı: Türkiye geneli
+- Hizmet alanı: Türkiye geneli ve dünya genelindeki ihracat projeleri
 - Minimum özel üretim siparişi: 50 adet
+- Yıllık üretim kapasitesi: 1.000.000 adedin üzerinde
 - Üretim modeli: Siparişe özel toplu üretim
 
 ## Önemli sayfalar
