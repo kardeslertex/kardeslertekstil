@@ -23,7 +23,7 @@
   var sweatColors = colorsFor("sweat", "kt-sw-034");
   var pantolonColors = colorsFor("pantolon", "kt-pt-001");
   var tulumColors = colorsFor("tulum", "kt-tl-020");
-  var montkabanColors = [{ name: "Mavi", value: "#1657c8", image: "assets/products/hero/montkaban/kt-mk-001-mavi-v2.webp" }];
+  var montkabanColors = colorsFor("montkaban", "kt-mk-001");
   var polarColors = colorsFor("polar", "kt-pl-008");
   var yelekColors = colorsFor("yelek", "kt-yl-005");
   var softshellColors = colorsFor("softshell", "kt-ss-022");
@@ -101,7 +101,7 @@
     {
       id: "montkaban", name: "Mont",
       description: "KT-MK-001; mavi gövdesi, siyah takviye panelleri, reflektif detayları ve işlevsel cepleriyle açık saha, sevkiyat ve teknik ekipler için hazırlanmıştır.",
-      image: "assets/products/hero/montkaban/kt-mk-001-mavi-v2.webp", imageAlt: "KT-MK-001 mavi reflektörlü iş montu", href: "urunlerimiz/#montkaban", colors: montkabanColors,
+      image: "assets/products/hero/montkaban/kt-mk-001-bej.webp", imageAlt: "KT-MK-001 reflektörlü teknik iş montu", href: "urunlerimiz/#montkaban", colors: montkabanColors,
       code: "KT-MK-001",
       alternates: [{ code:"KT-MK-029", productName:"Kapüşonlu Teknik İş Montu", description:"Kontrast panelleri, kapüşonu ve fermuarlı cepleriyle açık saha ekiplerine yönelik teknik iş montu.", imageAlt:"KT-MK-029 kapüşonlu teknik iş montu", colors:montkabanAltColors, fabric:"Su itici teknik dokuma", weight:"190 (±%5) g/m²", composition:"%100 polyester dış yüzey", useArea:"Açık saha, lojistik ve teknik ekipler", logoOptions:"Nakış, arma ve transfer baskı", minimumOrder:"50 adet", wash:"30 °C hassas yıkama; yumuşatıcı kullanmayın." }, { code:"KT-MK-022", productName:"Panelli Teknik İş Montu", description:"Koruyucu panellerle açık saha koşullarına uygun teknik mont.", imageAlt:"KT-MK-022 teknik iş montu", colors:montLegacyColors }, { code:"KT-MK-023", productName:"Fosfor Panelli Kapüşonlu İş Montu", description:"Fosfor paneller ve reflektörlerle görünürlüğü destekleyen mont.", imageAlt:"KT-MK-023 kapüşonlu iş montu", colors:montLegacyAltColors }],
       productName: "Mavi Reflektörlü Teknik İş Montu", fabric: "Bonding su itici kaplamalı dokuma", weight: "190 (±%5) g/m²", composition: "%100 polyester dış yüzey", useArea: "Açık saha, sevkiyat ve teknik ekipler", logoOptions: "Nakış, arma ve transfer baskı", minimumOrder: "50 adet", wash: "30 °C hassas yıkama; yumuşatıcı ve tamburlu kurutma kullanmayın.", seoDescription: "KT-MK-001 mavi reflektörlü teknik mont, açık saha ekipleri için koruyucu kurumsal iş kıyafeti çözümüdür."
