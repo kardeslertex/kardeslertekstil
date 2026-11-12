@@ -250,7 +250,7 @@ export default {
       /^\/urun-kategori\/(?:men|women)(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:19-2|20-2)(?:\/|$)/i.test(url.pathname) ||
       /^\/about\/urunlerimiz\.html\/?$/i.test(url.pathname) ||
-      /^\/(?:contact-us|my-account|ornek-sayfa|store)(?:\/|$)/i.test(url.pathname) ||
+      /^\/(?:my-account|ornek-sayfa|store)(?:\/|$)/i.test(url.pathname) ||
       /^\/comments\/feed(?:\/|$)/i.test(url.pathname) ||
       /^\/cdn-cgi\/l\/email-protection\/?$/i.test(url.pathname) ||
       url.pathname === "/*" ||
@@ -389,7 +389,7 @@ export default {
       /^\/(?:store\/)?feed(?:\/|$)/i.test(url.pathname) ||
       /^\/comments\/feed(?:\/|$)/i.test(url.pathname) ||
       /^\/store\/?$/i.test(url.pathname) ||
-      /^\/(?:cart|my-account)(?:\/|$)/i.test(url.pathname) ||
+      /^\/(?:cart|checkout|shop|online-satis|intro|my-account)(?:\/|$)/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
       /^\/wp-[^/]*\.php$/i.test(url.pathname) ||
       /^\/\d+(?:-\d+)*\//.test(url.pathname) ||
