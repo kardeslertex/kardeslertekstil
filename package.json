@@ -1,0 +1,14 @@
+{
+  "name": "kardeslertekstil-cloudflare-pages",
+  "private": true,
+  "scripts": {
+    "cf:config": "wrangler pages download config kardeslertekstil",
+    "cf:dev": "wrangler pages dev site",
+    "cf:inspect": "wrangler pages deployment list --project-name kardeslertekstil",
+    "cf:deploy:preview": "wrangler pages deploy site --project-name kardeslertekstil",
+    "cf:deploy:production": "wrangler pages deploy site --project-name kardeslertekstil --branch main"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

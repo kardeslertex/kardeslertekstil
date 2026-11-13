@@ -397,6 +397,7 @@ export default {
       /^\/comments\/feed(?:\/|$)/i.test(url.pathname) ||
       /^\/store\/?$/i.test(url.pathname) ||
       /^\/(?:cart|checkout|shop|online-satis|intro|my-account)(?:\/|$)/i.test(url.pathname) ||
+      /^\/about\/.+/i.test(url.pathname) ||
       /^\/(?:wp-admin|wp-content|wp-includes|wp-json)(?:\/|$)/i.test(url.pathname) ||
       /^\/wp-[^/]*\.php$/i.test(url.pathname) ||
       /^\/\d+(?:-\d+)*\//.test(url.pathname) ||

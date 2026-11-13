@@ -53,6 +53,7 @@ Bu dosya, Kardeşler Tekstil'i ve resmî web sitesindeki öncelikli sayfaları t
 - [Hakkımızda](https://kardeslertekstil.com.tr/hakkimizda): Firma geçmişi, üretim tesisi, kapasite ve üretim yaklaşımı.
 - [Referanslar](https://kardeslertekstil.com.tr/referanslarimiz): Hizmet verilen sektörler ile marka ve kurum örnekleri.
 - [Bilgi Merkezi](https://kardeslertekstil.com.tr/bilgi-merkezi/): İş kıyafeti seçimi, üretimi ve kullanımı hakkında rehberler.
+- [Kurumsal İş Kıyafeti Üretimi Sık Sorulan Sorular](https://kardeslertekstil.com.tr/bilgi-merkezi/kurumsal-is-kiyafeti-uretimi-sik-sorulan-sorular/): Minimum sipariş, numune, beden, kumaş, logo, termin, teslimat ve teklif süreci hakkında kısa yanıtlar.
 - [İletişim](https://kardeslertekstil.com.tr/iletisim): İletişim bilgileri ve kurumsal teklif formu.
 
 ## Sektörel çözümler
